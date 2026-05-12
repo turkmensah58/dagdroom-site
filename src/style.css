@@ -15,7 +15,7 @@ body,
   width: 100%;
   height: 100vh;
   position: relative;
-  background-image: url("/public/main-menu.png");
+  background-image: url("/main-menu.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
