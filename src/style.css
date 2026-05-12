@@ -53,6 +53,12 @@ body,
   height: 3px;
   background: #102f35;
   margin: 18px 0 12px;
+}  
+.hero-image {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  display: block;
 }
 
 .hero p {
