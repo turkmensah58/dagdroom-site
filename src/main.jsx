@@ -1,17 +1,13 @@
 import "./style.css";
 
-function App() {
-  return `
-    <main class="home">
-      <div class="overlay"></div>
+document.querySelector("#app").innerHTML = `
+  <main class="home">
+    <div class="overlay"></div>
 
-      <section class="hero">
-        <h1>DAGDROØM</h1>
-        <div class="line"></div>
-        <p>Calm.Clean.Nordic.</p>
-      </section>
-    </main>
-  `;
-}
-
-document.querySelector("#app").innerHTML = App();
+    <section class="hero">
+      <h1>DAGDROØM</h1>
+      <div class="line"></div>
+      <p>Calm.Clean.Nordic.</p>
+    </section>
+  </main>
+`;
