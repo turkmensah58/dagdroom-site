@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { motion } from 'framer-motion';
-import { ArrowRight, Menu, X, Instagram, Mail } from 'lucide-react';
+import { ArrowRight, Menu, X, Mail } from 'lucide-react';
 import './style.css';
+
+
 
 function DagdroomLandingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
