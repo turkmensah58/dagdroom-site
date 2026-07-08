@@ -24,7 +24,7 @@ body {
   position: relative;
 }
 
-..full-image {
+.full-image {
   width: 100%;
   display: block;
 }
