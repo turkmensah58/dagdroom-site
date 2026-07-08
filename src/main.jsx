@@ -15,7 +15,41 @@ document.querySelector("#app").innerHTML = `
       <a href="/men" class="men-link"></a>
 
   </section>
+<footer class="site-footer">
 
+  <div class="footer-line"></div>
+
+  <nav class="footer-nav">
+    <a href="/journal">JOURNAL</a>
+    <a href="/manifesto">MANIFESTO</a>
+    <a href="/contact">CONTACT</a>
+    <a href="https://instagram.com/dag.room" target="_blank">INSTAGRAM</a>
+  </nav>
+
+  <div class="footer-cities">
+    <a href="/world/copenhagen">COPENHAGEN</a>
+    <span>·</span>
+
+    <a href="/world/stockholm">STOCKHOLM</a>
+    <span>·</span>
+
+    <a href="/world/oslo">OSLO</a>
+    <span>·</span>
+
+    <a href="/world/reykjavik">REYKJAVÍK</a>
+  </div>
+
+  <a href="/" class="footer-copy">
+    © 2026 Dagdroøm
+  </a>
+
+  <div class="footer-slogan">
+    Calm. Clean. Nordic.
+  </div>
+
+  <div class="footer-line"></div>
+
+</footer>
 
 </main>
 `;
