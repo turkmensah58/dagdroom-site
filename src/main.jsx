@@ -23,8 +23,9 @@ document.querySelector("#app").innerHTML = `
     <a href="/journal">JOURNAL</a>
     <a href="/manifesto">MANIFESTO</a>
     <a href="/contact">CONTACT</a>
-    <a href="https://instagram.com/dag.room" target="_blank">INSTAGRAM</a>
-  </nav>
+<a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">
+  INSTAGRAM
+</a>  </nav>
 
   <div class="footer-cities">
     <a href="/world/copenhagen">COPENHAGEN</a>
