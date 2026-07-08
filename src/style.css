@@ -35,9 +35,10 @@ body {
 }
 
 .choose-section .full-image {
-  height: auto;
-  min-height: 100vh;
-  object-fit: contain;
+  width: 100%;
+    height: auto;
+    object-fit: unset;
+    display: block;
 }
 
 /* İkinci sayfadaki tıklanabilir alanlar */
