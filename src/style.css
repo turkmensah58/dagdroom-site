@@ -24,11 +24,20 @@ body {
   position: relative;
 }
 
-.full-image {
+..full-image {
   width: 100%;
+  display: block;
+}
+
+.hero-section .full-image {
   height: 100vh;
   object-fit: cover;
-  display: block;
+}
+
+.choose-section .full-image {
+  height: auto;
+  min-height: 100vh;
+  object-fit: contain;
 }
 
 /* İkinci sayfadaki tıklanabilir alanlar */
