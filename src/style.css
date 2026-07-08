@@ -147,3 +147,44 @@ body {
 .footer-copy:hover {
   opacity: 0.55;
 }
+@media (max-width: 768px) {
+  .site-footer {
+    padding: 56px 22px;
+    min-height: auto;
+    gap: 54px;
+  }
+
+  .footer-line {
+    width: 100%;
+  }
+
+  .footer-nav {
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .footer-cities {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-cities span {
+    display: none;
+  }
+
+  .footer-nav a,
+  .footer-cities a,
+  .footer-copy,
+  .footer-slogan {
+    font-size: 11px;
+    letter-spacing: 4px;
+  }
+
+  .footer-copy {
+    margin-bottom: -34px;
+  }
+
+  .footer-slogan {
+    margin-top: -26px;
+  }
+}
