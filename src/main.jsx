@@ -4,7 +4,7 @@ document.querySelector("#app").innerHTML = `
 <main class="site">
 
   <section class="hero-section">
-      <img src="/hero.png" class="full-image">
+    <img src="/second-son.png" class="full-image">
   </section>
 
   <section class="choose-section">
