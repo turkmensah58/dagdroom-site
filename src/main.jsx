@@ -45,8 +45,8 @@ document.querySelector("#app").innerHTML = `
   </a>
 
   <div class="footer-slogan">
-  Calm.<br />
-  Clean.<br />
+  Calm.<br /><br />
+  Clean.<br /><br />
   Nordic.
 </div>
 
