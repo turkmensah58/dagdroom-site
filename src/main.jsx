@@ -28,7 +28,7 @@ document.querySelector("#app").innerHTML = `
 </a>  </nav>
 
   <div class="footer-cities">
-    <a href="/world/copenhagen">COPENHAGEN</a>
+    <a href="/world/copenhagen/">COPENHAGEN</a>
     <span>·</span>
 
     <a href="/world/stockholm">STOCKHOLM</a>
