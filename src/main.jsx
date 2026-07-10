@@ -33,8 +33,7 @@ document.querySelector("#app").innerHTML = `
 
     <a href="/world/stockholm/">STOCKHOLM</a>
     <span>·</span>
-
-    <a href="/world/oslo">OSLO</a>
+<a href="/world/oslo/">OSLO</a>
     <span>·</span>
 
     <a href="/world/reykjavik">REYKJAVÍK</a>
