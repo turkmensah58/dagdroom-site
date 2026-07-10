@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>Stockholm, 59°20′N — Dagdroøm</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      margin: 0;
+    }
+
+    body {
+      background: #111;
+      color: #f5f1eb;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .stockholm-page {
+      position: relative;
+      width: 100%;
+      min-height: 100svh;
+      overflow: hidden;
+      background-image: url("/stockholm-59n.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+    .stockholm-page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(20, 18, 18, 0.22);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .stockholm-page::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          to top,
+          rgba(15, 15, 15, 0.48) 0%,
+          rgba(15, 15, 15, 0.08) 48%,
+          rgba(15, 15, 15, 0.02) 100%
+        );
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .back-link {
+      position: absolute;
+      top: 42px;
+      left: 52px;
+      z-index: 4;
+      color: #f5f1eb;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 2px;
+      transition: opacity 0.3s ease;
+    }
+
+    .back-link:hover {
+      opacity: 0.55;
+    }
+
+    .city-heading {
+      position: absolute;
+      left: 52px;
+      bottom: 52px;
+      z-index: 4;
+    }
+
+    .city-heading h1 {
+      margin: 0 0 12px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 5vw, 76px);
+      line-height: 0.95;
+      font-weight: 400;
+      letter-spacing: -2px;
+    }
+
+    .city-heading p {
+      margin: 0;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    .journal-mark {
+      position: absolute;
+      right: 48px;
+      bottom: 52px;
+      z-index: 4;
+      font-size: 9px;
+      letter-spacing: 4px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      opacity: 0.8;
+    }
+
+    @media (max-width: 768px) {
+      .stockholm-page {
+        min-height: 100svh;
+        background-position: 55% center;
+      }
+
+      .stockholm-page::before {
+        background: rgba(20, 18, 18, 0.16);
+      }
+
+      .back-link {
+        top: 26px;
+        left: 24px;
+        font-size: 12px;
+      }
+
+      .city-heading {
+        left: 24px;
+        right: 24px;
+        bottom: 34px;
+      }
+
+      .city-heading h1 {
+        font-size: 44px;
+        letter-spacing: -1px;
+      }
+
+      .city-heading p {
+        font-size: 10px;
+        letter-spacing: 4px;
+      }
+
+      .journal-mark {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="stockholm-page">
+    <a class="back-link" href="/" aria-label="Back to homepage">
+      ←
+    </a>
+
+    <div class="city-heading">
+      <h1>Stockholm,</h1>
+      <p>59°20′N</p>
+    </div>
+
+    <div class="journal-mark">
+      Dagdroøm JOURNAL
+    </div>
+  </main>
+</body>
+</html>
