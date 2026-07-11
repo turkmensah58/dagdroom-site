@@ -8,7 +8,7 @@ document.querySelector("#app").innerHTML = `
 
   <section class="choose-section">
 
-    <img src="/second-son.png" class="full-image">
+    <img src="/menu-son.png" class="choose-world-image">
 
       <a href="/women" class="women-link"></a>
 
