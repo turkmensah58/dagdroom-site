@@ -188,3 +188,71 @@ body {
     margin-top: -26px;
   }
 }
+.choose-section {
+  position: relative;
+  height: auto;
+  min-height: 0;
+  padding: 36px 0 56px;
+  overflow: visible;
+}
+
+.choose-world-image {
+  display: block;
+  width: 84%;
+  max-width: 1400px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.women-link,
+.men-link {
+  position: absolute;
+  top: 36px;
+  bottom: 56px;
+  height: auto;
+}
+
+.women-link {
+  left: 8%;
+  width: 42%;
+}
+
+.men-link {
+  right: 8%;
+  width: 42%;
+}
+
+@media (max-width: 768px) {
+  .choose-section {
+    height: auto;
+    min-height: 0;
+    padding: 20px 0 32px;
+  }
+
+  .choose-world-image {
+    width: 94%;
+    max-width: none;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .women-link,
+  .men-link {
+    top: 20px;
+    bottom: 32px;
+  }
+
+  .women-link {
+    left: 3%;
+    width: 47%;
+  }
+
+  .men-link {
+    right: 3%;
+    width: 47%;
+  }
+
+  .site-footer {
+    margin-top: 0;
+  }
+}
