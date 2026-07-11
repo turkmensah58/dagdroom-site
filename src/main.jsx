@@ -9,7 +9,9 @@ document.querySelector("#app").innerHTML = `
  <section class="choose-section">
 
   <div class="choose-heading">
-   <p class="choose-eyebrow">WELCOME TO D<span class="lambda-fix">Λ</span>GDROØM</p>
+   <p class="choose-eyebrow">
+  WELCOME TO D<span class="logo-a">A</span>GDROØM
+</p>
 
     <h1>Choose your world</h1>
 
@@ -71,4 +73,32 @@ document.querySelector("#app").innerHTML = `
 .lambda-fix {
   color: #666;
   font-weight: 300;
+}
+.logo-a {
+  position: relative;
+  display: inline-block;
+  color: transparent;
+  width: 0.72em;
+}
+
+.logo-a::before,
+.logo-a::after {
+  content: "";
+  position: absolute;
+  bottom: 0.05em;
+  width: 1px;
+  height: 0.9em;
+  background: currentColor;
+  background: #111;
+  transform-origin: bottom center;
+}
+
+.logo-a::before {
+  left: 0.18em;
+  transform: rotate(24deg);
+}
+
+.logo-a::after {
+  right: 0.18em;
+  transform: rotate(-24deg);
 }
