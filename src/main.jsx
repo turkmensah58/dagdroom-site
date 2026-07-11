@@ -9,7 +9,7 @@ document.querySelector("#app").innerHTML = `
  <section class="choose-section">
 
   <div class="choose-heading">
-    <p class="choose-eyebrow">WELCOME TO DAGDROØM</p>
+   <p class="choose-eyebrow">WELCOME TO DΛGDROØM</p>
 
     <h1>Choose your world</h1>
 
