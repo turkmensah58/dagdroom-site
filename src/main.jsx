@@ -68,3 +68,7 @@ document.querySelector("#app").innerHTML = `
 
 </main>
 `;
+.lambda-fix {
+  color: #666;
+  font-weight: 300;
+}
