@@ -435,3 +435,18 @@ body {
   line-height: 1.2;
   color: #111;
 }
+.choose-heading-image-wrap {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
+  background: #f5f1eb;
+}
+
+.choose-heading-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
