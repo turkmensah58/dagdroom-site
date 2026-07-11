@@ -6,14 +6,27 @@ document.querySelector("#app").innerHTML = `
   <section class="hero-section">
 <img src="/hero.png" class="full-image">  </section>
 
-  <section class="choose-section">
+ <section class="choose-section">
 
+  <div class="choose-heading">
+    <p class="choose-eyebrow">WELCOME TO DAGDROØM</p>
+
+    <h1>Choose your world</h1>
+
+    <span class="choose-divider"></span>
+
+    <p class="choose-subtitle">Two worlds. One philosophy.</p>
+  </div>
+
+  <div class="choose-image-wrap">
     <img src="/menu-son.png" class="choose-world-image">
 
-      <a href="/women" class="women-link"></a>
+    <a href="/women" class="women-link"></a>
 
-      <a href="/men" class="men-link"></a>
+    <a href="/men" class="men-link"></a>
+  </div>
 
+</section>
   </section>
 <footer class="site-footer">
 
