@@ -4,69 +4,71 @@ document.querySelector("#app").innerHTML = `
 <main class="site">
 
   <section class="hero-section">
-<img src="/hero.png" class="full-image" />
+    <img src="/hero.png" class="full-image" />
 
- <section class="choose-section">
+    <section class="choose-section">
 
-<div class="choose-heading">
-  <div class="choose-eyebrow">WELCOME TO DΛGDROØM</div>
+      <div class="choose-heading">
+        <div class="choose-eyebrow">WELCOME TO DΛGDROØM</div>
 
-  <div class="choose-philosophy">
-    Two worlds. One philosophy.
-  </div>
+        <div class="choose-philosophy">
+          Two worlds. One philosophy.
+        </div>
 
-  <div class="choose-divider"></div>
+        <div class="choose-divider"></div>
 
-  <h1 class="choose-title">Choose your world</h1>
-</div>
+        <h1 class="choose-title">Choose your world</h1>
+      </div>
 
-  <div class="choose-image-wrap">
-    <img src="/menu-son.png" class="choose-world-image">
+      <div class="choose-image-wrap">
+        <img src="/menu-son.png" class="choose-world-image">
 
-    <a href="/women" class="women-link"></a>
+        <a href="/women" class="women-link"></a>
+        <a href="/men" class="men-link"></a>
+      </div>
 
-    <a href="/men" class="men-link"></a>
-  </div>
-
-</section>
+    </section>
   </section>
-<footer class="site-footer">
 
-  <div class="footer-line"></div>
+  <footer class="site-footer">
 
-  <nav class="footer-nav">
-    <a href="/journal">JOURNAL</a>
-    <a href="/manifesto">MANIFESTO</a>
-    <a href="/contact">CONTACT</a>
-<a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">
-  INSTAGRAM
-</a>  </nav>
+    <div class="footer-line"></div>
 
-  <div class="footer-cities">
-    <a href="/world/copenhagen/">COPENHAGEN</a>
-    <span>·</span>
+    <nav class="footer-nav">
+      <a href="/journal">JOURNAL</a>
+      <a href="/manifesto">MANIFESTO</a>
+      <a href="/contact">CONTACT</a>
+      <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">
+        INSTAGRAM
+      </a>
+    </nav>
 
-    <a href="/world/stockholm/">STOCKHOLM</a>
-    <span>·</span>
-<a href="/world/oslo/">OSLO</a>
-    <span>·</span>
+    <div class="footer-cities">
+      <a href="/world/copenhagen/">COPENHAGEN</a>
+      <span>·</span>
 
-    <a href="/world/reykjavik">REYKJAVÍK</a>
-  </div>
+      <a href="/world/stockholm/">STOCKHOLM</a>
+      <span>·</span>
 
-  <a href="/" class="footer-copy">
-    © 2026 Dagdroøm
-  </a>
+      <a href="/world/oslo/">OSLO</a>
+      <span>·</span>
 
-  <div class="footer-slogan">
-  Calm.<br /><br />
-  Clean.<br /><br />
-  Nordic.
-</div>
+      <a href="/world/reykjavik">REYKJAVÍK</a>
+    </div>
 
-  <div class="footer-line"></div>
+    <a href="/" class="footer-copy">
+      © 2026 Dagdroøm
+    </a>
 
-</footer>
+    <div class="footer-slogan">
+      Calm.<br /><br />
+      Clean.<br /><br />
+      Nordic.
+    </div>
+
+    <div class="footer-line"></div>
+
+  </footer>
 
 </main>
 `;
