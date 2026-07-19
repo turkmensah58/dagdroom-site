@@ -12,7 +12,7 @@ document.querySelector("#app").innerHTML = `
   <img
     src="/choose-son.png"
     class="choose-heading-image"
-    alt="Welcome to Dagdroøm — Choose your world"
+    alt="Welcome to Dagdroø — Choose your world"
   >
 </div>
 
