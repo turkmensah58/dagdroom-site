@@ -8,11 +8,11 @@ const translations = {
     welcome: "W E L C O M E   T O   D Λ G D R O Ø M",
     philosophy: "Two worlds. One philosophy.",
     chooseWorld: "Choose your world",
-    womenEyebrow: "Dagdroøm",
-    womenTitle: "Choose your expression",
-    womenIntro:
-      "Three expressions shaped by softness, shadow and movement.",
-    enter: "Enter collection",
+   womenEyebrow: "Dagdroøm",
+womenTitle: "The Collection",
+womenIntro:
+  "A quiet wardrobe inspired by Scandinavian light, movement and timeless femininity.",
+enter: "Explore",
     comingSoon: "Coming soon",
     skip: "Skip film",
     replay: "Replay film",
@@ -25,11 +25,11 @@ const translations = {
     welcome: "DAGDROØM'A HOŞ GELDİNİZ",
     philosophy: "İki dünya. Tek felsefe.",
     chooseWorld: "Dünyanı seç",
-    womenEyebrow: "Dagdroøm",
-    womenTitle: "Stilinizi seçin",
-    womenIntro:
-      "Yumuşaklık, gölge ve hareketle şekillenen üç farklı ifade.",
-    enter: "Koleksiyona gir",
+   womenEyebrow: "Dagdroøm",
+womenTitle: "Koleksiyon",
+womenIntro:
+  "İskandinav ışığından, hareketten ve zamansız feminenlikten ilham alan sakin bir gardırop.",
+enter: "Keşfet",
     comingSoon: "Yakında",
     skip: "Filmi geç",
     replay: "Filmi tekrar oynat",
