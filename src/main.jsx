@@ -8,8 +8,11 @@ document.querySelector("#app").innerHTML = `
 
  <section class="choose-section">
 
-<div class="choose-heading">
-  <div class="choose-eyebrow">WELCOME TO DΛGDROØM</div>
+<img
+  src="/welcome.svg"
+  class="welcome-logo"
+  alt="WELCOME TO DΛGDROØM"
+>
 
   <div class="choose-philosophy">
     Two worlds. One philosophy.
