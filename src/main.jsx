@@ -1,74 +1,440 @@
 import "./style.css";
 
-document.querySelector("#app").innerHTML = `
-<main class="site">
+const FLYT_INTRO_URL =
+  "https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/flyt-intro.mp4";
 
-  <section class="hero-section">
-    <img src="/hero.png" class="full-image" />
+const translations = {
+  en: {
+    welcome: "WELCOME TO DAGDROØM",
+    philosophy: "Two worlds. One philosophy.",
+    chooseWorld: "Choose your world",
+    womenEyebrow: "DAGDROØM WOMEN",
+    womenTitle: "Choose your expression",
+    womenIntro:
+      "Three expressions shaped by softness, shadow and movement.",
+    enter: "Enter collection",
+    comingSoon: "Coming soon",
+    skip: "Skip film",
+    replay: "Replay film",
+    back: "Back",
+    collection: "Collection",
+    collectionMessage: "The Dø Flyt™ collection is coming soon.",
+  },
 
-    <section class="choose-section">
+  tr: {
+    welcome: "DAGDROØM'A HOŞ GELDİNİZ",
+    philosophy: "İki dünya. Tek felsefe.",
+    chooseWorld: "Dünyanı seç",
+    womenEyebrow: "DAGDROØM KADIN",
+    womenTitle: "İfadenizi seçin",
+    womenIntro:
+      "Yumuşaklık, gölge ve hareketle şekillenen üç farklı ifade.",
+    enter: "Koleksiyona gir",
+    comingSoon: "Yakında",
+    skip: "Filmi geç",
+    replay: "Filmi tekrar oynat",
+    back: "Geri",
+    collection: "Koleksiyon",
+    collectionMessage: "Dø Flyt™ koleksiyonu yakında.",
+  },
+};
 
-      <div class="choose-heading">
-        <div class="choose-eyebrow">WELCOME TO DΛGDROØM</div>
+const currentLanguage = "en";
+const text = translations[currentLanguage];
 
-        <div class="choose-philosophy">
-          Two worlds. One philosophy.
+function renderHomePage() {
+  document.querySelector("#app").innerHTML = `
+    <main class="site">
+
+      <section class="hero-section">
+        <img
+          src="/hero.png"
+          class="full-image"
+          alt="Dagdroøm Nordic landscape"
+        />
+
+        <section class="choose-section">
+
+          <div class="choose-heading">
+            <div class="choose-eyebrow">${text.welcome}</div>
+
+            <div class="choose-philosophy">
+              ${text.philosophy}
+            </div>
+
+            <div class="choose-divider"></div>
+
+            <h1 class="choose-title">${text.chooseWorld}</h1>
+          </div>
+
+          <div class="choose-image-wrap">
+            <img
+              src="/menu-son.png"
+              class="choose-world-image"
+              alt="Dagdroøm women and men"
+            />
+
+            <a
+              href="/women"
+              class="women-link"
+              aria-label="Enter Dagdroøm Women"
+            ></a>
+
+            <a
+              href="/men"
+              class="men-link"
+              aria-label="Enter Dagdroøm Men"
+            ></a>
+          </div>
+
+        </section>
+      </section>
+
+      ${renderFooter()}
+
+    </main>
+  `;
+}
+
+function renderWomenPage() {
+  document.querySelector("#app").innerHTML = `
+    <main class="women-page">
+
+      <header class="women-header">
+        <a href="/" class="women-logo" aria-label="Dagdroøm home">
+          Dagdroøm
+        </a>
+
+        <a href="/" class="women-back-link">
+          <span aria-hidden="true">←</span>
+          ${text.back}
+        </a>
+      </header>
+
+      <section class="women-intro-heading">
+        <p class="women-eyebrow">${text.womenEyebrow}</p>
+
+        <h1 class="women-title">${text.womenTitle}</h1>
+
+        <p class="women-description">
+          ${text.womenIntro}
+        </p>
+      </section>
+
+      <section class="women-category-grid">
+
+        <article class="women-category-card women-category-card--slor">
+          <div class="category-media category-placeholder">
+            <div class="category-placeholder-text">
+              <span>01</span>
+              <small>${text.comingSoon}</small>
+            </div>
+          </div>
+
+          <div class="category-content">
+            <div>
+              <p class="category-number">N° 01</p>
+              <h2>Dø Slør™</h2>
+            </div>
+
+            <p class="category-word">Veil · Drape · Softness</p>
+          </div>
+        </article>
+
+        <article class="women-category-card women-category-card--skygge">
+          <div class="category-media category-placeholder">
+            <div class="category-placeholder-text">
+              <span>02</span>
+              <small>${text.comingSoon}</small>
+            </div>
+          </div>
+
+          <div class="category-content">
+            <div>
+              <p class="category-number">N° 02</p>
+              <h2>Dø Skygge™</h2>
+            </div>
+
+            <p class="category-word">Shadow · Stillness · Depth</p>
+          </div>
+        </article>
+
+        <article
+          class="women-category-card women-category-card--flyt is-active"
+          data-category="flyt"
+          tabindex="0"
+          role="button"
+          aria-label="Play Dø Flyt collection film"
+        >
+          <div class="category-media">
+            <video
+              class="category-hover-video"
+              src="${FLYT_INTRO_URL}"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+
+            <div class="category-media-overlay"></div>
+
+            <div class="category-enter-label">
+              ${text.enter}
+              <span aria-hidden="true">↗</span>
+            </div>
+          </div>
+
+          <div class="category-content">
+            <div>
+              <p class="category-number">N° 03</p>
+              <h2>Dø Flyt™</h2>
+            </div>
+
+            <p class="category-word">Movement · Form · Freedom</p>
+          </div>
+        </article>
+
+      </section>
+
+      <section
+        class="film-overlay"
+        id="film-overlay"
+        aria-hidden="true"
+      >
+        <div class="film-black-layer"></div>
+
+        <video
+          id="intro-film"
+          class="intro-film"
+          src="${FLYT_INTRO_URL}"
+          playsinline
+          preload="auto"
+        ></video>
+
+        <div class="film-gradient"></div>
+
+        <div class="film-brand">
+          <span>Dagdroøm</span>
+          <h2>Dø Flyt™</h2>
         </div>
 
-        <div class="choose-divider"></div>
+        <button
+          class="film-skip-button"
+          id="film-skip-button"
+          type="button"
+        >
+          ${text.skip}
+        </button>
+      </section>
 
-        <h1 class="choose-title">Choose your world</h1>
+      <section
+        class="collection-reveal"
+        id="collection-reveal"
+        aria-hidden="true"
+      >
+        <a href="/women" class="collection-back">
+          <span aria-hidden="true">←</span>
+          ${text.back}
+        </a>
+
+        <div class="collection-reveal-inner">
+          <p>${text.collection}</p>
+          <h1>Dø Flyt™</h1>
+          <div class="collection-line"></div>
+          <span>${text.collectionMessage}</span>
+
+          <button
+            class="collection-replay-button"
+            id="collection-replay-button"
+            type="button"
+          >
+            ${text.replay}
+          </button>
+        </div>
+      </section>
+
+    </main>
+  `;
+
+  initializeWomenExperience();
+}
+
+function renderMenPage() {
+  document.querySelector("#app").innerHTML = `
+    <main class="temporary-page">
+      <a href="/" class="temporary-back">← ${text.back}</a>
+
+      <div class="temporary-page-inner">
+        <p>DΛGDROØM MEN</p>
+        <h1>${text.comingSoon}</h1>
+      </div>
+    </main>
+  `;
+}
+
+function renderFooter() {
+  return `
+    <footer class="site-footer">
+
+      <div class="footer-line"></div>
+
+      <nav class="footer-nav">
+        <a href="/journal">JOURNAL</a>
+        <a href="/manifesto">MANIFESTO</a>
+        <a href="/contact">CONTACT</a>
+
+        <a
+          href="https://www.instagram.com/dagd.room/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          INSTAGRAM
+        </a>
+      </nav>
+
+      <div class="footer-cities">
+        <a href="/world/copenhagen/">COPENHAGEN</a>
+        <span>·</span>
+
+        <a href="/world/stockholm/">STOCKHOLM</a>
+        <span>·</span>
+
+        <a href="/world/oslo/">OSLO</a>
+        <span>·</span>
+
+        <a href="/world/reykjavik">REYKJAVÍK</a>
       </div>
 
-      <div class="choose-image-wrap">
-        <img src="/menu-son.png" class="choose-world-image">
-
-        <a href="/women" class="women-link"></a>
-        <a href="/men" class="men-link"></a>
-      </div>
-
-    </section>
-  </section>
-
-  <footer class="site-footer">
-
-    <div class="footer-line"></div>
-
-    <nav class="footer-nav">
-      <a href="/journal">JOURNAL</a>
-      <a href="/manifesto">MANIFESTO</a>
-      <a href="/contact">CONTACT</a>
-      <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">
-        INSTAGRAM
+      <a href="/" class="footer-copy">
+        © 2026 Dagdroøm
       </a>
-    </nav>
 
-    <div class="footer-cities">
-      <a href="/world/copenhagen/">COPENHAGEN</a>
-      <span>·</span>
+      <div class="footer-slogan">
+        Calm.<br /><br />
+        Clean.<br /><br />
+        Nordic.
+      </div>
 
-      <a href="/world/stockholm/">STOCKHOLM</a>
-      <span>·</span>
+      <div class="footer-line"></div>
 
-      <a href="/world/oslo/">OSLO</a>
-      <span>·</span>
+    </footer>
+  `;
+}
 
-      <a href="/world/reykjavik">REYKJAVÍK</a>
-    </div>
+function initializeWomenExperience() {
+  const flytCard = document.querySelector('[data-category="flyt"]');
+  const hoverVideo = document.querySelector(".category-hover-video");
+  const filmOverlay = document.querySelector("#film-overlay");
+  const introFilm = document.querySelector("#intro-film");
+  const skipButton = document.querySelector("#film-skip-button");
+  const collectionReveal = document.querySelector("#collection-reveal");
+  const replayButton = document.querySelector("#collection-replay-button");
 
-    <a href="/" class="footer-copy">
-      © 2026 Dagdroøm
-    </a>
+  if (
+    !flytCard ||
+    !hoverVideo ||
+    !filmOverlay ||
+    !introFilm ||
+    !skipButton ||
+    !collectionReveal ||
+    !replayButton
+  ) {
+    return;
+  }
 
-    <div class="footer-slogan">
-      Calm.<br /><br />
-      Clean.<br /><br />
-      Nordic.
-    </div>
+  const playHoverVideo = () => {
+    hoverVideo.play().catch(() => {
+      // Some browsers may block playback until user interaction.
+    });
+  };
 
-    <div class="footer-line"></div>
+  const pauseHoverVideo = () => {
+    hoverVideo.pause();
+    hoverVideo.currentTime = 0;
+  };
 
-  </footer>
+  const revealCollection = () => {
+    filmOverlay.classList.add("is-leaving");
 
-</main>
-`;
+    window.setTimeout(() => {
+      filmOverlay.classList.remove("is-visible", "is-leaving");
+      filmOverlay.setAttribute("aria-hidden", "true");
+
+      introFilm.pause();
+      introFilm.currentTime = 0;
+
+      collectionReveal.classList.add("is-visible");
+      collectionReveal.setAttribute("aria-hidden", "false");
+    }, 600);
+  };
+
+  const openFilm = () => {
+    document.body.classList.add("film-is-open");
+
+    hoverVideo.pause();
+
+    collectionReveal.classList.remove("is-visible");
+    collectionReveal.setAttribute("aria-hidden", "true");
+
+    filmOverlay.classList.remove("is-leaving");
+    filmOverlay.classList.add("is-visible");
+    filmOverlay.setAttribute("aria-hidden", "false");
+
+    introFilm.currentTime = 0;
+    introFilm.muted = false;
+
+    const playbackPromise = introFilm.play();
+
+    if (playbackPromise !== undefined) {
+      playbackPromise.catch(() => {
+        introFilm.muted = true;
+        introFilm.play().catch(() => {
+          // Fallback if the browser still blocks autoplay.
+        });
+      });
+    }
+  };
+
+  const replayFilm = () => {
+    collectionReveal.classList.remove("is-visible");
+    collectionReveal.setAttribute("aria-hidden", "true");
+    openFilm();
+  };
+
+  flytCard.addEventListener("mouseenter", playHoverVideo);
+  flytCard.addEventListener("mouseleave", pauseHoverVideo);
+
+  flytCard.addEventListener("focus", playHoverVideo);
+  flytCard.addEventListener("blur", pauseHoverVideo);
+
+  flytCard.addEventListener("click", openFilm);
+
+  flytCard.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openFilm();
+    }
+  });
+
+  skipButton.addEventListener("click", revealCollection);
+  introFilm.addEventListener("ended", revealCollection);
+  replayButton.addEventListener("click", replayFilm);
+}
+
+function renderCurrentRoute() {
+  const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+
+  if (normalizedPath === "/women") {
+    renderWomenPage();
+    return;
+  }
+
+  if (normalizedPath === "/men") {
+    renderMenPage();
+    return;
+  }
+
+  renderHomePage();
+}
+
+renderCurrentRoute();
