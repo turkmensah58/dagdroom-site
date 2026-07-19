@@ -72,9 +72,4 @@ document.querySelector("#app").innerHTML = `
 </footer>
 
 </main>
-.welcome-logo {
-  display: block;
-  width: min(640px, 88%);
-  height: auto;
-  margin: 0 auto 38px;
-}
+`;
