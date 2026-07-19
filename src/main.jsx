@@ -8,7 +8,7 @@ const translations = {
     welcome: "W E L C O M E   T O   D Λ G D R O Ø M",
     philosophy: "Two worlds. One philosophy.",
     chooseWorld: "Choose your world",
-    womenEyebrow: "DAGDROØM WOMEN",
+    womenEyebrow: "Dagdroøm",
     womenTitle: "Choose your expression",
     womenIntro:
       "Three expressions shaped by softness, shadow and movement.",
@@ -25,8 +25,8 @@ const translations = {
     welcome: "DAGDROØM'A HOŞ GELDİNİZ",
     philosophy: "İki dünya. Tek felsefe.",
     chooseWorld: "Dünyanı seç",
-    womenEyebrow: "DAGDROØM KADIN",
-    womenTitle: "İfadenizi seçin",
+    womenEyebrow: "Dagdroøm",
+    womenTitle: "Stilinizi seçin",
     womenIntro:
       "Yumuşaklık, gölge ve hareketle şekillenen üç farklı ifade.",
     enter: "Koleksiyona gir",
@@ -77,13 +77,13 @@ function renderHomePage() {
             <a
               href="/women"
               class="women-link"
-              aria-label="Enter Dagdroøm Women"
+              aria-label="Enter Dagdroøm "
             ></a>
 
             <a
               href="/men"
               class="men-link"
-              aria-label="Enter Dagdroøm Men"
+              aria-label="Enter DΛGDROØM"
             ></a>
           </div>
 
