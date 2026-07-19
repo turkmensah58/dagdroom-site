@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400&display=swap');
+
+:root { font-family: "Montserrat", Arial, sans-serif; font-weight: 300; color: #111; background: #f3efe8; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { min-width: 320px; overflow-x: hidden; }
+body.film-is-open { overflow: hidden; }
+a { color: inherit; }
+button { font: inherit; }
+h1, h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 300; }
+.brand-header { position: relative; z-index: 40; width: 100%; padding: 30px 44px; display: flex; justify-content: space-between; align-items: center; }
+.brand-header__logo { font-family: "Cormorant Garamond", Georgia, serif; font-size: 32px; line-height: 1; letter-spacing: -.8px; text-decoration: none; }
+.brand-header__back { display: flex; gap: 11px; align-items: center; text-decoration: none; font-size: 9px; letter-spacing: 3.2px; text-transform: uppercase; }
+.brand-header--dark { color: #eeeae3; }
+.placeholder-page { min-height: 100vh; background: #f3efe8; }
+.placeholder-page > div { min-height: calc(100vh - 92px); display: grid; place-content: center; text-align: center; }
+.placeholder-page p { font-family: "Cormorant Garamond", serif; font-size: 24px; }
+.placeholder-page h1 { font-size: clamp(72px, 12vw, 180px); line-height: .85; }
+.placeholder-page span { margin-top: 30px; font-size: 9px; letter-spacing: 3px; text-transform: uppercase; }
+@media (max-width: 768px) { .brand-header { padding: 22px 18px; } .brand-header__logo { font-size: 27px; } .brand-header__back { font-size: 7px; letter-spacing: 2px; } }
