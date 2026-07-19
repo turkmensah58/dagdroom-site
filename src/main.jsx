@@ -5,7 +5,7 @@ const FLYT_INTRO_URL =
 
 const translations = {
   en: {
-    welcome: "WELCOME TO D Λ G D R O Ø M",
+    welcome: "W E L C O M E T O D Λ G D R O Ø M",
     philosophy: "Two worlds. One philosophy.",
     chooseWorld: "Choose your world",
     womenEyebrow: "DAGDROØM WOMEN",
