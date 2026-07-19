@@ -4,7 +4,7 @@ document.querySelector("#app").innerHTML = `
 <main class="site">
 
   <section class="hero-section">
-<img src="/hero.pngxxxxx" class="full-image" />
+<img src="/hero.png" class="full-image" />
 
  <section class="choose-section">
 
@@ -66,35 +66,3 @@ document.querySelector("#app").innerHTML = `
 
 </main>
 `;
-.lambda-fix {
-  color: #666;
-  font-weight: 300;
-}
-.logo-a {
-  position: relative;
-  display: inline-block;
-  color: transparent;
-  width: 0.72em;
-}
-
-.logo-a::before,
-.logo-a::after {
-  content: "";
-  position: absolute;
-  bottom: 0.05em;
-  width: 1px;
-  height: 0.9em;
-  background: currentColor;
-  background: #111;
-  transform-origin: bottom center;
-}
-
-.logo-a::before {
-  left: 0.18em;
-  transform: rotate(24deg);
-}
-
-.logo-a::after {
-  right: 0.18em;
-  transform: rotate(-24deg);
-}
