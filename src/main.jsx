@@ -8,12 +8,16 @@ document.querySelector("#app").innerHTML = `
 
  <section class="choose-section">
 
- <div class="choose-heading-image-wrap">
-  <img
-    src="/choose-son.png"
-    class="choose-heading-image"
-    alt="Welcome to Dagdroø — Choose your world"
-  >
+<div class="choose-heading">
+  <div class="choose-eyebrow">WELCOME TO DΛGDROØM</div>
+
+  <div class="choose-philosophy">
+    Two worlds. One philosophy.
+  </div>
+
+  <div class="choose-divider"></div>
+
+  <h1 class="choose-title">Choose your world</h1>
 </div>
 
   <div class="choose-image-wrap">
