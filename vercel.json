@@ -1,7 +1,11 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/women",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/men",
       "destination": "/index.html"
     }
   ]
