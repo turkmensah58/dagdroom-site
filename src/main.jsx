@@ -10,8 +10,6 @@ const translations = {
     chooseWorld: "Choose your world",
    womenEyebrow: "Dagdroøm",
 womenTitle: "The Collection",
-womenIntro:
-  "A quiet wardrobe inspired by Scandinavian light, movement and timeless femininity.",
 enter: "Explore",
     comingSoon: "Coming soon",
     skip: "Skip film",
@@ -27,8 +25,6 @@ enter: "Explore",
     chooseWorld: "Dünyanı seç",
    womenEyebrow: "Dagdroøm",
 womenTitle: "Koleksiyon",
-womenIntro:
-  "İskandinav ışığından, hareketten ve zamansız feminenlikten ilham alan sakin bir gardırop.",
 enter: "Keşfet",
     comingSoon: "Yakında",
     skip: "Filmi geç",
@@ -116,9 +112,7 @@ function renderWomenPage() {
 
         <h1 class="women-title">${text.womenTitle}</h1>
 
-        <p class="women-description">
-          ${text.womenIntro}
-        </p>
+        
       </section>
 
       <section class="women-category-grid">
@@ -132,13 +126,8 @@ function renderWomenPage() {
           </div>
 
           <div class="category-content">
-            <div>
-              <p class="category-number">N° 01</p>
-              <h2>Dø Slør™</h2>
-            </div>
-
-            <p class="category-word">Veil · Drape · Softness</p>
-          </div>
+  <h2>Dø Slør™</h2>
+</div>
         </article>
 
         <article class="women-category-card women-category-card--skygge">
@@ -149,14 +138,9 @@ function renderWomenPage() {
             </div>
           </div>
 
-          <div class="category-content">
-            <div>
-              <p class="category-number">N° 02</p>
-              <h2>Dø Skygge™</h2>
-            </div>
-
-            <p class="category-word">Shadow · Stillness · Depth</p>
-          </div>
+<div class="category-content">
+  <h2>Dø Skygge™</h2>
+</div>
         </article>
 
         <article
@@ -184,14 +168,9 @@ function renderWomenPage() {
             </div>
           </div>
 
-          <div class="category-content">
-            <div>
-              <p class="category-number">N° 03</p>
-              <h2>Dø Flyt™</h2>
-            </div>
-
-            <p class="category-word">Movement · Form · Freedom</p>
-          </div>
+        <div class="category-content">
+  <h2>Dø Flyt™</h2>
+</div>
         </article>
 
       </section>
