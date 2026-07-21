@@ -42,15 +42,30 @@ function renderHomePage() {
   document.querySelector("#app").innerHTML = `
     <main class="site">
 
-      <section class="hero-section">
-        <img
-          src="/hero.png"
-          class="full-image"
-          alt="Dagdroøm Nordic landscape"
-        />
+      <section
+  class="hero-section"
+  id="home-hero"
+  role="button"
+  tabindex="0"
+  aria-label="Continue to choose your world"
+>
+  <img
+    src="/hero.png"
+    class="full-image"
+    alt="Dagdroøm Nordic landscape"
+  />
 
-        <section class="choose-section">
+  <button
+    class="hero-scroll-button"
+    id="hero-scroll-button"
+    type="button"
+    aria-label="Scroll to choose your world"
+  >
+    ↓
+  </button>
+</section>
 
+<section class="choose-section" id="choose-world">
           <div class="choose-heading">
             <div class="choose-eyebrow">${text.welcome}</div>
 
@@ -83,14 +98,17 @@ function renderHomePage() {
             ></a>
           </div>
 
-        </section>
-      </section>
+            </section>
 
       ${renderFooter()}
 
-    </main>
+       </main>
   `;
+
+  initializeHomeExperience();
 }
+
+
 
 function renderWomenPage() {
   document.querySelector("#app").innerHTML = `
@@ -299,7 +317,50 @@ function renderFooter() {
     </footer>
   `;
 }
+function initializeHomeExperience() {
+  const hero = document.querySelector("#home-hero");
+  const scrollButton = document.querySelector("#hero-scroll-button");
+  const chooseWorld = document.querySelector("#choose-world");
 
+  if (!hero || !scrollButton || !chooseWorld) {
+    return;
+  }
+
+  let scrollLocked = false;
+
+  const goToChooseWorld = () => {
+    if (scrollLocked) return;
+
+    scrollLocked = true;
+
+    chooseWorld.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+
+    setTimeout(() => {
+      scrollLocked = false;
+    }, 900);
+  };
+
+  hero.addEventListener("click", goToChooseWorld);
+
+  scrollButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    goToChooseWorld();
+  });
+
+  hero.addEventListener(
+    "wheel",
+    (event) => {
+      if (event.deltaY > 0) {
+        event.preventDefault();
+        goToChooseWorld();
+      }
+    },
+    { passive: false }
+  );
+}
 function initializeWomenExperience() {
   const flytCard = document.querySelector('[data-category="flyt"]');
   const hoverVideo = document.querySelector(".category-hover-video");
