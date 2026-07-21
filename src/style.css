@@ -355,3 +355,22 @@ color: rgba(255,255,255,.78);  font-size: 34px;
   margin: 18px auto 0;
   background: rgba(26, 36, 51, 0.55);
 }
+/* Desktop collection menu size */
+.choose-image-wrap {
+  width: min(100%, 980px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.choose-world-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Keep the menu wide on mobile */
+@media (max-width: 768px) {
+  .choose-image-wrap {
+    width: 100%;
+  }
+}
