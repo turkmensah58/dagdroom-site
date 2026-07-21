@@ -67,7 +67,7 @@ function renderHomePage() {
 
 <section class="choose-section" id="choose-world">
          <div class="season-heading">
-  AUTUMN / WINTER ’26
+  ΛUTUMN / WINTER ’26
   <span class="season-heading-line"></span>
 </div>
 
