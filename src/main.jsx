@@ -311,7 +311,7 @@ function renderFooter() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          INSTΛGRAM
+          INSTΛGRΛM
         </a>
       </nav>
 
