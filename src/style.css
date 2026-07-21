@@ -691,3 +691,11 @@ color: rgba(255,255,255,.78);  font-size: 34px;
     height:260px;
     min-height:260px;
 }
+.category-content h2 sup {
+  font-size: 0.28em;
+  vertical-align: super;
+  position: relative;
+  top: -0.15em;
+  margin-left: 2px;
+  letter-spacing: 0;
+}
