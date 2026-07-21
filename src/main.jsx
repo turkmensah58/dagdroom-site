@@ -66,17 +66,10 @@ function renderHomePage() {
 </section>
 
 <section class="choose-section" id="choose-world">
-          <div class="choose-heading">
-            <div class="choose-eyebrow">${text.welcome}</div>
-
-            <div class="choose-philosophy">
-              ${text.philosophy}
-            </div>
-
-            <div class="choose-divider"></div>
-
-            <h1 class="choose-title">${text.chooseWorld}</h1>
-          </div>
+         <div class="season-heading">
+  AUTUMN / WINTER ’26
+  <span class="season-heading-line"></span>
+</div>
 
           <div class="choose-image-wrap">
             <img
