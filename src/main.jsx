@@ -111,80 +111,115 @@ function renderWomenPage() {
         <a href="/" class="women-logo" aria-label="Dagdroøm home">
           Dagdroøm
         </a>
-
-        <a href="/" class="women-back-link">
-          <span aria-hidden="true">←</span>
-          ${text.back}
-        </a>
       </header>
 
-      <section class="women-intro-heading">
-        <p class="women-eyebrow">${text.womenEyebrow}</p>
-
-        <h1 class="women-title">${text.womenTitle}</h1>
-
-        
+      <section class="women-collection-intro">
+        <h1>The Collection</h1>
+        <span class="women-title-line"></span>
       </section>
 
-      <section class="women-category-grid">
+      <section class="women-collection-list">
 
-        <article class="women-category-card women-category-card--slor">
-          <div class="category-media category-placeholder">
-            <div class="category-placeholder-text">
-              <span>01</span>
-              <small>${text.comingSoon}</small>
+        <article class="women-collection-card">
+          <div class="women-collection-copy">
+            <div>
+              <h2>Dø Slør™</h2>
+
+              <p>
+                Soft silhouettes.<br />
+                Feminine essentials.
+              </p>
             </div>
+
+            <a href="/women/slor" class="women-enter-link">
+              <span>Enter Collection</span>
+              <span class="women-enter-arrow" aria-hidden="true">⟶</span>
+            </a>
           </div>
 
-          <div class="category-content">
-  <h2>Dø Slør™</h2>
-</div>
+          <div class="women-collection-media">
+            <video
+              class="women-hover-video"
+              src="/slor-cover.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          </div>
         </article>
 
-        <article class="women-category-card women-category-card--skygge">
-          <div class="category-media category-placeholder">
-            <div class="category-placeholder-text">
-              <span>02</span>
-              <small>${text.comingSoon}</small>
+
+        <article class="women-collection-card">
+          <div class="women-collection-copy">
+            <div>
+              <h2>Dø Skygge™</h2>
+
+              <p>
+                Quiet layers.<br />
+                Nordic tailoring.
+              </p>
             </div>
+
+            <a href="/women/skygge" class="women-enter-link">
+              <span>Enter Collection</span>
+              <span class="women-enter-arrow" aria-hidden="true">⟶</span>
+            </a>
           </div>
 
-<div class="category-content">
-  <h2>Dø Skygge™</h2>
-</div>
+          <div class="women-collection-media">
+            <video
+              class="women-hover-video"
+              src="/skygge-cover.mp4"
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          </div>
         </article>
+
 
         <article
-          class="women-category-card women-category-card--flyt is-active"
+          class="women-collection-card women-collection-card--flyt"
           data-category="flyt"
           tabindex="0"
           role="button"
           aria-label="Play Dø Flyt collection film"
         >
-          <div class="category-media">
+          <div class="women-collection-copy">
+            <div>
+              <h2>Dø Flyt™</h2>
+
+              <p>
+                Technical movement.<br />
+                Everyday comfort.
+              </p>
+            </div>
+
+            <button
+              class="women-enter-link women-enter-button"
+              type="button"
+            >
+              <span>Enter Collection</span>
+              <span class="women-enter-arrow" aria-hidden="true">⟶</span>
+            </button>
+          </div>
+
+          <div class="women-collection-media">
             <video
-              class="category-hover-video"
+              class="women-hover-video category-hover-video"
               src="${FLYT_INTRO_URL}"
               muted
               loop
               playsinline
               preload="metadata"
             ></video>
-
-            <div class="category-media-overlay"></div>
-
-            <div class="category-enter-label">
-              ${text.enter}
-              <span aria-hidden="true">↗</span>
-            </div>
           </div>
-
-        <div class="category-content">
-  <h2>Dø Flyt™</h2>
-</div>
         </article>
 
       </section>
+
 
       <section
         class="film-overlay"
@@ -216,6 +251,7 @@ function renderWomenPage() {
           ${text.skip}
         </button>
       </section>
+
 
       <section
         class="collection-reveal"
