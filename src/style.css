@@ -374,3 +374,23 @@ color: rgba(255,255,255,.78);  font-size: 34px;
     width: 100%;
   }
 }
+/* Force desktop world menu to a smaller centered size */
+.choose-section .choose-image-wrap {
+  width: 900px !important;
+  max-width: calc(100vw - 80px) !important;
+  margin: 0 auto !important;
+}
+
+.choose-section .choose-world-image {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+@media (max-width: 768px) {
+  .choose-section .choose-image-wrap {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
