@@ -294,16 +294,15 @@ function renderFooter() {
 
         <a href="/world/reykjavik">REYKJAVÍK</a>
       </div>
+<div class="footer-tagline">
+  <span>Calm.</span>
+  <span>Clean.</span>
+  <span>Nordic.</span>
+</div>
 
-      <a href="/" class="footer-copy">
-        © 2026 Dagdroøm
-      </a>
-
-      <div class="footer-slogan">
-        Calm.<br /><br />
-        Clean.<br /><br />
-        Nordic.
-      </div>
+<div class="footer-copyright">
+  © 2026 Dagdroøm
+</div>
 
       <div class="footer-line"></div>
 
