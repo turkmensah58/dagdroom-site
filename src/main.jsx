@@ -503,11 +503,4 @@ function renderCurrentRoute() {
 }
 
 renderCurrentRoute();
-.category-content h2 sup {
-  font-size: 0.28em;
-  vertical-align: super;
-  position: relative;
-  top: -0.15em;
-  margin-left: 2px;
-  letter-spacing: 0;
-}
+
