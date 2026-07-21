@@ -331,3 +331,27 @@ color: rgba(255,255,255,.78);  font-size: 34px;
     transform: translateX(-50%) translateY(8px);
   }
 }
+.season-heading{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    margin:-10px auto 42px;
+
+    font-family:"Helvetica Neue", Arial, sans-serif;
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:2.8px;
+    text-transform:uppercase;
+
+    color:#6d675f;
+}
+
+.season-heading-line{
+    width:34px;
+    height:1px;
+    background:#8a837a;
+    margin-top:16px;
+}
