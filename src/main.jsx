@@ -123,8 +123,7 @@ function renderWomenPage() {
         <article class="women-collection-card">
           <div class="women-collection-copy">
             <div>
-              <h2>Dø Slør™</h2>
-
+<h2>Dø Slør<sup>™</sup></h2>
               <p>
                 Soft silhouettes.<br />
                 Feminine essentials.
@@ -153,8 +152,7 @@ function renderWomenPage() {
         <article class="women-collection-card">
           <div class="women-collection-copy">
             <div>
-              <h2>Dø Skygge™</h2>
-
+<h2>Dø Skygge<sup>™</sup></h2>
               <p>
                 Quiet layers.<br />
                 Nordic tailoring.
@@ -240,8 +238,7 @@ function renderWomenPage() {
 
         <div class="film-brand">
           <span>Dagdroøm</span>
-          <h2>Dø Flyt™</h2>
-        </div>
+<h2>Dø Flyt<sup>™</sup></h2>        </div>
 
         <button
           class="film-skip-button"
@@ -506,3 +503,11 @@ function renderCurrentRoute() {
 }
 
 renderCurrentRoute();
+.category-content h2 sup {
+  font-size: 0.28em;
+  vertical-align: super;
+  position: relative;
+  top: -0.15em;
+  margin-left: 2px;
+  letter-spacing: 0;
+}
