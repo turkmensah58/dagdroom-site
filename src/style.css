@@ -45,13 +45,16 @@ h3,
 }
 
 .choose-section {
-  position: relative;
-  width: 100%;
-  height: auto;
-  min-height: 0;
-  padding: 60px 0 55px;
-  background: #f4f0ea;
-  overflow: visible;
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+
+    padding: 38px 55px;   /* 60px yerine 38px */
+
+    background: #f4f0ea;
+    overflow: visible;
+}
 }
 
 .choose-heading {
