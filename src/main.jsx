@@ -270,7 +270,7 @@ function renderFooter() {
 
       <nav class="footer-nav">
         <a href="/journal">JOURNAL</a>
-        <a href="/manifesto">MANIFESTO</a>
+        <a href="/manifesto">MΛNIFESTO</a>
         <a href="/contact">CONTACT</a>
 
         <a
