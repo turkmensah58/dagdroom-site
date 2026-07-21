@@ -269,21 +269,21 @@ function renderFooter() {
       <div class="footer-line"></div>
 
       <nav class="footer-nav">
-        <a href="/journal">JOURNAL</a>
+        <a href="/journal">JOURNΛL</a>
         <a href="/manifesto">MΛNIFESTO</a>
-        <a href="/contact">CONTACT</a>
+        <a href="/contact">CONTΛCT</a>
 
         <a
           href="https://www.instagram.com/dagd.room/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          INSTAGRAM
+          INSTΛGRAM
         </a>
       </nav>
 
       <div class="footer-cities">
-        <a href="/world/copenhagen/">COPENHAGEN</a>
+        <a href="/world/copenhagen/">COPENHΛGEN</a>
         <span>·</span>
 
         <a href="/world/stockholm/">STOCKHOLM</a>
@@ -292,7 +292,7 @@ function renderFooter() {
         <a href="/world/oslo/">OSLO</a>
         <span>·</span>
 
-        <a href="/world/reykjavik">REYKJAVÍK</a>
+        <a href="/world/reykjavik">REYKJΛVÍK</a>
       </div>
 <div class="footer-tagline">
   <span>Calm.</span>
