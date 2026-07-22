@@ -123,8 +123,7 @@ function renderWomenPage() {
         <article class="women-collection-card">
           <div class="women-collection-copy">
             <div>
-<h2>Dø Slør<sup>™</sup></h2>
-              <p>
+<h2>Dø Slør<sup>™</sup></h2>              <p>
                 Soft silhouettes.<br />
                 Feminine essentials.
               </p>
@@ -187,8 +186,7 @@ function renderWomenPage() {
         >
           <div class="women-collection-copy">
             <div>
-              <h2>Dø Flyt™</h2>
-
+<h2>Dø Flyt<sup>™</sup></h2>
               <p>
                 Technical movement.<br />
                 Everyday comfort.
