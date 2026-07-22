@@ -120,7 +120,7 @@ function renderWomenPage() {
 
       <section class="women-collection-list">
 
-        <article class="women-collection-card">
+       
           <div class="women-collection-copy">
             <div>
 <h2>Dø Slør<sup>™</sup></h2>              <p>
@@ -148,7 +148,6 @@ function renderWomenPage() {
         </article>
 
 
-        <article class="women-collection-card">
           <div class="women-collection-copy">
             <div>
 <h2>Dø Skygge<sup>™</sup></h2>
