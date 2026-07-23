@@ -706,3 +706,34 @@ font-size:0.10em;    position:relative;
     letter-spacing:0;
     line-height:1;
 }
+.women-category-card{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:stretch;
+  width:100%;
+  min-height:260px;
+  overflow:hidden;
+}
+
+.women-collection-copy{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:32px 38px;
+  min-width:0;
+}
+
+.women-collection-media{
+  position:relative;
+  width:100%;
+  height:260px;
+  min-height:260px;
+  overflow:hidden;
+}
+
+.women-collection-media video{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
