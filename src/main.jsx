@@ -144,11 +144,14 @@ function renderWomenPage() {
               preload="metadata"
             ></video>
           </div>
-        </article>
+       </article>
 
-
-          <div class="women-collection-copy">
-            <div>
+<article
+  class="women-collection-card"
+  data-category="skygge"
+>
+  <div class="women-collection-copy">
+    <div>
 <h2>Dø Skygge<sup>™</sup></h2>
               <p>
                 Quiet layers.<br />
