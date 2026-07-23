@@ -1,8 +1,7 @@
 import "./style.css";
 
 const FLYT_INTRO_URL =
-  "https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/flyt-intro.mp4";
-
+https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/sonnnnn.mp4
 const translations = {
   en: {
     welcome: "W E L C O M E   T O   D Λ G D R O Ø M",
