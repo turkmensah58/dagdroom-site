@@ -768,3 +768,20 @@ font-size:0.10em;    position:relative;
   height:100%;
   object-fit:cover;
 }
+.women-page .women-collection-card{
+  display:grid !important;
+  grid-template-columns:46% 54% !important;
+  align-items:stretch !important;
+}
+
+.women-page .women-collection-copy{
+  grid-column:1 !important;
+  grid-row:1 !important;
+}
+
+.women-page .women-collection-media{
+  grid-column:2 !important;
+  grid-row:1 !important;
+  height:260px !important;
+  min-height:260px !important;
+}
