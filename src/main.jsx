@@ -203,8 +203,7 @@ function renderWomenPage() {
           <div class="women-collection-media">
             <video
               class="women-hover-video category-hover-video"
-              src="${FLYT_INTRO_URL}"
-              muted
+src="https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/sonnnnn.mp4"              muted
               loop
               playsinline
               preload="metadata"
