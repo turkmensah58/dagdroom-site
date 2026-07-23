@@ -168,8 +168,7 @@ function renderWomenPage() {
           <div class="women-collection-media">
             <video
               class="women-hover-video"
-              src="/skygge-cover.mp4"
-              muted
+src="https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/skygge%20video.mp4"              muted
               loop
               playsinline
               preload="metadata"
