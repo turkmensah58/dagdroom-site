@@ -370,7 +370,9 @@ function initializeHomeExperience() {
     replayButton.addEventListener("click", openFilm);
   }
 }
-  const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
+  function renderCurrentRoute() {
+  const normalizedPath =
+    window.location.pathname.replace(/\/+$/, "") || "/";
 
   if (normalizedPath === "/women") {
     renderWomenPage();
@@ -386,4 +388,3 @@ function initializeHomeExperience() {
 }
 
 renderCurrentRoute();
-
