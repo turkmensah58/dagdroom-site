@@ -391,6 +391,7 @@ function initializeWomenExperience() {
   const skipButton = document.querySelector("#film-skip-button");
   const collectionReveal = document.querySelector("#collection-reveal");
   const replayButton = document.querySelector("#collection-replay-button");
+  const hoverCards = document.querySelectorAll(".women-collection-card");
 
   if (
     !flytCard ||
@@ -463,11 +464,29 @@ function initializeWomenExperience() {
     openFilm();
   };
 
-  flytCard.addEventListener("mouseenter", playHoverVideo);
-  flytCard.addEventListener("mouseleave", pauseHoverVideo);
+  hoverCards.forEach((card) => {
+  const video = card.querySelector(".women-hover-video");
 
-  flytCard.addEventListener("focus", playHoverVideo);
-  flytCard.addEventListener("blur", pauseHoverVideo);
+  if (!video) return;
+
+  card.addEventListener("mouseenter", () => {
+    video.play().catch(() => {});
+  });
+
+  card.addEventListener("mouseleave", () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+
+  card.addEventListener("focus", () => {
+    video.play().catch(() => {});
+  });
+
+  card.addEventListener("blur", () => {
+    video.pause();
+    video.currentTime = 0;
+  });
+});
 
   flytCard.addEventListener("click", openFilm);
 
