@@ -280,38 +280,42 @@ function initializeHomeExperience() {
     },
     { passive: false }
   );
-}
-function initializeWomenExperience() {
+}function initializeWomenExperience() {
+  const hoverCards = document.querySelectorAll(".women-collection-card");
+
+  hoverCards.forEach((card) => {
+    const video = card.querySelector(".women-hover-video");
+
+    if (!video) return;
+
+    const playVideo = () => {
+      video.muted = true;
+      video.play().catch(() => {});
+    };
+
+    const stopVideo = () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+
+    card.addEventListener("mouseenter", playVideo);
+    card.addEventListener("mouseleave", stopVideo);
+    card.addEventListener("focusin", playVideo);
+    card.addEventListener("focusout", stopVideo);
+  });
+
   const flytCard = document.querySelector('[data-category="flyt"]');
-  const hoverVideo = document.querySelector(".category-hover-video");
   const filmOverlay = document.querySelector("#film-overlay");
   const introFilm = document.querySelector("#intro-film");
   const skipButton = document.querySelector("#film-skip-button");
+  const collectionReveal = document.querySelector("#collection-reveal");
+  const replayButton = document.querySelector("#collection-replay-button");
 
-  if (
-    !flytCard ||
-    !hoverVideo ||
-    !filmOverlay ||
-    !introFilm ||
-    !skipButton ||
-    !collectionReveal ||
-    !replayButton
-  ) {
+  if (!flytCard || !filmOverlay || !introFilm || !skipButton) {
     return;
   }
 
-  const playHoverVideo = () => {
-    hoverVideo.play().catch(() => {
-      // Some browsers may block playback until user interaction.
-    });
-  };
-
-  const pauseHoverVideo = () => {
-    hoverVideo.pause();
-    hoverVideo.currentTime = 0;
-  };
-
-  const revealCollection = () => {
+  const closeFilm = () => {
     filmOverlay.classList.add("is-leaving");
 
     window.setTimeout(() => {
@@ -320,19 +324,22 @@ function initializeWomenExperience() {
 
       introFilm.pause();
       introFilm.currentTime = 0;
+      document.body.classList.remove("film-is-open");
 
-      collectionReveal.classList.add("is-visible");
-      collectionReveal.setAttribute("aria-hidden", "false");
+      if (collectionReveal) {
+        collectionReveal.classList.add("is-visible");
+        collectionReveal.setAttribute("aria-hidden", "false");
+      }
     }, 600);
   };
 
   const openFilm = () => {
     document.body.classList.add("film-is-open");
 
-    hoverVideo.pause();
-
-    collectionReveal.classList.remove("is-visible");
-    collectionReveal.setAttribute("aria-hidden", "true");
+    if (collectionReveal) {
+      collectionReveal.classList.remove("is-visible");
+      collectionReveal.setAttribute("aria-hidden", "true");
+    }
 
     filmOverlay.classList.remove("is-leaving");
     filmOverlay.classList.add("is-visible");
@@ -341,29 +348,11 @@ function initializeWomenExperience() {
     introFilm.currentTime = 0;
     introFilm.muted = false;
 
-    const playbackPromise = introFilm.play();
-
-    if (playbackPromise !== undefined) {
-      playbackPromise.catch(() => {
-        introFilm.muted = true;
-        introFilm.play().catch(() => {
-          // Fallback if the browser still blocks autoplay.
-        });
-      });
-    }
+    introFilm.play().catch(() => {
+      introFilm.muted = true;
+      introFilm.play().catch(() => {});
+    });
   };
-
-  const replayFilm = () => {
-    collectionReveal.classList.remove("is-visible");
-    collectionReveal.setAttribute("aria-hidden", "true");
-    openFilm();
-  };
-
-  flytCard.addEventListener("mouseenter", playHoverVideo);
-flytCard.addEventListener("mouseleave", pauseHoverVideo);
-
-flytCard.addEventListener("focus", playHoverVideo);
-flytCard.addEventListener("blur", pauseHoverVideo);
 
   flytCard.addEventListener("click", openFilm);
 
@@ -374,12 +363,13 @@ flytCard.addEventListener("blur", pauseHoverVideo);
     }
   });
 
-  skipButton.addEventListener("click", revealCollection);
-  introFilm.addEventListener("ended", revealCollection);
-  replayButton.addEventListener("click", replayFilm);
-}
+  skipButton.addEventListener("click", closeFilm);
+  introFilm.addEventListener("ended", closeFilm);
 
-function renderCurrentRoute() {
+  if (replayButton) {
+    replayButton.addEventListener("click", openFilm);
+  }
+}
   const normalizedPath = window.location.pathname.replace(/\/+$/, "") || "/";
 
   if (normalizedPath === "/women") {
