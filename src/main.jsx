@@ -247,11 +247,7 @@ src="https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/sonnnnn.mp4"       
       </section>
 
 
-      <section
-        class="collection-reveal"
-        id="collection-reveal"
-        aria-hidden="true"
-      >
+    
         <a href="/women" class="collection-back">
           <span aria-hidden="true">←</span>
           ${text.back}
@@ -389,8 +385,6 @@ function initializeWomenExperience() {
   const filmOverlay = document.querySelector("#film-overlay");
   const introFilm = document.querySelector("#intro-film");
   const skipButton = document.querySelector("#film-skip-button");
-  const collectionReveal = document.querySelector("#collection-reveal");
-  const replayButton = document.querySelector("#collection-replay-button");
   const hoverCards = document.querySelectorAll(".women-collection-card");
 
   if (
