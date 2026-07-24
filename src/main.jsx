@@ -117,10 +117,13 @@ function renderWomenPage() {
         <span class="women-title-line"></span>
       </section>
 
-      <section class="women-collection-list">
+    <section class="women-collection-list">
 
-       
-          <div class="women-collection-copy">
+  <article
+    class="women-collection-card"
+    data-category="slor"
+  >
+    <div class="women-collection-copy">
             <div>
 <h2>Dø Slør<sup>™</sup></h2>              <p>
                 Soft silhouettes.<br />
