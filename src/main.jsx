@@ -116,39 +116,38 @@ function renderWomenPage() {
         <h1>The Collection</h1>
         <span class="women-title-line"></span>
       </section>
-
-    <section class="women-collection-list">
+<section class="women-collection-list">
 
   <article
     class="women-collection-card"
     data-category="slor"
   >
     <div class="women-collection-copy">
-            <div>
-<h2>Dø Slør<sup>™</sup></h2>              <p>
-                Soft silhouettes.<br />
-                Feminine essentials.
-              </p>
-            </div>
+      <div>
+        <h2>Dø Slør<sup>™</sup></h2>
+        <p>
+          Soft silhouettes.<br />
+          Feminine essentials.
+        </p>
+      </div>
 
-            <a href="/women/slor" class="women-enter-link">
-              <span>Enter Collection</span>
-              <span class="women-enter-arrow" aria-hidden="true">⟶</span>
-            </a>
-          </div>
+      <a href="/women/slor" class="women-enter-link">
+        <span>Enter Collection</span>
+        <span class="women-enter-arrow" aria-hidden="true">⟶</span>
+      </a>
+    </div>
 
-          <div class="women-collection-media">
-            <video
-              class="women-hover-video"
-              src="/slor-cover.mp4"
-              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-          </div>
-       </article>
-
+    <div class="women-collection-media">
+      <video
+        class="women-hover-video"
+        src="/slor-cover.mp4"
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      ></video>
+    </div>
+  </article>
 <article
   class="women-collection-card"
   data-category="skygge"
