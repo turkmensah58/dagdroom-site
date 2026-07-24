@@ -289,9 +289,6 @@ function initializeHomeExperience() {
     if (!video) return;
 
     const playVideo = () => {
-      video.muted = true;
-      video.play().catch(() => {});
-    };
 
     const stopVideo = () => {
       video.pause();
