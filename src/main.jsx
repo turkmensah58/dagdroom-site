@@ -288,13 +288,16 @@ function initializeHomeExperience() {
 
     if (!video) return;
 
-    const playVideo = () => {
+   const playVideo = () => {
+  console.log("PLAY", card.dataset.category);
+  video.muted = true;
+  video.play().catch(err => console.error(err));
+};
 
-    const stopVideo = () => {
-      video.pause();
-      video.currentTime = 0;
-    };
-
+const stopVideo = () => {
+  video.pause();
+  video.currentTime = 0;
+};
     card.addEventListener("mouseenter", playVideo);
     card.addEventListener("mouseleave", stopVideo);
     card.addEventListener("focusin", playVideo);
