@@ -125,6 +125,7 @@ function renderWomenPage() {
     <div class="women-collection-copy">
       <div>
         <h2>Dø Slør<sup>™</sup></h2>
+
         <p>
           Soft silhouettes.<br />
           Feminine essentials.
@@ -148,74 +149,80 @@ function renderWomenPage() {
       ></video>
     </div>
   </article>
-<article
-  class="women-collection-card"
-  data-category="skygge"
->
-  <div class="women-collection-copy">
-    <div>
-<h2>Dø Skygge<sup>™</sup></h2>
-              <p>
-                Quiet layers.<br />
-                Nordic tailoring.
-              </p>
-            </div>
-
-            <a href="/women/skygge" class="women-enter-link">
-              <span>Enter Collection</span>
-              <span class="women-enter-arrow" aria-hidden="true">⟶</span>
-            </a>
-          </div>
-
-          <div class="women-collection-media">
-            <video
-              class="women-hover-video"
-src="https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/skygge%20video.mp4"              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-          </div>
-        </article>
 
 
-        <article
-          class="women-collection-card women-collection-card--flyt"
-          data-category="flyt"
-          tabindex="0"
-          role="button"
-          aria-label="Play Dø Flyt collection film"
-        >
-          <div class="women-collection-copy">
-            <div>
-<h2>Dø Flyt<sup>™</sup></h2>
-              <p>
-                Technical movement.<br />
-                Everyday comfort.
-              </p>
-            </div>
+  <article
+    class="women-collection-card"
+    data-category="skygge"
+  >
+    <div class="women-collection-copy">
+      <div>
+        <h2>Dø Skygge<sup>™</sup></h2>
 
-            <button
-              class="women-enter-link women-enter-button"
-              type="button"
-            >
-              <span>Enter Collection</span>
-              <span class="women-enter-arrow" aria-hidden="true">⟶</span>
-            </button>
-          </div>
+        <p>
+          Quiet layers.<br />
+          Nordic tailoring.
+        </p>
+      </div>
 
-          <div class="women-collection-media">
-            <video
-              class="women-hover-video category-hover-video"
-src="https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/sonnnnn.mp4"              muted
-              loop
-              playsinline
-              preload="metadata"
-            ></video>
-          </div>
-        </article>
+      <a href="/women/skygge" class="women-enter-link">
+        <span>Enter Collection</span>
+        <span class="women-enter-arrow" aria-hidden="true">⟶</span>
+      </a>
+    </div>
 
-      </section>
+    <div class="women-collection-media">
+      <video
+        class="women-hover-video"
+        src="https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/skygge%20video.mp4"
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      ></video>
+    </div>
+  </article>
+
+
+  <article
+    class="women-collection-card women-collection-card--flyt"
+    data-category="flyt"
+    tabindex="0"
+    role="button"
+    aria-label="Play Dø Flyt collection film"
+  >
+    <div class="women-collection-copy">
+      <div>
+        <h2>Dø Flyt<sup>™</sup></h2>
+
+        <p>
+          Technical movement.<br />
+          Everyday comfort.
+        </p>
+      </div>
+
+      <button
+        class="women-enter-link women-enter-button"
+        type="button"
+      >
+        <span>Enter Collection</span>
+        <span class="women-enter-arrow" aria-hidden="true">⟶</span>
+      </button>
+    </div>
+
+    <div class="women-collection-media">
+      <video
+        class="women-hover-video category-hover-video"
+        src="https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/sonnnnn.mp4"
+        muted
+        loop
+        playsinline
+        preload="metadata"
+      ></video>
+    </div>
+  </article>
+
+</section>
 
 
       <section
