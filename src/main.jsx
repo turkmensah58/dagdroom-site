@@ -179,6 +179,130 @@ function renderWomenPage() {
 
 function renderMenPage() {
   document.querySelector("#app").innerHTML = `
+    <main class="men-page">
+
+      <header class="men-header">
+        <a href="/" class="men-logo" aria-label="DΛGDROØM home">
+          DΛGDROØM
+        </a>
+
+        <button
+          class="men-menu-button"
+          type="button"
+          aria-label="Open menu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+
+      <section class="men-collection-intro">
+        <h1>Collections</h1>
+        <span class="men-title-line"></span>
+      </section>
+
+      <section class="men-collection-list">
+
+        <article
+          class="men-collection-card men-collection-card--skaer"
+          data-category="skaer"
+        >
+          <div class="men-collection-copy">
+            <div>
+              <h2>Dø Skær<sup>™</sup></h2>
+
+              <p>
+                Sharp performance.<br>
+                Technical movement.
+              </p>
+            </div>
+
+            <button class="men-enter-link" type="button">
+              <span>Enter Collection</span>
+              <span class="men-enter-arrow" aria-hidden="true">⟶</span>
+            </button>
+          </div>
+
+          <div class="men-collection-media">
+            <img
+              src="/men-skaer.jpg"
+              alt="Dø Skær collection"
+              class="men-collection-image"
+            >
+          </div>
+        </article>
+
+
+        <article
+          class="men-collection-card men-collection-card--linje"
+          data-category="linje"
+        >
+          <div class="men-collection-copy">
+            <div>
+              <h2>Dø Linje<sup>™</sup></h2>
+
+              <p>
+                Timeless tailoring.<br>
+                Essential elegance.
+              </p>
+            </div>
+
+            <button class="men-enter-link" type="button">
+              <span>Enter Collection</span>
+              <span class="men-enter-arrow" aria-hidden="true">⟶</span>
+            </button>
+          </div>
+
+          <div class="men-collection-media">
+            <img
+              src="/men-linje.jpg"
+              alt="Dø Linje collection"
+              class="men-collection-image"
+            >
+          </div>
+        </article>
+
+
+        <article
+          class="men-collection-card men-collection-card--stal"
+          data-category="stal"
+        >
+          <div class="men-collection-copy">
+            <div>
+              <h2>Dø Stål<sup>™</sup></h2>
+
+              <p>
+                Built for everyday.<br>
+                Modern durability.
+              </p>
+            </div>
+
+            <button class="men-enter-link" type="button">
+              <span>Enter Collection</span>
+              <span class="men-enter-arrow" aria-hidden="true">⟶</span>
+            </button>
+          </div>
+
+          <div class="men-collection-media">
+            <img
+              src="/men-stal.jpg"
+              alt="Dø Stål collection"
+              class="men-collection-image"
+            >
+          </div>
+        </article>
+
+      </section>
+
+      <a href="/" class="men-back-link">
+        <span aria-hidden="true">←</span>
+        Back
+      </a>
+
+    </main>
+  `;
+}  document.querySelector("#app").innerHTML = `
     <main class="temporary-page">
       <a href="/" class="temporary-back">← ${text.back}</a>
 
