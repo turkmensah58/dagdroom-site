@@ -302,16 +302,6 @@ function renderMenPage() {
 
     </main>
   `;
-}  document.querySelector("#app").innerHTML = `
-    <main class="temporary-page">
-      <a href="/" class="temporary-back">← ${text.back}</a>
-
-      <div class="temporary-page-inner">
-        <p>DΛGDROØM MEN</p>
-        <h1>${text.comingSoon}</h1>
-      </div>
-    </main>
-  `;
 }
 
 function renderFooter() {
