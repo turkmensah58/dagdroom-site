@@ -785,3 +785,290 @@ font-size:0.10em;    position:relative;
   height:260px !important;
   min-height:260px !important;
 }
+/* ==========================
+   MEN PAGE
+========================== */
+
+.men-page {
+  width: 100%;
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 36px 50px 80px;
+  box-sizing: border-box;
+  background: #f4f1eb;
+  color: #151515;
+}
+
+.men-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 84px;
+}
+
+.men-logo {
+  color: inherit;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 2.5px;
+  text-decoration: none;
+}
+
+.men-menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.men-menu-button span {
+  display: block;
+  width: 25px;
+  height: 1px;
+  margin-left: auto;
+  background: currentColor;
+}
+
+.men-collection-intro {
+  width: min(100%, 1280px);
+  margin: 0 auto 38px;
+}
+
+.men-collection-intro h1 {
+  margin: 0;
+  font-size: clamp(56px, 7vw, 104px);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -4px;
+}
+
+.men-title-line {
+  display: block;
+  width: 58px;
+  height: 1px;
+  margin-top: 34px;
+  background: currentColor;
+}
+
+.men-collection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: min(100%, 1280px);
+  margin: 0 auto;
+}
+
+.men-collection-card {
+  display: grid;
+  grid-template-columns: 46% 54%;
+  width: 100%;
+  min-height: 300px;
+  overflow: hidden;
+}
+
+.men-collection-card--skaer {
+  background: #232528;
+  color: #f2f0eb;
+}
+
+.men-collection-card--linje {
+  background: #d8d0c3;
+  color: #171717;
+}
+
+.men-collection-card--stal {
+  background: #7d8892;
+  color: #f5f3ef;
+}
+
+.men-collection-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 0;
+  min-height: 300px;
+  padding: 48px 44px 38px;
+  box-sizing: border-box;
+}
+
+.men-collection-copy h2 {
+  margin: 0 0 18px;
+  font-size: clamp(40px, 3.6vw, 56px);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -1.8px;
+}
+
+.men-collection-copy h2 sup {
+  position: relative;
+  top: -0.95em;
+  margin-left: 3px;
+  font-size: 0.16em;
+  line-height: 1;
+  letter-spacing: 0;
+  vertical-align: baseline;
+}
+
+.men-collection-copy p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.55;
+  letter-spacing: 0.1px;
+}
+
+.men-enter-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 15px;
+  padding: 0 0 5px;
+  border: 0;
+  border-bottom: 1px solid currentColor;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+}
+
+.men-enter-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.men-collection-media {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  min-height: 300px;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.men-collection-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.men-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 44px auto 0;
+  color: inherit;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+@media (max-width: 900px) {
+  .men-page {
+    padding: 28px 22px 60px;
+  }
+
+  .men-header {
+    margin-bottom: 68px;
+  }
+
+  .men-logo {
+    font-size: 25px;
+  }
+
+  .men-collection-intro {
+    margin-bottom: 28px;
+  }
+
+  .men-collection-intro h1 {
+    font-size: clamp(48px, 12vw, 72px);
+    letter-spacing: -2.5px;
+  }
+
+  .men-title-line {
+    width: 44px;
+    margin-top: 25px;
+  }
+
+  .men-collection-list {
+    gap: 14px;
+  }
+
+  .men-collection-card {
+    grid-template-columns: 1fr;
+  }
+
+  .men-collection-copy {
+    min-height: 270px;
+    padding: 40px 28px 32px;
+  }
+
+  .men-collection-copy h2 {
+    font-size: clamp(42px, 10vw, 58px);
+  }
+
+  .men-collection-media {
+    height: 340px;
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 520px) {
+  .men-page {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .men-header {
+    margin-bottom: 54px;
+  }
+
+  .men-logo {
+    font-size: 22px;
+    letter-spacing: 1.8px;
+  }
+
+  .men-menu-button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .men-menu-button span {
+    width: 22px;
+  }
+
+  .men-collection-intro h1 {
+    font-size: 49px;
+    letter-spacing: -2px;
+  }
+
+  .men-collection-copy {
+    min-height: 245px;
+    padding: 34px 24px 28px;
+  }
+
+  .men-collection-copy h2 {
+    font-size: 41px;
+  }
+
+  .men-collection-copy p {
+    font-size: 15px;
+  }
+
+  .men-enter-link {
+    font-size: 13px;
+  }
+
+  .men-collection-media {
+    height: 300px;
+    min-height: 300px;
+  }
+}
