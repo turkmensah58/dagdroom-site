@@ -270,7 +270,7 @@ function renderMenPage() {
         >
           <div class="men-collection-copy">
             <div>
-              <h2>Dø Stål<sup>™</sup></h2>
+         <h2>Dø Stål<sup class="men-tm-stal">™</sup></h2>
 
               <p>
                 Built for everyday.<br>
