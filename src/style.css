@@ -392,6 +392,9 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   }
 }
 .season-heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin: -18px auto 34px;
   text-align: center;
@@ -405,13 +408,6 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   text-transform: uppercase;
 }
 
-.season-heading-line {
-  display: block;
-  width: 28px;
-  height: 1px;
-  margin: 18px auto 0;
-  background: rgba(26, 36, 51, 0.55);
-}
 /* Desktop collection menu size */
 .choose-image-wrap {
   width: min(100%, 980px);
@@ -433,7 +429,7 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 }
 /* Force desktop world menu to a smaller centered size */
 .choose-section .choose-image-wrap {
-  width: 900px !important;
+  width: 600px !important;
   max-width: calc(100vw - 80px) !important;
   margin: 0 auto !important;
 }
@@ -453,19 +449,20 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 }
 .footer-tagline,
 .footer-copyright {
-  color: #111;
-  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
-  font-size: 12px;
+  color: rgba(17, 17, 17, 0.72);
   font-weight: 300;
-  letter-spacing: 6px;
   text-align: center;
 }
 
 .footer-tagline {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 22px;
+  gap: 14px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
 }
 
 .footer-tagline span {
@@ -474,6 +471,10 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 
 .footer-copyright {
   display: block;
+  color: rgba(17, 17, 17, 0.52);
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 9.5px;
+  letter-spacing: 0.2em;
 }
 /* ==================================================
    DAGDROØM — WOMEN COLLECTION PAGE
