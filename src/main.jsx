@@ -311,11 +311,6 @@ function renderMenPage() {
 
       </section>
 
-      <a href="/" class="men-back-link">
-        <span aria-hidden="true">←</span>
-        Back
-      </a>
-
     </main>
   `;
 }

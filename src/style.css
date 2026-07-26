@@ -997,16 +997,6 @@ font-size:0.10em;    position:relative;
   object-fit: cover;
 }
 
-.men-back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  margin: 44px auto 0;
-  color: inherit;
-  font-size: 14px;
-  text-decoration: none;
-}
-
 @media (max-width: 900px) {
   .men-page {
     padding: 28px 22px 60px;
