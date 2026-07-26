@@ -351,7 +351,7 @@ function renderMenPage() {
 
               <p>
                 Built for everyday.<br>
-                Modern durability.
+                Ironclad masculinity.
               </p>
             </div>
 
