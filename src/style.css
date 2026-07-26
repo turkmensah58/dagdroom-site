@@ -146,8 +146,8 @@ h3,
 
 .site-footer {
   background: #f7f4ef;
-  padding: 80px 70px;
-  min-height: 620px;
+  padding: 64px 70px;
+  min-height: 500px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -161,7 +161,7 @@ h3,
 .footer-line {
   width: 100%;
   height: 1px;
-  background: #111;
+  background: rgba(17, 17, 17, 0.24);
 }
 
 .footer-nav,
@@ -183,7 +183,6 @@ h3,
 
 .footer-nav a,
 .footer-cities a,
-.footer-cities span,
 .footer-copy,
 .footer-slogan {
   color: #111;
@@ -322,6 +321,12 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   animation: heroArrowFloat 3.4s ease-in-out infinite;
 }
 
+.footer-cities a {
+  color: rgba(17, 17, 17, 0.62);
+  font-size: 10px;
+  letter-spacing: 5px;
+}
+
 .hero-scroll-button::before {
   content: "";
   position: absolute;
@@ -454,6 +459,13 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   text-align: center;
 }
 
+.footer-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
 .footer-tagline {
   display: flex;
   flex-direction: column;
@@ -471,7 +483,7 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 
 .footer-copyright {
   display: block;
-  color: rgba(17, 17, 17, 0.52);
+  color: rgba(17, 17, 17, 0.62);
   font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
   font-size: 9.5px;
   letter-spacing: 0.2em;
@@ -845,6 +857,10 @@ font-size:0.10em;    position:relative;
 .women-page .women-collection-copy{
   grid-column:1 !important;
   grid-row:1 !important;
+}
+
+.women-page .women-collection-card .women-collection-copy {
+  justify-content: space-between;
 }
 
 .women-page .women-collection-media{

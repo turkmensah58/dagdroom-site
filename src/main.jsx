@@ -336,16 +336,14 @@ function renderFooter() {
 
       <div class="footer-cities">
         <a href="/world/copenhagen/">COPENHΛGEN</a>
-        <span>·</span>
 
         <a href="/world/stockholm/">STOCKHOLM</a>
-        <span>·</span>
 
         <a href="/world/oslo/">OSLO</a>
-        <span>·</span>
 
         <a href="/world/reykjavik">REYKJΛVÍK</a>
       </div>
+<div class="footer-signature">
 <div class="footer-tagline">
   <span>Calm.</span>
   <span>Clean.</span>
@@ -355,8 +353,7 @@ function renderFooter() {
 <div class="footer-copyright">
   © 2026 Dagdroøm
 </div>
-
-      <div class="footer-line"></div>
+</div>
 
     </footer>
   `;
