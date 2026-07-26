@@ -49,7 +49,7 @@ function renderHomePage() {
   aria-label="Continue to choose your world"
 >
   <img
-    src="/hero.png"
+    src="/hero-premium.png"
     class="full-image"
     alt="Dagdroøm Nordic landscape"
   />
