@@ -279,11 +279,6 @@ function renderMenPage() {
         </button>
       </header>
 
-      <section class="men-collection-intro">
-        <h1>Collections</h1>
-        <span class="men-title-line"></span>
-      </section>
-
       <section class="men-collection-list">
 
         <article

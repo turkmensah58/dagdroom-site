@@ -800,13 +800,17 @@ font-size:0.10em;    position:relative;
 }
 
 .men-header {
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 84px;
+  justify-content: flex-end;
+  margin-bottom: 72px;
 }
 
 .men-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   color: inherit;
   font-size: 28px;
   font-weight: 600;
@@ -977,7 +981,7 @@ font-size:0.10em;    position:relative;
   }
 
   .men-header {
-    margin-bottom: 68px;
+    margin-bottom: 48px;
   }
 
   .men-logo {
@@ -1028,7 +1032,7 @@ font-size:0.10em;    position:relative;
   }
 
   .men-header {
-    margin-bottom: 54px;
+    margin-bottom: 48px;
   }
 
   .men-logo {
