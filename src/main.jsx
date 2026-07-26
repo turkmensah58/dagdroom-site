@@ -166,9 +166,6 @@ function renderWomenPage() {
         <article
           class="women-collection-card women-collection-card--flyt"
           data-category="flyt"
-          tabindex="0"
-          role="button"
-          aria-label="Play Dø Flyt collection film"
         >
           <div class="women-collection-copy">
             <div>
@@ -193,64 +190,6 @@ function renderWomenPage() {
             ></video>
           </div>
         </article>
-      </section>
-
-
-      <section
-        class="film-overlay"
-        id="film-overlay"
-        aria-hidden="true"
-      >
-        <div class="film-black-layer"></div>
-
-        <video
-          id="intro-film"
-          class="intro-film"
-          src="${FLYT_INTRO_URL}"
-          playsinline
-          preload="auto"
-        ></video>
-
-        <div class="film-gradient"></div>
-
-        <div class="film-brand">
-          <span>Dagdroøm</span>
-<h2>Dø Flyt<sup>™</sup></h2>        </div>
-
-        <button
-          class="film-skip-button"
-          id="film-skip-button"
-          type="button"
-        >
-          ${text.skip}
-        </button>
-      </section>
-
-
-      <section
-        class="collection-reveal"
-        id="collection-reveal"
-        aria-hidden="true"
-      >
-        <a href="/women" class="collection-back">
-          <span aria-hidden="true">←</span>
-          ${text.back}
-        </a>
-
-        <div class="collection-reveal-inner">
-          <p>${text.collection}</p>
-          <h1>Dø Flyt™</h1>
-          <div class="collection-line"></div>
-          <span>${text.collectionMessage}</span>
-
-          <button
-            class="collection-replay-button"
-            id="collection-replay-button"
-            type="button"
-          >
-            ${text.replay}
-          </button>
-        </div>
       </section>
 
     </main>
@@ -495,71 +434,6 @@ const stopVideo = () => {
     card.addEventListener("focusout", stopVideo);
   });
 
-  const flytCard = document.querySelector('[data-category="flyt"]');
-  const filmOverlay = document.querySelector("#film-overlay");
-  const introFilm = document.querySelector("#intro-film");
-  const skipButton = document.querySelector("#film-skip-button");
-  const collectionReveal = document.querySelector("#collection-reveal");
-  const replayButton = document.querySelector("#collection-replay-button");
-
-  if (!flytCard || !filmOverlay || !introFilm || !skipButton) {
-    return;
-  }
-
-  const closeFilm = () => {
-    filmOverlay.classList.add("is-leaving");
-
-    window.setTimeout(() => {
-      filmOverlay.classList.remove("is-visible", "is-leaving");
-      filmOverlay.setAttribute("aria-hidden", "true");
-
-      introFilm.pause();
-      introFilm.currentTime = 0;
-      document.body.classList.remove("film-is-open");
-
-      if (collectionReveal) {
-        collectionReveal.classList.add("is-visible");
-        collectionReveal.setAttribute("aria-hidden", "false");
-      }
-    }, 600);
-  };
-
-  const openFilm = () => {
-    document.body.classList.add("film-is-open");
-
-    if (collectionReveal) {
-      collectionReveal.classList.remove("is-visible");
-      collectionReveal.setAttribute("aria-hidden", "true");
-    }
-
-    filmOverlay.classList.remove("is-leaving");
-    filmOverlay.classList.add("is-visible");
-    filmOverlay.setAttribute("aria-hidden", "false");
-
-    introFilm.currentTime = 0;
-    introFilm.muted = false;
-
-    introFilm.play().catch(() => {
-      introFilm.muted = true;
-      introFilm.play().catch(() => {});
-    });
-  };
-
-  flytCard.addEventListener("click", openFilm);
-
-  flytCard.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" || event.key === " ") {
-      event.preventDefault();
-      openFilm();
-    }
-  });
-
-  skipButton.addEventListener("click", closeFilm);
-  introFilm.addEventListener("ended", closeFilm);
-
-  if (replayButton) {
-    replayButton.addEventListener("click", openFilm);
-  }
 }
   function renderCurrentRoute() {
   const normalizedPath =

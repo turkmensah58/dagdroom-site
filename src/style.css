@@ -502,6 +502,16 @@ color: rgba(255,255,255,.78);  font-size: 34px;
     transform 250ms ease;
 }
 
+.women-page .women-collection-copy h2 sup {
+  position: relative;
+  top: -2em;
+  margin-left: 4px;
+  font-size: 0.22em;
+  line-height: 1;
+  letter-spacing: 0;
+  vertical-align: baseline;
+}
+
 .women-page .women-collection-copy h2:hover {
   color: #8b7766;
   transform: translateX(3px);
@@ -815,7 +825,7 @@ font-size:0.10em;    position:relative;
   font-size: 28px;
   font-weight: 600;
   line-height: 1;
-  letter-spacing: 2.5px;
+  letter-spacing: 4.5px;
   text-decoration: none;
 }
 
@@ -1059,7 +1069,7 @@ font-size:0.10em;    position:relative;
 
   .men-logo {
     font-size: 22px;
-    letter-spacing: 1.8px;
+    letter-spacing: 3.2px;
   }
 
   .men-menu-button {
