@@ -911,14 +911,16 @@ font-size:0.10em;    position:relative;
 }
 
 .men-collection-card--skaer .men-collection-copy h2,
-.men-collection-card--linje .men-collection-copy h2 {
+.men-collection-card--linje .men-collection-copy h2,
+.men-collection-card--stal .men-collection-copy h2 {
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   font-weight: 300;
   letter-spacing: -2.6px;
 }
 
 .men-collection-card--skaer .men-collection-copy h2 sup,
-.men-collection-card--linje .men-collection-copy h2 sup {
+.men-collection-card--linje .men-collection-copy h2 sup,
+.men-collection-card--stal .men-collection-copy h2 sup {
   top: -1.35em;
   font-size: 0.22em;
   font-weight: 400;
