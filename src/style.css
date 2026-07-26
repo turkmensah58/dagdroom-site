@@ -921,9 +921,15 @@ font-size:0.10em;    position:relative;
 .men-collection-card--skaer .men-collection-copy h2 sup,
 .men-collection-card--linje .men-collection-copy h2 sup,
 .men-collection-card--stal .men-collection-copy h2 sup {
-  top: -1.35em;
+  top: -2em;
+  margin-left: 4px;
   font-size: 0.22em;
   font-weight: 400;
+  letter-spacing: 0;
+}
+
+.men-collection-card--stal .men-collection-copy h2 sup {
+  top: -2.5em;
 }
 
 .men-collection-copy h2 sup {
