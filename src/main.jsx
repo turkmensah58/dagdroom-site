@@ -112,11 +112,6 @@ function renderWomenPage() {
         </a>
       </header>
 
-      <section class="women-collection-intro">
-        <h1>The Collection</h1>
-        <span class="women-title-line"></span>
-      </section>
-
       <section class="women-collection-list">
         <article class="women-collection-card" data-category="slor">
           <div class="women-collection-copy">
