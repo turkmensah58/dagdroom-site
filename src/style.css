@@ -483,6 +483,7 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 
 .footer-copyright {
   display: block;
+  margin-top: 18px;
   color: rgba(17, 17, 17, 0.62);
   font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
   font-size: 9.5px;
@@ -552,6 +553,18 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   background: #f3f0eb;
 }
 
+.women-page .women-collection-card[data-category="slor"],
+.women-page .women-collection-card[data-category="slor"] .women-collection-copy,
+.women-page .women-collection-card[data-category="slor"] .women-collection-media {
+  background: #e5e7ea;
+}
+
+.women-page .women-collection-card[data-category="flyt"],
+.women-page .women-collection-card[data-category="flyt"] .women-collection-copy,
+.women-page .women-collection-card[data-category="flyt"] .women-collection-media {
+  background: #e59d82;
+}
+
 .women-page .women-collection-copy {
   display: flex;
   flex-direction: column;
@@ -601,7 +614,7 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  gap: 32px;
+  gap: 14px;
   padding: 0 0 8px;
   border: 0;
   border-bottom: 1px solid rgba(17, 17, 17, 0.65);
@@ -616,12 +629,37 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 }
 
 .women-page .women-enter-arrow {
+  position: relative;
   display: inline-block;
+  width: 26px;
+  height: 12px;
   border-bottom: 0;
-  font-size: 30px;
-  font-weight: 300;
-  line-height: 0.6;
+  font-size: 0;
+  line-height: 1;
   transition: transform 280ms ease;
+}
+
+.women-page .women-enter-arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 25px;
+  height: 1px;
+  background: currentColor;
+  transform: translateY(-50%);
+}
+
+.women-page .women-enter-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid currentColor;
+  border-right: 1px solid currentColor;
+  transform: translateY(-50%) rotate(45deg);
 }
 
 .women-page .women-enter-link:hover .women-enter-arrow {
