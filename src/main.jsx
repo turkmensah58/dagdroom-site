@@ -349,7 +349,7 @@ function renderSiteHeader(activeSection = "") {
 
         <div class="site-nav-group site-nav-group--right">
           ${alternateWorldLink}
-          <a href="/search" class="site-utility-link">
+          <a href="/search" class="site-utility-link site-search-trigger">
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
             <span>Search</span>
           </a>
@@ -391,7 +391,7 @@ function renderSiteHeader(activeSection = "") {
       <div class="site-mobile-menu" id="site-mobile-menu" hidden>
         <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
         <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
-        <a href="/search" class="site-utility-link">
+        <a href="/search" class="site-utility-link site-search-trigger">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
           <span>Search</span>
         </a>
@@ -418,6 +418,22 @@ function renderSiteHeader(activeSection = "") {
         </div>
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
+
+      <div class="site-search-panel" role="dialog" aria-modal="true" aria-labelledby="site-search-title" hidden>
+        <div class="site-search-panel__inner">
+          <div class="site-search-panel__topline">
+            <p id="site-search-title">Search Dagdroøm</p>
+            <button class="site-search-close" type="button" aria-label="Close search"><span></span><span></span></button>
+          </div>
+          <label class="site-search-field">
+            <span class="sr-only">Search collections</span>
+            <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
+            <input type="search" autocomplete="off" placeholder="Search collections" />
+          </label>
+          <div class="site-search-results" aria-live="polite"></div>
+          <p class="site-search-hint">Try “Slør”, “Linje” or “Stål”</p>
+        </div>
+      </div>
     </header>
   `;
 }
@@ -426,7 +442,19 @@ function initializeSiteHeader() {
   const header = document.querySelector(".site-header");
   const toggle = header?.querySelector(".site-nav-toggle");
   const menu = header?.querySelector(".site-mobile-menu");
+  const searchPanel = header?.querySelector(".site-search-panel");
+  const searchInput = searchPanel?.querySelector("input");
+  const searchResults = searchPanel?.querySelector(".site-search-results");
   if (!header || !toggle || !menu) return;
+
+  const collections = [
+    { name: "Dø Slør", world: "Women", href: "/women#slor" },
+    { name: "Dø Skygge", world: "Women", href: "/women#skygge" },
+    { name: "Dø Flyt", world: "Women", href: "/women#flyt" },
+    { name: "Dø Skær", world: "Men", href: "/men#skaer" },
+    { name: "Dø Linje", world: "Men", href: "/men#linje" },
+    { name: "Dø Stål", world: "Men", href: "/men#stal" }
+  ];
 
   const setMenuState = (open) => {
     toggle.setAttribute("aria-expanded", String(open));
@@ -436,13 +464,60 @@ function initializeSiteHeader() {
     document.body.classList.toggle("nav-open", open);
   };
 
+  const renderSearchResults = (query = "") => {
+    if (!searchResults) return;
+    const normalizedQuery = query.trim().toLocaleLowerCase("en");
+    if (!normalizedQuery) {
+      searchResults.innerHTML = "";
+      return;
+    }
+    const matches = collections.filter(({ name, world }) =>
+      `${name} ${world}`.toLocaleLowerCase("en").includes(normalizedQuery)
+    );
+    searchResults.innerHTML = matches.length
+      ? matches.map(({ name, world, href }) => `
+          <a href="${href}"><span>${name}</span><small>${world}</small></a>
+        `).join("")
+      : '<p class="site-search-empty">No collection found.</p>';
+  };
+
+  const setSearchState = (open) => {
+    if (!searchPanel) return;
+    searchPanel.hidden = !open;
+    header.classList.toggle("is-search-open", open);
+    document.body.classList.toggle("search-open", open);
+    if (open) {
+      setMenuState(false);
+      requestAnimationFrame(() => searchInput?.focus());
+    } else {
+      if (searchInput) searchInput.value = "";
+      renderSearchResults();
+    }
+  };
+
   toggle.addEventListener("click", () => {
     setMenuState(toggle.getAttribute("aria-expanded") !== "true");
   });
 
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") setMenuState(false);
+    if (event.key === "Escape") {
+      setMenuState(false);
+      setSearchState(false);
+    }
   });
+
+  header.querySelectorAll(".site-search-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      setSearchState(true);
+    });
+  });
+
+  searchPanel?.querySelector(".site-search-close")?.addEventListener("click", () => setSearchState(false));
+  searchPanel?.addEventListener("click", (event) => {
+    if (event.target === searchPanel) setSearchState(false);
+  });
+  searchInput?.addEventListener("input", () => renderSearchResults(searchInput.value));
 
   header.querySelectorAll(".site-language-switcher").forEach((switcher) => {
     switcher.addEventListener("click", (event) => {
