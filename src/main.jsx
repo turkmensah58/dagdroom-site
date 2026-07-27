@@ -87,6 +87,13 @@ function renderHomePage() {
               class="men-link"
               aria-label="Enter DΛGDROØM"
             ></a>
+
+            <a href="/women#slor" class="menu-category-link menu-category-link--slor" aria-label="Open Dø Slør collection"></a>
+            <a href="/women#skygge" class="menu-category-link menu-category-link--skygge" aria-label="Open Dø Skygge collection"></a>
+            <a href="/women#flyt" class="menu-category-link menu-category-link--flyt" aria-label="Open Dø Flyt collection"></a>
+            <a href="/men#skaer" class="menu-category-link menu-category-link--skaer" aria-label="Open Dø Skær collection"></a>
+            <a href="/men#linje" class="menu-category-link menu-category-link--linje" aria-label="Open Dø Linje collection"></a>
+            <a href="/men#stal" class="menu-category-link menu-category-link--stal" aria-label="Open Dø Stål collection"></a>
           </div>
 
             </section>
@@ -107,7 +114,7 @@ function renderWomenPage() {
       ${renderSiteHeader("women")}
 
       <section class="women-collection-list">
-        <article class="women-collection-card" data-category="slor">
+        <article class="women-collection-card" data-category="slor" id="slor">
           <div class="women-collection-copy">
             <div>
               <h2>Dø Slør<sup>™</sup></h2>
@@ -132,7 +139,7 @@ function renderWomenPage() {
           </div>
         </article>
 
-        <article class="women-collection-card" data-category="skygge">
+        <article class="women-collection-card" data-category="skygge" id="skygge">
           <div class="women-collection-copy">
             <div>
               <h2>Dø Skygge<sup>™</sup></h2>
@@ -160,6 +167,7 @@ function renderWomenPage() {
         <article
           class="women-collection-card women-collection-card--flyt"
           data-category="flyt"
+          id="flyt"
         >
           <div class="women-collection-copy">
             <div>
@@ -191,6 +199,7 @@ function renderWomenPage() {
 
   initializeSiteHeader();
   initializeWomenExperience();
+  scrollToCurrentCollection();
 }
 
 function renderMenPage() {
@@ -203,6 +212,7 @@ function renderMenPage() {
         <article
           class="men-collection-card men-collection-card--skaer"
           data-category="skaer"
+          id="skaer"
         >
           <div class="men-collection-copy">
             <div>
@@ -233,6 +243,7 @@ function renderMenPage() {
         <article
           class="men-collection-card men-collection-card--linje"
           data-category="linje"
+          id="linje"
         >
           <div class="men-collection-copy">
             <div>
@@ -263,6 +274,7 @@ function renderMenPage() {
         <article
           class="men-collection-card men-collection-card--stal"
           data-category="stal"
+          id="stal"
         >
           <div class="men-collection-copy">
             <div>
@@ -295,6 +307,15 @@ function renderMenPage() {
   `;
 
   initializeSiteHeader();
+  scrollToCurrentCollection();
+}
+
+function scrollToCurrentCollection() {
+  const targetId = window.location.hash.slice(1);
+  if (!targetId) return;
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
 }
 
 function renderSiteHeader(activeSection = "") {
