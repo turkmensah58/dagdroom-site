@@ -104,12 +104,7 @@ function renderHomePage() {
 function renderWomenPage() {
   document.querySelector("#app").innerHTML = `
     <main class="women-page">
-
-      <header class="women-header">
-        <a href="/" class="women-logo" aria-label="Dagdroøm home">
-          Dagdroøm
-        </a>
-      </header>
+      ${renderSiteHeader("women")}
 
       <section class="women-collection-list">
         <article class="women-collection-card" data-category="slor">
@@ -194,28 +189,14 @@ function renderWomenPage() {
     </main>
   `;
 
+  initializeSiteHeader();
   initializeWomenExperience();
 }
 
 function renderMenPage() {
   document.querySelector("#app").innerHTML = `
     <main class="men-page">
-
-      <header class="men-header">
-        <a href="/" class="men-logo" aria-label="DΛGDROØM home">
-          DΛGDROØM
-        </a>
-
-        <button
-          class="men-menu-button"
-          type="button"
-          aria-label="Open menu"
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </header>
+      ${renderSiteHeader("men")}
 
       <section class="men-collection-list">
 
@@ -312,6 +293,83 @@ function renderMenPage() {
 
     </main>
   `;
+
+  initializeSiteHeader();
+}
+
+function renderSiteHeader(activeSection = "") {
+  const womenLink = `
+    <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>
+      <span class="site-nav-name">Dagdroøm</span>
+      <span class="site-nav-label">Women</span>
+    </a>
+  `;
+  const menLink = `
+    <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>
+      <span class="site-nav-name site-nav-name--men">DΛGDROØM</span>
+      <span class="site-nav-label">Men</span>
+    </a>
+  `;
+  const activeWorldLink = activeSection === "men" ? menLink : womenLink;
+  const alternateWorldLink = activeSection === "men" ? womenLink : menLink;
+
+  return `
+    <header class="site-header">
+      <nav class="site-navigation" aria-label="Main navigation">
+        <div class="site-nav-group site-nav-group--left">
+          ${activeWorldLink}
+        </div>
+
+        <div class="site-nav-group site-nav-group--right">
+          ${alternateWorldLink}
+          <a href="/journal">Journal</a>
+          <a href="/manifesto">Manifesto</a>
+        </div>
+
+        <button
+          class="site-nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="site-mobile-menu"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+
+      <div class="site-mobile-menu" id="site-mobile-menu" hidden>
+        <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
+        <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
+        <a href="/journal">Journal</a>
+        <a href="/manifesto">Manifesto</a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </header>
+  `;
+}
+
+function initializeSiteHeader() {
+  const header = document.querySelector(".site-header");
+  const toggle = header?.querySelector(".site-nav-toggle");
+  const menu = header?.querySelector(".site-mobile-menu");
+  if (!header || !toggle || !menu) return;
+
+  const setMenuState = (open) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    menu.hidden = !open;
+    header.classList.toggle("is-menu-open", open);
+    document.body.classList.toggle("nav-open", open);
+  };
+
+  toggle.addEventListener("click", () => {
+    setMenuState(toggle.getAttribute("aria-expanded") !== "true");
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") setMenuState(false);
+  });
 }
 
 function renderFooter() {
