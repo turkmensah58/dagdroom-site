@@ -560,9 +560,14 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 }
 
 .women-page .women-collection-card[data-category="flyt"],
-.women-page .women-collection-card[data-category="flyt"] .women-collection-copy,
 .women-page .women-collection-card[data-category="flyt"] .women-collection-media {
-  background: #e59d82;
+  background: #f1d4c5;
+}
+
+.women-page .women-collection-card[data-category="flyt"] .women-collection-copy {
+  background:
+    #f1d4c5
+    url("/flyt-nordic-sunset.png") center / cover no-repeat;
 }
 
 .women-page .women-collection-copy {
