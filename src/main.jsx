@@ -344,7 +344,7 @@ function renderSiteHeader(activeSection = "") {
         <div class="site-nav-group site-nav-group--right">
           ${alternateWorldLink}
           <a href="/journal">Journal</a>
-          <a href="/manifesto">Manifesto</a>
+          <a href="/manifesto">Essens</a>
         </div>
 
         <button
@@ -363,7 +363,7 @@ function renderSiteHeader(activeSection = "") {
         <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
         <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
         <a href="/journal">Journal</a>
-        <a href="/manifesto">Manifesto</a>
+        <a href="/manifesto">Essens</a>
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </header>
