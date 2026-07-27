@@ -565,7 +565,7 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   margin: 100px 0 64px;
   flex-direction: column;
   align-items: center;
-  gap: 18px;
+  gap: 0;
 }
 
 .footer-editorial nav {
@@ -582,12 +582,6 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   letter-spacing: 0.28em;
   text-decoration: none;
   text-transform: uppercase;
-}
-
-.footer-editorial > span {
-  width: 28px;
-  height: 1px;
-  background: rgba(17, 17, 17, 0.42);
 }
 
 .site-footer .footer-tagline {
@@ -1122,11 +1116,24 @@ font-size:0.10em;    position:relative;
 }
 
 .site-header--landing .site-navigation {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
 .site-header--landing .site-nav-group--right {
+  grid-column: 2;
+}
+
+.site-landing-wordmark {
   grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  color: inherit;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  text-decoration: none;
 }
 
 .site-navigation {
@@ -1620,6 +1627,12 @@ body.bag-open { overflow: hidden; }
 
   .site-nav-group {
     display: none;
+  }
+
+  .site-landing-wordmark {
+    position: absolute;
+    left: 0;
+    font-size: 23px;
   }
 
   .site-nav-toggle {

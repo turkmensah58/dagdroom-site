@@ -362,7 +362,7 @@ function renderContactPage() {
 
       <div class="contact-social">
         <span>Follow</span>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </main>
   `;
@@ -450,6 +450,8 @@ function renderSiteHeader(activeSection = "") {
           ${activeWorldLink}
         </div>`}
 
+        ${isLandingHeader ? '<a href="/" class="site-landing-wordmark" aria-label="Dagdroøm home">Dagdroøm</a>' : ""}
+
         <div class="site-nav-group site-nav-group--right">
           ${isLandingHeader ? "" : alternateWorldLink}
           <a href="/search" class="site-utility-link site-search-trigger">
@@ -521,7 +523,7 @@ function renderSiteHeader(activeSection = "") {
           <span aria-hidden="true">/</span>
           <button type="button" aria-pressed="false">TR</button>
         </div>
-        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
 
       <div class="site-search-panel" role="dialog" aria-modal="true" aria-labelledby="site-search-title" hidden>
@@ -690,7 +692,6 @@ function renderFooter() {
           <a href="/essens">Essens</a>
           <a href="/journal">Journal</a>
         </nav>
-        <span aria-hidden="true"></span>
       </div>
 
       <div class="footer-tagline">
