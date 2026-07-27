@@ -361,7 +361,7 @@ function renderSiteHeader(activeSection = "") {
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
             <span>Account</span>
           </a>
-          <a href="/bag" class="site-utility-link site-bag-link">
+          <a href="/bag" class="site-utility-link site-bag-link site-bag-trigger">
             <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="6" width="13" height="9" rx="0.5"/><path d="M6.25 6V4.75C6.25 3.25 7.35 2.4 9 2.4s2.75.85 2.75 2.35V6"/></svg>
             <span>Bag (0)</span>
           </a>
@@ -403,7 +403,7 @@ function renderSiteHeader(activeSection = "") {
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
           <span>Account</span>
         </a>
-        <a href="/bag" class="site-utility-link site-bag-link">
+        <a href="/bag" class="site-utility-link site-bag-link site-bag-trigger">
           <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="6" width="13" height="9" rx="0.5"/><path d="M6.25 6V4.75C6.25 3.25 7.35 2.4 9 2.4s2.75.85 2.75 2.35V6"/></svg>
           <span>Bag (0)</span>
         </a>
@@ -434,6 +434,23 @@ function renderSiteHeader(activeSection = "") {
           <p class="site-search-hint">Try “Slør”, “Linje” or “Stål”</p>
         </div>
       </div>
+
+      <div class="site-bag-panel" role="dialog" aria-modal="true" aria-labelledby="site-bag-title" hidden>
+        <aside class="site-bag-drawer">
+          <div class="site-bag-topline">
+            <p id="site-bag-title">Bag <span>(0)</span></p>
+            <button class="site-bag-close" type="button" aria-label="Close bag"><span></span><span></span></button>
+          </div>
+
+          <div class="site-bag-empty">
+            <svg viewBox="0 0 42 42" aria-hidden="true"><rect x="5" y="14" width="32" height="23" rx="1"/><path d="M14 14v-3c0-4.2 2.7-6.5 7-6.5s7 2.3 7 6.5v3"/></svg>
+            <h2>Your bag is empty.</h2>
+            <p>Discover quiet essentials made for everyday movement.</p>
+          </div>
+
+          <button class="site-bag-continue" type="button">Continue exploring</button>
+        </aside>
+      </div>
     </header>
   `;
 }
@@ -445,6 +462,7 @@ function initializeSiteHeader() {
   const searchPanel = header?.querySelector(".site-search-panel");
   const searchInput = searchPanel?.querySelector("input");
   const searchResults = searchPanel?.querySelector(".site-search-results");
+  const bagPanel = header?.querySelector(".site-bag-panel");
   if (!header || !toggle || !menu) return;
 
   const collections = [
@@ -495,6 +513,18 @@ function initializeSiteHeader() {
     }
   };
 
+  const setBagState = (open) => {
+    if (!bagPanel) return;
+    bagPanel.hidden = !open;
+    header.classList.toggle("is-bag-open", open);
+    document.body.classList.toggle("bag-open", open);
+    if (open) {
+      setMenuState(false);
+      setSearchState(false);
+      requestAnimationFrame(() => bagPanel.querySelector(".site-bag-close")?.focus());
+    }
+  };
+
   toggle.addEventListener("click", () => {
     setMenuState(toggle.getAttribute("aria-expanded") !== "true");
   });
@@ -503,6 +533,7 @@ function initializeSiteHeader() {
     if (event.key === "Escape") {
       setMenuState(false);
       setSearchState(false);
+      setBagState(false);
     }
   });
 
@@ -518,6 +549,19 @@ function initializeSiteHeader() {
     if (event.target === searchPanel) setSearchState(false);
   });
   searchInput?.addEventListener("input", () => renderSearchResults(searchInput.value));
+
+  header.querySelectorAll(".site-bag-trigger").forEach((trigger) => {
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      setBagState(true);
+    });
+  });
+
+  bagPanel?.querySelector(".site-bag-close")?.addEventListener("click", () => setBagState(false));
+  bagPanel?.querySelector(".site-bag-continue")?.addEventListener("click", () => setBagState(false));
+  bagPanel?.addEventListener("click", (event) => {
+    if (event.target === bagPanel) setBagState(false);
+  });
 
   header.querySelectorAll(".site-language-switcher").forEach((switcher) => {
     switcher.addEventListener("click", (event) => {
