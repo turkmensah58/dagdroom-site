@@ -384,6 +384,42 @@ function initializeContactForm() {
   });
 }
 
+function renderJournalPage() {
+  const stories = [
+    { number: "N° 001", city: "Copenhagen", coordinate: "55°40′N", image: "/copenhagen-55n.png.png", href: "/world/copenhagen/" },
+    { number: "N° 002", city: "Stockholm", coordinate: "59°20′N", image: "/stockholm-59n.png", href: "/world/stockholm/" },
+    { number: "N° 003", city: "Oslo", coordinate: "59°55′N", image: "/oslo.png", href: "/world/oslo/" }
+  ];
+
+  document.querySelector("#app").innerHTML = `
+    <main class="journal-page">
+      ${renderSiteHeader("")}
+
+      <section class="journal-intro">
+        <p>Notes from the North</p>
+        <h1>Journal</h1>
+      </section>
+
+      <section class="journal-grid" aria-label="Journal stories">
+        ${stories.map(({ number, city, coordinate, image, href }) => `
+          <a href="${href}" class="journal-card">
+            <div class="journal-card-image">
+              <img src="${image}" alt="${city}" />
+            </div>
+            <div class="journal-card-meta">
+              <span>${number}</span>
+              <h2>${city}</h2>
+              <small>${coordinate}</small>
+            </div>
+          </a>
+        `).join("")}
+      </section>
+    </main>
+  `;
+
+  initializeSiteHeader();
+}
+
 function renderSiteHeader(activeSection = "") {
   const isLandingHeader = activeSection === "landing";
   const womenLink = `
@@ -649,8 +685,11 @@ function renderFooter() {
   return `
     <footer class="site-footer">
       <div class="footer-line"></div>
-      <div class="footer-essens">
-        <a href="/essens">Essens</a>
+      <div class="footer-editorial">
+        <nav aria-label="Editorial navigation">
+          <a href="/essens">Essens</a>
+          <a href="/journal">Journal</a>
+        </nav>
         <span aria-hidden="true"></span>
       </div>
 
@@ -755,6 +794,11 @@ const stopVideo = () => {
 
   if (normalizedPath === "/contact") {
     renderContactPage();
+    return;
+  }
+
+  if (normalizedPath === "/journal") {
+    renderJournalPage();
     return;
   }
 
