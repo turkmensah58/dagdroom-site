@@ -361,6 +361,10 @@ function renderSiteHeader(activeSection = "") {
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
             <span>Account</span>
           </a>
+          <a href="/bag" class="site-utility-link site-bag-link">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="6" width="13" height="9" rx="0.5"/><path d="M6.25 6V4.75C6.25 3.25 7.35 2.4 9 2.4s2.75.85 2.75 2.35V6"/></svg>
+            <span>Bag (0)</span>
+          </a>
           <div class="site-language-switcher" aria-label="Language selection">
             <button type="button" class="is-active" aria-pressed="true">EN</button>
             <span aria-hidden="true">/</span>
@@ -398,6 +402,10 @@ function renderSiteHeader(activeSection = "") {
         <a href="/account" class="site-utility-link">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
           <span>Account</span>
+        </a>
+        <a href="/bag" class="site-utility-link site-bag-link">
+          <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="6" width="13" height="9" rx="0.5"/><path d="M6.25 6V4.75C6.25 3.25 7.35 2.4 9 2.4s2.75.85 2.75 2.35V6"/></svg>
+          <span>Bag (0)</span>
         </a>
         <div class="site-language-switcher" aria-label="Language selection">
           <button type="button" class="is-active" aria-pressed="true">EN</button>
