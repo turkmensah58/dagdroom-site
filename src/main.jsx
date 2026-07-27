@@ -349,8 +349,25 @@ function renderSiteHeader(activeSection = "") {
 
         <div class="site-nav-group site-nav-group--right">
           ${alternateWorldLink}
-          <a href="/journal">Journal</a>
-          <a href="/manifesto">Essens</a>
+          <a href="/search" class="site-utility-link">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
+            <span>Search</span>
+          </a>
+          <a href="/help" class="site-utility-link">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="6.25"/><path d="M7.3 6.8a1.9 1.9 0 0 1 3.65.72c0 1.45-1.95 1.65-1.95 3.05M9 13.35h.01"/></svg>
+            <span>Help</span>
+          </a>
+          <a href="/account" class="site-utility-link">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
+            <span>Account</span>
+          </a>
+          <div class="site-language-switcher" aria-label="Language selection">
+            <button type="button" class="is-active" aria-pressed="true">EN</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" aria-pressed="false">DE</button>
+            <span aria-hidden="true">/</span>
+            <button type="button" aria-pressed="false">TR</button>
+          </div>
         </div>
 
         <button
@@ -368,8 +385,25 @@ function renderSiteHeader(activeSection = "") {
       <div class="site-mobile-menu" id="site-mobile-menu" hidden>
         <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
         <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
-        <a href="/journal">Journal</a>
-        <a href="/manifesto">Essens</a>
+        <a href="/search" class="site-utility-link">
+          <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
+          <span>Search</span>
+        </a>
+        <a href="/help" class="site-utility-link">
+          <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="6.25"/><path d="M7.3 6.8a1.9 1.9 0 0 1 3.65.72c0 1.45-1.95 1.65-1.95 3.05M9 13.35h.01"/></svg>
+          <span>Help</span>
+        </a>
+        <a href="/account" class="site-utility-link">
+          <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
+          <span>Account</span>
+        </a>
+        <div class="site-language-switcher" aria-label="Language selection">
+          <button type="button" class="is-active" aria-pressed="true">EN</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" aria-pressed="false">DE</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" aria-pressed="false">TR</button>
+        </div>
         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
     </header>
@@ -396,6 +430,18 @@ function initializeSiteHeader() {
 
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") setMenuState(false);
+  });
+
+  header.querySelectorAll(".site-language-switcher").forEach((switcher) => {
+    switcher.addEventListener("click", (event) => {
+      const selected = event.target.closest("button");
+      if (!selected) return;
+      header.querySelectorAll(".site-language-switcher button").forEach((button) => {
+        const active = button.textContent === selected.textContent;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+    });
   });
 }
 

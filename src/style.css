@@ -1127,6 +1127,63 @@ font-size:0.10em;    position:relative;
   opacity: 0.48;
 }
 
+.site-nav-group .site-utility-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.site-utility-link svg {
+  display: block;
+  width: 13px;
+  height: 13px;
+  overflow: visible;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.site-language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-left: 2px;
+  color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.12em;
+}
+
+.site-language-switcher button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  opacity: 0.38;
+  cursor: pointer;
+  transition: opacity 220ms ease;
+}
+
+.site-language-switcher button:hover,
+.site-language-switcher button:focus-visible,
+.site-language-switcher button.is-active {
+  opacity: 1;
+}
+
+.site-language-switcher button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
+
+.site-language-switcher > span {
+  opacity: 0.22;
+}
+
 .site-nav-group a::after {
   content: "";
   position: absolute;
@@ -1246,6 +1303,22 @@ body.nav-open {
     font-weight: 400;
     letter-spacing: 0.22em;
     opacity: 0.48;
+  }
+
+  .site-mobile-menu .site-utility-link {
+    flex-direction: row;
+    gap: 9px;
+  }
+
+  .site-mobile-menu .site-utility-link svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .site-mobile-menu .site-language-switcher {
+    margin-top: 7px;
+    gap: 9px;
+    font-size: 10px;
   }
 
   .site-mobile-menu a[aria-current="page"] {
