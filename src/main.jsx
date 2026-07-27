@@ -64,6 +64,8 @@ function renderHomePage() {
   </button>
 </section>
 
+${renderSiteHeader("landing")}
+
 <section class="choose-section" id="choose-world">
          <div class="season-heading">
   ΛUTUMN / WINTER ’26
@@ -104,6 +106,7 @@ function renderHomePage() {
   `;
 
   initializeHomeExperience();
+  initializeSiteHeader();
 }
 
 
@@ -318,7 +321,71 @@ function scrollToCurrentCollection() {
   requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
 }
 
+function renderContactPage() {
+  document.querySelector("#app").innerHTML = `
+    <main class="contact-page">
+      ${renderSiteHeader("")}
+
+      <section class="contact-channels" aria-label="Contact departments">
+        <a href="mailto:care@dagdroom.de">
+          <span>01</span><h2>Customer Care</h2><p>Orders, delivery, returns and product questions.</p><small>care@dagdroom.de</small>
+        </a>
+        <a href="mailto:press@dagdroom.de">
+          <span>02</span><h2>Press & Collaborations</h2><p>Editorial, creative projects and brand partnerships.</p><small>press@dagdroom.de</small>
+        </a>
+        <a href="mailto:hello@dagdroom.de">
+          <span>03</span><h2>General Enquiries</h2><p>Everything that does not belong elsewhere.</p><small>hello@dagdroom.de</small>
+        </a>
+      </section>
+
+      <section class="contact-form-section">
+        <div class="contact-form-heading">
+          <p>Send an enquiry</p>
+          <span>We usually respond within 1–2 business days.</span>
+        </div>
+
+        <form class="contact-form">
+          <label><span>Name</span><input name="name" type="text" autocomplete="name" required /></label>
+          <label><span>Email</span><input name="email" type="email" autocomplete="email" required /></label>
+          <label>
+            <span>Subject</span>
+            <select name="subject" required>
+              <option value="General enquiry">General enquiry</option>
+              <option value="Customer care">Customer care</option>
+              <option value="Press and collaboration">Press & collaboration</option>
+            </select>
+          </label>
+          <label class="contact-form-message"><span>Message</span><textarea name="message" rows="5" required></textarea></label>
+          <button type="submit">Send enquiry <span aria-hidden="true">⟶</span></button>
+        </form>
+      </section>
+
+      <div class="contact-social">
+        <span>Follow</span>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </main>
+  `;
+
+  initializeSiteHeader();
+  initializeContactForm();
+}
+
+function initializeContactForm() {
+  const form = document.querySelector(".contact-form");
+  if (!form) return;
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const subject = encodeURIComponent(`[Dagdroøm] ${data.get("subject")}`);
+    const body = encodeURIComponent(`Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`);
+    window.location.href = `mailto:hello@dagdroom.de?subject=${subject}&body=${body}`;
+  });
+}
+
 function renderSiteHeader(activeSection = "") {
+  const isLandingHeader = activeSection === "landing";
   const womenLink = `
     <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>
       <span class="site-nav-name">Dagdroøm</span>
@@ -335,27 +402,27 @@ function renderSiteHeader(activeSection = "") {
   const alternateWorldLink = activeSection === "men" ? womenLink : menLink;
 
   return `
-    <header class="site-header">
+    <header class="site-header${isLandingHeader ? " site-header--landing" : ""}">
       <nav class="site-navigation" aria-label="Main navigation">
-        <a href="/" class="site-back-link" aria-label="Back to main menu">
+        ${isLandingHeader ? "" : `<a href="/" class="site-back-link" aria-label="Back to main menu">
           <svg viewBox="0 0 34 12" aria-hidden="true">
             <path d="M6 1L1 6L6 11M1 6H33" />
           </svg>
-        </a>
+        </a>`}
 
-        <div class="site-nav-group site-nav-group--left">
+        ${isLandingHeader ? "" : `<div class="site-nav-group site-nav-group--left">
           ${activeWorldLink}
-        </div>
+        </div>`}
 
         <div class="site-nav-group site-nav-group--right">
-          ${alternateWorldLink}
+          ${isLandingHeader ? "" : alternateWorldLink}
           <a href="/search" class="site-utility-link site-search-trigger">
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
             <span>Search</span>
           </a>
-          <a href="/help" class="site-utility-link">
-            <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="6.25"/><path d="M7.3 6.8a1.9 1.9 0 0 1 3.65.72c0 1.45-1.95 1.65-1.95 3.05M9 13.35h.01"/></svg>
-            <span>Help</span>
+          <a href="/contact" class="site-utility-link">
+            <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="4" width="13" height="10" rx="0.5"/><path d="m3 5 6 4.75L15 5"/></svg>
+            <span>Contact</span>
           </a>
           <a href="/account" class="site-utility-link">
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
@@ -389,15 +456,17 @@ function renderSiteHeader(activeSection = "") {
       </nav>
 
       <div class="site-mobile-menu" id="site-mobile-menu" hidden>
-        <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
-        <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
+        ${isLandingHeader ? "" : `
+          <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
+          <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
+        `}
         <a href="/search" class="site-utility-link site-search-trigger">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
           <span>Search</span>
         </a>
-        <a href="/help" class="site-utility-link">
-          <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="6.25"/><path d="M7.3 6.8a1.9 1.9 0 0 1 3.65.72c0 1.45-1.95 1.65-1.95 3.05M9 13.35h.01"/></svg>
-          <span>Help</span>
+        <a href="/contact" class="site-utility-link">
+          <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="4" width="13" height="10" rx="0.5"/><path d="m3 5 6 4.75L15 5"/></svg>
+          <span>Contact</span>
         </a>
         <a href="/account" class="site-utility-link">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
@@ -579,44 +648,26 @@ function initializeSiteHeader() {
 function renderFooter() {
   return `
     <footer class="site-footer">
-
       <div class="footer-line"></div>
-
-      <nav class="footer-nav">
-        <a href="/journal">JOURNΛL</a>
-        <a href="/manifesto">MΛNIFESTO</a>
-        <a href="/contact">CONTΛCT</a>
-
-        <a
-          href="https://www.instagram.com/dagd.room/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          INSTΛGRΛM
-        </a>
-      </nav>
-
-      <div class="footer-cities">
-        <a href="/world/copenhagen/">COPENHΛGEN</a>
-
-        <a href="/world/stockholm/">STOCKHOLM</a>
-
-        <a href="/world/oslo/">OSLO</a>
-
-        <a href="/world/reykjavik">REYKJΛVÍK</a>
+      <div class="footer-essens">
+        <a href="/essens">Essens</a>
+        <span aria-hidden="true"></span>
       </div>
-<div class="footer-signature">
-<div class="footer-tagline">
-  <span>Calm.</span>
-  <span>Clean.</span>
-  <span>Nordic.</span>
-</div>
 
-<div class="footer-copyright">
-  © 2026 Dagdroøm
-</div>
-</div>
+      <div class="footer-tagline">
+        <span>Calm.</span>
+        <span>Clean.</span>
+        <span>Nordic.</span>
+      </div>
 
+      <div class="footer-bottom">
+        <nav aria-label="Footer navigation">
+          <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
+        </nav>
+        <div class="footer-copyright">© 2026 Dagdroøm</div>
+      </div>
     </footer>
   `;
 }
@@ -699,6 +750,11 @@ const stopVideo = () => {
 
   if (normalizedPath === "/men") {
     renderMenPage();
+    return;
+  }
+
+  if (normalizedPath === "/contact") {
+    renderContactPage();
     return;
   }
 
