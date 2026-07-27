@@ -559,6 +559,36 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
   background: #e5e7ea;
 }
 
+.women-page .women-collection-card[data-category="slor"] .women-collection-copy {
+  background:
+    #e5e7ea
+    url("/slor-arctic-fog.png") center / cover no-repeat;
+}
+
+.women-page .women-collection-card[data-category="skygge"] .women-collection-copy {
+  background:
+    #d8c7a3
+    url("/skygge-soft-tone.png") center / cover no-repeat;
+}
+
+.women-page .women-collection-card[data-category="slor"] .women-collection-copy,
+.women-page .women-collection-card[data-category="slor"] .women-collection-copy h2,
+.women-page .women-collection-card[data-category="slor"] .women-collection-copy p,
+.women-page .women-collection-card[data-category="slor"] .women-enter-link,
+.women-page .women-collection-card[data-category="flyt"] .women-collection-copy,
+.women-page .women-collection-card[data-category="flyt"] .women-collection-copy h2,
+.women-page .women-collection-card[data-category="flyt"] .women-collection-copy p,
+.women-page .women-collection-card[data-category="flyt"] .women-enter-link {
+  color: #0f0f0f;
+}
+
+.women-page .women-collection-card[data-category="skygge"] .women-collection-copy,
+.women-page .women-collection-card[data-category="skygge"] .women-collection-copy h2,
+.women-page .women-collection-card[data-category="skygge"] .women-collection-copy p,
+.women-page .women-collection-card[data-category="skygge"] .women-enter-link {
+  color: #e5e7ea;
+}
+
 .women-page .women-collection-card[data-category="flyt"],
 .women-page .women-collection-card[data-category="flyt"] .women-collection-media {
   background: #f1d4c5;
