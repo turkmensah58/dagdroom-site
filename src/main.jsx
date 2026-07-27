@@ -337,6 +337,12 @@ function renderSiteHeader(activeSection = "") {
   return `
     <header class="site-header">
       <nav class="site-navigation" aria-label="Main navigation">
+        <a href="/" class="site-back-link" aria-label="Back to main menu">
+          <svg viewBox="0 0 34 12" aria-hidden="true">
+            <path d="M6 1L1 6L6 11M1 6H33" />
+          </svg>
+        </a>
+
         <div class="site-nav-group site-nav-group--left">
           ${activeWorldLink}
         </div>
