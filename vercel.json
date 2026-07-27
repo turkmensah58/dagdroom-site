@@ -7,6 +7,10 @@
     {
       "source": "/men",
       "destination": "/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index.html"
     }
   ]
 }
