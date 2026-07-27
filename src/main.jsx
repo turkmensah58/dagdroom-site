@@ -366,6 +366,8 @@ function renderSiteHeader(activeSection = "") {
             <span aria-hidden="true">/</span>
             <button type="button" aria-pressed="false">DE</button>
             <span aria-hidden="true">/</span>
+            <button type="button" aria-pressed="false">SV</button>
+            <span aria-hidden="true">/</span>
             <button type="button" aria-pressed="false">TR</button>
           </div>
         </div>
@@ -401,6 +403,8 @@ function renderSiteHeader(activeSection = "") {
           <button type="button" class="is-active" aria-pressed="true">EN</button>
           <span aria-hidden="true">/</span>
           <button type="button" aria-pressed="false">DE</button>
+          <span aria-hidden="true">/</span>
+          <button type="button" aria-pressed="false">SV</button>
           <span aria-hidden="true">/</span>
           <button type="button" aria-pressed="false">TR</button>
         </div>
