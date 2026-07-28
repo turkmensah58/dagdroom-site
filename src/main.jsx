@@ -547,6 +547,7 @@ function renderSiteHeader(activeSection = "") {
           <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="6" width="13" height="9" rx="0.5"/><path d="M6.25 6V4.75C6.25 3.25 7.35 2.4 9 2.4s2.75.85 2.75 2.35V6"/></svg>
           <span>Bag (0)</span>
         </a>
+        <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
         <div class="site-language-switcher" aria-label="Language selection">
           <button type="button" class="is-active" aria-pressed="true">EN</button>
           <span aria-hidden="true">/</span>
@@ -556,7 +557,6 @@ function renderSiteHeader(activeSection = "") {
           <span aria-hidden="true">/</span>
           <button type="button" aria-pressed="false">TR</button>
         </div>
-        <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
 
       <div class="site-search-panel" role="dialog" aria-modal="true" aria-labelledby="site-search-title" hidden>
