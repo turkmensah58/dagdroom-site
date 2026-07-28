@@ -716,11 +716,16 @@ function initializeSiteHeader() {
 function renderFooter() {
   return `
     <footer class="site-footer">
-      <div class="footer-line"></div>
-      <div class="footer-editorial">
-        <nav aria-label="Editorial navigation">
-          <a href="/essens">Essens</a>
-          <a href="/journal">Journal</a>
+      <div class="footer-bottom">
+        <nav class="footer-bottom-primary" aria-label="Footer navigation">
+          <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="/shipping-returns">Shipping &amp; Returns</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <nav class="footer-bottom-legal" aria-label="Legal navigation">
+          <a href="/cookies">Cookie Policy</a>
+          <a href="/privacy">Privacy</a>
+          <a href="/terms">Terms</a>
         </nav>
       </div>
 
@@ -729,20 +734,7 @@ function renderFooter() {
         <span>Clean.</span>
         <span>Nordic.</span>
       </div>
-
-      <div class="footer-bottom">
-        <nav class="footer-bottom-primary" aria-label="Footer navigation">
-          <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="/shipping-returns">Shipping &amp; Returns</a>
-          <a href="/contact">Contact</a>
-        </nav>
-        <div class="footer-copyright">© 2026 <a href="/">Dagdroøm</a></div>
-        <nav class="footer-bottom-legal" aria-label="Legal navigation">
-          <a href="/cookies">Cookie Policy</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
-        </nav>
-      </div>
+      <div class="footer-copyright">© 2026 <a href="/">Dagdroøm</a></div>
     </footer>
   `;
 }
