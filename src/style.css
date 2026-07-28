@@ -2516,11 +2516,16 @@ body.bag-open { overflow: hidden; }
   }
 
   .women-page .women-collection-card {
-    grid-template-columns: minmax(0, 1fr);
-    min-height: 0;
+    width: 100% !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    grid-template-rows: auto auto !important;
+    min-height: 0 !important;
   }
 
   .women-page .women-collection-copy {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    width: 100% !important;
     min-height: 245px;
     padding: 34px 24px 28px;
   }
@@ -2538,7 +2543,8 @@ body.bag-open { overflow: hidden; }
 
   .women-page .women-collection-media {
     grid-column: 1 !important;
-    grid-row: auto !important;
+    grid-row: 2 !important;
+    width: 100% !important;
   }
 
   .women-enter-link,
