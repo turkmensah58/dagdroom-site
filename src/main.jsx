@@ -522,8 +522,14 @@ function renderSiteHeader(activeSection = "") {
 
       <div class="site-mobile-menu" id="site-mobile-menu" hidden>
         ${isCollectionHeader ? `
-          <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
-          <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
+          <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>
+            <span class="site-nav-name">Dagdroøm</span>
+            <small>Women</small>
+          </a>
+          <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>
+            <span class="site-nav-name site-nav-name--men">DΛGDROØM</span>
+            <small>Men</small>
+          </a>
         ` : ""}
         <a href="/search" class="site-utility-link site-search-trigger">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>

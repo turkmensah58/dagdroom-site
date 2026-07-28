@@ -1703,6 +1703,22 @@ body.bag-open { overflow: hidden; }
     opacity: 0.48;
   }
 
+  .site-mobile-menu .site-nav-name {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.015em;
+    line-height: 1;
+    text-transform: none;
+  }
+
+  .site-mobile-menu .site-nav-name--men {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.13em;
+  }
+
   .site-mobile-menu .site-utility-link {
     flex-direction: row;
     gap: 9px;
