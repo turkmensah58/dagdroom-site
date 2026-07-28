@@ -2420,3 +2420,210 @@ body.bag-open { overflow: hidden; }
   position: relative;
   top: -1.95em;
 }
+
+/* Consolidated mobile layout */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 72px;
+  }
+
+  body {
+    min-width: 320px;
+  }
+
+  .hero-section,
+  .hero-section > .full-image {
+    height: 100svh;
+    min-height: 560px;
+  }
+
+  .hero-section > .full-image {
+    object-position: center center;
+  }
+
+  .choose-section {
+    padding: 32px 16px 30px;
+  }
+
+  .choose-section .choose-image-wrap {
+    width: 100% !important;
+    max-width: 560px !important;
+  }
+
+  .site-header {
+    margin-bottom: 34px;
+  }
+
+  .site-navigation {
+    z-index: 2;
+    min-height: 56px;
+  }
+
+  .site-back-link,
+  .site-nav-toggle {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  .site-mobile-menu {
+    z-index: 1;
+    padding: max(88px, env(safe-area-inset-top)) 24px max(34px, env(safe-area-inset-bottom));
+    overflow-y: auto;
+  }
+
+  .site-mobile-menu a,
+  .site-mobile-menu button {
+    min-height: 44px;
+    justify-content: center;
+  }
+
+  .site-search-panel__inner {
+    padding-right: max(22px, env(safe-area-inset-right));
+    padding-bottom: max(40px, env(safe-area-inset-bottom));
+    padding-left: max(22px, env(safe-area-inset-left));
+  }
+
+  .site-search-field input {
+    min-width: 0;
+    font-size: clamp(26px, 8vw, 32px);
+  }
+
+  .site-bag-drawer {
+    max-width: 100%;
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+  }
+
+  .women-page,
+  .men-page,
+  .contact-page,
+  .journal-page,
+  .essens-page {
+    padding-top: 22px;
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .women-page .women-collection-card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .women-page .women-collection-copy {
+    min-height: 245px;
+    padding: 34px 24px 28px;
+  }
+
+  .women-page .women-collection-copy h2 {
+    font-size: clamp(40px, 12vw, 48px);
+  }
+
+  .women-page .women-collection-media,
+  .women-page .women-hover-video {
+    width: 100%;
+    height: clamp(280px, 86vw, 360px) !important;
+    min-height: 0 !important;
+  }
+
+  .women-page .women-collection-media {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+
+  .women-enter-link,
+  .men-enter-link {
+    min-height: 44px;
+  }
+
+  .men-collection-copy {
+    min-height: 245px;
+    padding: 34px 24px 28px;
+  }
+
+  .men-collection-media {
+    height: clamp(280px, 86vw, 340px);
+    min-height: 0;
+  }
+
+  .contact-channels h2 {
+    font-size: clamp(27px, 9vw, 34px);
+  }
+
+  .contact-form input,
+  .contact-form select,
+  .contact-form textarea {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  .contact-form textarea {
+    min-height: 132px;
+  }
+
+  .contact-form button {
+    min-height: 48px;
+  }
+
+  .journal-intro {
+    margin: 58px 0 62px;
+  }
+
+  .journal-card-meta {
+    grid-template-columns: 45px minmax(0, 1fr) auto;
+    gap: 8px;
+  }
+
+  .journal-card-meta h2 {
+    min-width: 0;
+    font-size: clamp(24px, 8vw, 29px);
+  }
+
+  .essens-content {
+    margin: 64px auto 96px;
+  }
+
+  .essens-copy p,
+  .essens-manifesto p {
+    font-size: clamp(27px, 8.5vw, 34px);
+    line-height: 1.18;
+  }
+
+  .essens-copy {
+    gap: 30px;
+  }
+
+  .essens-manifesto {
+    margin-top: 58px;
+  }
+
+  .site-footer {
+    padding-right: 18px;
+    padding-left: 18px;
+  }
+
+  .footer-editorial nav,
+  .footer-bottom nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 380px) {
+  .women-page .women-collection-copy,
+  .men-collection-copy {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+
+  .journal-card-meta {
+    grid-template-columns: 38px minmax(0, 1fr);
+  }
+
+  .journal-card-meta small {
+    grid-column: 2;
+  }
+
+  .footer-editorial nav,
+  .footer-bottom nav {
+    gap: 18px;
+  }
+}

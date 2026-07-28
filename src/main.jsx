@@ -781,30 +781,49 @@ function initializeHomeExperience() {
     },
     { passive: false }
   );
-}function initializeWomenExperience() {
+}
+
+function initializeWomenExperience() {
   const hoverCards = document.querySelectorAll(".women-collection-card");
+  const usesTouchLayout = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+  const touchVideoObserver = usesTouchLayout && "IntersectionObserver" in window
+    ? new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target.querySelector(".women-hover-video");
+          if (!video) return;
+          if (entry.isIntersecting) {
+            video.muted = true;
+            video.play().catch(() => {});
+          } else {
+            video.pause();
+          }
+        });
+      }, { threshold: 0.55 })
+    : null;
 
   hoverCards.forEach((card) => {
     const video = card.querySelector(".women-hover-video");
-
     if (!video) return;
 
-   const playVideo = () => {
-  console.log("PLAY", card.dataset.category);
-  video.muted = true;
-  video.play().catch(err => console.error(err));
-};
+    const playVideo = () => {
+      video.muted = true;
+      video.play().catch(() => {});
+    };
 
-const stopVideo = () => {
-  video.pause();
-  video.currentTime = 0;
-};
-    card.addEventListener("mouseenter", playVideo);
-    card.addEventListener("mouseleave", stopVideo);
-    card.addEventListener("focusin", playVideo);
-    card.addEventListener("focusout", stopVideo);
+    const stopVideo = () => {
+      video.pause();
+      if (!usesTouchLayout) video.currentTime = 0;
+    };
+
+    if (touchVideoObserver) {
+      touchVideoObserver.observe(card);
+    } else {
+      card.addEventListener("mouseenter", playVideo);
+      card.addEventListener("mouseleave", stopVideo);
+      card.addEventListener("focusin", playVideo);
+      card.addEventListener("focusout", stopVideo);
+    }
   });
-
 }
   function renderCurrentRoute() {
   const normalizedPath =
