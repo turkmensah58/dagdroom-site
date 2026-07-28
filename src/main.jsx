@@ -559,10 +559,9 @@ function renderSiteHeader(activeSection = "") {
         </div>
       </div>
 
-      <div class="site-search-panel" role="dialog" aria-modal="true" aria-labelledby="site-search-title" hidden>
+      <div class="site-search-panel" role="dialog" aria-modal="true" aria-label="Search collections" hidden>
         <div class="site-search-panel__inner">
           <div class="site-search-panel__topline">
-            <p id="site-search-title">Search Dagdroøm</p>
             <button class="site-search-close" type="button" aria-label="Close search"><span></span><span></span></button>
           </div>
           <label class="site-search-field">
