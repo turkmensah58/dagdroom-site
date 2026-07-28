@@ -2482,7 +2482,15 @@ body.bag-open { overflow: hidden; }
   }
 
   .site-header.is-menu-open {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     z-index: 100;
+    width: auto;
+    margin: 0;
+    padding-right: 16px;
+    padding-left: 16px;
     background: #f7f5f1;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -2490,6 +2498,7 @@ body.bag-open { overflow: hidden; }
 
   .site-header.is-menu-open .site-mobile-menu {
     z-index: 100;
+    padding-top: calc(88px + env(safe-area-inset-top));
     background: #f7f5f1;
   }
 
@@ -2693,7 +2702,15 @@ body.bag-open { overflow: hidden; }
   }
 
   .site-header.is-menu-open {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
     z-index: 100;
+    width: auto;
+    margin: 0;
+    padding-right: 22px;
+    padding-left: 22px;
     background: #f7f5f1;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
@@ -2701,6 +2718,7 @@ body.bag-open { overflow: hidden; }
 
   .site-header.is-menu-open .site-mobile-menu {
     z-index: 100;
+    padding-top: calc(88px + env(safe-area-inset-top));
     background: #f7f5f1;
   }
 
