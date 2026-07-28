@@ -478,16 +478,16 @@ function renderSiteHeader(activeSection = "") {
         </div>` : ""}
 
         ${isLandingHeader ? '<a href="/" class="site-landing-wordmark" aria-label="Dagdroøm home">Dagdroøm</a>' : ""}
+        ${isLandingHeader ? `<nav class="site-editorial-links" aria-label="Editorial navigation">
+          <a href="/essens">Essens</a>
+          <a href="/journal">Journal</a>
+        </nav>` : ""}
 
         <div class="site-nav-group site-nav-group--right">
           ${isCollectionHeader ? alternateWorldLink : ""}
           <a href="/search" class="site-utility-link site-search-trigger">
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
             <span>Search</span>
-          </a>
-          <a href="/contact" class="site-utility-link">
-            <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="4" width="13" height="10" rx="0.5"/><path d="m3 5 6 4.75L15 5"/></svg>
-            <span>Contact</span>
           </a>
           <a href="/account" class="site-utility-link">
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
@@ -531,13 +531,11 @@ function renderSiteHeader(activeSection = "") {
             <small>Men</small>
           </a>
         ` : ""}
+        <a href="/essens" class="site-mobile-editorial-link">Essens</a>
+        <a href="/journal" class="site-mobile-editorial-link">Journal</a>
         <a href="/search" class="site-utility-link site-search-trigger">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
           <span>Search</span>
-        </a>
-        <a href="/contact" class="site-utility-link">
-          <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="4" width="13" height="10" rx="0.5"/><path d="m3 5 6 4.75L15 5"/></svg>
-          <span>Contact</span>
         </a>
         <a href="/account" class="site-utility-link">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="6" r="2.7"/><path d="M3.8 15c.45-2.55 2.35-4.1 5.2-4.1s4.75 1.55 5.2 4.1"/></svg>
@@ -733,12 +731,17 @@ function renderFooter() {
       </div>
 
       <div class="footer-bottom">
-        <nav aria-label="Footer navigation">
+        <nav class="footer-bottom-primary" aria-label="Footer navigation">
           <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="/shipping-returns">Shipping &amp; Returns</a>
+          <a href="/contact">Contact</a>
+        </nav>
+        <div class="footer-copyright">© 2026 <a href="/">Dagdroøm</a></div>
+        <nav class="footer-bottom-legal" aria-label="Legal navigation">
+          <a href="/cookies">Cookie Policy</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
         </nav>
-        <div class="footer-copyright">© 2026 Dagdroøm</div>
       </div>
     </footer>
   `;
