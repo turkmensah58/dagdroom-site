@@ -1748,6 +1748,77 @@ body.bag-open { overflow: hidden; }
   .site-bag-drawer { animation: none; }
 }
 
+/* Essens */
+.essens-page {
+  width: 100%;
+  max-width: 1380px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 36px 50px 0;
+  box-sizing: border-box;
+  background: #f7f5f1;
+  color: #151515;
+}
+
+.essens-content {
+  width: min(100%, 760px);
+  margin: 120px auto 160px;
+}
+
+.essens-copy p,
+.essens-manifesto p {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(28px, 3vw, 42px);
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+}
+
+.essens-copy {
+  display: grid;
+  gap: 42px;
+  text-align: center;
+}
+
+.essens-men-link {
+  color: inherit;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.58em;
+  font-weight: 400;
+  letter-spacing: 0.13em;
+  text-decoration: none;
+}
+
+.essens-women-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.essens-women-link:hover,
+.essens-women-link:focus-visible,
+.essens-men-link:hover,
+.essens-men-link:focus-visible {
+  opacity: 0.58;
+}
+
+.essens-manifesto {
+  margin-top: 92px;
+  text-align: center;
+}
+
+.essens-manifesto p:last-child {
+  margin-top: 42px;
+}
+
+@media (max-width: 768px) {
+  .essens-page { padding: 26px 18px 0; }
+  .essens-content { margin: 82px auto 110px; }
+  .essens-copy { gap: 32px; }
+  .essens-manifesto { margin-top: 68px; }
+  .essens-manifesto p:last-child { margin-top: 32px; }
+}
+
 /* Journal */
 .journal-page {
   width: 100%;
@@ -1771,15 +1842,6 @@ body.bag-open { overflow: hidden; }
   font-size: 9px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-}
-
-.journal-intro h1 {
-  margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: clamp(74px, 9vw, 122px);
-  font-weight: 300;
-  line-height: 0.85;
-  letter-spacing: -0.035em;
 }
 
 .journal-grid {
@@ -1813,7 +1875,14 @@ body.bag-open { overflow: hidden; }
   transition: transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+.journal-card:first-child .journal-card-image img {
+  object-position: center bottom;
+  transform: scale(1.2);
+  transform-origin: center bottom;
+}
+
 .journal-card:hover .journal-card-image img { transform: scale(1.018); }
+.journal-card:first-child:hover .journal-card-image img { transform: scale(1.22); }
 
 .journal-card-meta {
   display: grid;
@@ -1843,7 +1912,6 @@ body.bag-open { overflow: hidden; }
 @media (max-width: 768px) {
   .journal-page { padding: 26px 18px 60px; }
   .journal-intro { margin: 78px 0 80px; }
-  .journal-intro h1 { font-size: 72px; }
   .journal-grid { grid-template-columns: 1fr; gap: 58px; }
   .journal-card,
   .journal-card:nth-child(3) { grid-column: 1; }

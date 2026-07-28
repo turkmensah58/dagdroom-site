@@ -222,8 +222,8 @@ function renderMenPage() {
               <h2>Dø Skær<sup>™</sup></h2>
 
               <p>
-                Sharp performance.<br>
-                Technical movement.
+                Refined form.<br>
+                Natural movement.
               </p>
             </div>
 
@@ -397,7 +397,6 @@ function renderJournalPage() {
 
       <section class="journal-intro">
         <p>Notes from the North</p>
-        <h1>Journal</h1>
       </section>
 
       <section class="journal-grid" aria-label="Journal stories">
@@ -420,8 +419,36 @@ function renderJournalPage() {
   initializeSiteHeader();
 }
 
+function renderEssensPage() {
+  document.querySelector("#app").innerHTML = `
+    <main class="essens-page">
+      ${renderSiteHeader("")}
+
+      <article class="essens-content">
+        <div class="essens-copy">
+          <p>Dagdroøm is shaped by the quiet language of the North — soft light, honest materials and forms that leave room to breathe.</p>
+          <p>The Dagdroøm colour palette is drawn from the North: Arctic Mist, deep waters, pale winter light, muted Nordic landscapes and the subtle warmth of Nordic Sunset.</p>
+          <p>Dagdroøm believes clothing should feel considered, never complicated. Every piece reflects a balance of clarity and character through clean silhouettes, tactile fabrics and subtle details that reveal themselves slowly.</p>
+          <p>The world of Dagdroøm moves between softness and structure. Between stillness and motion. Between the feminine expression of <a class="essens-women-link" href="/women">Dagdroøm</a> and the precise, functional language of <a class="essens-men-link" href="/men">DΛGDROØM</a>.</p>
+        </div>
+
+        <div class="essens-manifesto" aria-label="Dagdroøm manifesto">
+          <p>Less noise.</p>
+          <p>More feeling.</p>
+          <p><strong>Calm. Clean. Nordic.</strong></p>
+        </div>
+      </article>
+
+      ${renderFooter()}
+    </main>
+  `;
+
+  initializeSiteHeader();
+}
+
 function renderSiteHeader(activeSection = "") {
   const isLandingHeader = activeSection === "landing";
+  const isCollectionHeader = activeSection === "women" || activeSection === "men";
   const womenLink = `
     <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>
       <span class="site-nav-name">Dagdroøm</span>
@@ -440,20 +467,20 @@ function renderSiteHeader(activeSection = "") {
   return `
     <header class="site-header${isLandingHeader ? " site-header--landing" : ""}">
       <nav class="site-navigation" aria-label="Main navigation">
-        ${isLandingHeader ? "" : `<a href="/" class="site-back-link" aria-label="Back to main menu">
+        ${!isLandingHeader ? `<a href="/" class="site-back-link" aria-label="Back to main menu">
           <svg viewBox="0 0 34 12" aria-hidden="true">
             <path d="M6 1L1 6L6 11M1 6H33" />
           </svg>
-        </a>`}
+        </a>` : ""}
 
-        ${isLandingHeader ? "" : `<div class="site-nav-group site-nav-group--left">
+        ${isCollectionHeader ? `<div class="site-nav-group site-nav-group--left">
           ${activeWorldLink}
-        </div>`}
+        </div>` : ""}
 
         ${isLandingHeader ? '<a href="/" class="site-landing-wordmark" aria-label="Dagdroøm home">Dagdroøm</a>' : ""}
 
         <div class="site-nav-group site-nav-group--right">
-          ${isLandingHeader ? "" : alternateWorldLink}
+          ${isCollectionHeader ? alternateWorldLink : ""}
           <a href="/search" class="site-utility-link site-search-trigger">
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
             <span>Search</span>
@@ -494,10 +521,10 @@ function renderSiteHeader(activeSection = "") {
       </nav>
 
       <div class="site-mobile-menu" id="site-mobile-menu" hidden>
-        ${isLandingHeader ? "" : `
+        ${isCollectionHeader ? `
           <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>Dagdroøm <small>Women</small></a>
           <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>DΛGDROØM <small>Men</small></a>
-        `}
+        ` : ""}
         <a href="/search" class="site-utility-link site-search-trigger">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
           <span>Search</span>
@@ -800,6 +827,11 @@ const stopVideo = () => {
 
   if (normalizedPath === "/journal") {
     renderJournalPage();
+    return;
+  }
+
+  if (normalizedPath === "/essens") {
+    renderEssensPage();
     return;
   }
 

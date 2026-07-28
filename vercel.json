@@ -15,6 +15,10 @@
     {
       "source": "/journal",
       "destination": "/index.html"
+    },
+    {
+      "source": "/essens",
+      "destination": "/index.html"
     }
   ]
 }
