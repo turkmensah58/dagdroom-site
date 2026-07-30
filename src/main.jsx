@@ -1,4 +1,10 @@
 import "./style.css";
+import {
+  currentLanguage,
+  initializeI18n,
+  languageButton,
+  localizedRoutePath
+} from "./i18n.js";
 const FLYT_INTRO_URL =
   "https://bfet2tuqbyitomxi.public.blob.vercel-storage.com/sonnnnn.mp4";
 
@@ -34,8 +40,7 @@ enter: "Keşfet",
   },
 };
 
-const currentLanguage = "en";
-const text = translations[currentLanguage];
+const text = translations[currentLanguage] || translations.en;
 
 const collectionCatalog = [
   {
@@ -654,13 +659,13 @@ function renderSiteHeader(activeSection = "") {
             <span>Bag (0)</span>
           </a>
           <div class="site-language-switcher" aria-label="Language selection">
-            <button type="button" class="is-active" aria-pressed="true">EN</button>
+            ${languageButton("en")}
             <span aria-hidden="true">/</span>
-            <button type="button" aria-pressed="false">DE</button>
+            ${languageButton("de")}
             <span aria-hidden="true">/</span>
-            <button type="button" aria-pressed="false">SV</button>
+            ${languageButton("sv")}
             <span aria-hidden="true">/</span>
-            <button type="button" aria-pressed="false">TR</button>
+            ${languageButton("tr")}
           </div>
         </div>
 
@@ -703,13 +708,13 @@ function renderSiteHeader(activeSection = "") {
         </a>
         <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
         <div class="site-language-switcher" aria-label="Language selection">
-          <button type="button" class="is-active" aria-pressed="true">EN</button>
+          ${languageButton("en")}
           <span aria-hidden="true">/</span>
-          <button type="button" aria-pressed="false">DE</button>
+          ${languageButton("de")}
           <span aria-hidden="true">/</span>
-          <button type="button" aria-pressed="false">SV</button>
+          ${languageButton("sv")}
           <span aria-hidden="true">/</span>
-          <button type="button" aria-pressed="false">TR</button>
+          ${languageButton("tr")}
         </div>
       </div>
 
@@ -756,6 +761,7 @@ function initializeSiteHeader() {
   const searchInput = searchPanel?.querySelector("input");
   const searchResults = searchPanel?.querySelector(".site-search-results");
   const bagPanel = header?.querySelector(".site-bag-panel");
+  initializeI18n(document);
   if (!header || !toggle || !menu) return;
 
   const collections = [
@@ -982,11 +988,10 @@ function initializeWomenExperience() {
   });
 }
   function renderCurrentRoute() {
-  const normalizedPath =
-    window.location.pathname.replace(/\/+$/, "") || "/";
+  const normalizedPath = localizedRoutePath;
 
   if (/^\/world\/[^/]+$/.test(normalizedPath)) {
-    window.location.replace(`${normalizedPath}/index.html`);
+    window.location.replace(`${normalizedPath}/index.html?lang=${currentLanguage}`);
     return;
   }
 
