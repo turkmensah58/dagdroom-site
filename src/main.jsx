@@ -37,6 +37,66 @@ enter: "Keşfet",
 const currentLanguage = "en";
 const text = translations[currentLanguage];
 
+const collectionCatalog = [
+  {
+    slug: "slor",
+    world: "women",
+    name: "Dø Slør™",
+    statement: "Soft silhouettes. Feminine essentials.",
+    description: "An exploration of lightness, quiet volume and pieces designed to move naturally through the day.",
+    image: "/slor-arctic-fog.png",
+    tone: "arctic"
+  },
+  {
+    slug: "skygge",
+    world: "women",
+    name: "Dø Skygge™",
+    statement: "Quiet layers. Nordic tailoring.",
+    description: "Soft structure and considered layering, shaped through muted tones and a calm, feminine precision.",
+    image: "/skygge-soft-tone.png",
+    tone: "shadow"
+  },
+  {
+    slug: "flyt",
+    world: "women",
+    name: "Dø Flyt™",
+    statement: "Technical movement. Everyday comfort.",
+    description: "A fluid wardrobe balancing ease, performance and the warmth of Nordic Sunset.",
+    image: "/flyt-nordic-sunset.png",
+    tone: "sunset"
+  },
+  {
+    slug: "skaer",
+    world: "men",
+    name: "Dø Skær™",
+    statement: "Refined form. Natural movement.",
+    description: "Precise everyday forms created for movement, restraint and a quietly assured masculine silhouette.",
+    image: "/menu-son.png",
+    tone: "charcoal"
+  },
+  {
+    slug: "linje",
+    world: "men",
+    name: "Dø Linje™",
+    statement: "Timeless tailoring. Essential elegance.",
+    description: "A study in proportion and line, where tailored clarity meets the ease of daily wear.",
+    image: "/menu-son.png",
+    tone: "stone"
+  },
+  {
+    slug: "stal",
+    world: "men",
+    name: "Dø Stål™",
+    statement: "Built for everyday. Ironclad masculinity.",
+    description: "Functional foundations shaped through durability, clean construction and understated strength.",
+    image: "/menu-son.png",
+    tone: "steel"
+  }
+];
+
+// Add real product records here when imagery, price and stock data are ready.
+const productCatalog = [];
+
 function renderHomePage() {
   document.querySelector("#app").innerHTML = `
     <main class="site">
@@ -124,7 +184,7 @@ function renderWomenPage() {
               <p>Soft silhouettes.<br />Feminine essentials.</p>
             </div>
 
-            <a href="/women/slor" class="women-enter-link">
+            <a href="/collections/slor" class="women-enter-link">
               <span>Enter Collection</span>
               <span class="women-enter-arrow" aria-hidden="true">⟶</span>
             </a>
@@ -149,7 +209,7 @@ function renderWomenPage() {
               <p>Quiet layers.<br />Nordic tailoring.</p>
             </div>
 
-            <a href="/women/skygge" class="women-enter-link">
+            <a href="/collections/skygge" class="women-enter-link">
               <span>Enter Collection</span>
               <span class="women-enter-arrow" aria-hidden="true">⟶</span>
             </a>
@@ -178,10 +238,10 @@ function renderWomenPage() {
               <p>Technical movement.<br />Everyday comfort.</p>
             </div>
 
-            <button class="women-enter-link women-enter-button" type="button">
+            <a href="/collections/flyt" class="women-enter-link women-enter-button">
               <span>Enter Collection</span>
               <span class="women-enter-arrow" aria-hidden="true">⟶</span>
-            </button>
+            </a>
           </div>
 
           <div class="women-collection-media">
@@ -227,10 +287,10 @@ function renderMenPage() {
               </p>
             </div>
 
-            <button class="men-enter-link" type="button">
+            <a href="/collections/skaer" class="men-enter-link">
               <span>Enter Collection</span>
               <span class="men-enter-arrow" aria-hidden="true">⟶</span>
-            </button>
+            </a>
           </div>
 
           <div class="men-collection-media">
@@ -258,10 +318,10 @@ function renderMenPage() {
               </p>
             </div>
 
-            <button class="men-enter-link" type="button">
+            <a href="/collections/linje" class="men-enter-link">
               <span>Enter Collection</span>
               <span class="men-enter-arrow" aria-hidden="true">⟶</span>
-            </button>
+            </a>
           </div>
 
           <div class="men-collection-media">
@@ -289,10 +349,10 @@ function renderMenPage() {
               </p>
             </div>
 
-            <button class="men-enter-link" type="button">
+            <a href="/collections/stal" class="men-enter-link">
               <span>Enter Collection</span>
               <span class="men-enter-arrow" aria-hidden="true">⟶</span>
-            </button>
+            </a>
           </div>
 
           <div class="men-collection-media">
@@ -319,6 +379,100 @@ function scrollToCurrentCollection() {
   const target = document.getElementById(targetId);
   if (!target) return;
   requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
+}
+
+function renderCollectionPage(slug) {
+  const collection = collectionCatalog.find((item) => item.slug === slug);
+  if (!collection) {
+    renderHomePage();
+    return;
+  }
+
+  const products = productCatalog.filter((product) => product.collection === slug);
+  const previewSubject = encodeURIComponent(`${collection.name} — Private preview`);
+
+  document.title = `${collection.name} — Dagdroøm`;
+  document.querySelector("#app").innerHTML = `
+    <main class="catalog-page catalog-page--${collection.tone}">
+      ${renderSiteHeader(collection.world)}
+
+      <section class="catalog-hero">
+        <div class="catalog-hero-copy">
+          <p class="catalog-eyebrow">${collection.world === "women" ? "Dagdroøm Women" : "DΛGDROØM Men"}</p>
+          <h1>${collection.name}</h1>
+          <p class="catalog-statement">${collection.statement}</p>
+          <p class="catalog-description">${collection.description}</p>
+        </div>
+        <div class="catalog-hero-media">
+          <img src="${collection.image}" alt="${collection.name} collection atmosphere" />
+        </div>
+      </section>
+
+      <section class="catalog-products" aria-labelledby="catalog-products-title">
+        <div class="catalog-products-heading">
+          <p id="catalog-products-title">The first edit</p>
+          <span>${products.length ? `${products.length} pieces` : "In development"}</span>
+        </div>
+        ${products.length ? `
+          <div class="product-grid">
+            ${products.map((product) => `
+              <a href="/products/${product.slug}" class="product-card">
+                <img src="${product.images[0]}" alt="${product.name}" loading="lazy" />
+                <div><h2>${product.name}</h2><span>${product.price}</span></div>
+              </a>
+            `).join("")}
+          </div>
+        ` : `
+          <div class="catalog-empty">
+            <p class="catalog-empty-index">01 / 01</p>
+            <h2>Arriving quietly.</h2>
+            <p>The first pieces are being refined. No placeholder products, invented prices or artificial stock — only the final collection will be presented here.</p>
+            <a href="mailto:hello@dagdroom.de?subject=${previewSubject}">Request private preview <span aria-hidden="true">⟶</span></a>
+          </div>
+        `}
+      </section>
+
+      ${renderFooter()}
+    </main>
+  `;
+
+  initializeSiteHeader();
+}
+
+function renderProductPage(slug) {
+  const product = productCatalog.find((item) => item.slug === slug);
+  if (!product) {
+    renderHomePage();
+    return;
+  }
+
+  document.title = `${product.name} — Dagdroøm`;
+  document.querySelector("#app").innerHTML = `
+    <main class="product-page">
+      ${renderSiteHeader(product.world)}
+      <section class="product-detail">
+        <div class="product-gallery">
+          ${product.images.map((image, index) => `<img src="${image}" alt="${product.name}${index ? ` detail ${index + 1}` : ""}" />`).join("")}
+        </div>
+        <div class="product-information">
+          <p>${product.collectionName}</p>
+          <h1>${product.name}</h1>
+          <span class="product-price">${product.price}</span>
+          <p>${product.description}</p>
+          <dl>
+            <div><dt>Sizes</dt><dd>${product.sizes.join(" / ")}</dd></div>
+            <div><dt>Material</dt><dd>${product.material}</dd></div>
+            <div><dt>Care</dt><dd>${product.care}</dd></div>
+            <div><dt>Fit</dt><dd>${product.fit}</dd></div>
+            <div><dt>Delivery</dt><dd>${product.delivery}</dd></div>
+          </dl>
+          <button type="button" ${product.inStock ? "" : "disabled"}>${product.inStock ? "Add to bag" : "Coming soon"}</button>
+        </div>
+      </section>
+    </main>
+  `;
+
+  initializeSiteHeader();
 }
 
 function renderContactPage() {
@@ -386,9 +540,11 @@ function initializeContactForm() {
 
 function renderJournalPage() {
   const stories = [
-    { number: "N° 001", city: "Copenhagen", coordinate: "55°40′N", image: "/copenhagen-55n.png.png", href: "/world/copenhagen/" },
+    { number: "N° 001", city: "Reykjavík", coordinate: "64°09′N", image: "/reykjavik-64n.png", href: "/world/reykjavik/" },
     { number: "N° 002", city: "Stockholm", coordinate: "59°20′N", image: "/stockholm-59n.png", href: "/world/stockholm/" },
-    { number: "N° 003", city: "Oslo", coordinate: "59°55′N", image: "/oslo.png", href: "/world/oslo/" }
+    { number: "N° 003", city: "Copenhagen", coordinate: "55°40′N", image: "/copenhagen-55n.png.png", href: "/world/copenhagen/" },
+    { number: "N° 004", city: "Oslo", coordinate: "59°55′N", image: "/oslo-journal.jpg", href: "/world/oslo/" },
+    { number: "N° 005", city: "Helsinki", coordinate: "60°10′N", image: "/helsinki-60n.png", href: "/world/helsinki/" }
   ];
 
   document.querySelector("#app").innerHTML = `
@@ -603,12 +759,12 @@ function initializeSiteHeader() {
   if (!header || !toggle || !menu) return;
 
   const collections = [
-    { name: "Dø Slør", world: "Women", href: "/women#slor" },
-    { name: "Dø Skygge", world: "Women", href: "/women#skygge" },
-    { name: "Dø Flyt", world: "Women", href: "/women#flyt" },
-    { name: "Dø Skær", world: "Men", href: "/men#skaer" },
-    { name: "Dø Linje", world: "Men", href: "/men#linje" },
-    { name: "Dø Stål", world: "Men", href: "/men#stal" }
+    { name: "Dø Slør", world: "Women", href: "/collections/slor" },
+    { name: "Dø Skygge", world: "Women", href: "/collections/skygge" },
+    { name: "Dø Flyt", world: "Women", href: "/collections/flyt" },
+    { name: "Dø Skær", world: "Men", href: "/collections/skaer" },
+    { name: "Dø Linje", world: "Men", href: "/collections/linje" },
+    { name: "Dø Stål", world: "Men", href: "/collections/stal" }
   ];
 
   const setMenuState = (open) => {
@@ -828,6 +984,21 @@ function initializeWomenExperience() {
   function renderCurrentRoute() {
   const normalizedPath =
     window.location.pathname.replace(/\/+$/, "") || "/";
+
+  if (/^\/world\/[^/]+$/.test(normalizedPath)) {
+    window.location.replace(`${normalizedPath}/index.html`);
+    return;
+  }
+
+  if (normalizedPath.startsWith("/collections/")) {
+    renderCollectionPage(normalizedPath.split("/").pop());
+    return;
+  }
+
+  if (normalizedPath.startsWith("/products/")) {
+    renderProductPage(normalizedPath.split("/").pop());
+    return;
+  }
 
   if (normalizedPath === "/women") {
     renderWomenPage();
