@@ -1,0 +1,19 @@
+{
+  "rewrites": [
+    { "source": "/en", "destination": "/index.html" },
+    { "source": "/en/:path*", "destination": "/index.html" },
+    { "source": "/de", "destination": "/index.html" },
+    { "source": "/de/:path*", "destination": "/index.html" },
+    { "source": "/sv", "destination": "/index.html" },
+    { "source": "/sv/:path*", "destination": "/index.html" },
+    { "source": "/tr", "destination": "/index.html" },
+    { "source": "/tr/:path*", "destination": "/index.html" },
+    { "source": "/women", "destination": "/index.html" },
+    { "source": "/men", "destination": "/index.html" },
+    { "source": "/contact", "destination": "/index.html" },
+    { "source": "/journal", "destination": "/index.html" },
+    { "source": "/essens", "destination": "/index.html" },
+    { "source": "/collections/:path*", "destination": "/index.html" },
+    { "source": "/products/:path*", "destination": "/index.html" }
+  ]
+}
