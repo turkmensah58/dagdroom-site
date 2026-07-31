@@ -10,8 +10,10 @@ if (!new Set(["open", "closed"]).has(mode)) {
 }
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const source = path.join(projectRoot, "config", `vercel.${mode}.json`);
-const destination = path.join(projectRoot, "vercel.json");
+const configDir = path.join(projectRoot, "config");
 
-await copyFile(source, destination);
+await Promise.all([
+  copyFile(path.join(configDir, `vercel.${mode}.json`), path.join(projectRoot, "vercel.json")),
+  copyFile(path.join(configDir, `index.${mode}.html`), path.join(projectRoot, "index.html"))
+]);
 console.log(mode === "open" ? "Site mode: OPEN" : "Site mode: CLOSED (A page)");
