@@ -256,6 +256,23 @@ Object.assign(uiTranslations.tr, {
   "Client care": "Müşteri hizmetleri", "Speak with Dagdroøm about products, care, sizing and repairs.": "Ürünler, bakım, bedenler ve onarımlar hakkında Dagdroøm ile görüş."
 });
 
+Object.assign(uiTranslations.tr, {
+  "New": "Yeni", "Product images": "Ürün görselleri", "Image": "Görsel",
+  "No products match these filters.": "Bu filtrelere uygun ürün bulunamadı.",
+  "Customer Care": "Müşteri Hizmetleri", "Send an enquiry": "Mesaj gönder", "Follow": "Takip et",
+  "Total": "Toplam", "Taxes and delivery are calculated at checkout.": "Vergiler ve teslimat ödeme adımında hesaplanır."
+});
+Object.assign(uiTranslations.de, {
+  "New": "Neu", "Product images": "Produktbilder", "Image": "Bild",
+  "No products match these filters.": "Keine Produkte entsprechen diesen Filtern.",
+  "Total": "Gesamt", "Taxes and delivery are calculated at checkout.": "Steuern und Versand werden an der Kasse berechnet."
+});
+Object.assign(uiTranslations.sv, {
+  "New": "Ny", "Product images": "Produktbilder", "Image": "Bild",
+  "No products match these filters.": "Inga produkter matchar dessa filter.",
+  "Total": "Totalt", "Taxes and delivery are calculated at checkout.": "Skatter och leverans beräknas i kassan."
+});
+
 export function translate(key, replacements = {}) {
   let value = currentLanguage === "en" ? key : (uiTranslations[currentLanguage]?.[key] || key);
   Object.entries(replacements).forEach(([name, replacement]) => { value = value.replace(`{${name}}`, replacement); });

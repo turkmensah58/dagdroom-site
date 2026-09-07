@@ -1,4 +1,5 @@
 import "./style.css";
+import "./mobile.css";
 import {
   currentLanguage,
   initializeI18n,
@@ -125,7 +126,7 @@ const productCatalog = [
     delivery: "Sold out", deliveryTr: "Tükendi", inStock: false, status: "sold-out", isDemo: false
   },
   {
-    slug: "flyt-motion-top", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
+    slug: "flyt-motion-top", collection: "flyt", collectionName: "Dø Flyt™", world: "women", colors: [{ name: "Burgundy", value: "#702c38" }],
     name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-front.png", "/burgundy-sculpted-tracksuit-back.png", "/burgundy-sculpted-tracksuit-profile.png"],
     description: "A technical essential balancing comfort, movement and a clean Nordic line.",
     sizes: ["XS", "S", "M", "L", "XL"], material: "Demo material", care: "Demo care", fit: "Close", delivery: "Demo only", inStock: true
@@ -252,7 +253,7 @@ function loadBag() {
 }
 
 function saveBag() {
-  localStorage.setItem(BAG_STORAGE_KEY, JSON.stringify(demoBagItems));
+  try { localStorage.setItem(BAG_STORAGE_KEY, JSON.stringify(demoBagItems)); } catch {}
 }
 
 function formatMoney(cents, currency = activeCurrency) {
@@ -436,6 +437,10 @@ ${renderSiteHeader("landing")}
             <a href="/men#stal" class="menu-category-link menu-category-link--stal" aria-label="Open Dø Stål collection"></a>
           </div>
 
+          <nav class="mobile-world-links" aria-label="${translate("Choose your world")}">
+            <a href="/women">${translate("Women")} <span aria-hidden="true">→</span></a>
+            <a href="/men">${translate("Men")} <span aria-hidden="true">→</span></a>
+          </nav>
             </section>
 
       ${renderFooter(true)}
@@ -474,6 +479,7 @@ function renderWomenPage() {
             <video
               class="women-hover-video"
               src="/slor-card.mp4"
+              poster="/slor-arctic-fog.png"
               muted
               loop
               playsinline
@@ -499,6 +505,7 @@ function renderWomenPage() {
             <video
               class="women-hover-video"
               src="/skygge-card.mp4"
+              poster="/skygge-soft-tone.png"
               muted
               loop
               playsinline
@@ -531,6 +538,7 @@ function renderWomenPage() {
             <video
               class="women-hover-video category-hover-video"
               src="${FLYT_INTRO_URL}"
+              poster="/flyt-nordic-sunset.png"
               muted
               loop
               playsinline
@@ -593,7 +601,7 @@ function renderMenPage() {
 
           <div class="men-collection-media">
             <img
-              src="/men-skaer.jpg"
+              src="/second-son.png"
               alt="Dø Skær collection"
               class="men-collection-image"
             >
@@ -628,6 +636,7 @@ function renderMenPage() {
           <div class="men-collection-media">
             <video
               src="/linje-card.mp4"
+              poster="/choose-world.png"
               aria-label="Dø Linje collection"
               class="men-collection-image"
               autoplay
@@ -666,7 +675,7 @@ function renderMenPage() {
 
           <div class="men-collection-media">
             <img
-              src="/men-stal.jpg"
+              src="/menu-son.png"
               alt="Dø Stål collection"
               class="men-collection-image"
             >
@@ -808,6 +817,7 @@ function renderCollectionPage(slug) {
               </article>
             `).join("")}
           </div>
+          <p class="catalog-no-results" role="status" hidden>${translate("No products match these filters.")}</p>
         ` : `
           <div class="catalog-empty">
             <p class="catalog-empty-index">01 / 01</p>
@@ -848,6 +858,8 @@ function initializeCatalogProducts(displayProducts) {
       if (!card.hidden) visibleCount += 1;
     });
     if (productCount) productCount.textContent = `${visibleCount} ${translate("pieces · Demo selection")}`;
+    const emptyMessage = document.querySelector(".catalog-no-results");
+    if (emptyMessage) emptyMessage.hidden = visibleCount > 0;
   };
 
   filterButton?.addEventListener("click", () => {
@@ -889,7 +901,7 @@ function initializeCatalogProducts(displayProducts) {
     });
   });
 
-  document.querySelectorAll(".product-card").forEach((card) => {
+  document.querySelectorAll(".product-card, .product-purchase").forEach((card) => {
     const sizeButtons = card.querySelectorAll(".product-card-sizes button");
     const colorButtons = card.querySelectorAll(".product-card-colors button");
     const addButton = card.querySelector(".product-card-add");
@@ -968,7 +980,7 @@ function syncDemoBagUI() {
         <div><h3>${item.name}</h3><p>${item.color} · ${item.size}</p><strong>${formatMoney(productPrice(item.slug))}</strong></div>
         <button type="button" data-remove-bag-item="${item.id}" aria-label="Remove ${item.name}">×</button>
       </article>`).join("")}</div>
-      <div class="site-bag-summary"><div><span>Total</span><strong>${pricesReady ? formatMoney(total) : "—"}</strong></div><small>${pricesReady ? "Taxes and delivery are calculated at checkout." : "TL fiyatları tanımlandıktan sonra ödeme açılacak."}</small></div>`;
+      <div class="site-bag-summary"><div><span>${translate("Total")}</span><strong>${pricesReady ? formatMoney(total) : "—"}</strong></div><small>${pricesReady ? translate("Taxes and delivery are calculated at checkout.") : "TL fiyatları tanımlandıktan sonra ödeme açılacak."}</small></div>`;
   });
   document.querySelectorAll("[data-remove-bag-item]").forEach((button) => button.addEventListener("click", () => {
     demoBagItems = demoBagItems.filter((item) => item.id !== button.dataset.removeBagItem);
@@ -1014,18 +1026,22 @@ function renderProductPage(slug) {
     return;
   }
   const labels = productPageLabels[currentLanguage] || productPageLabels.en;
+  const colors = product.colors || collectionDemoColors[product.collection]?.slice(0, 1) || [];
 
   document.title = `${product.name} — Dagdroøm`;
   document.querySelector("#app").innerHTML = `
     <main class="product-page">
       ${renderSiteHeader(product.world)}
       <section class="product-detail">
-        <div class="product-gallery">
+        <div class="product-gallery-wrap">
+        <div class="product-gallery" id="product-gallery" tabindex="0" aria-label="${product.name}">
           ${product.images.map((image, index) => `
             <figure class="product-gallery-zoom" data-model-image="${image.includes("-model-")}">
-              <img src="${image}" alt="${product.name}${index ? ` detail ${index + 1}` : ""}" />
+              <img src="${image}" alt="${product.name}${index ? ` detail ${index + 1}` : ""}" loading="${index ? "lazy" : "eager"}" decoding="async" />
             </figure>
           `).join("")}
+        </div>
+        ${product.images.length > 1 ? `<nav class="product-gallery-controls" aria-label="${translate("Product images")}">${product.images.map((_, index) => `<button type="button" data-gallery-index="${index}" aria-label="${translate("Image")} ${index + 1}" aria-controls="product-gallery" aria-current="${index === 0 ? "true" : "false"}">${index + 1}</button>`).join("")}</nav>` : ""}
         </div>
         <div class="product-information">
           <h1>${product.name}</h1>
@@ -1038,14 +1054,41 @@ function renderProductPage(slug) {
             <div><dt>${labels.fit}</dt><dd>${localizedProductField(product, "fit")}</dd></div>
             <div><dt>${labels.delivery}</dt><dd>${localizedProductField(product, "delivery")}</dd></div>
           </dl>
-          <button type="button" ${product.inStock ? "" : "disabled"}>${product.inStock ? labels.add : product.status === "sold-out" ? labels.soldOut : labels.comingSoon}</button>
+          ${product.inStock ? `<div class="product-purchase" data-product-slug="${product.slug}">
+            <fieldset class="product-card-colors"><legend>${translate("Select color")}</legend><div>${colors.map((color) => `<button type="button" data-color="${color.name}" aria-label="${color.name}" aria-pressed="false"><span style="--swatch: ${color.value}"></span></button>`).join("")}</div></fieldset>
+            <fieldset class="product-card-sizes"><legend>${translate("Select size")}</legend><div>${product.sizes.map((size) => `<button type="button" data-size="${size}" aria-pressed="false">${size}</button>`).join("")}</div></fieldset>
+            <button type="button" class="product-card-add" aria-live="polite" disabled>${labels.add}</button>
+          </div>` : `<button type="button" disabled>${product.status === "sold-out" ? labels.soldOut : labels.comingSoon}</button>`}
         </div>
       </section>
+      ${renderFooter()}
     </main>
   `;
 
   initializeSiteHeader();
+  initializeCatalogProducts([product]);
+  initializeMobileGallery();
   initializeProductGalleryZoom();
+}
+
+function initializeMobileGallery() {
+  const gallery = document.querySelector(".product-gallery");
+  const buttons = [...document.querySelectorAll("[data-gallery-index]")];
+  if (!gallery || !buttons.length) return;
+  const frames = [...gallery.children];
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const goTo = (index) => gallery.scrollTo({ left: frames[index].offsetLeft - frames[0].offsetLeft, behavior: reducedMotion.matches ? "instant" : "smooth" });
+  buttons.forEach((button, index) => button.addEventListener("click", () => goTo(index)));
+  const currentIndex = () => frames.reduce((best, frame, index) => Math.abs(frame.offsetLeft - frames[0].offsetLeft - gallery.scrollLeft) < Math.abs(frames[best].offsetLeft - frames[0].offsetLeft - gallery.scrollLeft) ? index : best, 0);
+  gallery.addEventListener("scroll", () => {
+    const active = currentIndex();
+    buttons.forEach((button, index) => button.setAttribute("aria-current", String(index === active)));
+  }, { passive: true });
+  gallery.addEventListener("keydown", (event) => {
+    if (!window.matchMedia("(max-width: 820px)").matches || !["ArrowLeft", "ArrowRight"].includes(event.key)) return;
+    event.preventDefault();
+    goTo(Math.max(0, Math.min(frames.length - 1, currentIndex() + (event.key === "ArrowRight" ? 1 : -1))));
+  });
 }
 
 function initializeProductGalleryZoom() {
@@ -1236,6 +1279,7 @@ function renderAccountPage() {
           </form>
         </div>
       </section>
+      ${renderFooter()}
     </main>`;
   initializeSiteHeader();
   initializeAccountPage();
@@ -1338,7 +1382,7 @@ function readCookieConsent() {
 
 function saveCookieConsent(optional) {
   const consent = { necessary: true, analytics: optional, marketing: optional, savedAt: Date.now(), version: 1 };
-  localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consent));
+  try { localStorage.setItem(COOKIE_CONSENT_KEY, JSON.stringify(consent)); } catch {}
   window.dispatchEvent(new CustomEvent("dagdroom:consent", { detail: consent }));
   document.querySelector(".cookie-consent")?.remove();
 }
@@ -1440,7 +1484,7 @@ function renderSiteHeader(activeSection = "") {
       </nav>
 
       <div class="site-mobile-menu" id="site-mobile-menu" hidden>
-        ${isCollectionHeader ? `
+        ${`
           <a href="/women" ${activeSection === "women" ? 'aria-current="page"' : ""}>
             <span class="site-nav-name">Dagdroøm</span>
             <small>Women</small>
@@ -1449,7 +1493,7 @@ function renderSiteHeader(activeSection = "") {
             <span class="site-nav-name site-nav-name--men">DΛGDROØM</span>
             <small>Men</small>
           </a>
-        ` : ""}
+        `}
         <a href="/essens" class="site-mobile-editorial-link">Essens</a>
         <a href="/journal" class="site-mobile-editorial-link">Journal</a>
         <a href="/search" class="site-utility-link site-search-trigger">
@@ -1553,6 +1597,10 @@ function initializeSiteHeader() {
     document.body.classList.toggle("nav-open", open);
   };
 
+  let lastOverlayTrigger = null;
+  const rememberTrigger = () => { lastOverlayTrigger = document.activeElement?.closest(".site-mobile-menu") ? toggle : document.activeElement; };
+  const restoreTrigger = () => { if (lastOverlayTrigger?.isConnected) lastOverlayTrigger.focus({ preventScroll: true }); };
+
   const renderSearchResults = (query = "") => {
     if (!searchResults) return;
     const normalizedQuery = query.trim().toLocaleLowerCase("en");
@@ -1565,13 +1613,14 @@ function initializeSiteHeader() {
     );
     searchResults.innerHTML = matches.length
       ? matches.map(({ name, world, href }) => `
-          <a href="${href}"><span>${name}</span><small>${world}</small></a>
+          <a href="/${currentLanguage}${href}"><span>${name}</span><small>${translate(world)}</small></a>
         `).join("")
       : `<p class="site-search-empty">${translate("No collection found.")}</p>`;
   };
 
   const setSearchState = (open) => {
     if (!searchPanel) return;
+    const wasOpen = !searchPanel.hidden;
     searchPanel.hidden = !open;
     header.classList.toggle("is-search-open", open);
     document.body.classList.toggle("search-open", open);
@@ -1581,11 +1630,13 @@ function initializeSiteHeader() {
     } else {
       if (searchInput) searchInput.value = "";
       renderSearchResults();
+      if (wasOpen) restoreTrigger();
     }
   };
 
   const setBagState = (open) => {
     if (!bagPanel) return;
+    const wasOpen = !bagPanel.hidden;
     bagPanel.hidden = !open;
     header.classList.toggle("is-bag-open", open);
     document.body.classList.toggle("bag-open", open);
@@ -1593,7 +1644,7 @@ function initializeSiteHeader() {
       setMenuState(false);
       setSearchState(false);
       requestAnimationFrame(() => bagPanel.querySelector(".site-bag-close")?.focus());
-    }
+    } else if (wasOpen) restoreTrigger();
   };
 
   toggle.addEventListener("click", () => {
@@ -1601,16 +1652,26 @@ function initializeSiteHeader() {
   });
 
   document.addEventListener("keydown", (event) => {
+    const activePanel = !bagPanel?.hidden ? bagPanel : !searchPanel?.hidden ? searchPanel : !menu.hidden ? header : null;
+    if (event.key === "Tab" && activePanel) {
+      const controls = [...activePanel.querySelectorAll('a[href], button:not(:disabled), input, [tabindex="0"]')].filter((item) => item.getClientRects().length && getComputedStyle(item).visibility !== "hidden");
+      const first = controls[0], last = controls.at(-1);
+      if (event.shiftKey && (document.activeElement === first || !activePanel.contains(document.activeElement))) { event.preventDefault(); last?.focus(); }
+      else if (!event.shiftKey && (document.activeElement === last || !activePanel.contains(document.activeElement))) { event.preventDefault(); first?.focus(); }
+    }
     if (event.key === "Escape") {
+      const menuWasOpen = !menu.hidden;
       setMenuState(false);
       setSearchState(false);
       setBagState(false);
+      if (menuWasOpen) toggle.focus({ preventScroll: true });
     }
   });
 
   header.querySelectorAll(".site-search-trigger").forEach((trigger) => {
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
+      rememberTrigger();
       setSearchState(true);
     });
   });
@@ -1624,6 +1685,7 @@ function initializeSiteHeader() {
   header.querySelectorAll(".site-bag-trigger").forEach((trigger) => {
     trigger.addEventListener("click", (event) => {
       event.preventDefault();
+      rememberTrigger();
       setBagState(true);
     });
   });
@@ -1644,6 +1706,10 @@ function initializeSiteHeader() {
         button.setAttribute("aria-pressed", String(active));
       });
     });
+  });
+
+  window.matchMedia("(max-width: 1100px)").addEventListener("change", (event) => {
+    if (!event.matches) setMenuState(false);
   });
 }
 
@@ -1726,7 +1792,7 @@ function initializeHomeExperience() {
     scrollLocked = true;
 
     chooseWorld.scrollIntoView({
-      behavior: "smooth",
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
       block: "start",
     });
 
@@ -1736,6 +1802,9 @@ function initializeHomeExperience() {
   };
 
   hero.addEventListener("click", goToChooseWorld);
+  hero.addEventListener("keydown", (event) => {
+    if (event.target === hero && ["Enter", " "].includes(event.key)) { event.preventDefault(); goToChooseWorld(); }
+  });
 
   scrollButton.addEventListener("click", (event) => {
     event.stopPropagation();
