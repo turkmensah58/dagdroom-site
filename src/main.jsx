@@ -126,7 +126,7 @@ const productCatalog = [
   },
   {
     slug: "flyt-motion-top", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
-    name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/flyt-motion-top-model-third.png", "/flyt-motion-top-model-profile.png"],
+    name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-front.png", "/burgundy-sculpted-tracksuit-back.png", "/burgundy-sculpted-tracksuit-profile.png"],
     description: "A technical essential balancing comfort, movement and a clean Nordic line.",
     sizes: ["XS", "S", "M", "L", "XL"], material: "Demo material", care: "Demo care", fit: "Close", delivery: "Demo only", inStock: true
   },
