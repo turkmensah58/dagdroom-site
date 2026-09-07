@@ -22,8 +22,8 @@
     }
 
     body {
-      background: #111;
-      color: #f5f1eb;
+      background: #f7f5f1;
+      color: #151515;
       font-family: Arial, Helvetica, sans-serif;
     }
 
@@ -116,6 +116,95 @@
       opacity: 0.8;
     }
 
+    .journal-article {
+      padding: 150px 50px 170px;
+    }
+
+    .article-header,
+    .article-body {
+      width: min(100%, 780px);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .article-kicker {
+      margin: 0 0 32px;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .article-header h2 {
+      margin: 0 0 76px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(42px, 5vw, 72px);
+      font-weight: 400;
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .article-image {
+      width: min(100%, 1180px);
+      margin: 0 auto 96px;
+    }
+
+    .article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .article-body p {
+      margin: 0 0 34px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(19px, 1.7vw, 24px);
+      font-weight: 400;
+      line-height: 1.55;
+      letter-spacing: -0.018em;
+    }
+
+    .article-body p:last-child { margin-bottom: 0; }
+
+    .article-body strong { font-weight: 700; }
+
+    .article-refrain {
+      padding-left: 28px;
+      border-left: 1px solid rgba(21, 21, 21, 0.25);
+      line-height: 1.75 !important;
+    }
+
+    .article-author {
+      display: flex;
+      width: min(100%, 780px);
+      margin: 82px auto 0;
+      padding-top: 24px;
+      border-top: 1px solid rgba(21, 21, 21, 0.18);
+      align-items: center;
+      gap: 14px;
+    }
+
+    .article-author img {
+      display: block;
+      width: 46px;
+      height: 46px;
+      flex: 0 0 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 28%;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    .article-author p {
+      margin: 0;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 1.5;
+      letter-spacing: 0.055em;
+    }
+
     @media (max-width: 768px) {
       .copenhagen-page {
         min-height: 100svh;
@@ -152,6 +241,48 @@
       .journal-mark {
         display: none;
       }
+
+      .journal-article {
+        padding: 82px 18px max(104px, calc(84px + env(safe-area-inset-bottom)));
+        overflow: hidden;
+      }
+
+      .article-kicker {
+        margin-bottom: 26px;
+        font-size: 8px;
+        line-height: 1.5;
+      }
+
+      .article-header h2 {
+        margin-bottom: 54px;
+        font-size: clamp(38px, 11.5vw, 50px);
+        line-height: 1.02;
+      }
+
+      .article-image { margin: 0 auto 58px; }
+
+      .article-body p {
+        margin-bottom: 27px;
+        font-size: clamp(17px, 4.8vw, 19px);
+        line-height: 1.64;
+        overflow-wrap: break-word;
+      }
+
+      .article-refrain { padding-left: 18px; }
+
+      .article-author {
+        margin-top: 58px;
+        padding-top: 20px;
+        gap: 12px;
+      }
+
+      .article-author img {
+        width: 42px;
+        height: 42px;
+        flex-basis: 42px;
+      }
+
+      .article-author p { font-size: 9px; }
     }
   </style>
   <script src="/static-i18n.js" defer></script>
@@ -159,7 +290,7 @@
 
 <body>
   <main class="copenhagen-page">
-    <a class="back-link" href="/">
+    <a class="back-link" href="/journal" aria-label="Back to Journal">
       ← 
     </a>
 
@@ -172,5 +303,97 @@
       Journal — N° 003
     </div>
   </main>
+
+  <article class="journal-article">
+    <header class="article-header">
+      <p class="article-kicker">Journal — N° 003 / Copenhagen</p>
+      <h2>What Stays</h2>
+    </header>
+
+    <figure class="article-image">
+      <img src="/copenhagen-clothes-we-keep.png" alt="A rainy Copenhagen street beside the canal, titled The Clothes We Keep by Astrid Vahl" />
+    </figure>
+
+    <div class="article-body">
+      <p>I love watching people in Copenhagen in the mornings. Especially when the air is a little cold.</p>
+
+      <p>People weaving between bicycles, coffees picked up in a hurry, scarves constantly being adjusted against the wind… At first glance, there is a strong sense of fashion in the city. But if you watch a little longer, you begin to notice something else: No one wants to look like they tried too hard.</p>
+
+      <p>Perhaps that is the most beautiful thing about Copenhagen style.</p>
+
+      <p>Dressing well here does not mean wearing more. Sometimes, a black coat worn for years, a well-cut pair of trousers, and leather shoes that have seen the rain countless times are enough.</p>
+
+      <p>Because in some cities, clothes are worn to be seen. In Copenhagen, they are often worn <strong>to be lived in.</strong></p>
+
+      <p>And to me, that is where true luxury begins.</p>
+
+      <p>The fashion industry is constantly telling us about what is new.</p>
+
+      <p class="article-refrain">New season.<br />New colour.<br />New silhouette.<br />New desire.</p>
+
+      <p>The moment we buy one piece, we are expected to turn our attention to the next.</p>
+
+      <p>And yet, almost none of the most valuable pieces in my wardrobe are new.</p>
+
+      <p>I have a dark coat that I have worn for eight years. Part of its lining was replaced a few years ago. There is a small worn spot along the edge of one pocket that probably no one notices but me.</p>
+
+      <p>If I saw it in a store today, would I buy it?</p>
+
+      <p>I don’t know.</p>
+
+      <p>But I would be sad if I lost it.</p>
+
+      <p>There is a great difference between the two.</p>
+
+      <p><strong>Wanting something and becoming attached to it are not the same thing.</strong></p>
+
+      <p>Perhaps this is one of the greatest problems with modern fashion: it has become extraordinarily good at creating desire, yet increasingly poor at creating objects we can form a relationship with.</p>
+
+      <p>One of the things I love about the streets of Copenhagen is that people’s clothes sometimes look genuinely worn.</p>
+
+      <p>The slight crease along the sleeve of a wool coat.<br />The leather of a bag softened by time.<br />A sweater that falls differently on the body after being worn again and again.</p>
+
+      <p>These are not imperfections.</p>
+
+      <p>They are traces left by time.</p>
+
+      <p>And a well-designed garment should be able to gain character with age rather than lose its value.</p>
+
+      <p>That is why, in recent years, I have started asking myself one very simple question before buying a piece of clothing:</p>
+
+      <p><strong>Will I still want to wear this three years from now?</strong></p>
+
+      <p>I don’t say five years.<br />Or ten.<br />Just three.</p>
+
+      <p>Because even three years is a remarkably long time at the speed of the fashion industry.</p>
+
+      <p>If the answer is yes, I touch the fabric. I look at the stitching. I try to understand whether its silhouette belongs only to today, or whether it will still feel relevant a few years from now.</p>
+
+      <p>Most of the time, I don’t buy it.</p>
+
+      <p>But when I do, I want it to remain part of my life.</p>
+
+      <p>Perhaps the luxury of the future will not be about owning more expensive things.</p>
+
+      <p>Perhaps it will be about owning fewer things and wanting them for longer.</p>
+
+      <p>I thought about this on a rainy afternoon in Copenhagen, while watching a woman unlock her bicycle in a coat she had clearly been wearing for years.</p>
+
+      <p>There was nothing new about what she was wearing.</p>
+
+      <p>But there was nothing that needed replacing either.</p>
+
+      <p>And I think that was the quietest definition of true luxury.</p>
+
+      <p><strong>Fashion makes us desire what is new.</strong><br /><strong>Style decides what stays.</strong></p>
+
+      <p><strong>Dagdroøm is where fashion and style come together in their cleanest form.</strong></p>
+    </div>
+
+    <footer class="article-author">
+      <img src="/astrid-vahl.png" alt="" aria-hidden="true" draggable="false" />
+      <p>Written by Astrid Vahl — August 22, 2026</p>
+    </footer>
+  </article>
 </body>
 </html>
