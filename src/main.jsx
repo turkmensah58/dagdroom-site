@@ -584,14 +584,13 @@ function renderMenPage() {
       <section class="men-collection-list">
 
         <article
-          class="men-collection-card men-collection-card--skaer"
+          class="men-collection-card men-collection-card--skaer men-collection-card--text-only"
           data-category="skaer"
           data-href="/collections/skaer"
-          id="skaer"
           tabindex="0"
           role="link"
         >
-          <div class="men-collection-copy">
+          <div class="men-collection-copy" id="skaer">
             <div>
               <h2>Dø Skær<sup>™</sup></h2>
 
@@ -607,14 +606,6 @@ function renderMenPage() {
             </a>
           </div>
 
-          <div class="men-collection-media">
-            <img
-              src="/second-son.png"
-              ${imageAttributes("/second-son.png", "(max-width: 900px) 100vw, 325px")}
-              alt="Dø Skær collection"
-              class="men-collection-image"
-            >
-          </div>
         </article>
 
 
@@ -622,11 +613,10 @@ function renderMenPage() {
           class="men-collection-card men-collection-card--linje"
           data-category="linje"
           data-href="/collections/linje"
-          id="linje"
           tabindex="0"
           role="link"
         >
-          <div class="men-collection-copy">
+          <div class="men-collection-copy" id="linje">
             <div>
               <h2>Dø Linje<sup>™</sup></h2>
 
@@ -645,7 +635,7 @@ function renderMenPage() {
           <div class="men-collection-media">
             <video
               src="/linje-card.mp4"
-              poster="${imagePreview("/choose-world.png")}"
+              poster="/linje-card-poster.jpg"
               aria-label="Dø Linje collection"
               class="men-collection-image"
               autoplay
@@ -659,14 +649,13 @@ function renderMenPage() {
 
 
         <article
-          class="men-collection-card men-collection-card--stal"
+          class="men-collection-card men-collection-card--stal men-collection-card--text-only"
           data-category="stal"
           data-href="/collections/stal"
-          id="stal"
           tabindex="0"
           role="link"
         >
-          <div class="men-collection-copy">
+          <div class="men-collection-copy" id="stal">
             <div>
          <h2>Dø Stål<sup class="men-tm-stal">™</sup></h2>
 
@@ -682,14 +671,6 @@ function renderMenPage() {
             </a>
           </div>
 
-          <div class="men-collection-media">
-            <img
-              src="/menu-son.png"
-              alt="Dø Stål collection"
-              ${imageAttributes("/menu-son.png", "(max-width: 900px) 100vw, 325px")}
-              class="men-collection-image"
-            >
-          </div>
         </article>
 
       </section>
