@@ -1,0 +1,696 @@
+{
+  "/slor-arctic-fog.png": {
+    "width": 2160,
+    "height": 728,
+    "variants": [
+      {
+        "url": "/responsive/slor-arctic-fog-480.webp",
+        "width": 480,
+        "bytes": 784
+      },
+      {
+        "url": "/responsive/slor-arctic-fog-960.webp",
+        "width": 960,
+        "bytes": 2358
+      }
+    ]
+  },
+  "/skygge-soft-tone.png": {
+    "width": 215,
+    "height": 54,
+    "variants": [
+      {
+        "url": "/responsive/skygge-soft-tone-215.webp",
+        "width": 215,
+        "bytes": 394
+      }
+    ]
+  },
+  "/flyt-nordic-sunset.png": {
+    "width": 248,
+    "height": 109,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nordic-sunset-248.webp",
+        "width": 248,
+        "bytes": 840
+      }
+    ]
+  },
+  "/menu-son.png": {
+    "width": 1356,
+    "height": 1071,
+    "variants": [
+      {
+        "url": "/responsive/menu-son-480.webp",
+        "width": 480,
+        "bytes": 26464
+      },
+      {
+        "url": "/responsive/menu-son-960.webp",
+        "width": 960,
+        "bytes": 71908
+      }
+    ]
+  },
+  "/skygge-belted-wool-coat-front.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/skygge-belted-wool-coat-front-480.webp",
+        "width": 480,
+        "bytes": 10324
+      },
+      {
+        "url": "/responsive/skygge-belted-wool-coat-front-960.webp",
+        "width": 960,
+        "bytes": 39486
+      }
+    ]
+  },
+  "/skygge-belted-wool-coat-back.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/skygge-belted-wool-coat-back-480.webp",
+        "width": 480,
+        "bytes": 8032
+      },
+      {
+        "url": "/responsive/skygge-belted-wool-coat-back-960.webp",
+        "width": 960,
+        "bytes": 22054
+      }
+    ]
+  },
+  "/skygge-belted-wool-coat-model-front.png": {
+    "width": 1023,
+    "height": 1537,
+    "variants": [
+      {
+        "url": "/responsive/skygge-belted-wool-coat-model-front-480.webp",
+        "width": 480,
+        "bytes": 12354
+      },
+      {
+        "url": "/responsive/skygge-belted-wool-coat-model-front-960.webp",
+        "width": 960,
+        "bytes": 30470
+      }
+    ]
+  },
+  "/skygge-belted-wool-coat-model-side.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/skygge-belted-wool-coat-model-side-480.webp",
+        "width": 480,
+        "bytes": 8382
+      },
+      {
+        "url": "/responsive/skygge-belted-wool-coat-model-side-960.webp",
+        "width": 960,
+        "bytes": 22450
+      }
+    ]
+  },
+  "/skygge-belted-wool-coat-model-back.png": {
+    "width": 1023,
+    "height": 1537,
+    "variants": [
+      {
+        "url": "/responsive/skygge-belted-wool-coat-model-back-480.webp",
+        "width": 480,
+        "bytes": 9396
+      },
+      {
+        "url": "/responsive/skygge-belted-wool-coat-model-back-960.webp",
+        "width": 960,
+        "bytes": 25958
+      }
+    ]
+  },
+  "/burgundy-sculpted-tracksuit-front.png": {
+    "width": 1024,
+    "height": 1536,
+    "variants": [
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-front-480.webp",
+        "width": 480,
+        "bytes": 12054
+      },
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-front-960.webp",
+        "width": 960,
+        "bytes": 31400
+      }
+    ]
+  },
+  "/burgundy-sculpted-tracksuit-back.png": {
+    "width": 1024,
+    "height": 1536,
+    "variants": [
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-back-480.webp",
+        "width": 480,
+        "bytes": 9764
+      },
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-back-960.webp",
+        "width": 960,
+        "bytes": 24488
+      }
+    ]
+  },
+  "/burgundy-sculpted-tracksuit-profile.png": {
+    "width": 1024,
+    "height": 1536,
+    "variants": [
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-profile-480.webp",
+        "width": 480,
+        "bytes": 12184
+      },
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-profile-960.webp",
+        "width": 960,
+        "bytes": 30896
+      }
+    ]
+  },
+  "/flyt-ivory-linen-pyjama-v2.png": {
+    "width": 1024,
+    "height": 1536,
+    "variants": [
+      {
+        "url": "/responsive/flyt-ivory-linen-pyjama-v2-480.webp",
+        "width": 480,
+        "bytes": 18680
+      },
+      {
+        "url": "/responsive/flyt-ivory-linen-pyjama-v2-960.webp",
+        "width": 960,
+        "bytes": 51896
+      }
+    ]
+  },
+  "/flyt-ivory-linen-pyjama-model-front.png": {
+    "width": 1024,
+    "height": 1536,
+    "variants": [
+      {
+        "url": "/responsive/flyt-ivory-linen-pyjama-model-front-480.webp",
+        "width": 480,
+        "bytes": 13010
+      },
+      {
+        "url": "/responsive/flyt-ivory-linen-pyjama-model-front-960.webp",
+        "width": 960,
+        "bytes": 33186
+      }
+    ]
+  },
+  "/flyt-ivory-linen-pyjama-model-back.png": {
+    "width": 1024,
+    "height": 1536,
+    "variants": [
+      {
+        "url": "/responsive/flyt-ivory-linen-pyjama-model-back-480.webp",
+        "width": 480,
+        "bytes": 10350
+      },
+      {
+        "url": "/responsive/flyt-ivory-linen-pyjama-model-back-960.webp",
+        "width": 960,
+        "bytes": 26872
+      }
+    ]
+  },
+  "/flyt-nocturne-pyjama-front.png": {
+    "width": 1054,
+    "height": 1492,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-front-480.webp",
+        "width": 480,
+        "bytes": 13666
+      },
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-front-960.webp",
+        "width": 960,
+        "bytes": 33464
+      }
+    ]
+  },
+  "/flyt-nocturne-pyjama-side.png": {
+    "width": 1054,
+    "height": 1492,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-side-480.webp",
+        "width": 480,
+        "bytes": 11608
+      },
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-side-960.webp",
+        "width": 960,
+        "bytes": 28682
+      }
+    ]
+  },
+  "/flyt-nocturne-pyjama-back.png": {
+    "width": 1054,
+    "height": 1492,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-back-480.webp",
+        "width": 480,
+        "bytes": 12336
+      },
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-back-960.webp",
+        "width": 960,
+        "bytes": 30208
+      }
+    ]
+  },
+  "/linje-double-breasted-blazer-front.png": {
+    "width": 1328,
+    "height": 1184,
+    "variants": [
+      {
+        "url": "/responsive/linje-double-breasted-blazer-front-480.webp",
+        "width": 480,
+        "bytes": 5006
+      },
+      {
+        "url": "/responsive/linje-double-breasted-blazer-front-960.webp",
+        "width": 960,
+        "bytes": 13806
+      }
+    ]
+  },
+  "/linje-double-breasted-blazer-back.png": {
+    "width": 1363,
+    "height": 1154,
+    "variants": [
+      {
+        "url": "/responsive/linje-double-breasted-blazer-back-480.webp",
+        "width": 480,
+        "bytes": 4032
+      },
+      {
+        "url": "/responsive/linje-double-breasted-blazer-back-960.webp",
+        "width": 960,
+        "bytes": 10408
+      }
+    ]
+  },
+  "/linje-double-breasted-blazer-model-front.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "url": "/responsive/linje-double-breasted-blazer-model-front-480.webp",
+        "width": 480,
+        "bytes": 4696
+      },
+      {
+        "url": "/responsive/linje-double-breasted-blazer-model-front-960.webp",
+        "width": 960,
+        "bytes": 11796
+      }
+    ]
+  },
+  "/linje-double-breasted-blazer-model-side.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-double-breasted-blazer-model-side-480.webp",
+        "width": 480,
+        "bytes": 6856
+      },
+      {
+        "url": "/responsive/linje-double-breasted-blazer-model-side-960.webp",
+        "width": 960,
+        "bytes": 18256
+      }
+    ]
+  },
+  "/linje-double-breasted-blazer-model-back.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-double-breasted-blazer-model-back-480.webp",
+        "width": 480,
+        "bytes": 7730
+      },
+      {
+        "url": "/responsive/linje-double-breasted-blazer-model-back-960.webp",
+        "width": 960,
+        "bytes": 20492
+      }
+    ]
+  },
+  "/linje-tailored-trousers-front.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "url": "/responsive/linje-tailored-trousers-front-480.webp",
+        "width": 480,
+        "bytes": 2818
+      },
+      {
+        "url": "/responsive/linje-tailored-trousers-front-960.webp",
+        "width": 960,
+        "bytes": 7694
+      }
+    ]
+  },
+  "/linje-tailored-trousers-back.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-tailored-trousers-back-480.webp",
+        "width": 480,
+        "bytes": 5008
+      },
+      {
+        "url": "/responsive/linje-tailored-trousers-back-960.webp",
+        "width": 960,
+        "bytes": 13216
+      }
+    ]
+  },
+  "/linje-no-01-leather-derby-left.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "url": "/responsive/linje-no-01-leather-derby-left-480.webp",
+        "width": 480,
+        "bytes": 4350
+      },
+      {
+        "url": "/responsive/linje-no-01-leather-derby-left-960.webp",
+        "width": 960,
+        "bytes": 14794
+      }
+    ]
+  },
+  "/linje-no-01-leather-derby-right.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "url": "/responsive/linje-no-01-leather-derby-right-480.webp",
+        "width": 480,
+        "bytes": 5846
+      },
+      {
+        "url": "/responsive/linje-no-01-leather-derby-right-960.webp",
+        "width": 960,
+        "bytes": 23724
+      }
+    ]
+  },
+  "/linje-no-01-leather-derby-top.png": {
+    "width": 1448,
+    "height": 1086,
+    "variants": [
+      {
+        "url": "/responsive/linje-no-01-leather-derby-top-480.webp",
+        "width": 480,
+        "bytes": 4670
+      },
+      {
+        "url": "/responsive/linje-no-01-leather-derby-top-960.webp",
+        "width": 960,
+        "bytes": 18378
+      }
+    ]
+  },
+  "/linje-leather-trench-coat-front.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-leather-trench-coat-front-480.webp",
+        "width": 480,
+        "bytes": 14232
+      },
+      {
+        "url": "/responsive/linje-leather-trench-coat-front-960.webp",
+        "width": 960,
+        "bytes": 51384
+      }
+    ]
+  },
+  "/linje-leather-trench-coat-back.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-leather-trench-coat-back-480.webp",
+        "width": 480,
+        "bytes": 14278
+      },
+      {
+        "url": "/responsive/linje-leather-trench-coat-back-960.webp",
+        "width": 960,
+        "bytes": 49974
+      }
+    ]
+  },
+  "/linje-leather-trench-coat-detail.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-leather-trench-coat-detail-480.webp",
+        "width": 480,
+        "bytes": 34572
+      },
+      {
+        "url": "/responsive/linje-leather-trench-coat-detail-960.webp",
+        "width": 960,
+        "bytes": 159676
+      }
+    ]
+  },
+  "/linje-leather-trench-coat-model-front.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-leather-trench-coat-model-front-480.webp",
+        "width": 480,
+        "bytes": 13010
+      },
+      {
+        "url": "/responsive/linje-leather-trench-coat-model-front-960.webp",
+        "width": 960,
+        "bytes": 36170
+      }
+    ]
+  },
+  "/linje-leather-trench-coat-model-side.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-leather-trench-coat-model-side-480.webp",
+        "width": 480,
+        "bytes": 10092
+      },
+      {
+        "url": "/responsive/linje-leather-trench-coat-model-side-960.webp",
+        "width": 960,
+        "bytes": 29738
+      }
+    ]
+  },
+  "/linje-leather-trench-coat-model-back.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-leather-trench-coat-model-back-480.webp",
+        "width": 480,
+        "bytes": 12564
+      },
+      {
+        "url": "/responsive/linje-leather-trench-coat-model-back-960.webp",
+        "width": 960,
+        "bytes": 37800
+      }
+    ]
+  },
+  "/linje-soft-turtleneck-soft-sand-front.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/linje-soft-turtleneck-soft-sand-front-480.webp",
+        "width": 480,
+        "bytes": 9538
+      },
+      {
+        "url": "/responsive/linje-soft-turtleneck-soft-sand-front-960.webp",
+        "width": 960,
+        "bytes": 42710
+      }
+    ]
+  },
+  "/linje-soft-turtleneck-soft-sand-back.png": {
+    "width": 1086,
+    "height": 1449,
+    "variants": [
+      {
+        "url": "/responsive/linje-soft-turtleneck-soft-sand-back-480.webp",
+        "width": 480,
+        "bytes": 9120
+      },
+      {
+        "url": "/responsive/linje-soft-turtleneck-soft-sand-back-960.webp",
+        "width": 960,
+        "bytes": 42142
+      }
+    ]
+  },
+  "/second-son.png": {
+    "width": 1402,
+    "height": 1122,
+    "variants": [
+      {
+        "url": "/responsive/second-son-480.webp",
+        "width": 480,
+        "bytes": 17976
+      },
+      {
+        "url": "/responsive/second-son-960.webp",
+        "width": 960,
+        "bytes": 49274
+      }
+    ]
+  },
+  "/choose-world.png": {
+    "width": 1402,
+    "height": 1122,
+    "variants": [
+      {
+        "url": "/responsive/choose-world-480.webp",
+        "width": 480,
+        "bytes": 17752
+      },
+      {
+        "url": "/responsive/choose-world-960.webp",
+        "width": 960,
+        "bytes": 49474
+      }
+    ]
+  },
+  "/hero-dagdroom-sunset.png": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "url": "/responsive/hero-dagdroom-sunset-480.webp",
+        "width": 480,
+        "bytes": 27792
+      },
+      {
+        "url": "/responsive/hero-dagdroom-sunset-960.webp",
+        "width": 960,
+        "bytes": 91330
+      }
+    ]
+  },
+  "/reykjavik-64n.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "url": "/responsive/reykjavik-64n-480.webp",
+        "width": 480,
+        "bytes": 22626
+      },
+      {
+        "url": "/responsive/reykjavik-64n-960.webp",
+        "width": 960,
+        "bytes": 66186
+      }
+    ]
+  },
+  "/stockholm-59n-cropped-corrected.png": {
+    "width": 1154,
+    "height": 1024,
+    "variants": [
+      {
+        "url": "/responsive/stockholm-59n-cropped-corrected-480.webp",
+        "width": 480,
+        "bytes": 15864
+      },
+      {
+        "url": "/responsive/stockholm-59n-cropped-corrected-960.webp",
+        "width": 960,
+        "bytes": 48470
+      }
+    ]
+  },
+  "/copenhagen-55n.png.png": {
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "url": "/responsive/copenhagen-55n.png-480.webp",
+        "width": 480,
+        "bytes": 24946
+      },
+      {
+        "url": "/responsive/copenhagen-55n.png-960.webp",
+        "width": 960,
+        "bytes": 66208
+      }
+    ]
+  },
+  "/oslo-journal-cropped.png": {
+    "width": 840,
+    "height": 775,
+    "variants": [
+      {
+        "url": "/responsive/oslo-journal-cropped-480.webp",
+        "width": 480,
+        "bytes": 31378
+      },
+      {
+        "url": "/responsive/oslo-journal-cropped-840.webp",
+        "width": 840,
+        "bytes": 66522
+      }
+    ]
+  },
+  "/helsinki-60n.png": {
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "url": "/responsive/helsinki-60n-480.webp",
+        "width": 480,
+        "bytes": 28608
+      },
+      {
+        "url": "/responsive/helsinki-60n-960.webp",
+        "width": 960,
+        "bytes": 101360
+      }
+    ]
+  }
+}

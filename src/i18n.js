@@ -257,17 +257,41 @@ Object.assign(uiTranslations.tr, {
 });
 
 Object.assign(uiTranslations.tr, {
+  "Contact us with delivery and return questions about a product or order.": "Ürün veya siparişinizin teslimatı ve iadesiyle ilgili sorularınız için bizimle iletişime geçin.",
+  "For questions about your personal information, contact us. You can also review and manage your cookie preferences.": "Kişisel bilgilerinizle ilgili sorularınız için bizimle iletişime geçebilirsiniz. Çerez tercihlerinizi de inceleyebilir ve yönetebilirsiniz.",
+  "For information about product and order conditions, please contact us.": "Ürün ve sipariş koşulları hakkında bilgi almak için bizimle iletişime geçin.",
+  "Page not found": "Sayfa bulunamadı",
+  "This page is unavailable. Explore the collections or return to the homepage.": "Bu sayfaya ulaşılamıyor. Koleksiyonları keşfedebilir veya ana sayfaya dönebilirsiniz.",
+  "Search products and collections": "Ürün veya koleksiyon ara",
+  "Search by product or collection name.": "Ürün ya da koleksiyon adıyla arayın.",
+  "No products or collections found. Try another name.": "Sonuç bulunamadı. Başka bir adla deneyin.",
   "New": "Yeni", "Product images": "Ürün görselleri", "Image": "Görsel",
   "No products match these filters.": "Bu filtrelere uygun ürün bulunamadı.",
   "Customer Care": "Müşteri Hizmetleri", "Send an enquiry": "Mesaj gönder", "Follow": "Takip et",
   "Total": "Toplam", "Taxes and delivery are calculated at checkout.": "Vergiler ve teslimat ödeme adımında hesaplanır."
 });
 Object.assign(uiTranslations.de, {
+  "Contact us with delivery and return questions about a product or order.": "Kontaktieren Sie uns bei Fragen zu Lieferung und Rückgabe eines Produkts oder einer Bestellung.",
+  "For questions about your personal information, contact us. You can also review and manage your cookie preferences.": "Kontaktieren Sie uns bei Fragen zu Ihren persönlichen Daten. Sie können auch Ihre Cookie-Einstellungen prüfen und verwalten.",
+  "For information about product and order conditions, please contact us.": "Für Informationen zu Produkt- und Bestellbedingungen kontaktieren Sie uns bitte.",
+  "Page not found": "Seite nicht gefunden",
+  "This page is unavailable. Explore the collections or return to the homepage.": "Diese Seite ist nicht verfügbar. Entdecken Sie die Kollektionen oder kehren Sie zur Startseite zurück.",
+  "Search products and collections": "Produkte und Kollektionen",
+  "Search by product or collection name.": "Nach Produkt- oder Kollektionsnamen suchen.",
+  "No products or collections found. Try another name.": "Keine Ergebnisse. Versuchen Sie einen anderen Namen.",
   "New": "Neu", "Product images": "Produktbilder", "Image": "Bild",
   "No products match these filters.": "Keine Produkte entsprechen diesen Filtern.",
   "Total": "Gesamt", "Taxes and delivery are calculated at checkout.": "Steuern und Versand werden an der Kasse berechnet."
 });
 Object.assign(uiTranslations.sv, {
+  "Contact us with delivery and return questions about a product or order.": "Kontakta oss med frågor om leverans och retur av en produkt eller beställning.",
+  "For questions about your personal information, contact us. You can also review and manage your cookie preferences.": "Kontakta oss om du har frågor om dina personuppgifter. Du kan också granska och hantera dina cookieinställningar.",
+  "For information about product and order conditions, please contact us.": "Kontakta oss för information om produkt- och beställningsvillkor.",
+  "Page not found": "Sidan hittades inte",
+  "This page is unavailable. Explore the collections or return to the homepage.": "Den här sidan är inte tillgänglig. Utforska kollektionerna eller återgå till startsidan.",
+  "Search products and collections": "Sök produkt eller kollektion",
+  "Search by product or collection name.": "Sök efter produktens eller kollektionens namn.",
+  "No products or collections found. Try another name.": "Inga resultat. Prova ett annat namn.",
   "New": "Ny", "Product images": "Produktbilder", "Image": "Bild",
   "No products match these filters.": "Inga produkter matchar dessa filter.",
   "Total": "Totalt", "Taxes and delivery are calculated at checkout.": "Skatter och leverans beräknas i kassan."

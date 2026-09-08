@@ -1,5 +1,6 @@
 import "./style.css";
 import "./mobile.css";
+import imageSources from "./image-sources.json";
 import {
   currentLanguage,
   initializeI18n,
@@ -9,6 +10,14 @@ import {
 } from "./i18n.js";
 import { INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct } from "../shared/pricing.js";
 const FLYT_INTRO_URL = "/flyt-card.mp4";
+function imageAttributes(src, sizes = "100vw") {
+  const image = imageSources[src];
+  if (!image) return "";
+  return `width="${image.width}" height="${image.height}" srcset="${image.variants.map(({ url, width }) => `${url} ${width}w`).join(", ")}" sizes="${sizes}" decoding="async"`;
+}
+function imagePreview(src) {
+  return imageSources[src]?.variants.at(-1)?.url || src;
+}
 const activeCurrency = currencyForLanguage(currentLanguage);
 const EUR_TRY_FALLBACK_RATE = 55.87;
 const EXCHANGE_RATE_CACHE_KEY = "dagdroom-eur-try-rate-v1";
@@ -387,7 +396,7 @@ function renderHomePage() {
     loop
     playsinline
     preload="auto"
-    poster="/hero-dagdroom-sunset.png"
+    poster="${imagePreview("/hero-dagdroom-sunset.png")}"
     aria-hidden="true"
   >
     <source src="/hero-video.mp4" type="video/mp4" />
@@ -414,6 +423,7 @@ ${renderSiteHeader("landing")}
             <img
               src="/menu-son.png"
               class="choose-world-image"
+              ${imageAttributes("/menu-son.png", "(max-width: 820px) 100vw, 76vw")}
               alt="Dagdroøm women and men"
             />
 
@@ -479,7 +489,7 @@ function renderWomenPage() {
             <video
               class="women-hover-video"
               src="/slor-card.mp4"
-              poster="/slor-arctic-fog.png"
+              poster="${imagePreview("/slor-arctic-fog.png")}"
               muted
               loop
               playsinline
@@ -505,7 +515,7 @@ function renderWomenPage() {
             <video
               class="women-hover-video"
               src="/skygge-card.mp4"
-              poster="/skygge-soft-tone.png"
+              poster="${imagePreview("/skygge-soft-tone.png")}"
               muted
               loop
               playsinline
@@ -538,7 +548,7 @@ function renderWomenPage() {
             <video
               class="women-hover-video category-hover-video"
               src="${FLYT_INTRO_URL}"
-              poster="/flyt-nordic-sunset.png"
+              poster="${imagePreview("/flyt-nordic-sunset.png")}"
               muted
               loop
               playsinline
@@ -602,6 +612,7 @@ function renderMenPage() {
           <div class="men-collection-media">
             <img
               src="/second-son.png"
+              ${imageAttributes("/second-son.png", "(max-width: 900px) 100vw, 325px")}
               alt="Dø Skær collection"
               class="men-collection-image"
             >
@@ -636,7 +647,7 @@ function renderMenPage() {
           <div class="men-collection-media">
             <video
               src="/linje-card.mp4"
-              poster="/choose-world.png"
+              poster="${imagePreview("/choose-world.png")}"
               aria-label="Dø Linje collection"
               class="men-collection-image"
               autoplay
@@ -677,6 +688,7 @@ function renderMenPage() {
             <img
               src="/menu-son.png"
               alt="Dø Stål collection"
+              ${imageAttributes("/menu-son.png", "(max-width: 900px) 100vw, 325px")}
               class="men-collection-image"
             >
           </div>
@@ -733,7 +745,7 @@ function scrollToCurrentCollection() {
 function renderCollectionPage(slug) {
   const collection = collectionCatalog.find((item) => item.slug === slug);
   if (!collection) {
-    renderHomePage();
+    renderNotFoundPage();
     return;
   }
 
@@ -760,7 +772,7 @@ function renderCollectionPage(slug) {
           <p class="catalog-description">${collection.description}</p>
         </div>
         <div class="catalog-hero-media">
-          <img src="${collection.image}" alt="${collection.name} collection atmosphere" />
+          <img src="${collection.image}" ${imageAttributes(collection.image)} alt="${collection.name} collection atmosphere" loading="lazy" />
         </div>
       </section>
 
@@ -800,7 +812,7 @@ function renderCollectionPage(slug) {
             ${displayProducts.map((product) => `
               <article class="product-card" data-product-slug="${product.slug}" data-product-type="${product.productType}" data-product-colors="${product.colors.map((color) => color.name).join("|")}">
                 <a href="/products/${product.detailSlug || product.slug}" class="product-card-media">
-                  <img src="${product.images[0]}" alt="${product.name}" loading="lazy" />
+                  <img src="${product.images[0]}" ${imageAttributes(product.images[0], "(max-width: 820px) calc((100vw - 44px) / 2), (max-width: 1380px) calc((100vw - 100px) / 4), 320px")} alt="${product.name}" loading="lazy" />
                 </a>
                 <div class="product-card-information">
                   <div class="product-card-name-row">
@@ -976,7 +988,7 @@ function syncDemoBagUI() {
     const total = pricedItems.reduce((sum, item) => sum + Number(item.currentPrice || 0), 0);
     content.innerHTML = `<div class="site-bag-items">${demoBagItems.map((item) => `
       <article class="site-bag-item">
-        <img src="${item.image}" alt="" />
+        <img src="${item.image}" ${imageAttributes(item.image, "72px")} alt="" />
         <div><h3>${item.name}</h3><p>${item.color} · ${item.size}</p><strong>${formatMoney(productPrice(item.slug))}</strong></div>
         <button type="button" data-remove-bag-item="${item.id}" aria-label="Remove ${item.name}">×</button>
       </article>`).join("")}</div>
@@ -1022,7 +1034,7 @@ async function startCheckout(event) {
 function renderProductPage(slug) {
   const product = productCatalog.find((item) => item.slug === slug);
   if (!product) {
-    renderHomePage();
+    renderNotFoundPage();
     return;
   }
   const labels = productPageLabels[currentLanguage] || productPageLabels.en;
@@ -1037,7 +1049,7 @@ function renderProductPage(slug) {
         <div class="product-gallery" id="product-gallery" tabindex="0" aria-label="${product.name}">
           ${product.images.map((image, index) => `
             <figure class="product-gallery-zoom" data-model-image="${image.includes("-model-")}">
-              <img src="${image}" alt="${product.name}${index ? ` detail ${index + 1}` : ""}" loading="${index ? "lazy" : "eager"}" decoding="async" />
+              <img src="${image}" ${imageAttributes(image, "(max-width: 820px) calc(100vw - 32px), (max-width: 1380px) 60vw, 793px")} alt="${product.name}${index ? ` detail ${index + 1}` : ""}" loading="${index ? "lazy" : "eager"}" />
             </figure>
           `).join("")}
         </div>
@@ -1205,7 +1217,7 @@ function renderJournalPage() {
         ${stories.map(({ number, city, coordinate, image, href }) => `
           <a href="${href}" class="journal-card journal-card--${city.toLowerCase()}">
             <div class="journal-card-image">
-              <img src="${image}" alt="${city}" />
+              <img src="${image}" ${imageAttributes(image)} alt="${city}" loading="lazy" />
             </div>
             <div class="journal-card-meta">
               <span>${number}</span>
@@ -1362,6 +1374,41 @@ function renderCookiePolicyPage() {
   initializeSiteHeader();
 }
 
+function renderServicePage(route) {
+  const pages = {
+    "/shipping-returns": { title: "Shipping & Returns", copy: "Contact us with delivery and return questions about a product or order." },
+    "/privacy": { title: "Privacy", copy: "For questions about your personal information, contact us. You can also review and manage your cookie preferences." },
+    "/terms": { title: "Terms", copy: "For information about product and order conditions, please contact us." }
+  };
+  const page = pages[route];
+  document.title = `${translate(page.title)} — Dagdroøm`;
+  document.querySelector("#app").innerHTML = `<main class="legal-page">
+    ${renderSiteHeader("")}
+    <article class="service-document">
+      <h1>${translate(page.title)}</h1>
+      <p>${translate(page.copy)}</p>
+      <nav class="service-document-actions">
+        <a href="/contact">${translate("Contact")} <span aria-hidden="true">→</span></a>
+        ${route === "/privacy" ? `<a href="/cookies">${translate("Cookie Policy")} <span aria-hidden="true">→</span></a>` : ""}
+      </nav>
+    </article>
+    ${renderFooter()}
+  </main>`;
+  initializeSiteHeader();
+}
+
+function renderNotFoundPage() {
+  document.title = `${translate("Page not found")} — Dagdroøm`;
+  document.querySelector("#app").innerHTML = `<main class="legal-page">
+    ${renderSiteHeader("")}
+    <article class="service-document"><h1>${translate("Page not found")}</h1>
+      <p>${translate("This page is unavailable. Explore the collections or return to the homepage.")}</p>
+      <nav class="service-document-actions"><a href="/">${translate("Home")} →</a><a href="/women">${translate("Women")} →</a><a href="/men">${translate("Men")} →</a></nav>
+    </article>${renderFooter()}
+  </main>`;
+  initializeSiteHeader();
+}
+
 const COOKIE_CONSENT_KEY = "dagdroom-cookie-consent";
 const COOKIE_CONSENT_MAX_AGE = 365 * 24 * 60 * 60 * 1000;
 
@@ -1496,6 +1543,7 @@ function renderSiteHeader(activeSection = "") {
         `}
         <a href="/essens" class="site-mobile-editorial-link">Essens</a>
         <a href="/journal" class="site-mobile-editorial-link">Journal</a>
+        <a href="/contact" class="site-mobile-editorial-link">${translate("Contact")}</a>
         <a href="/search" class="site-utility-link site-search-trigger">
           <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
           <span>Search</span>
@@ -1520,18 +1568,18 @@ function renderSiteHeader(activeSection = "") {
         </div>
       </div>
 
-      <div class="site-search-panel" role="dialog" aria-modal="true" aria-label="Search collections" hidden>
+      <div class="site-search-panel" role="dialog" aria-modal="true" aria-label="${translate("Search products and collections")}" hidden>
         <div class="site-search-panel__inner">
           <div class="site-search-panel__topline">
             <button class="site-search-close" type="button" aria-label="Close search"><span></span><span></span></button>
           </div>
           <label class="site-search-field">
-            <span class="sr-only">Search collections</span>
+            <span class="sr-only">${translate("Search products and collections")}</span>
             <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="7.5" cy="7.5" r="4.75"/><path d="m11 11 4 4"/></svg>
-            <input type="search" autocomplete="off" placeholder="Search collections" />
+            <input type="search" autocomplete="off" autocapitalize="none" spellcheck="false" enterkeyhint="search" placeholder="${translate("Search products and collections")}" />
           </label>
           <div class="site-search-results" aria-live="polite"></div>
-          <p class="site-search-hint">Try “Slør”, “Linje” or “Stål”</p>
+          <p class="site-search-hint">${translate("Search by product or collection name.")}</p>
         </div>
       </div>
 
@@ -1603,19 +1651,25 @@ function initializeSiteHeader() {
 
   const renderSearchResults = (query = "") => {
     if (!searchResults) return;
-    const normalizedQuery = query.trim().toLocaleLowerCase("en");
-    if (!normalizedQuery) {
-      searchResults.innerHTML = "";
-      return;
-    }
-    const matches = collections.filter(({ name, world }) =>
-      `${name} ${world}`.toLocaleLowerCase("en").includes(normalizedQuery)
-    );
+    const normalize = (value) => value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replaceAll("ø", "o").replaceAll("æ", "ae").replaceAll("ı", "i");
+    const terms = normalize(query.trim()).split(/\s+/).filter(Boolean);
+    const candidates = [
+      ...collections,
+      ...productCatalog.map((product) => ({ name: product.name, world: product.world === "women" ? "Women" : "Men", href: `/products/${product.slug}`, image: product.images[0], keywords: `${product.collection} ${localizedProductField(product, "description")}` }))
+    ];
+    const matches = terms.length ? candidates.filter(({ name, world, keywords = "" }) => {
+      const searchable = normalize(`${name} ${world} ${translate(world)} ${keywords}`);
+      return terms.every((term) => searchable.includes(term));
+    }) : collections;
     searchResults.innerHTML = matches.length
-      ? matches.map(({ name, world, href }) => `
-          <a href="/${currentLanguage}${href}"><span>${name}</span><small>${translate(world)}</small></a>
+      ? matches.map(({ name, world, href, image }) => `
+          <a href="/${currentLanguage}${href}" class="site-search-result${image ? " site-search-result--product" : ""}">
+            ${image ? `<img src="${image}" ${imageAttributes(image, "48px")} alt="" loading="lazy" />` : ""}
+            <span class="site-search-result-copy"><strong>${name}</strong><small>${translate(world)}</small></span>
+            <span class="site-search-result-arrow" aria-hidden="true">→</span>
+          </a>
         `).join("")
-      : `<p class="site-search-empty">${translate("No collection found.")}</p>`;
+      : `<p class="site-search-empty">${translate("No products or collections found. Try another name.")}</p>`;
   };
 
   const setSearchState = (open) => {
@@ -1626,6 +1680,7 @@ function initializeSiteHeader() {
     document.body.classList.toggle("search-open", open);
     if (open) {
       setMenuState(false);
+      renderSearchResults(searchInput?.value || "");
       requestAnimationFrame(() => searchInput?.focus());
     } else {
       if (searchInput) searchInput.value = "";
@@ -1681,6 +1736,12 @@ function initializeSiteHeader() {
     if (event.target === searchPanel) setSearchState(false);
   });
   searchInput?.addEventListener("input", () => renderSearchResults(searchInput.value));
+  searchInput?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      searchResults?.querySelector("a")?.click();
+    }
+  });
 
   header.querySelectorAll(".site-bag-trigger").forEach((trigger) => {
     trigger.addEventListener("click", (event) => {
@@ -1724,12 +1785,12 @@ function renderFooter(showJournal = false) {
         </div>
         <div class="footer-journal-grid">
           <a class="footer-journal-card" href="/world/stockholm/">
-            <div class="footer-journal-image"><img src="/stockholm-59n-cropped-corrected.png" alt="Stockholm" loading="lazy" /></div>
+            <div class="footer-journal-image"><img src="/stockholm-59n-cropped-corrected.png" ${imageAttributes("/stockholm-59n-cropped-corrected.png", "(max-width: 768px) 100vw, 50vw")} alt="Stockholm" loading="lazy" /></div>
             <div class="footer-journal-card-meta"><h3>Stockholm,</h3><small>59°20′N</small></div>
             <span class="footer-journal-card-mark">Journal — N° 002</span>
           </a>
           <a class="footer-journal-card" href="/world/helsinki/">
-            <div class="footer-journal-image"><img src="/helsinki-60n.png" alt="Helsinki" loading="lazy" /></div>
+            <div class="footer-journal-image"><img src="/helsinki-60n.png" ${imageAttributes("/helsinki-60n.png", "(max-width: 768px) 100vw, 50vw")} alt="Helsinki" loading="lazy" /></div>
             <div class="footer-journal-card-meta"><h3>Helsinki,</h3><small>60°10′N</small></div>
             <span class="footer-journal-card-mark">Journal — N° 005</span>
           </a>
@@ -1778,6 +1839,20 @@ function initializeHomeExperience() {
     heroVideo.defaultMuted = true;
     heroVideo.muted = true;
     heroVideo.volume = 0;
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (reducedMotion.matches) {
+      heroVideo.autoplay = false;
+      heroVideo.pause();
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !reducedMotion.matches && !document.hidden) heroVideo.play().catch(() => {});
+      else heroVideo.pause();
+    }, { threshold: 0.1 });
+    observer.observe(heroVideo);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) heroVideo.pause();
+      else if (!reducedMotion.matches && heroVideo.getBoundingClientRect().bottom > 0 && heroVideo.getBoundingClientRect().top < innerHeight) heroVideo.play().catch(() => {});
+    });
   }
 
   if (!hero || !scrollButton || !chooseWorld) {
@@ -1825,13 +1900,14 @@ function initializeHomeExperience() {
 
 function initializeWomenExperience() {
   const hoverCards = document.querySelectorAll(".women-collection-card");
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const usesTouchLayout = window.matchMedia("(hover: none), (pointer: coarse)").matches;
   const touchVideoObserver = usesTouchLayout && "IntersectionObserver" in window
     ? new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           const video = entry.target.querySelector(".women-hover-video");
           if (!video) return;
-          if (entry.isIntersecting) {
+          if (entry.isIntersecting && !reducedMotion) {
             video.muted = true;
             video.play().catch(() => {});
           } else {
@@ -1862,6 +1938,7 @@ function initializeWomenExperience() {
     if (!video) return;
 
     const playVideo = () => {
+      if (reducedMotion) return;
       video.muted = true;
       video.play().catch(() => {});
     };
@@ -2015,12 +2092,24 @@ function initializeAdminPage() {
     return;
   }
 
+  if (["/shipping-returns", "/privacy", "/terms"].includes(normalizedPath)) {
+    renderServicePage(normalizedPath);
+    return;
+  }
+
+  if (["/search", "/bag"].includes(normalizedPath)) {
+    renderHomePage();
+    document.querySelector(normalizedPath === "/search" ? ".site-search-trigger" : ".site-bag-trigger")?.click();
+    return;
+  }
+
   if (normalizedPath === "/admin") {
     renderAdminPage();
     return;
   }
 
-  renderHomePage();
+  if (normalizedPath === "/") renderHomePage();
+  else renderNotFoundPage();
 }
 
 renderCurrentRoute();

@@ -33,7 +33,19 @@
 
 - Hesap girişi/kayıt formları müşteri kimlik doğrulama servisine bağlı değil.
 - Bülten formu gerçek abonelik kaydetmiyor; mevcut teşekkür davranışı sunucu kaydı anlamına gelmiyor.
-- `/shipping-returns`, `/privacy`, `/terms` için ayrı yayımlanmış içerik yok; mevcut yönlendirici ana sayfaya düşüyor. Onaylı içerikler olmadan politika metni üretilmedi.
+- `/shipping-returns`, `/privacy`, `/terms` artık başlıklı bilgilendirme/iletişim sayfalarına açılıyor. Ayrıntılı, onaylı koşul ve politika metinleri hâlâ gerekli; bu metinler uydurulmadı.
 - Katalogda demo ürünler ve tanımlanmamış fiyatlar mevcut. Uluslararası ödeme mevcut yapılandırmada kapalı. Gerçek ödeme işlemi yapılmadı.
 
 Bu kontrol mobil arayüz ve mevcut istemci akışlarını kapsar; servis ve içerik eksiklerinin tamamlandığı anlamına gelmez.
+
+## İkinci tur — 8 Eylül 2026
+
+- 44 görselin 480 / 960 px WebP kopyaları üretildi; küçük orijinaller büyütülmedi. 73.394.310 bayt orijinale karşı bütün responsive kopyalar 2.192.740 bayt. Bu karşılaştırma video dosyalarını içermez.
+- Katalog, ürün galerisi, menü, arama, sepet ve Journal kartları `srcset` / `sizes` kullanıyor. Görsel boyutları ayrılarak yükleme sırasında yer değişimi azaltıldı. Orijinal dosyalar korunuyor.
+- Flyt kataloğunda 390 px / 2× mobil testte seçilen dört ürün görseli 45.240 bayt; aynı orijinaller 5.139.354 bayt.
+- Arama ürünleri de buluyor; küçük ürün fotoğrafı, Türkçe/İskandinav harf normalizasyonu, çok kelimeli arama, boş sonuç mesajı ve Enter ile sonuca gitme eklendi.
+- Doğrudan `/account`, `/search`, `/bag` ve destek bağlantıları için yayın yönlendirmeleri tamamlandı.
+- Bilinmeyen sayfa/ürün/koleksiyon adreslerinde anlaşılır bir bulunamadı ekranı ve geri dönüş bağlantıları gösteriliyor.
+- Görünmeyen ana sayfa videosu durduruluyor; azaltılmış hareket tercihi ana sayfa ve kadın koleksiyonu videolarında uygulanıyor.
+- Dört dilde ürün ve aksansız arama, doğrudan sepet, azaltılmış hareket ve 6 destek/hata sayfası × 7 genişlik (320–1024 px) geçti.
+- Görsel seçim testi ve ekran görüntülerine ek olarak 31 sayfalık mobil/masaüstü taraması tekrar çalıştırıldı.
