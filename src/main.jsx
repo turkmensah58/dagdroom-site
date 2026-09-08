@@ -384,9 +384,7 @@ function renderHomePage() {
       <section
   class="hero-section"
   id="home-hero"
-  role="button"
-  tabindex="0"
-  aria-label="Continue to choose your world"
+  aria-label="Dagdroøm"
 >
   <video
     id="hero-video"
@@ -396,11 +394,15 @@ function renderHomePage() {
     loop
     playsinline
     preload="auto"
-    poster="${imagePreview("/hero-dagdroom-sunset.png")}"
+    poster="/hero-clean-poster.jpg"
     aria-hidden="true"
   >
-    <source src="/hero-video.mp4" type="video/mp4" />
+    <source src="/hero-clean.mp4" type="video/mp4" />
   </video>
+  <div class="hero-brand" translate="no" aria-label="Dagdroøm — Calm. Clean. Nordic.">
+    <span class="hero-brand-name">Dagdroøm</span>
+    <span class="hero-brand-tagline">Calm. Clean. Nordic.</span>
+  </div>
 
   <button
     class="hero-scroll-button"
@@ -1445,7 +1447,17 @@ function showCookieConsent() {
 }
 
 function initializeCookieConsent() {
-  if (!readCookieConsent()) showCookieConsent();
+  if (!readCookieConsent()) {
+    const hero = document.querySelector("#home-hero");
+    if (hero && window.scrollY < hero.offsetHeight) {
+      const showAfterHero = () => {
+        if (hero.getBoundingClientRect().bottom > 90) return;
+        window.removeEventListener("scroll", showAfterHero);
+        if (!readCookieConsent()) showCookieConsent();
+      };
+      window.addEventListener("scroll", showAfterHero, { passive: true });
+    } else showCookieConsent();
+  }
   document.querySelector(".cookie-preferences-open")?.addEventListener("click", showCookieConsent);
 }
 
@@ -1855,6 +1867,19 @@ function initializeHomeExperience() {
     return;
   }
 
+  let viewportWidth = window.innerWidth;
+  const sizeHero = () => {
+    const viewport = window.visualViewport;
+    if (viewport && viewport.scale !== 1) return;
+    if (document.activeElement?.matches("input, textarea, select")) return;
+    if (window.scrollY > 2 && viewportWidth === window.innerWidth) return;
+    viewportWidth = window.innerWidth;
+    hero.style.setProperty("--hero-viewport", `${Math.round(viewport?.height || window.innerHeight)}px`);
+  };
+  sizeHero();
+  window.addEventListener("resize", sizeHero, { passive: true });
+  window.visualViewport?.addEventListener("resize", sizeHero, { passive: true });
+
   let scrollLocked = false;
 
   const goToChooseWorld = () => {
@@ -1862,9 +1887,10 @@ function initializeHomeExperience() {
 
     scrollLocked = true;
 
-    chooseWorld.scrollIntoView({
+    const headerHeight = document.querySelector(".site-header--landing")?.offsetHeight || 0;
+    window.scrollTo({
+      top: window.scrollY + chooseWorld.getBoundingClientRect().top - headerHeight,
       behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
-      block: "start",
     });
 
     setTimeout(() => {
@@ -1872,26 +1898,11 @@ function initializeHomeExperience() {
     }, 900);
   };
 
-  hero.addEventListener("click", goToChooseWorld);
-  hero.addEventListener("keydown", (event) => {
-    if (event.target === hero && ["Enter", " "].includes(event.key)) { event.preventDefault(); goToChooseWorld(); }
-  });
-
   scrollButton.addEventListener("click", (event) => {
     event.stopPropagation();
     goToChooseWorld();
   });
 
-  hero.addEventListener(
-    "wheel",
-    (event) => {
-      if (event.deltaY > 0) {
-        event.preventDefault();
-        goToChooseWorld();
-      }
-    },
-    { passive: false }
-  );
 }
 
 function initializeWomenExperience() {

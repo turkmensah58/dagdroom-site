@@ -326,7 +326,9 @@ function translatePage(root, language) {
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
   const nodes = [];
   while (walker.nextNode()) nodes.push(walker.currentNode);
-  nodes.forEach((node) => { node.nodeValue = translateTextValue(node.nodeValue, language); });
+  nodes.forEach((node) => {
+    if (!node.parentElement?.closest('[translate="no"]')) node.nodeValue = translateTextValue(node.nodeValue, language);
+  });
 
   const attributes = attributeTranslations[language] || {};
   root.querySelectorAll("[aria-label], input[placeholder]").forEach((element) => {

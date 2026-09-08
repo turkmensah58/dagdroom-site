@@ -1,9 +1,17 @@
 # Mobil kontrol — 7 Eylül 2026
 
+## 8 Eylül — tam ekran açılış düzeltmesi
+
+- `hero-clean.mp4`, mevcut 7 saniyelik videodan üretildi: alt 52 pikseldeki Kling yazısı kırpıldı; ortadaki gömülü logo/slogan kare bazında temizlenerek aynı metinler duyarlı HTML ile gösterildi. Temiz poster, otomatik oynatma kapalıyken de aynı düzeni koruyor. Orijinal video saklandı.
+- Hero yüksekliği görünür pencereye göre ayarlanıyor; ilk ekranda başlık/çerez paneli görünmüyor. Ok, koleksiyon bölümünü sabit menünün altına kaydırıyor.
+- Koleksiyon görselinin kenar boşlukları, sezon başlığı ve Journal başlık/bağlantı hizası düzeltildi. Yeni içerik veya bağlantı eklenmedi.
+- Chrome dokunmatik emülasyonunda 320×568, 375×548, 375×667, 414×715, 414×896, 667×375 ve 768×1024: tam ekran, logo/slogan ayrımı, ok hedefi, menü ve yatay taşma kontrolleri geçti.
+- 31 sayfa / 124 mobil yerleşim, dört dil ve üç masaüstü sayfası tekrar kontrol edildi. Gerçek iPhone testi yapılmadı; Windows WebKit aracı medya oturumunda kapandığı için Safari doğrulaması tamamlanamadı.
+
 ## Düzeltilenler
 
-- Mobil açılış videosunun içindeki logoyu kesen tam ekran kırpma kaldırıldı; videonun oranı yüklenmeden önce ayrılıyor.
-- Ana sayfaya okunabilir, 48 px yüksekliğinde Kadın / Erkek bağlantıları eklendi.
+- Mobil açılış 8 Eylül talebiyle tekrar tam ekran yapıldı; mevcut logo ve slogan videodan ayrılarak dar ekranda kesilmeden gösteriliyor.
+- Sonradan eklenen Kadın / Erkek bağlantıları kullanıcı talebiyle kaldırıldı.
 - Mobil menü tüm sayfalarda iki koleksiyona erişiyor. Kısa/yatay ekranlarda menü başlığının altında kayıyor.
 - Arama ve sepet kapatma, dil seçimi, filtreler ve ürün seçeneklerinin dokunma alanları büyütüldü.
 - Arama sonuçları seçili dili koruyor. Panellerde klavye odağı içeride tutuluyor ve kapanışta açan kontrole dönüyor.
