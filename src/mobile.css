@@ -2,7 +2,6 @@
 .product-card[hidden] { display: none !important; }
 .product-gallery-wrap { min-width: 0; }
 .product-gallery-controls { display: none; }
-.mobile-world-links { display: none; }
 .catalog-no-results { padding: 36px 0; font: 14px/1.6 Arial, sans-serif; }
 .site-search-results .site-search-result { display: flex; align-items: center; gap: 14px; min-height: 64px; }
 .site-search-result img { width: 48px; height: 64px; flex-shrink: 0; object-fit: cover; }
@@ -82,8 +81,6 @@
   .hero-section > .full-image { height: auto; min-height: 0; width: 100%; aspect-ratio: 1276 / 720; object-fit: contain; animation: none; }
   .hero-scroll-button { min-width: 44px; min-height: 44px; bottom: 12px; }
   .choose-section { padding: 24px 16px 32px; }
-  .mobile-world-links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px auto 0; max-width: 560px; }
-  .mobile-world-links a { display: flex; align-items: center; justify-content: space-between; min-height: 48px; border-bottom: 1px solid #15151555; color: #151515; text-decoration: none; font: 12px Arial, sans-serif; letter-spacing: .1em; }
   .season-heading { font-size: 10px; letter-spacing: .2em; line-height: 1.6; }
   .women-page .women-collection-copy, .men-collection-copy { min-height: 200px; }
   .women-page .women-enter-link, .men-enter-link { opacity: 1; }

@@ -447,10 +447,6 @@ ${renderSiteHeader("landing")}
             <a href="/men#stal" class="menu-category-link menu-category-link--stal" aria-label="Open Dø Stål collection"></a>
           </div>
 
-          <nav class="mobile-world-links" aria-label="${translate("Choose your world")}">
-            <a href="/women">${translate("Women")} <span aria-hidden="true">→</span></a>
-            <a href="/men">${translate("Men")} <span aria-hidden="true">→</span></a>
-          </nav>
             </section>
 
       ${renderFooter(true)}
