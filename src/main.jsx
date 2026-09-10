@@ -400,7 +400,7 @@ function renderHomePage() {
     <source src="/hero-clean.mp4" type="video/mp4" />
   </video>
   <div class="hero-brand" translate="no" aria-label="Dagdroøm — Calm. Clean. Nordic.">
-    <span class="hero-brand-name">Dagdroøm</span>
+    <span class="hero-brand-logo" role="img" aria-label="Dagdroøm"></span>
     <span class="hero-brand-tagline">Calm. Clean. Nordic.</span>
   </div>
 
