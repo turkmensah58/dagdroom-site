@@ -159,6 +159,7 @@
   .footer-newsletter-copy { font-size: 12px; line-height: 1.7; opacity: .8; }
   .footer-newsletter-form { min-width: 0; grid-template-columns: minmax(0, 1fr) auto; }
   .footer-newsletter-form input { min-width: 0; width: 100%; }
+  .footer-newsletter-form input::placeholder { font-size: 11px; letter-spacing: .08em; }
   .footer-newsletter-form button { min-height: 44px; font-size: 10px; letter-spacing: .08em; }
   .site-footer .footer-tagline { margin-top: 32px; }
   .footer-bottom { padding-top: 28px; flex-direction: row; flex-wrap: nowrap; gap: clamp(4px, 1.5vw, 12px); }
