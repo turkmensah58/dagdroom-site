@@ -92,7 +92,9 @@
   .hero-section > .full-image { position: absolute; inset: 0; height: 100%; min-height: 0; width: 100%; aspect-ratio: auto; object-fit: cover; animation: none; }
   .hero-brand-name { font-size: clamp(43px, 12vw, 76px); }
   .hero-brand-tagline { font-size: clamp(17px, 4.5vw, 24px); }
-  .hero-scroll-button { min-width: 48px; min-height: 48px; bottom: max(24px, env(safe-area-inset-bottom)); animation: none; }
+  .hero-scroll-button { min-width: 48px; min-height: 48px; bottom: calc(80px + env(safe-area-inset-bottom)); color: #fff; filter: drop-shadow(0 2px 4px #000); animation: none; }
+  .hero-scroll-button::before { width: 12px; height: 12px; border-width: 2px; }
+  .hero-scroll-button::after { width: 2px; height: 24px; }
   .choose-section { padding: 24px 16px 32px; }
   .choose-section .choose-image-wrap { width: 100% !important; max-width: 560px !important; margin: 0 auto !important; }
   .season-heading { position: static; width: 100%; margin: 0 auto 24px; writing-mode: horizontal-tb; transform: none; text-align: center; font-size: 10px; letter-spacing: .2em; line-height: 1.6; }
