@@ -177,7 +177,7 @@ Object.assign(uiTranslations.sv, {
 
 Object.assign(uiTranslations.tr, {
   "View all": "Tümünü gör",
-  "Stay close to Dagdroøm World": "Dagdroøm World'e yakın kal",
+  "Stay close to Dagdroøm World": "Dagdroøm’dan Notlar",
   "New stories, perspectives and notes on style — from Dagdroøm designers and stylists.": "Dagdroøm tasarımcıları ve stilistlerinden yeni hikâyeler, bakış açıları ve stil notları.",
   "Email address": "E-posta adresi", "Subscribe": "Abone ol", "Join the Journal": "KATIL", "Thank you": "Teşekkürler",
   "All rights reserved.": "Tüm hakları saklıdır."
