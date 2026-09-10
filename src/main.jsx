@@ -1788,7 +1788,7 @@ function renderFooter(showJournal = false) {
       ` : ""}
       <section class="footer-newsletter" aria-labelledby="footer-newsletter-title">
         <div>
-          <h2 id="footer-newsletter-title">Stay close to Dagdroøm World</h2>
+          <h2 id="footer-newsletter-title">Notes from Dagdroøm</h2>
           <p class="footer-newsletter-copy">New stories, perspectives and notes on style — from Dagdroøm designers and stylists.</p>
         </div>
         <form class="footer-newsletter-form" data-footer-newsletter>
