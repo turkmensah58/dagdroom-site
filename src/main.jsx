@@ -1228,7 +1228,7 @@ function renderEssensPage() {
         <div class="essens-manifesto" aria-label="Dagdroøm manifesto">
           <p>Less noise.</p>
           <p>More feeling.</p>
-          <p><strong>Calm. Clean. Nordic.</strong></p>
+          <p translate="no" lang="en"><strong>Calm. Clean. Nordic.</strong></p>
         </div>
       </article>
 
