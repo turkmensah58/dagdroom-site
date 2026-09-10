@@ -97,8 +97,9 @@
   .site-navigation { min-height: 64px; }
   .hero-section { height: var(--hero-viewport, 100vh); min-height: 0; background: #1f2729; }
   .hero-section > .full-image { position: absolute; inset: 0; height: 100%; min-height: 0; width: 100%; aspect-ratio: auto; object-fit: cover; animation: none; }
-  .hero-brand-logo { width: min(460px, 100%); }
-  .hero-brand-tagline { font-size: clamp(17px, 4.5vw, 24px); }
+  .hero-brand { gap: clamp(8px, 2.5vw, 14px); padding: max(24px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); }
+  .hero-brand-logo { width: min(400px, 82vw, 100%); }
+  .hero-brand-tagline { flex-shrink: 0; font-size: clamp(16px, 4.3vw, 21px); line-height: 1.35; white-space: nowrap; }
   .hero-scroll-button { min-width: 48px; min-height: 48px; bottom: calc(112px + env(safe-area-inset-bottom)); color: #fff; filter: drop-shadow(0 2px 4px #000); animation: none; }
   .hero-scroll-button::before { width: 12px; height: 12px; border-width: 2px; }
   .hero-scroll-button::after { width: 2px; height: 24px; }
@@ -170,9 +171,11 @@
   .footer-newsletter-form input::placeholder { font-size: 11px; letter-spacing: .08em; }
   .footer-newsletter-form button { min-height: 44px; font-size: 10px; letter-spacing: .08em; }
   .site-footer .footer-tagline { margin-top: 32px; }
-  .footer-bottom { padding-top: 28px; flex-direction: row; flex-wrap: nowrap; gap: clamp(4px, 1.5vw, 12px); }
-  .footer-bottom nav { flex: 0 0 auto; width: auto; flex-direction: row; flex-wrap: nowrap; gap: clamp(4px, 1.5vw, 12px) !important; }
-  .footer-bottom nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: clamp(6px, 1.8vw, 9px); line-height: 1.5; color: #52534f; letter-spacing: 0; white-space: nowrap; }
+  .footer-bottom { padding-top: 28px; flex-direction: row; flex-wrap: nowrap; justify-content: flex-start; gap: 24px; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .footer-bottom nav { flex: 0 0 auto; width: auto; flex-direction: row; flex-wrap: nowrap; justify-content: center; gap: 24px !important; }
+  .footer-bottom nav:first-child { margin-left: auto; }
+  .footer-bottom nav:last-child { margin-right: auto; }
+  .footer-bottom nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 10px; line-height: 1.5; color: #52534f; letter-spacing: .02em; white-space: nowrap; }
   .site-footer > .footer-copyright { font-size: 10px; line-height: 1.8; letter-spacing: .04em; }
   .cookie-consent { bottom: max(12px, env(safe-area-inset-bottom)); max-height: calc(100dvh - 24px); overflow-y: auto; gap: 16px; }
   .cookie-consent p { font-size: 12px; line-height: 1.6; opacity: .85; }

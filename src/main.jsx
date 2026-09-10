@@ -1773,15 +1773,15 @@ function renderFooter(showJournal = false) {
           <a href="/journal">View all</a>
         </div>
         <div class="footer-journal-grid">
-          <a class="footer-journal-card" href="/world/stockholm/">
-            <div class="footer-journal-image"><img src="/stockholm-59n-cropped-corrected.png" ${imageAttributes("/stockholm-59n-cropped-corrected.png", "(max-width: 768px) 100vw, 50vw")} alt="Stockholm" loading="lazy" /></div>
-            <div class="footer-journal-card-meta"><h3>Stockholm,</h3><small>59°20′N</small></div>
-            <span class="footer-journal-card-mark">Journal — N° 002</span>
-          </a>
           <a class="footer-journal-card" href="/world/helsinki/">
             <div class="footer-journal-image"><img src="/helsinki-60n.png" ${imageAttributes("/helsinki-60n.png", "(max-width: 768px) 100vw, 50vw")} alt="Helsinki" loading="lazy" /></div>
             <div class="footer-journal-card-meta"><h3>Helsinki,</h3><small>60°10′N</small></div>
             <span class="footer-journal-card-mark">Journal — N° 005</span>
+          </a>
+          <a class="footer-journal-card" href="/world/stockholm/">
+            <div class="footer-journal-image"><img src="/stockholm-59n-cropped-corrected.png" ${imageAttributes("/stockholm-59n-cropped-corrected.png", "(max-width: 768px) 100vw, 50vw")} alt="Stockholm" loading="lazy" /></div>
+            <div class="footer-journal-card-meta"><h3>Stockholm,</h3><small>59°20′N</small></div>
+            <span class="footer-journal-card-mark">Journal — N° 002</span>
           </a>
         </div>
       </section>
