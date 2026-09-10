@@ -30,6 +30,9 @@
 .hero-brand-tagline { display: block; font: 400 clamp(18px, 2.2vw, 30px)/1.5 'Cormorant Garamond', Georgia, serif; }
 
 @media (max-width: 1100px) {
+  .site-header--landing { padding-inline: max(40px, calc((100% - 780px) / 2)); }
+  .site-header--landing .site-navigation { min-height: 56px; }
+  .site-header--landing .site-landing-wordmark { font-size: 21px; }
   .site-header { padding-top: env(safe-area-inset-top); }
   .site-header.is-search-open,
   .site-header.is-bag-open { z-index: 300; }
@@ -41,6 +44,10 @@
     height: calc(100dvh - 64px - env(safe-area-inset-top));
     padding-top: 16px;
     padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+  .site-header--landing.is-menu-open .site-mobile-menu {
+    top: calc(56px + env(safe-area-inset-top));
+    height: calc(100dvh - 56px - env(safe-area-inset-top));
   }
   .site-mobile-menu {
     height: 100vh;
@@ -83,6 +90,7 @@
 }
 
 @media (max-width: 820px) {
+  .site-header--landing { padding-inline: max(16px, calc((100% - 560px) / 2)); }
   html { scroll-padding-top: 80px; -webkit-text-size-adjust: 100%; }
   body { min-width: 0; }
   .site-header { margin-bottom: 24px; }
