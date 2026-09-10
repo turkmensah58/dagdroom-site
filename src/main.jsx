@@ -584,7 +584,7 @@ function renderMenPage() {
       <section class="men-collection-list">
 
         <article
-          class="men-collection-card men-collection-card--skaer men-collection-card--text-only"
+          class="men-collection-card men-collection-card--skaer"
           data-category="skaer"
           data-href="/collections/skaer"
           tabindex="0"
@@ -605,7 +605,7 @@ function renderMenPage() {
               <span class="men-enter-arrow" aria-hidden="true">⟶</span>
             </a>
           </div>
-
+          <div class="men-collection-media" aria-hidden="true"></div>
         </article>
 
 
@@ -649,7 +649,7 @@ function renderMenPage() {
 
 
         <article
-          class="men-collection-card men-collection-card--stal men-collection-card--text-only"
+          class="men-collection-card men-collection-card--stal"
           data-category="stal"
           data-href="/collections/stal"
           tabindex="0"
@@ -670,7 +670,7 @@ function renderMenPage() {
               <span class="men-enter-arrow" aria-hidden="true">⟶</span>
             </a>
           </div>
-
+          <div class="men-collection-media" aria-hidden="true"></div>
         </article>
 
       </section>

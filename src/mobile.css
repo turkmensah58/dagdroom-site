@@ -1,8 +1,6 @@
 /* Shared functional rules; mobile presentation is scoped below. */
 .product-card[hidden] { display: none !important; }
 .product-gallery-wrap { min-width: 0; }
-.men-page .men-collection-card--text-only { grid-template-columns: minmax(0, 1fr); min-height: 0; }
-.men-page .men-collection-card--text-only .men-collection-copy { width: 100%; height: auto; min-height: 0; gap: 24px; }
 .men-collection-copy[id] { scroll-margin-top: 88px; }
 .product-gallery-controls { display: none; }
 .catalog-no-results { padding: 36px 0; font: 14px/1.6 Arial, sans-serif; }
