@@ -161,9 +161,9 @@
   .footer-newsletter-form input { min-width: 0; width: 100%; }
   .footer-newsletter-form button { min-height: 44px; font-size: 10px; letter-spacing: .08em; }
   .site-footer .footer-tagline { margin-top: 32px; }
-  .footer-bottom { padding-top: 28px; gap: 0 20px; }
-  .footer-bottom nav { gap: 0 !important; }
-  .footer-bottom nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: 11px; line-height: 1.5; color: #52534f; letter-spacing: .06em; }
+  .footer-bottom { padding-top: 28px; flex-direction: row; flex-wrap: nowrap; gap: clamp(4px, 1.5vw, 12px); }
+  .footer-bottom nav { flex: 0 0 auto; width: auto; flex-direction: row; flex-wrap: nowrap; gap: clamp(4px, 1.5vw, 12px) !important; }
+  .footer-bottom nav a { display: inline-flex; align-items: center; min-height: 44px; font-size: clamp(6px, 1.8vw, 9px); line-height: 1.5; color: #52534f; letter-spacing: 0; white-space: nowrap; }
   .site-footer > .footer-copyright { font-size: 10px; line-height: 1.8; letter-spacing: .04em; }
   .cookie-consent { bottom: max(12px, env(safe-area-inset-bottom)); max-height: calc(100dvh - 24px); overflow-y: auto; gap: 16px; }
   .cookie-consent p { font-size: 12px; line-height: 1.6; opacity: .85; }
