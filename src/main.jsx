@@ -1879,6 +1879,8 @@ function initializeHomeExperience() {
     }, 900);
   };
 
+  hero.addEventListener("click", goToChooseWorld);
+
   scrollButton.addEventListener("click", (event) => {
     event.stopPropagation();
     goToChooseWorld();

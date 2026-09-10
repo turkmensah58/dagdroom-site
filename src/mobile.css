@@ -3,6 +3,7 @@
 .product-gallery-wrap { min-width: 0; }
 .men-collection-copy[id] { scroll-margin-top: 88px; }
 .product-gallery-controls { display: none; }
+.hero-section { cursor: pointer; }
 .catalog-no-results { padding: 36px 0; font: 14px/1.6 Arial, sans-serif; }
 .site-search-results .site-search-result { display: flex; align-items: center; gap: 14px; min-height: 64px; }
 .site-search-result img { width: 48px; height: 64px; flex-shrink: 0; object-fit: cover; }
@@ -90,7 +91,7 @@
   .hero-section > .full-image { position: absolute; inset: 0; height: 100%; min-height: 0; width: 100%; aspect-ratio: auto; object-fit: cover; animation: none; }
   .hero-brand-name { font-size: clamp(43px, 12vw, 76px); }
   .hero-brand-tagline { font-size: clamp(17px, 4.5vw, 24px); }
-  .hero-scroll-button { min-width: 48px; min-height: 48px; bottom: calc(80px + env(safe-area-inset-bottom)); color: #fff; filter: drop-shadow(0 2px 4px #000); animation: none; }
+  .hero-scroll-button { min-width: 48px; min-height: 48px; bottom: calc(112px + env(safe-area-inset-bottom)); color: #fff; filter: drop-shadow(0 2px 4px #000); animation: none; }
   .hero-scroll-button::before { width: 12px; height: 12px; border-width: 2px; }
   .hero-scroll-button::after { width: 2px; height: 24px; }
   .choose-section { padding: 24px 16px 32px; }
