@@ -161,7 +161,7 @@ Object.assign(uiTranslations.tr, {
 
 Object.assign(uiTranslations.de, {
   "View all": "Alle ansehen",
-  "Stay close to Dagdroøm World": "Bleiben Sie der Dagdroøm World nah",
+  "Notes from Dagdroøm": "Notizen von Dagdroøm",
   "New stories, perspectives and notes on style — from Dagdroøm designers and stylists.": "Neue Geschichten, Perspektiven und Stilnotizen — von den Designern und Stylisten von Dagdroøm.",
   "Email address": "E-Mail-Adresse", "Subscribe": "Abonnieren", "Join the Journal": "Journal beitreten", "Thank you": "Vielen Dank",
   "All rights reserved.": "Alle Rechte vorbehalten."
@@ -169,7 +169,7 @@ Object.assign(uiTranslations.de, {
 
 Object.assign(uiTranslations.sv, {
   "View all": "Visa alla",
-  "Stay close to Dagdroøm World": "Håll dig nära Dagdroøm World",
+  "Notes from Dagdroøm": "Anteckningar från Dagdroøm",
   "New stories, perspectives and notes on style — from Dagdroøm designers and stylists.": "Nya berättelser, perspektiv och stilanteckningar — från Dagdroøms designers och stylister.",
   "Email address": "E-postadress", "Subscribe": "Prenumerera", "Join the Journal": "Gå med i journalen", "Thank you": "Tack",
   "All rights reserved.": "Alla rättigheter förbehållna."
@@ -177,7 +177,7 @@ Object.assign(uiTranslations.sv, {
 
 Object.assign(uiTranslations.tr, {
   "View all": "Tümünü gör",
-  "Stay close to Dagdroøm World": "Dagdroøm’dan Notlar",
+  "Notes from Dagdroøm": "Dagdroøm’dan Notlar",
   "New stories, perspectives and notes on style — from Dagdroøm designers and stylists.": "Dagdroøm tasarımcıları ve stilistlerinden yeni hikâyeler, bakış açıları ve stil notları.",
   "Email address": "E-posta adresi", "Subscribe": "Abone ol", "Join the Journal": "KATIL", "Thank you": "Teşekkürler",
   "All rights reserved.": "Tüm hakları saklıdır."

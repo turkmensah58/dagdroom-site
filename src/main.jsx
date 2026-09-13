@@ -1,5 +1,6 @@
 import "./style.css";
 import "./mobile.css";
+import "./all-products.css";
 import imageSources from "./image-sources.json";
 import {
   currentLanguage,
@@ -158,8 +159,8 @@ const productCatalog = [
   {
     slug: "flyt-nocturne-pyjama", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
     name: "NOCTURNE PYJAMA", images: [
-      "/flyt-nocturne-pyjama-front.png",
-      "/flyt-nocturne-pyjama-side.png",
+      "/flyt-nocturne-pyjama-front-v2.png",
+      "/flyt-nocturne-pyjama-side-v2.png",
       "/flyt-nocturne-pyjama-back.png"
     ],
     description: "A fluid long pyjama set in deep black with fine champagne piping, shaped with a relaxed notched collar and an easy straight-leg silhouette.",
@@ -400,7 +401,7 @@ function renderHomePage() {
     <source src="/hero-clean.mp4" type="video/mp4" />
   </video>
   <div class="hero-brand" translate="no" aria-label="Dagdroøm — Calm. Clean. Nordic.">
-    <span class="hero-brand-name">Dagdroøm</span>
+    <span class="hero-brand-logo" role="img" aria-label="Dagdroøm"></span>
     <span class="hero-brand-tagline">Calm. Clean. Nordic.</span>
   </div>
 
@@ -447,6 +448,8 @@ ${renderSiteHeader("landing")}
             <a href="/men#skaer" class="menu-category-link menu-category-link--skaer" aria-label="Open Dø Skær collection"></a>
             <a href="/men#linje" class="menu-category-link menu-category-link--linje" aria-label="Open Dø Linje collection"></a>
             <a href="/men#stal" class="menu-category-link menu-category-link--stal" aria-label="Open Dø Stål collection"></a>
+            <a href="/collections/women-all" class="menu-all-link" translate="no" aria-label="All women products">ALL</a>
+            <a href="/collections/men-all" class="menu-all-link menu-all-link--men" translate="no" aria-label="All men products">ALL</a>
           </div>
 
             </section>
@@ -720,6 +723,74 @@ function scrollToCurrentCollection() {
   if (!target) return;
   requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
 }
+
+function renderAllProductsPage(world) {
+  const labels = {
+    tr: { title: "Tüm Ürünler", women: "Kadın", men: "Erkek", count: "ürün", filters: "Koleksiyon seçimi", empty: "Bu koleksiyonda henüz ürün yok." },
+    en: { title: "All Products", women: "Women", men: "Men", count: "pieces", filters: "Collection selection", empty: "No products in this collection yet." },
+    de: { title: "Alle Produkte", women: "Damen", men: "Herren", count: "Artikel", filters: "Kollektion auswählen", empty: "Noch keine Produkte in dieser Kollektion." },
+    sv: { title: "Alla produkter", women: "Dam", men: "Herr", count: "plagg", filters: "Välj kollektion", empty: "Inga produkter i denna kollektion ännu." }
+  }[currentLanguage] || { title: "All Products", women: "Women", men: "Men", count: "pieces", filters: "Collections", empty: "No products yet." };
+  const collections = collectionCatalog.filter(item => item.world === world);
+  const products = productCatalog.filter(item => item.world === world);
+  document.title = `${labels.title} · ${labels[world]} — Dagdroøm`;
+  document.querySelector("#app").innerHTML = `
+    <main class="catalog-page all-products-page">
+      ${renderSiteHeader(world)}
+      <section class="all-products-intro">
+        <p>${labels[world]} / AUTUMN — WINTER ’26</p>
+        <h1>${labels.title}</h1>
+      </section>
+      <section class="all-products-content" aria-label="${labels.title}">
+        <div class="all-products-toolbar">
+          <nav class="all-products-filters" aria-label="${labels.filters}">
+            <button type="button" data-collection="all" aria-pressed="true" translate="no">ALL</button>
+            ${collections.map(item => `<button type="button" data-collection="${item.slug}" aria-pressed="false" translate="no">${item.name}</button>`).join("")}
+          </nav>
+          <span class="all-products-count" role="status" aria-live="polite"></span>
+        </div>
+        <div class="product-grid" id="all-products-grid">
+          ${products.map(product => `
+            <article class="product-card" data-collection-card="${product.collection}">
+              <a href="/products/${product.slug}" class="product-card-media">
+                <img src="${product.images[0]}" ${imageAttributes(product.images[0], "(max-width: 820px) 46vw, 30vw")} alt="${product.name}" loading="lazy" />
+              </a>
+              <div class="product-card-information">
+                <p class="all-products-collection" translate="no">${product.collectionName}</p>
+                <div class="product-card-name-row"><h2><a href="/products/${product.slug}">${product.name}</a></h2></div>
+                <div class="product-card-meta"><span data-product-price="${product.slug}">${formatProductPrice(product.slug)}</span>${product.status === "sold-out" ? `<span class="product-card-status">${translate("Sold Out")}</span>` : ""}</div>
+              </div>
+            </article>`).join("")}
+        </div>
+        <p class="all-products-empty" hidden>${labels.empty}</p>
+      </section>
+      ${renderFooter()}
+    </main>`;
+  initializeSiteHeader();
+  const buttons = [...document.querySelectorAll("[data-collection]")];
+  const apply = () => {
+    const requested = new URL(location.href).searchParams.get("collection");
+    const selected = collections.some(item => item.slug === requested) ? requested : "all";
+    let count = 0;
+    document.querySelectorAll("[data-collection-card]").forEach(card => {
+      card.hidden = selected !== "all" && card.dataset.collectionCard !== selected;
+      if (!card.hidden) count++;
+    });
+    buttons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.collection === selected)));
+    document.querySelector(".all-products-count").textContent = `${count} ${labels.count}`;
+    document.querySelector(".all-products-empty").hidden = count > 0;
+  };
+  buttons.forEach(button => button.addEventListener("click", () => {
+    const url = new URL(location.href);
+    if (button.dataset.collection === "all") url.searchParams.delete("collection");
+    else url.searchParams.set("collection", button.dataset.collection);
+    history.pushState(null, "", url);
+    apply();
+  }));
+  window.addEventListener("popstate", apply);
+  apply();
+}
+
 
 function renderCollectionPage(slug) {
   const collection = collectionCatalog.find((item) => item.slug === slug);
@@ -1773,22 +1844,22 @@ function renderFooter(showJournal = false) {
           <a href="/journal">View all</a>
         </div>
         <div class="footer-journal-grid">
-          <a class="footer-journal-card" href="/world/stockholm/">
-            <div class="footer-journal-image"><img src="/stockholm-59n-cropped-corrected.png" ${imageAttributes("/stockholm-59n-cropped-corrected.png", "(max-width: 768px) 100vw, 50vw")} alt="Stockholm" loading="lazy" /></div>
-            <div class="footer-journal-card-meta"><h3>Stockholm,</h3><small>59°20′N</small></div>
-            <span class="footer-journal-card-mark">Journal — N° 002</span>
-          </a>
           <a class="footer-journal-card" href="/world/helsinki/">
             <div class="footer-journal-image"><img src="/helsinki-60n.png" ${imageAttributes("/helsinki-60n.png", "(max-width: 768px) 100vw, 50vw")} alt="Helsinki" loading="lazy" /></div>
             <div class="footer-journal-card-meta"><h3>Helsinki,</h3><small>60°10′N</small></div>
             <span class="footer-journal-card-mark">Journal — N° 005</span>
+          </a>
+          <a class="footer-journal-card" href="/world/stockholm/">
+            <div class="footer-journal-image"><img src="/stockholm-59n-cropped-corrected.png" ${imageAttributes("/stockholm-59n-cropped-corrected.png", "(max-width: 768px) 100vw, 50vw")} alt="Stockholm" loading="lazy" /></div>
+            <div class="footer-journal-card-meta"><h3>Stockholm,</h3><small>59°20′N</small></div>
+            <span class="footer-journal-card-mark">Journal — N° 002</span>
           </a>
         </div>
       </section>
       ` : ""}
       <section class="footer-newsletter" aria-labelledby="footer-newsletter-title">
         <div>
-          <h2 id="footer-newsletter-title">Stay close to Dagdroøm World</h2>
+          <h2 id="footer-newsletter-title">Notes from Dagdroøm</h2>
           <p class="footer-newsletter-copy">New stories, perspectives and notes on style — from Dagdroøm designers and stylists.</p>
         </div>
         <form class="footer-newsletter-form" data-footer-newsletter>
@@ -2034,6 +2105,11 @@ function initializeAdminPage() {
 
   if (/^\/world\/[^/]+$/.test(normalizedPath)) {
     window.location.replace(`${normalizedPath}/index.html?lang=${currentLanguage}`);
+    return;
+  }
+
+  if (["/collections/women-all", "/collections/men-all"].includes(normalizedPath)) {
+    renderAllProductsPage(normalizedPath.includes("women-all") ? "women" : "men");
     return;
   }
 
