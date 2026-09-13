@@ -158,8 +158,8 @@ const productCatalog = [
   {
     slug: "flyt-nocturne-pyjama", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
     name: "NOCTURNE PYJAMA", images: [
-      "/flyt-nocturne-pyjama-front.png",
-      "/flyt-nocturne-pyjama-side.png",
+      "/flyt-nocturne-pyjama-front-v2.png",
+      "/flyt-nocturne-pyjama-side-v2.png",
       "/flyt-nocturne-pyjama-back.png"
     ],
     description: "A fluid long pyjama set in deep black with fine champagne piping, shaped with a relaxed notched collar and an easy straight-leg silhouette.",
