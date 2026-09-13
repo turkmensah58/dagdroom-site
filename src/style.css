@@ -4577,3 +4577,8 @@ body.bag-open { overflow: hidden; }
   .account-service-grid { grid-template-columns: 1fr; }
   .account-service-grid a { min-height: 185px; }
 }
+
+/* Give the desktop page wordmark its own line above navigation. */
+@media (min-width: 1101px) {
+  .site-header .site-page-wordmark { top: calc(50% - 28px); }
+}

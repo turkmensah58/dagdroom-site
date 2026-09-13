@@ -1,5 +1,6 @@
 import "./style.css";
 import "./mobile.css";
+import "./all-products.css";
 import imageSources from "./image-sources.json";
 import {
   currentLanguage,
@@ -441,6 +442,8 @@ ${renderSiteHeader("landing")}
               aria-label="Enter DΛGDROØM"
             ></a>
 
+            <a href="/collections/women-all" class="menu-all-link" translate="no" aria-label="All women products">ALL</a>
+            <a href="/collections/men-all" class="menu-all-link menu-all-link--men" translate="no" aria-label="All men products">ALL</a>
             <a href="/women#slor" class="menu-category-link menu-category-link--slor" aria-label="Open Dø Slør collection"></a>
             <a href="/women#skygge" class="menu-category-link menu-category-link--skygge" aria-label="Open Dø Skygge collection"></a>
             <a href="/women#flyt" class="menu-category-link menu-category-link--flyt" aria-label="Open Dø Flyt collection"></a>
@@ -720,6 +723,74 @@ function scrollToCurrentCollection() {
   if (!target) return;
   requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
 }
+
+function renderAllProductsPage(world) {
+  const labels = {
+    tr: { title: "Tüm Ürünler", women: "Kadın", men: "Erkek", count: "ürün", filters: "Koleksiyon seçimi", empty: "Bu koleksiyonda henüz ürün yok." },
+    en: { title: "All Products", women: "Women", men: "Men", count: "pieces", filters: "Collection selection", empty: "No products in this collection yet." },
+    de: { title: "Alle Produkte", women: "Damen", men: "Herren", count: "Artikel", filters: "Kollektion auswählen", empty: "Noch keine Produkte in dieser Kollektion." },
+    sv: { title: "Alla produkter", women: "Dam", men: "Herr", count: "plagg", filters: "Välj kollektion", empty: "Inga produkter i denna kollektion ännu." }
+  }[currentLanguage] || { title: "All Products", women: "Women", men: "Men", count: "pieces", filters: "Collections", empty: "No products yet." };
+  const collections = collectionCatalog.filter(item => item.world === world);
+  const products = productCatalog.filter(item => item.world === world);
+  document.title = `${labels.title} · ${labels[world]} — Dagdroøm`;
+  document.querySelector("#app").innerHTML = `
+    <main class="catalog-page all-products-page">
+      ${renderSiteHeader(world)}
+      <section class="all-products-intro">
+        <p>${labels[world]} / AUTUMN — WINTER ’26</p>
+        <h1>${labels.title}</h1>
+      </section>
+      <section class="all-products-content" aria-label="${labels.title}">
+        <div class="all-products-toolbar">
+          <nav class="all-products-filters" aria-label="${labels.filters}">
+            <button type="button" data-collection="all" aria-pressed="true" translate="no">ALL</button>
+            ${collections.map(item => `<button type="button" data-collection="${item.slug}" aria-pressed="false" translate="no">${item.name}</button>`).join("")}
+          </nav>
+          <span class="all-products-count" role="status" aria-live="polite"></span>
+        </div>
+        <div class="product-grid" id="all-products-grid">
+          ${products.map(product => `
+            <article class="product-card" data-collection-card="${product.collection}">
+              <a href="/products/${product.slug}" class="product-card-media">
+                <img src="${product.images[0]}" ${imageAttributes(product.images[0], "(max-width: 820px) 46vw, 30vw")} alt="${product.name}" loading="lazy" />
+              </a>
+              <div class="product-card-information">
+                <p class="all-products-collection" translate="no">${product.collectionName}</p>
+                <div class="product-card-name-row"><h2><a href="/products/${product.slug}">${product.name}</a></h2></div>
+                <div class="product-card-meta"><span data-product-price="${product.slug}">${formatProductPrice(product.slug)}</span>${product.status === "sold-out" ? `<span class="product-card-status">${translate("Sold Out")}</span>` : ""}</div>
+              </div>
+            </article>`).join("")}
+        </div>
+        <p class="all-products-empty" hidden>${labels.empty}</p>
+      </section>
+      ${renderFooter()}
+    </main>`;
+  initializeSiteHeader();
+  const buttons = [...document.querySelectorAll("[data-collection]")];
+  const apply = () => {
+    const requested = new URL(location.href).searchParams.get("collection");
+    const selected = collections.some(item => item.slug === requested) ? requested : "all";
+    let count = 0;
+    document.querySelectorAll("[data-collection-card]").forEach(card => {
+      card.hidden = selected !== "all" && card.dataset.collectionCard !== selected;
+      if (!card.hidden) count++;
+    });
+    buttons.forEach(button => button.setAttribute("aria-pressed", String(button.dataset.collection === selected)));
+    document.querySelector(".all-products-count").textContent = `${count} ${labels.count}`;
+    document.querySelector(".all-products-empty").hidden = count > 0;
+  };
+  buttons.forEach(button => button.addEventListener("click", () => {
+    const url = new URL(location.href);
+    if (button.dataset.collection === "all") url.searchParams.delete("collection");
+    else url.searchParams.set("collection", button.dataset.collection);
+    history.pushState(null, "", url);
+    apply();
+  }));
+  window.addEventListener("popstate", apply);
+  apply();
+}
+
 
 function renderCollectionPage(slug) {
   const collection = collectionCatalog.find((item) => item.slug === slug);
@@ -2034,6 +2105,11 @@ function initializeAdminPage() {
 
   if (/^\/world\/[^/]+$/.test(normalizedPath)) {
     window.location.replace(`${normalizedPath}/index.html?lang=${currentLanguage}`);
+    return;
+  }
+
+  if (["/collections/women-all", "/collections/men-all"].includes(normalizedPath)) {
+    renderAllProductsPage(normalizedPath.includes("women-all") ? "women" : "men");
     return;
   }
 
