@@ -738,8 +738,7 @@ function renderAllProductsPage(world) {
     <main class="catalog-page all-products-page">
       ${renderSiteHeader(world)}
       <section class="all-products-intro">
-        <p>${labels[world]} / AUTUMN — WINTER ’26</p>
-        <h1>${labels.title}</h1>
+        <h1>${labels[world]} / AUTUMN — WINTER ’26</h1>
       </section>
       <section class="all-products-content" aria-label="${labels.title}">
         <div class="all-products-toolbar">

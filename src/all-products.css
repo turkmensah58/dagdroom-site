@@ -5,9 +5,8 @@
 .menu-all-link:hover::after, .menu-all-link:focus-visible::after { transform: scaleX(1); }
 .menu-all-link:focus-visible { outline: 1px solid currentColor; outline-offset: 3px; }
 .all-products-intro, .all-products-content { width: 92%; max-width: 1600px; margin: 0 auto; }
-.all-products-intro { padding: 76px 0 58px; }
-.all-products-intro p { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; margin: 0 0 24px; }
-.all-products-intro h1 { font-weight: 300; font-size: clamp(40px, 5.5vw, 80px); letter-spacing: -.045em; line-height: 1.1; margin: 0; }
+.all-products-intro { padding: 76px 0 58px; text-align: center; }
+.all-products-intro h1 { font-family: inherit; font-weight: 300; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; line-height: 1.5; margin: 0; }
 .all-products-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #d8d4ce; }
 .all-products-filters { display: flex; gap: 32px; overflow-x: auto; }
 .all-products-filters button { position: relative; flex-shrink: 0; border: 0; background: none; color: #77736e; padding: 18px 0; font: inherit; font-size: 13px; cursor: pointer; min-height: 48px; }
