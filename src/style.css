@@ -2215,6 +2215,10 @@ body.bag-open { overflow: hidden; }
 .site-bag-summary { margin-top: auto; padding: 20px 0 14px; border-top: 1px solid rgba(15, 15, 15, 0.14); font-family: Arial, sans-serif; }
 .site-bag-summary div { display: flex; justify-content: space-between; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; }
 .site-bag-summary small { display: block; margin-top: 9px; font-size: 8px; letter-spacing: .06em; opacity: .5; }
+.site-bag-summary div + div { margin-top: 12px; }
+.site-bag-summary div { gap: 14px; line-height: 1.5; }
+.site-bag-summary strong { flex-shrink: 0; }
+.site-bag-summary .site-bag-grand-total { padding-top: 14px; border-top: 1px solid rgba(15,15,15,.14); font-size: 13px; }
 
 .site-bag-checkout {
   width: 100%;
@@ -3996,6 +4000,20 @@ body.bag-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .product-gallery-zoom img { transition: none; }
 }
+/* Reframe the wide flat-lay source so the top matches the trousers' visual width. */
+.product-gallery-zoom:has(img[src="/flyt-nocturne-pyjama-top.png"]) {
+  aspect-ratio: 4 / 3;
+  background: #fff;
+}
+.product-gallery-zoom img[src="/flyt-nocturne-pyjama-top.png"] {
+  position: absolute;
+  width: 200%;
+  max-width: none;
+  height: auto;
+  left: 50%;
+  top: 50%;
+  translate: -50% -39.5%;
+}
 .product-information { position: sticky; top: 110px; align-self: start; padding-top: 30px; }
 .product-information h1 {
   margin: 20px 0 12px;
@@ -4414,6 +4432,18 @@ body.bag-open { overflow: hidden; }
 .legal-document h2 { margin: 0; font: 8px Arial, sans-serif; letter-spacing: .17em; text-transform: uppercase; }
 .legal-document section > p { margin: 0; font: 13px/1.75 Arial, sans-serif; font-weight: 300; opacity: .7; }
 .legal-document a { color: inherit; }
+.legal-sales-document h1 { font-size: clamp(38px, 6vw, 72px); line-height: 1.05; overflow-wrap: anywhere; }
+.legal-sales-document header { margin-bottom: 28px; }
+.legal-sales-document .legal-intro { margin-top: 24px; font: 14px/1.8 Arial, sans-serif; color: #555; }
+.legal-draft-note { padding: 20px; border: 1px solid #d9d2c8; background: #efeae2; font: 13px/1.7 Arial, sans-serif; }
+.legal-draft-note strong { display: block; margin-bottom: 4px; }
+.legal-toc { display: flex; flex-wrap: wrap; gap: 14px 24px; margin: 30px 0; }
+.legal-toc a { font: 12px/1.6 Arial, sans-serif; text-underline-offset: 4px; }
+.legal-sales-document section { scroll-margin-top: 130px; }
+.legal-sales-document section > p { opacity: 1; color: #555; overflow-wrap: anywhere; }
+.legal-sales-document h2 { font-size: 11px; line-height: 1.6; letter-spacing: .08em; }
+.legal-sales-document .service-document-actions { display: flex; flex-wrap: wrap; gap: 18px; }
+.legal-sales-document a:focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
 .cookie-preferences-open { grid-column: 2; justify-self: start; margin-top: 4px; }
 
 @media (max-width: 720px) {

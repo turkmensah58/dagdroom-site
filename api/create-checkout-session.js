@@ -1,4 +1,4 @@
-import { INTERNATIONAL_CHECKOUT_ENABLED, priceForProduct } from "../shared/pricing.js";
+import { INTERNATIONAL_CHECKOUT_ENABLED, priceForProduct, DOMESTIC_SHIPPING_FEE } from "../shared/pricing.js";
 
 const CATALOG = {
   "slor-air-dress": "Air Dress", "slor-air-dress-demo-2": "Layer Top", "slor-air-dress-demo-3": "Soft Trouser", "slor-air-dress-demo-4": "Quiet Jacket",
@@ -31,12 +31,13 @@ export default async function handler(request, response) {
   params.set("payment_method_types[0]", "card");
   params.set("billing_address_collection", "required");
   params.set("phone_number_collection[enabled]", "true");
-  params.set("shipping_address_collection[allowed_countries][0]", "DE");
-  params.set("shipping_address_collection[allowed_countries][1]", "TR");
-  params.set("shipping_address_collection[allowed_countries][2]", "AT");
-  params.set("shipping_address_collection[allowed_countries][3]", "NL");
-  params.set("shipping_address_collection[allowed_countries][4]", "SE");
-  params.set("shipping_address_collection[allowed_countries][5]", "DK");
+  if (currency !== "TRY") return response.status(400).json({ error: "Shipping is available for TRY orders within Türkiye only." });
+  params.set("shipping_address_collection[allowed_countries][0]", "TR");
+  params.set("shipping_options[0][shipping_rate_data][type]", "fixed_amount");
+  params.set("shipping_options[0][shipping_rate_data][display_name]", "Yurtiçi Kargo");
+  params.set("shipping_options[0][shipping_rate_data][fixed_amount][amount]", String(DOMESTIC_SHIPPING_FEE));
+  params.set("shipping_options[0][shipping_rate_data][fixed_amount][currency]", "try");
+  params.set("shipping_options[0][shipping_rate_data][tax_behavior]", "inclusive");
   const origin = `https://${request.headers.host}`;
   params.set("success_url", `${origin}/?checkout=success&session_id={CHECKOUT_SESSION_ID}`);
   params.set("cancel_url", `${origin}/?checkout=cancelled`);
@@ -49,6 +50,7 @@ export default async function handler(request, response) {
     }
     params.set(`line_items[${index}][price_data][currency]`, currency.toLowerCase());
     params.set(`line_items[${index}][price_data][unit_amount]`, String(unitAmount));
+    params.set(`line_items[${index}][price_data][tax_behavior]`, "inclusive");
     params.set(`line_items[${index}][price_data][product_data][name]`, `${productName} · ${item.color.slice(0, 40)} / ${item.size.slice(0, 10)}`);
     params.set(`line_items[${index}][quantity]`, "1");
   }

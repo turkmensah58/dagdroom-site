@@ -34,9 +34,19 @@ export const PRODUCT_PRICES = {
 
 // Switch to true only after international delivery, taxes and EUR payments are operational.
 export const INTERNATIONAL_CHECKOUT_ENABLED = false;
+// VAT-inclusive flat shipping fee per domestic order, in kurus.
+export const DOMESTIC_SHIPPING_FEE = 14900;
+
+export function bagTotals(items, currency) {
+  if (!items.length) return { subtotal: 0, shipping: 0, total: 0 };
+  const amounts = items.map((item) => priceForProduct(item.slug, currency));
+  const subtotal = amounts.every((amount) => amount !== null) ? amounts.reduce((sum, amount) => sum + amount, 0) : null;
+  const shipping = currency === "TRY" ? DOMESTIC_SHIPPING_FEE : null;
+  return { subtotal, shipping, total: subtotal !== null && shipping !== null ? subtotal + shipping : null };
+}
 
 export function currencyForLanguage(language) {
-  return language === "tr" ? "TRY" : "EUR";
+  return !INTERNATIONAL_CHECKOUT_ENABLED || language === "tr" ? "TRY" : "EUR";
 }
 
 export function priceForProduct(slug, currency) {

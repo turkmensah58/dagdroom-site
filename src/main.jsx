@@ -2,6 +2,7 @@ import "./style.css";
 import "./mobile.css";
 import "./all-products.css";
 import imageSources from "./image-sources.json";
+import { legalLabels, legalLanguageNotes, legalPages } from "./legal-content.js";
 import {
   currentLanguage,
   initializeI18n,
@@ -9,7 +10,7 @@ import {
   localizedRoutePath,
   translate
 } from "./i18n.js";
-import { INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct } from "../shared/pricing.js";
+import { INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct, bagTotals } from "../shared/pricing.js";
 const FLYT_INTRO_URL = "/flyt-card.mp4";
 function imageAttributes(src, sizes = "100vw") {
   const image = imageSources[src];
@@ -161,7 +162,9 @@ const productCatalog = [
     name: "NOCTURNE PYJAMA", images: [
       "/flyt-nocturne-pyjama-front-v2.png",
       "/flyt-nocturne-pyjama-side-v2.png",
-      "/flyt-nocturne-pyjama-back.png"
+      "/flyt-nocturne-pyjama-back.png",
+      "/flyt-nocturne-pyjama-top.png",
+      "/flyt-nocturne-pyjama-bottom.png"
     ],
     description: "A fluid long pyjama set in deep black with fine champagne piping, shaped with a relaxed notched collar and an easy straight-leg silhouette.",
     descriptionTr: "İnce şampanya rengi biyelerle tamamlanan, derin siyah ve akışkan uzun pijama takımı; rahat çentikli yakası ve düz paça silüetiyle tasarlandı.",
@@ -278,6 +281,7 @@ function productPrice(slug) {
 }
 
 function formatProductPrice(slug, isDemo = false) {
+  if (activeCurrency === "TRY") return `${formatMoney(productPrice(slug), "TRY")}${isDemo ? " · Demo" : ""}`;
   const euroCents = priceForProduct(slug, "EUR");
   if (euroCents === null) return currentLanguage === "tr" ? "Fiyat yakında" : "Price unavailable";
   const demoLabel = isDemo ? " · Demo" : "";
@@ -289,7 +293,7 @@ function formatProductPrice(slug, isDemo = false) {
 function updateVisibleProductPrices() {
   document.querySelectorAll("[data-product-price]").forEach((element) => {
     element.textContent = formatProductPrice(element.dataset.productPrice, element.dataset.demo === "true");
-    if (currentLanguage === "tr") {
+    if (activeCurrency === "EUR" && currentLanguage === "tr") {
       element.title = `Günlük EUR/TRY referans kuru: ${eurTryRate.toLocaleString("tr-TR")}${eurTryRateDate ? ` (${eurTryRateDate})` : ""}`;
     }
   });
@@ -884,7 +888,7 @@ function renderCollectionPage(slug) {
             <p class="catalog-empty-index">01 / 01</p>
             <h2>Arriving quietly.</h2>
             <p>The first pieces are being refined. No placeholder products, invented prices or artificial stock — only the final collection will be presented here.</p>
-            <a href="mailto:hello@dagdroom.de?subject=${previewSubject}">Request private preview <span aria-hidden="true">⟶</span></a>
+            <a href="mailto:contact@dagdroom.de?subject=${previewSubject}">Request private preview <span aria-hidden="true">⟶</span></a>
           </div>
         `}
       </section>
@@ -1034,14 +1038,25 @@ function syncDemoBagUI() {
     }
     const pricedItems = demoBagItems.map((item) => ({ ...item, currentPrice: productPrice(item.slug) }));
     const pricesReady = pricedItems.every((item) => item.currentPrice !== null);
-    const total = pricedItems.reduce((sum, item) => sum + Number(item.currentPrice || 0), 0);
+    const { subtotal, shipping, total } = bagTotals(demoBagItems, activeCurrency);
+    const summaryLabels = {
+      tr: ["Ürünler (KDV dahil)", "Yurtiçi Kargo (KDV dahil)", "KDV dahildir. Kargo sipariş başına bir kez eklenir."],
+      en: ["Products (VAT included)", "Yurtiçi Kargo (VAT included)", "VAT included. Shipping is charged once per order."],
+      de: ["Artikel (inkl. MwSt.)", "Yurtiçi Kargo (inkl. MwSt.)", "Inklusive MwSt. Versand wird einmal pro Bestellung berechnet."],
+      sv: ["Varor (inkl. moms)", "Yurtiçi Kargo (inkl. moms)", "Moms ingår. Frakt debiteras en gång per beställning."]
+    }[currentLanguage];
     content.innerHTML = `<div class="site-bag-items">${demoBagItems.map((item) => `
       <article class="site-bag-item">
         <img src="${item.image}" ${imageAttributes(item.image, "72px")} alt="" />
         <div><h3>${item.name}</h3><p>${item.color} · ${item.size}</p><strong>${formatMoney(productPrice(item.slug))}</strong></div>
         <button type="button" data-remove-bag-item="${item.id}" aria-label="Remove ${item.name}">×</button>
       </article>`).join("")}</div>
-      <div class="site-bag-summary"><div><span>${translate("Total")}</span><strong>${pricesReady ? formatMoney(total) : "—"}</strong></div><small>${pricesReady ? translate("Taxes and delivery are calculated at checkout.") : "TL fiyatları tanımlandıktan sonra ödeme açılacak."}</small></div>`;
+      <div class="site-bag-summary">
+        <div><span>${summaryLabels[0]}</span><strong>${subtotal !== null ? formatMoney(subtotal) : "—"}</strong></div>
+        <div><span>${summaryLabels[1]}</span><strong>${shipping !== null ? formatMoney(shipping) : "—"}</strong></div>
+        <div class="site-bag-grand-total"><span>${translate("Total")}</span><strong>${total !== null ? formatMoney(total) : "—"}</strong></div>
+        <small>${pricesReady ? summaryLabels[2] : "TL fiyatları tanımlandıktan sonra ödeme açılacak."}</small>
+      </div>`;
   });
   document.querySelectorAll("[data-remove-bag-item]").forEach((button) => button.addEventListener("click", () => {
     demoBagItems = demoBagItems.filter((item) => item.id !== button.dataset.removeBagItem);
@@ -1188,14 +1203,14 @@ function renderContactPage() {
       ${renderSiteHeader("")}
 
       <section class="contact-channels" aria-label="Contact departments">
-        <a href="mailto:care@dagdroom.de">
-          <span>01</span><h2>Customer Care</h2><p>Orders, delivery, returns and product questions.</p><small>care@dagdroom.de</small>
+        <a href="mailto:contact@dagdroom.de">
+          <span>01</span><h2>Customer Care</h2><p>Orders, delivery, returns and product questions.</p><small>contact@dagdroom.de</small>
         </a>
-        <a href="mailto:press@dagdroom.de">
-          <span>02</span><h2>Press & Collaborations</h2><p>Editorial, creative projects and brand partnerships.</p><small>press@dagdroom.de</small>
+        <a href="mailto:contact@dagdroom.de">
+          <span>02</span><h2>Press & Collaborations</h2><p>Editorial, creative projects and brand partnerships.</p><small>contact@dagdroom.de</small>
         </a>
-        <a href="mailto:hello@dagdroom.de">
-          <span>03</span><h2>General Enquiries</h2><p>Everything that does not belong elsewhere.</p><small>hello@dagdroom.de</small>
+        <a href="mailto:contact@dagdroom.de">
+          <span>03</span><h2>General Enquiries</h2><p>Everything that does not belong elsewhere.</p><small>contact@dagdroom.de</small>
         </a>
       </section>
 
@@ -1241,7 +1256,7 @@ function initializeContactForm() {
     const data = new FormData(form);
     const subject = encodeURIComponent(`[Dagdroøm] ${data.get("subject")}`);
     const body = encodeURIComponent(`Name: ${data.get("name")}\nEmail: ${data.get("email")}\n\n${data.get("message")}`);
-    window.location.href = `mailto:hello@dagdroom.de?subject=${subject}&body=${body}`;
+    window.location.href = `mailto:contact@dagdroom.de?subject=${subject}&body=${body}`;
   });
 }
 
@@ -1371,7 +1386,7 @@ function cookiePolicyContent() {
         ["02 · Necessary storage", "dagdroom-language remembers the language you selected. dagdroom-bag-v1 keeps the products in your shopping bag. dagdroom-cookie-consent records your privacy choice for up to 12 months. These records support functions you request and are not used for advertising."],
         ["03 · Optional technologies", "If analytics or marketing technologies are introduced later, they will remain disabled until you actively accept them. Refusing optional technologies does not prevent you from browsing the website."],
         ["04 · Managing your choice", "You may withdraw or change your choice at any time. You can also remove stored information through your browser settings; doing so may reset your language and shopping bag."],
-        ["05 · Contact", "Questions about privacy and cookies may be sent to privacy@dagdroom.de."]
+        ["05 · Contact", "Questions about privacy and cookies may be sent to contact@dagdroom.de."]
       ]
     },
     tr: {
@@ -1381,7 +1396,7 @@ function cookiePolicyContent() {
         ["02 · Zorunlu depolama", "dagdroom-language seçtiğiniz dili hatırlar. dagdroom-bag-v1 alışveriş sepetinizdeki ürünleri saklar. dagdroom-cookie-consent gizlilik tercihinizi 12 aya kadar kaydeder. Bu kayıtlar talep ettiğiniz işlevleri sağlar ve reklam amacıyla kullanılmaz."],
         ["03 · İsteğe bağlı teknolojiler", "İleride analiz veya pazarlama teknolojileri eklenirse siz aktif olarak kabul edene kadar devre dışı kalırlar. İsteğe bağlı teknolojileri reddetmeniz siteyi incelemenize engel olmaz."],
         ["04 · Tercihinizi yönetme", "Tercihinizi istediğiniz zaman geri çekebilir veya değiştirebilirsiniz. Kayıtlı bilgileri tarayıcı ayarlarınızdan da kaldırabilirsiniz; bu işlem dil ve alışveriş sepeti tercihlerinizi sıfırlayabilir."],
-        ["05 · İletişim", "Gizlilik ve çerezlerle ilgili sorularınızı privacy@dagdroom.de adresine gönderebilirsiniz."]
+        ["05 · İletişim", "Gizlilik ve çerezlerle ilgili sorularınızı contact@dagdroom.de adresine gönderebilirsiniz."]
       ]
     },
     de: {
@@ -1391,7 +1406,7 @@ function cookiePolicyContent() {
         ["02 · Notwendige Speicherung", "dagdroom-language speichert die gewählte Sprache. dagdroom-bag-v1 bewahrt die Produkte in Ihrem Warenkorb auf. dagdroom-cookie-consent speichert Ihre Datenschutzentscheidung für bis zu 12 Monate. Diese Einträge unterstützen von Ihnen gewünschte Funktionen und werden nicht für Werbung verwendet."],
         ["03 · Optionale Technologien", "Falls zukünftig Analyse- oder Marketingtechnologien eingeführt werden, bleiben sie deaktiviert, bis Sie aktiv zustimmen. Die Ablehnung optionaler Technologien hindert Sie nicht daran, die Website zu nutzen."],
         ["04 · Auswahl verwalten", "Sie können Ihre Auswahl jederzeit widerrufen oder ändern. Gespeicherte Informationen lassen sich auch über Ihre Browsereinstellungen entfernen; dadurch können Sprache und Warenkorb zurückgesetzt werden."],
-        ["05 · Kontakt", "Fragen zu Datenschutz und Cookies können Sie an privacy@dagdroom.de senden."]
+        ["05 · Kontakt", "Fragen zu Datenschutz und Cookies können Sie an contact@dagdroom.de senden."]
       ]
     },
     sv: {
@@ -1401,7 +1416,7 @@ function cookiePolicyContent() {
         ["02 · Nödvändig lagring", "dagdroom-language kommer ihåg ditt valda språk. dagdroom-bag-v1 sparar produkterna i din varukorg. dagdroom-cookie-consent sparar ditt integritetsval i upp till 12 månader. Dessa poster stödjer funktioner du begär och används inte för annonsering."],
         ["03 · Valfri teknik", "Om analys- eller marknadsföringsteknik införs senare förblir den inaktiverad tills du aktivt godkänner den. Du kan fortsätta använda webbplatsen även om du avvisar valfri teknik."],
         ["04 · Hantera ditt val", "Du kan när som helst återkalla eller ändra ditt val. Du kan även ta bort lagrad information via webbläsarens inställningar; detta kan återställa ditt språk och din varukorg."],
-        ["05 · Kontakt", "Frågor om integritet och cookies kan skickas till privacy@dagdroom.de."]
+        ["05 · Kontakt", "Frågor om integritet och cookies kan skickas till contact@dagdroom.de."]
       ]
     }
   };
@@ -1416,7 +1431,7 @@ function renderCookiePolicyPage() {
       ${renderSiteHeader("")}
       <article class="legal-document">
         <header><p>${policy.updated}</p><h1>${policy.title}</h1></header>
-        ${policy.sections.map(([heading, body], index) => `<section><h2>${heading}</h2><p>${index === 4 ? body.replace("privacy@dagdroom.de", '<a href="mailto:privacy@dagdroom.de">privacy@dagdroom.de</a>') : body}</p>${index === 3 ? `<button class="cookie-preferences-open" type="button">${policy.manage}</button>` : ""}</section>`).join("")}
+        ${policy.sections.map(([heading, body], index) => `<section><h2>${heading}</h2><p>${index === 4 ? body.replace("contact@dagdroom.de", '<a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a>') : body}</p>${index === 3 ? `<button class="cookie-preferences-open" type="button">${policy.manage}</button>` : ""}</section>`).join("")}
       </article>
       ${renderFooter()}
     </main>`;
@@ -1424,21 +1439,24 @@ function renderCookiePolicyPage() {
 }
 
 function renderServicePage(route) {
-  const pages = {
-    "/shipping-returns": { title: "Shipping & Returns", copy: "Contact us with delivery and return questions about a product or order." },
-    "/privacy": { title: "Privacy", copy: "For questions about your personal information, contact us. You can also review and manage your cookie preferences." },
-    "/terms": { title: "Terms", copy: "For information about product and order conditions, please contact us." }
-  };
-  const page = pages[route];
-  document.title = `${translate(page.title)} — Dagdroøm`;
+  const page = legalPages[route];
+  document.title = `${page.title} — Dagdroøm`;
   document.querySelector("#app").innerHTML = `<main class="legal-page">
     ${renderSiteHeader("")}
-    <article class="service-document">
-      <h1>${translate(page.title)}</h1>
-      <p>${translate(page.copy)}</p>
+    <article class="legal-document legal-sales-document" lang="tr" translate="no">
+      <header>
+        ${route !== "/shipping-returns" ? `<p lang="${currentLanguage}">${legalLanguageNotes[currentLanguage]}</p><h1>${page.title}</h1>` : ""}
+        <div class="legal-intro">${page.intro}</div>
+      </header>
+      <aside class="legal-draft-note"><strong>Taslak — şirket bilgileri tamamlanacak.</strong> Bu metin, resmi satıcı bilgileri ve operasyon koşulları tamamlanıp hukuki uygunluğu kontrol edildikten sonra yayıma hazır olacaktır.</aside>
+      <nav class="legal-toc" aria-label="İçindekiler">
+        ${page.sections.map(([heading], index) => `<a href="#legal-section-${index + 1}">${heading}</a>`).join("")}
+      </nav>
+      ${page.sections.map(([heading, body], index) => `<section id="legal-section-${index + 1}"><h2>${heading}</h2><p>${body}</p></section>`).join("")}
       <nav class="service-document-actions">
-        <a href="/contact">${translate("Contact")} <span aria-hidden="true">→</span></a>
-        ${route === "/privacy" ? `<a href="/cookies">${translate("Cookie Policy")} <span aria-hidden="true">→</span></a>` : ""}
+        ${Object.entries(legalPages).filter(([path]) => path !== route).map(([path, document]) => `<a href="${path}">${document.title} →</a>`).join("")}
+        <a href="/contact">İletişim →</a>
+        ${route === "/privacy" ? '<a href="/cookies">Çerez Politikası →</a>' : ""}
       </nav>
     </article>
     ${renderFooter()}
@@ -1875,13 +1893,13 @@ function renderFooter(showJournal = false) {
       <div class="footer-bottom">
         <nav class="footer-bottom-primary" aria-label="Footer navigation">
           <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="/shipping-returns">Shipping &amp; Returns</a>
+          <a href="/shipping-returns">${legalLabels[currentLanguage].returns}</a>
           <a href="/contact">Contact</a>
         </nav>
         <nav class="footer-bottom-legal" aria-label="Legal navigation">
           <a href="/cookies">Cookie Policy</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/terms">Terms</a>
+          <a href="/privacy">${legalLabels[currentLanguage].privacy}</a>
+          <a href="/terms">${legalLabels[currentLanguage].terms}</a>
         </nav>
       </div>
       <div class="footer-copyright">© 2026 <a href="/">Dagdroøm</a> All rights reserved.</div>
