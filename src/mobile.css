@@ -3,6 +3,9 @@
 .product-gallery-wrap { min-width: 0; }
 .men-collection-copy[id] { scroll-margin-top: 88px; }
 .product-gallery-controls { display: none; }
+body.nav-open .cookie-consent,
+body.search-open .cookie-consent,
+body.bag-open .cookie-consent { display: none; }
 .hero-section { cursor: pointer; }
 .catalog-no-results { padding: 36px 0; font: 14px/1.6 Arial, sans-serif; }
 .site-search-results .site-search-result { display: flex; align-items: center; gap: 14px; min-height: 64px; }

@@ -1,5 +1,15 @@
 # Mobil kontrol — 7 Eylül 2026
 
+## 17 Eylül — ürün düzenleri ve yayın kontrolü
+
+- 33 sayfa, 132 mobil yerleşim; dört dilde menü/sepet, yatay ekran ve üç masaüstü sayfası geçti.
+- 14 ürün × dört dil × altı genişlik (320, 390, 430, 667, 768, 820): 336 yerleşim geçti. Tüm galeri görselleri decode edilerek kontrol edildi; galeri düğmeleri, seçili kalan SET ve dokunmatik cihazlarda zoomun kapalı olması doğrulandı.
+- 320 px ekranda blazer/pantolon parça kartlarının iç taşması düzeltildi; 480 px ve altında kartlar alt alta yerleşiyor.
+- Menü, arama veya sepet açıkken çerez paneli geçici gizleniyor; kısa yatay ekranda sepet kontrollerini örtmesi giderildi.
+- Menü, arama, filtre, galeri, sepete ekleme/çıkarma ve hesap sekmesi etkileşim kontrolleri geçti.
+- 16 görsel için responsive WebP eklendi: 21.627.372 bayt orijinale karşı toplam 620.604 bayt responsive dosya. Parça kartları da srcset/sizes kullanıyor.
+- Üretim derlemesi ve kargo/ödeme tutarı kontrolleri geçti. Gerçek iPhone/Safari donanım testi yapılmadı; mobil kontroller Windows Chrome dokunmatik emülasyonundadır.
+
 ## 8 Eylül — tam ekran açılış düzeltmesi
 
 - `hero-clean.mp4`, mevcut 7 saniyelik videodan üretildi: alt 52 pikseldeki Kling yazısı kırpıldı; ortadaki gömülü logo/slogan kare bazında temizlenerek aynı metinler duyarlı HTML ile gösterildi. Temiz poster, otomatik oynatma kapalıyken de aynı düzeni koruyor. Orijinal video saklandı.

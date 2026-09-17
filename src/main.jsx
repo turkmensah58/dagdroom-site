@@ -1,6 +1,7 @@
 import "./style.css";
 import "./mobile.css";
 import "./all-products.css";
+import "./product-editorial.css";
 import imageSources from "./image-sources.json";
 import { legalLabels, legalLanguageNotes, legalPages } from "./legal-content.js";
 import {
@@ -120,6 +121,58 @@ const collectionCatalog = [
 // Demo records: replace these fields with the final product data and imagery.
 const productCatalog = [
   {
+    slug: "slor-wrap-top", collection: "slor", collectionName: "Dø Slør™", world: "women",
+    name: "Dø Slør Wrap Top", saleFormat: "single",
+    images: ["/slor-wrap-top-product-front.png", "/slor-wrap-top-product-back.png", "/slor-wrap-top-model-front.png", "/slor-wrap-top-model-side.png", "/slor-wrap-top-model-back.png"],
+    galleryNecklines: {
+      "/slor-wrap-top-product-front.png": 0,
+      "/slor-wrap-top-product-back.png": 0,
+      "/slor-wrap-top-model-front.png": 0.218,
+      "/slor-wrap-top-model-side.png": 0.205,
+      "/slor-wrap-top-model-back.png": 0.24
+    },
+    description: "An ivory wrap-inspired blouse defined by soft cross-over draping and a fluid, gently shaped silhouette. A V neckline, fine gathers and airy long sleeves with softly gathered cuffs create quiet volume, while the curved layered hem brings lightness to tailored and everyday looks.",
+    descriptionTr: "Fildişi tonundaki Dø Slør Wrap Top, çapraz drapeleri ve bedeni nazikçe izleyen akışkan silüetiyle öne çıkar. V yaka, ince büzgüler ve bilekte zarifçe toplanan uzun kollar tasarıma yumuşak bir hacim kazandırır. Kavisli, katmanlı etek ucu hem pantolonlarla hem günlük kombinlerle hafif ve dengeli bir görünüm sunar.",
+    descriptionDe: "Eine elfenbeinfarbene Bluse in Wickeloptik mit sanfter, überkreuzter Drapierung und fließender Silhouette. V-Ausschnitt, feine Raffungen und lange Ärmel mit gerafften Abschlüssen verleihen dezentes Volumen. Der geschwungene, geschichtete Saum ergänzt sowohl elegante als auch alltägliche Kombinationen.",
+    descriptionSv: "En elfenbensfärgad blus med omlottinspirerad drapering och en mjukt formad, följsam silhuett. V-ringning, fina rynkningar och långa ärmar med mjukt rynkade ärmslut ger en diskret volym. Den rundade fållen i lager passar både till skräddade plagg och vardagskombinationer.",
+    sizes: ["XS", "S", "M", "L", "XL"], colors: [{ name: "Ivory", value: "#f2eee5" }],
+    material: "Proposed premium fabric: 100% silk crepe de chine. Final fibre composition to be confirmed.",
+    materialTr: "Önerilen premium kumaş: %100 ipek krep de şin. Nihai lif içeriği henüz doğrulanmadı.",
+    materialDe: "Vorgeschlagener Premiumstoff: 100 % Seiden-Crêpe-de-Chine. Die endgültige Faserzusammensetzung wird noch bestätigt.",
+    materialSv: "Föreslaget premiumtyg: 100 % sidencrêpe de chine. Slutlig fibersammansättning återstår att bekräfta.",
+    care: "Care instructions will be confirmed with the final fabric composition.",
+    careTr: "Bakım talimatları nihai kumaş içeriğiyle birlikte kesinleşecektir.",
+    careDe: "Pflegehinweise werden mit der endgültigen Stoffzusammensetzung bestätigt.",
+    careSv: "Skötselråd fastställs när den slutliga tygsammansättningen är bekräftad.",
+    fit: "Softly shaped fit with fluid draping", fitTr: "Akışkan drapeli, bedeni nazikçe izleyen kesim", fitDe: "Sanft geformte Passform mit fließender Drapierung", fitSv: "Mjukt formad passform med följsam drapering",
+    delivery: "Coming soon", deliveryTr: "Yakında", deliveryDe: "Demnächst", deliverySv: "Kommer snart",
+    inStock: false, isDemo: false
+  },
+  {
+    slug: "slor-do-linje-long-sleeve", collection: "slor", collectionName: "Dø Slør™", world: "women",
+    name: "Dø Linje Long Sleeve", price: "€27", priceCents: 2700,
+    images: ["/slor-do-linje-long-sleeve-product-front-v2.png", "/slor-do-linje-long-sleeve-product-back.png", "/slor-do-linje-long-sleeve-front.jpg", "/slor-do-linje-long-sleeve-side.jpg", "/slor-do-linje-long-sleeve-back.jpg"],
+    galleryNecklines: {
+      "/slor-do-linje-long-sleeve-product-front-v2.png": 0,
+      "/slor-do-linje-long-sleeve-product-back.png": 0,
+      "/slor-do-linje-long-sleeve-front.jpg": 0.19,
+      "/slor-do-linje-long-sleeve-side.jpg": 0.20,
+      "/slor-do-linje-long-sleeve-back.jpg": 0.18
+    },
+    description: "A fitted long-sleeve essential in deep navy, shaped with a clean crew neckline and a subtle Dø signature at the hem. Soft stretch jersey follows the body for effortless layering and everyday comfort.",
+    descriptionTr: "Koyu lacivert tonunda, bisiklet yakalı ve etek ucunda zarif Dø imzasıyla tamamlanan uzun kollu bir temel parça. Yumuşak, esnek jarse dokusu vücudu nazikçe sarar; günlük kullanım ve katmanlı kombinler için rahatlık sunar.",
+    descriptionDe: "Ein körpernahes Langarmshirt in tiefem Marineblau mit Rundhalsausschnitt und dezenter Dø-Signatur am Saum. Weicher Stretch-Jersey bietet Komfort im Alltag und lässt sich mühelos kombinieren.",
+    descriptionSv: "En figurnära långärmad topp i djup marinblå färg med rund halsringning och en diskret Dø-signatur vid fållen. Mjuk stretchjersey ger komfort i vardagen och passar fint under andra plagg.",
+    sizes: ["XS", "S", "M", "L", "XL"], colors: [{ name: "Deep Navy", value: "#303744" }],
+    material: "95% Cotton, 5% Elastane", materialTr: "%95 Pamuk, %5 Elastan", materialDe: "95 % Baumwolle, 5 % Elasthan", materialSv: "95 % bomull, 5 % elastan",
+    care: "Machine wash inside out at 30°C with similar colours. Do not tumble dry. Iron at low temperature.",
+    careTr: "Benzer renklerle, ters çevirerek 30°C'de makinede yıkayın. Kurutma makinesi kullanmayın. Düşük ısıda ütüleyin.",
+    careDe: "Mit ähnlichen Farben auf links bei 30 °C waschen. Nicht im Trockner trocknen. Bei niedriger Temperatur bügeln.",
+    careSv: "Maskintvätta ut och in i 30 °C med liknande färger. Torktumla inte. Stryk på låg temperatur.",
+    fit: "Slim fit", fitTr: "Vücuda oturan kesim", fitDe: "Schmale Passform", fitSv: "Figurnära passform",
+    delivery: "Sold out", deliveryTr: "Tükendi", deliveryDe: "Ausverkauft", deliverySv: "Slutsåld", inStock: false, status: "sold-out", isDemo: false
+  },
+  {
     slug: "slor-air-dress", collection: "slor", collectionName: "Dø Slør™", world: "women",
     name: "Air Dress", price: "€240 · Demo", priceCents: 24000, images: ["/slor-arctic-fog.png"],
     description: "A light everyday silhouette with quiet volume and fluid movement.",
@@ -138,12 +191,14 @@ const productCatalog = [
   },
   {
     slug: "flyt-motion-top", collection: "flyt", collectionName: "Dø Flyt™", world: "women", colors: [{ name: "Burgundy", value: "#702c38" }],
+    saleFormat: "set-only",
     name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-front.png", "/burgundy-sculpted-tracksuit-back.png", "/burgundy-sculpted-tracksuit-profile.png"],
     description: "A technical essential balancing comfort, movement and a clean Nordic line.",
     sizes: ["XS", "S", "M", "L", "XL"], material: "Demo material", care: "Demo care", fit: "Close", delivery: "Demo only", inStock: true
   },
   {
     slug: "flyt-ivory-linen-pyjama", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
+    saleFormat: "set-only",
     name: "IVORY LINEN PYJAMA", images: [
       "/flyt-ivory-linen-pyjama-v2.png",
       "/flyt-ivory-linen-pyjama-model-front.png",
@@ -159,6 +214,7 @@ const productCatalog = [
   },
   {
     slug: "flyt-nocturne-pyjama", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
+    saleFormat: "set-only",
     name: "NOCTURNE PYJAMA", images: [
       "/flyt-nocturne-pyjama-front-v2.png",
       "/flyt-nocturne-pyjama-side-v2.png",
@@ -281,7 +337,6 @@ function productPrice(slug) {
 }
 
 function formatProductPrice(slug, isDemo = false) {
-  if (activeCurrency === "TRY") return `${formatMoney(productPrice(slug), "TRY")}${isDemo ? " · Demo" : ""}`;
   const euroCents = priceForProduct(slug, "EUR");
   if (euroCents === null) return currentLanguage === "tr" ? "Fiyat yakında" : "Price unavailable";
   const demoLabel = isDemo ? " · Demo" : "";
@@ -293,7 +348,7 @@ function formatProductPrice(slug, isDemo = false) {
 function updateVisibleProductPrices() {
   document.querySelectorAll("[data-product-price]").forEach((element) => {
     element.textContent = formatProductPrice(element.dataset.productPrice, element.dataset.demo === "true");
-    if (activeCurrency === "EUR" && currentLanguage === "tr") {
+    if (currentLanguage === "tr") {
       element.title = `Günlük EUR/TRY referans kuru: ${eurTryRate.toLocaleString("tr-TR")}${eurTryRateDate ? ` (${eurTryRateDate})` : ""}`;
     }
   });
@@ -1095,6 +1150,11 @@ async function startCheckout(event) {
   }
 }
 
+function renderProductPiecePreview(product) {
+  if (product.saleFormat === "set-only") return "";
+  return `<img src="${product.images[0]}" ${imageAttributes(product.images[0], "(max-width: 820px) 76px, 100px")} alt="" decoding="async" />`;
+}
+
 function renderProductPage(slug) {
   const product = productCatalog.find((item) => item.slug === slug);
   if (!product) {
@@ -1103,16 +1163,27 @@ function renderProductPage(slug) {
   }
   const labels = productPageLabels[currentLanguage] || productPageLabels.en;
   const colors = product.colors || collectionDemoColors[product.collection]?.slice(0, 1) || [];
+  const editorial = product.saleFormat !== "set-only" || product.collection === "flyt";
+  const purchaseCopy = {
+    tr: ["Yalnızca bu ürün dahildir.", "Görseldeki diğer parçalar dahil değildir.", "Ayrı satın al", "Ürün detayları"],
+    en: ["Only this item is included.", "Other pieces shown are not included.", "Shop separately", "Product details"],
+    de: ["Nur dieser Artikel ist enthalten.", "Andere abgebildete Teile sind nicht enthalten.", "Separat kaufen", "Produktdetails"],
+    sv: ["Endast denna produkt ingår.", "Övriga plagg på bilden ingår inte.", "Handla separat", "Produktdetaljer"]
+  }[currentLanguage] || ["Only this item is included.", "Other pieces shown are not included.", "Shop separately", "Product details"];
+  const matchingSlugs = ["linje-double-breasted-blazer", "linje-tailored-trousers"];
+  const matchingProducts = matchingSlugs.includes(product.slug)
+    ? matchingSlugs.map((matchingSlug) => productCatalog.find((item) => item.slug === matchingSlug))
+    : [product];
 
   document.title = `${product.name} — Dagdroøm`;
   document.querySelector("#app").innerHTML = `
-    <main class="product-page">
+    <main class="product-page${editorial ? " product-page-editorial" : ""}${product.slug === "slor-wrap-top" ? " product-page-wrap-top" : ""}">
       ${renderSiteHeader(product.world)}
       <section class="product-detail">
         <div class="product-gallery-wrap">
         <div class="product-gallery" id="product-gallery" tabindex="0" aria-label="${product.name}">
           ${product.images.map((image, index) => `
-            <figure class="product-gallery-zoom" data-model-image="${image.includes("-model-")}">
+            <figure class="product-gallery-zoom" data-zoom-protected-top="${product.galleryNecklines?.[image] ?? productGalleryNeckline(image)}">
               <img src="${image}" ${imageAttributes(image, "(max-width: 820px) calc(100vw - 32px), (max-width: 1380px) 60vw, 793px")} alt="${product.name}${index ? ` detail ${index + 1}` : ""}" loading="${index ? "lazy" : "eager"}" />
             </figure>
           `).join("")}
@@ -1120,21 +1191,25 @@ function renderProductPage(slug) {
         ${product.images.length > 1 ? `<nav class="product-gallery-controls" aria-label="${translate("Product images")}">${product.images.map((_, index) => `<button type="button" data-gallery-index="${index}" aria-label="${translate("Image")} ${index + 1}" aria-controls="product-gallery" aria-current="${index === 0 ? "true" : "false"}">${index + 1}</button>`).join("")}</nav>` : ""}
         </div>
         <div class="product-information">
+          ${editorial ? `<span class="product-collection-label">${product.collectionName}</span>` : ""}
           <h1>${product.name}</h1>
           <span class="product-price" data-product-price="${product.slug}" data-demo="${Boolean(product.isDemo)}">${formatProductPrice(product.slug, product.isDemo)}</span>
-          <p>${localizedProductField(product, "description")}</p>
-          <dl>
+          ${editorial ? `<nav class="product-piece-options${product.saleFormat === "set-only" ? " product-set-selection" : ""}" aria-label="${product.saleFormat === "set-only" ? product.name : purchaseCopy[2]}">${matchingProducts.map((item) => item.saleFormat === "set-only" ? `<button type="button" class="product-set-label" aria-pressed="true"><span>SET</span></button>` : `<a href="/products/${item.slug}"${item.slug === product.slug ? ' aria-current="page"' : ""}>${renderProductPiecePreview(item)}<span>${item.name}</span></a>`).join("")}</nav>
+          ${matchingProducts.length > 1 ? `<p class="product-separate-link">${purchaseCopy[2]}: ${matchingProducts.filter((item) => item.slug !== product.slug).map((item) => `<a href="/products/${item.slug}">${item.name}</a>`).join(" · ")}</p>` : ""}` : `<p>${localizedProductField(product, "description")}</p>`}
+          ${editorial ? `<details class="product-specifications"><summary>${purchaseCopy[3]}</summary>` : ""}<dl>
             <div><dt>${labels.sizes}</dt><dd>${product.sizes.join(" / ")}</dd></div>
             <div><dt>${labels.material}</dt><dd>${localizedProductField(product, "material")}</dd></div>
             <div><dt>${labels.care}</dt><dd>${localizedProductField(product, "care")}</dd></div>
             <div><dt>${labels.fit}</dt><dd>${localizedProductField(product, "fit")}</dd></div>
             <div><dt>${labels.delivery}</dt><dd>${localizedProductField(product, "delivery")}</dd></div>
           </dl>
+          ${editorial ? "</details>" : ""}
           ${product.inStock ? `<div class="product-purchase" data-product-slug="${product.slug}">
             <fieldset class="product-card-colors"><legend>${translate("Select color")}</legend><div>${colors.map((color) => `<button type="button" data-color="${color.name}" aria-label="${color.name}" aria-pressed="false"><span style="--swatch: ${color.value}"></span></button>`).join("")}</div></fieldset>
             <fieldset class="product-card-sizes"><legend>${translate("Select size")}</legend><div>${product.sizes.map((size) => `<button type="button" data-size="${size}" aria-pressed="false">${size}</button>`).join("")}</div></fieldset>
             <button type="button" class="product-card-add" aria-live="polite" disabled>${labels.add}</button>
           </div>` : `<button type="button" disabled>${product.status === "sold-out" ? labels.soldOut : labels.comingSoon}</button>`}
+          ${editorial ? `<div class="product-editorial-note"><p>${localizedProductField(product, "description")}</p><span>CLOTHES FOR A CALMER TOMORROW</span></div>` : ""}
         </div>
       </section>
       ${renderFooter()}
@@ -1167,19 +1242,37 @@ function initializeMobileGallery() {
   });
 }
 
+// Neckline positions are fractions of each source image's height.
+// Add galleryNecklines to a product when introducing a new model photograph.
+function productGalleryNeckline(image) {
+  const necklines = {
+    "/slor-do-linje-long-sleeve-front.jpg": 0.19,
+    "/slor-do-linje-long-sleeve-side.jpg": 0.20,
+    "/slor-do-linje-long-sleeve-back.jpg": 0.18,
+    "/burgundy-sculpted-tracksuit-front.png": 0.18,
+    "/burgundy-sculpted-tracksuit-back.png": 0.18,
+    "/burgundy-sculpted-tracksuit-profile.png": 0.18,
+    "/flyt-nocturne-pyjama-front-v2.png": 0.19,
+    "/flyt-nocturne-pyjama-side-v2.png": 0.19,
+    "/flyt-nocturne-pyjama-back.png": 0.19,
+    "/linje-double-breasted-blazer-model-front.png": 0.21
+  };
+  return necklines[image] ?? (image.includes("-model-") ? 0.23 : 0);
+}
+
 function initializeProductGalleryZoom() {
   const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (!canHover || reduceMotion) return;
 
   document.querySelectorAll(".product-gallery-zoom").forEach((frame) => {
-    const isModelImage = frame.dataset.modelImage === "true";
+    const protectedTop = Number(frame.dataset.zoomProtectedTop || 0);
 
     frame.addEventListener("pointermove", (event) => {
       const bounds = frame.getBoundingClientRect();
       const x = Math.min(1, Math.max(0, (event.clientX - bounds.left) / bounds.width));
       const y = Math.min(1, Math.max(0, (event.clientY - bounds.top) / bounds.height));
-      const isFaceArea = isModelImage && y < 0.23;
+      const isFaceArea = protectedTop > 0 && y <= protectedTop;
 
       frame.classList.toggle("is-face-area", isFaceArea);
       frame.classList.toggle("is-zooming", !isFaceArea);

@@ -692,5 +692,261 @@
         "bytes": 101360
       }
     ]
+  },
+  "/slor-wrap-top-product-front.png": {
+    "width": 4171,
+    "height": 2781,
+    "variants": [
+      {
+        "url": "/responsive/slor-wrap-top-product-front-480.webp",
+        "width": 480,
+        "bytes": 4442
+      },
+      {
+        "url": "/responsive/slor-wrap-top-product-front-960.webp",
+        "width": 960,
+        "bytes": 12622
+      }
+    ]
+  },
+  "/slor-wrap-top-product-back.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/slor-wrap-top-product-back-480.webp",
+        "width": 480,
+        "bytes": 9960
+      },
+      {
+        "url": "/responsive/slor-wrap-top-product-back-960.webp",
+        "width": 960,
+        "bytes": 30278
+      }
+    ]
+  },
+  "/slor-wrap-top-model-front.png": {
+    "width": 1536,
+    "height": 2048,
+    "variants": [
+      {
+        "url": "/responsive/slor-wrap-top-model-front-480.webp",
+        "width": 480,
+        "bytes": 6298
+      },
+      {
+        "url": "/responsive/slor-wrap-top-model-front-960.webp",
+        "width": 960,
+        "bytes": 18090
+      }
+    ]
+  },
+  "/slor-wrap-top-model-side.png": {
+    "width": 1536,
+    "height": 2048,
+    "variants": [
+      {
+        "url": "/responsive/slor-wrap-top-model-side-480.webp",
+        "width": 480,
+        "bytes": 6812
+      },
+      {
+        "url": "/responsive/slor-wrap-top-model-side-960.webp",
+        "width": 960,
+        "bytes": 17776
+      }
+    ]
+  },
+  "/slor-wrap-top-model-back.png": {
+    "width": 1086,
+    "height": 1448,
+    "variants": [
+      {
+        "url": "/responsive/slor-wrap-top-model-back-480.webp",
+        "width": 480,
+        "bytes": 6330
+      },
+      {
+        "url": "/responsive/slor-wrap-top-model-back-960.webp",
+        "width": 960,
+        "bytes": 17404
+      }
+    ]
+  },
+  "/slor-do-linje-long-sleeve-product-front-v2.png": {
+    "width": 4171,
+    "height": 2781,
+    "variants": [
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-product-front-v2-480.webp",
+        "width": 480,
+        "bytes": 2972
+      },
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-product-front-v2-960.webp",
+        "width": 960,
+        "bytes": 7734
+      }
+    ]
+  },
+  "/slor-do-linje-long-sleeve-product-back.png": {
+    "width": 1144,
+    "height": 1375,
+    "variants": [
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-product-back-480.webp",
+        "width": 480,
+        "bytes": 9034
+      },
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-product-back-960.webp",
+        "width": 960,
+        "bytes": 22684
+      }
+    ]
+  },
+  "/slor-do-linje-long-sleeve-front.jpg": {
+    "width": 1020,
+    "height": 1360,
+    "variants": [
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-front-480.webp",
+        "width": 480,
+        "bytes": 10944
+      },
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-front-960.webp",
+        "width": 960,
+        "bytes": 30042
+      }
+    ]
+  },
+  "/slor-do-linje-long-sleeve-side.jpg": {
+    "width": 780,
+    "height": 1040,
+    "variants": [
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-side-480.webp",
+        "width": 480,
+        "bytes": 8364
+      },
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-side-780.webp",
+        "width": 780,
+        "bytes": 17340
+      }
+    ]
+  },
+  "/slor-do-linje-long-sleeve-back.jpg": {
+    "width": 795,
+    "height": 1060,
+    "variants": [
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-back-480.webp",
+        "width": 480,
+        "bytes": 9282
+      },
+      {
+        "url": "/responsive/slor-do-linje-long-sleeve-back-795.webp",
+        "width": 795,
+        "bytes": 18960
+      }
+    ]
+  },
+  "/flyt-nocturne-pyjama-front-v2.png": {
+    "width": 960,
+    "height": 1359,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-front-v2-480.webp",
+        "width": 480,
+        "bytes": 16364
+      },
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-front-v2-960.webp",
+        "width": 960,
+        "bytes": 118200
+      }
+    ]
+  },
+  "/flyt-nocturne-pyjama-side-v2.png": {
+    "width": 1054,
+    "height": 1492,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-side-v2-480.webp",
+        "width": 480,
+        "bytes": 9710
+      },
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-side-v2-960.webp",
+        "width": 960,
+        "bytes": 25334
+      }
+    ]
+  },
+  "/flyt-nocturne-pyjama-top.png": {
+    "width": 4171,
+    "height": 2781,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-top-480.webp",
+        "width": 480,
+        "bytes": 2914
+      },
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-top-960.webp",
+        "width": 960,
+        "bytes": 7036
+      }
+    ]
+  },
+  "/flyt-nocturne-pyjama-bottom.png": {
+    "width": 1122,
+    "height": 1402,
+    "variants": [
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-bottom-480.webp",
+        "width": 480,
+        "bytes": 11680
+      },
+      {
+        "url": "/responsive/flyt-nocturne-pyjama-bottom-960.webp",
+        "width": 960,
+        "bytes": 28376
+      }
+    ]
+  },
+  "/hero-clean-poster.jpg": {
+    "width": 1276,
+    "height": 668,
+    "variants": [
+      {
+        "url": "/responsive/hero-clean-poster-480.webp",
+        "width": 480,
+        "bytes": 21438
+      },
+      {
+        "url": "/responsive/hero-clean-poster-960.webp",
+        "width": 960,
+        "bytes": 58752
+      }
+    ]
+  },
+  "/linje-card-poster.jpg": {
+    "width": 1280,
+    "height": 720,
+    "variants": [
+      {
+        "url": "/responsive/linje-card-poster-480.webp",
+        "width": 480,
+        "bytes": 15788
+      },
+      {
+        "url": "/responsive/linje-card-poster-960.webp",
+        "width": 960,
+        "bytes": 37644
+      }
+    ]
   }
 }

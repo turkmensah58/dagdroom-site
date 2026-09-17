@@ -1,6 +1,7 @@
 import { INTERNATIONAL_CHECKOUT_ENABLED, priceForProduct, DOMESTIC_SHIPPING_FEE } from "../shared/pricing.js";
 
 const CATALOG = {
+  "slor-do-linje-long-sleeve": "Dø Linje Long Sleeve",
   "slor-air-dress": "Air Dress", "slor-air-dress-demo-2": "Layer Top", "slor-air-dress-demo-3": "Soft Trouser", "slor-air-dress-demo-4": "Quiet Jacket",
   "skygge-belted-wool-coat": "Belted Wool Coat",
   "skygge-soft-jacket": "Soft Jacket", "skygge-soft-jacket-demo-2": "Layer Top", "skygge-soft-jacket-demo-3": "Soft Trouser", "skygge-soft-jacket-demo-4": "Quiet Jacket",

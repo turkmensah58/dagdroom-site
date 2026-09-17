@@ -8,7 +8,8 @@ assert.deepEqual(bagTotals([item], 'TRY'), { subtotal: 149000, shipping: 14900, 
 assert.deepEqual(bagTotals([item, item], 'TRY'), { subtotal: 298000, shipping: 14900, total: 312900 });
 assert.equal(bagTotals([{ slug: 'missing' }], 'TRY').total, null);
 assert.equal(bagTotals([item], 'EUR').total, null);
-for (const lang of ['tr', 'en', 'de', 'sv']) assert.equal(currencyForLanguage(lang), 'TRY');
+assert.equal(currencyForLanguage('tr'), 'TRY');
+for (const lang of ['en', 'de', 'sv']) assert.equal(currencyForLanguage(lang), 'EUR');
 
 const originalFetch = globalThis.fetch;
 const originalKey = process.env.STRIPE_SECRET_KEY;
