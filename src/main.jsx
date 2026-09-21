@@ -3,6 +3,7 @@ import "./mobile.css";
 import "./all-products.css";
 import "./product-editorial.css";
 import imageSources from "./image-sources.json";
+import { aboutContent } from "./about-content.js";
 import { legalLabels, legalLanguageNotes, legalPages } from "./legal-content.js";
 import {
   currentLanguage,
@@ -1390,6 +1391,22 @@ function renderJournalPage() {
   initializeSiteHeader();
 }
 
+function renderAboutPage() {
+  const page = aboutContent[currentLanguage];
+  document.title = `${page.title} — Dagdroøm`;
+  document.querySelector("#app").innerHTML = `<main class="legal-page about-page">
+    ${renderSiteHeader("")}
+    <article class="legal-document about-document" lang="${currentLanguage}" translate="no">
+      <header><p>Dagdroøm</p><h1>${page.title}</h1><div class="legal-intro">${page.intro}</div></header>
+      <div class="about-copy">${page.paragraphs.map(text => `<p>${text}</p>`).join("")}</div>
+      <p class="about-signature">Calm. Clean. Nordic.</p>
+      <nav class="service-document-actions"><a href="/women">${page.collections} →</a><a href="/contact">${page.contact} →</a></nav>
+    </article>
+    ${renderFooter()}
+  </main>`;
+  initializeSiteHeader();
+}
+
 function renderEssensPage() {
   document.querySelector("#app").innerHTML = `
     <main class="essens-page">
@@ -1538,10 +1555,10 @@ function renderServicePage(route) {
     ${renderSiteHeader("")}
     <article class="legal-document legal-sales-document" lang="tr" translate="no">
       <header>
-        ${route !== "/shipping-returns" ? `<p lang="${currentLanguage}">${legalLanguageNotes[currentLanguage]}</p><h1>${page.title}</h1>` : ""}
+        <p lang="${currentLanguage}">${legalLanguageNotes[currentLanguage]}</p><h1>${page.title}</h1>
         <div class="legal-intro">${page.intro}</div>
       </header>
-      <aside class="legal-draft-note"><strong>Taslak — şirket bilgileri tamamlanacak.</strong> Bu metin, resmi satıcı bilgileri ve operasyon koşulları tamamlanıp hukuki uygunluğu kontrol edildikten sonra yayıma hazır olacaktır.</aside>
+      <aside class="legal-draft-note"><strong>Taslak — operasyon koşulları doğrulanacak.</strong> Bu metin, operasyon koşulları doğrulanıp hukuki uygunluğu kontrol edildikten sonra yayıma hazır olacaktır.</aside>
       <nav class="legal-toc" aria-label="İçindekiler">
         ${page.sections.map(([heading], index) => `<a href="#legal-section-${index + 1}">${heading}</a>`).join("")}
       </nav>
@@ -1985,6 +2002,7 @@ function renderFooter(showJournal = false) {
       </div>
       <div class="footer-bottom">
         <nav class="footer-bottom-primary" aria-label="Footer navigation">
+          <a href="/about">${aboutContent[currentLanguage].title}</a>
           <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
           <a href="/shipping-returns">${legalLabels[currentLanguage].returns}</a>
           <a href="/contact">Contact</a>
@@ -1995,6 +2013,7 @@ function renderFooter(showJournal = false) {
           <a href="/terms">${legalLabels[currentLanguage].terms}</a>
         </nav>
       </div>
+      <div class="footer-payments" translate="no"><img src="/payments/iyzico-payment-band.svg" width="429" height="32" alt="iyzico ile Öde, Mastercard, Visa, American Express, Troy" loading="lazy" /></div>
       <div class="footer-copyright">© 2026 <a href="/">Dagdroøm</a> All rights reserved.</div>
     </footer>
   `;
@@ -2257,6 +2276,11 @@ function initializeAdminPage() {
 
   if (normalizedPath === "/journal") {
     renderJournalPage();
+    return;
+  }
+
+  if (normalizedPath === "/about") {
+    renderAboutPage();
     return;
   }
 

@@ -14,6 +14,7 @@
     { "source": "/journal", "destination": "/index.html" },
     { "source": "/essens", "destination": "/index.html" },
     { "source": "/collections/:path*", "destination": "/index.html" },
-    { "source": "/products/:path*", "destination": "/index.html" }
+    { "source": "/products/:path*", "destination": "/index.html" },
+    { "source": "/about", "destination": "/index.html" }
   ]
 }

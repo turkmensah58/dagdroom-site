@@ -4,7 +4,7 @@ Türkçe taslaklar `src/legal-content.js` içinde tutulur. `/terms`, `/shipping-
 
 ## Tamamlanacak işletme bilgileri
 
-- Satıcı / veri sorumlusu, resmi adres ve vergi bilgileri kullanıcı tarafından sağlandı ve metinlere işlendi. Telefon ve varsa sicil / MERSİS bilgileri bekleniyor.
+- Satıcı / veri sorumlusu, resmi adres ve vergi bilgileri kullanıcı tarafından sağlandı ve metinlere işlendi. Telefon metinlerde bulunuyor. Kullanıcı şahıs işletmesi olduğunu ve MERSİS numarası bulunmadığını teyit etti. Ticaret sicili kaydı hakkında ayrıca bilgi verilmedi.
 - Kullanıcı tüm iletişim için contact@dagdroom.de adresini belirledi.
 - İade adresi, taşıyıcı ve değişim operasyonu.
 - Satış kapsamı kullanıcı tarafından yalnızca Türkiye olarak belirlendi ve metne işlendi. Ödeme kodundaki adres ülkelerinin uyarlanması operasyon aşamasında ayrıca ele alınacak.

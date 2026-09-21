@@ -212,3 +212,15 @@ body.bag-open .cookie-consent { display: none; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* Payment marks and service links remain readable on narrow screens. */
+.footer-payments { display: flex; justify-content: center; padding: 28px 0 0; }
+.footer-payments img { display: block; width: 429px; max-width: 100%; height: auto; }
+.about-document .legal-intro { margin-top: 24px; font: 18px/1.6 Georgia, serif; }
+.about-copy p { font: 15px/1.9 Arial, sans-serif; color: #555; margin: 0 0 24px; }
+.about-signature { margin: 44px 0; font: 26px/1.4 Georgia, serif; }
+@media (max-width: 768px) {
+  .site-footer .footer-bottom { flex-wrap: wrap; overflow: visible; gap: 12px; }
+  .site-footer .footer-bottom nav { flex: 1 1 100%; flex-wrap: wrap; gap: 8px 20px !important; margin: 0; }
+  .footer-payments { padding-top: 24px; }
+}

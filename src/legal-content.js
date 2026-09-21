@@ -2,10 +2,10 @@ import { DOMESTIC_SHIPPING_FEE } from '../shared/pricing.js';
 const shippingFeeText = new Intl.NumberFormat('tr-TR').format(DOMESTIC_SHIPPING_FEE / 100) + ' TL';
 // Turkish drafts. Complete the legal identity and operational details before publication.
 export const legalLabels = {
-  tr: { terms: "Mesafeli Satış Sözleşmesi", returns: "İade ve Değişim", privacy: "Gizlilik / KVKK" },
-  en: { terms: "Distance Sales Agreement", returns: "Returns & Exchanges", privacy: "Privacy / KVKK" },
-  de: { terms: "Fernabsatzvertrag", returns: "Rückgabe & Umtausch", privacy: "Datenschutz / KVKK" },
-  sv: { terms: "Distansköpsavtal", returns: "Returer & byten", privacy: "Integritet / KVKK" }
+  tr: { terms: "Mesafeli Satış Sözleşmesi", returns: "Teslimat ve İade Şartları", privacy: "Gizlilik Sözleşmesi / KVKK" },
+  en: { terms: "Distance Sales Agreement", returns: "Delivery & Returns", privacy: "Privacy / KVKK" },
+  de: { terms: "Fernabsatzvertrag", returns: "Lieferung & Rückgabe", privacy: "Datenschutz / KVKK" },
+  sv: { terms: "Distansköpsavtal", returns: "Leverans & returer", privacy: "Integritet / KVKK" }
 };
 
 export const legalLanguageNotes = {
@@ -18,7 +18,7 @@ export const legalLanguageNotes = {
 const care = '<a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a>';
 const privacy = '<a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a>';
 const businessAddress = '1821/1 Sokak 7/9 Bostanlı Karşıyaka / İZMİR';
-const identity = `Marka: Dagdroøm. Satıcı / veri sorumlusu: Barış Türkmen. Açık adres: ${businessAddress}. Vergi dairesi: Çiğli Vergi Dairesi. Vergi numarası: 8790693184. Telefon: <a href="tel:+905389715733">0538 971 57 33</a>. Varsa MERSİS / ticaret sicili bilgileri: [tamamlanacak].`;
+const identity = `Marka: Dagdroøm. Satıcı / veri sorumlusu: Barış Türkmen (şahıs işletmesi). Açık adres: ${businessAddress}. Vergi dairesi: Çiğli Vergi Dairesi. Vergi numarası: 8790693184. Telefon: <a href="tel:+905389715733">0538 971 57 33</a>. MERSİS numarası bulunmamaktadır.`;
 
 export const legalPages = {
   "/terms": {
@@ -28,15 +28,16 @@ export const legalPages = {
       ["01 · Taraflar", `${identity} Sipariş desteği: ${care}. Alıcı; adı, iletişim ve teslimat bilgileri siparişte yer alan tüketicidir.`],
       ["02 · Konu ve sipariş bilgileri", "Sözleşme, seçilen giyim ürününün satışı ve teslimini kapsar. Ürün, beden, renk, adet, vergili bedel, kargo ücreti, toplam tutar, ödeme şekli ve teslimat koşulları siparişe özgü ön bilgilendirmede yer almalıdır. Bu genel sayfa, siparişe özgü ön bilgilendirme ve sözleşme nüshasının yerine geçmez."],
       ["03 · Ödeme ve teslimat", "Siparişler, ödeme onayından itibaren en geç 2 iş günü içinde Yurtiçi Kargo’ya teslim edilir. Bu süre kargoya verme süresidir; müşteriye teslim süresi değildir. Ürün fiyatları KDV dahil, kargo hariçtir. Türkiye içi siparişlerde KDV dahil " + shippingFeeText + " sabit kargo bedeli sipariş başına bir kez eklenir; ürün tutarı, kargo bedeli ve ödenecek toplam sepette ayrı gösterilir. Teslimat, bildirilen süre içinde ve kişiye özel üretim istisnası dışında en geç 30 günde yapılır. Önceden açıklanmayan ek ücretler tüketiciye yüklenemez. Satıcının belirttiği taşıyıcıyla teslimata kadar kayıp ve hasar sorumluluğu satıcıdadır."],
-      ["04 · Cayma ve geri ödeme", 'Cayma bildirimi, geri gönderim, kargo masrafları ve geri ödeme koşulları <a href="/shipping-returns">İade ve Değişim</a> sayfasında açıklanmıştır; bu koşullar sözleşmenin parçasıdır.'],
+      ["04 · Cayma ve geri ödeme", 'Cayma bildirimi, geri gönderim, kargo masrafları ve geri ödeme koşulları <a href="/shipping-returns">Teslimat ve İade Şartları</a> sayfasında açıklanmıştır; bu koşullar sözleşmenin parçasıdır.'],
       ["05 · Ayıplı ürünler", "Ürün kararlaştırılan nitelikleri taşımıyorsa tüketici, kanuni koşulları çerçevesinde sözleşmeden dönme, bedel indirimi, ücretsiz onarım veya ayıpsız ürünle değişim haklarından yararlanabilir. Bu haklar, gerekçesiz cayma süresiyle sınırlandırılamaz."],
       ["06 · Başvurular ve kapsam", `Satış ve teslimat kapsamı Türkiye ile sınırlıdır. Siparişe ilişkin talepler ${care} üzerinden iletilebilir. Tüketicinin yetkili tüketici hakem heyetine veya tüketici mahkemesine başvuru hakkı saklıdır.`]
     ]
   },
   "/shipping-returns": {
     title: legalLabels.tr.returns,
-    intro: "Siparişler, ödeme onayından itibaren en geç 2 iş günü içinde Yurtiçi Kargo’ya teslim edilir. Bu süre kargoya verme süresidir; müşteriye teslim süresi değildir. Ürün fiyatları KDV dahil, kargo hariçtir. Türkiye içi siparişlerde KDV dahil " + shippingFeeText + " sabit kargo bedeli sipariş başına bir kez eklenir; ürün tutarı, kargo bedeli ve ödenecek toplam sepette ayrı gösterilir. İade veya beden değişimi talebiniz için müşteri hizmetleriyle iletişime geçebilirsiniz.",
+    intro: "Siparişler, ödeme onayından itibaren en geç 2 iş günü içinde Yurtiçi Kargo’ya teslim edilir. Bu süre kargoya verme süresidir; müşteriye teslim süresi değildir. Ürün fiyatları KDV dahil, kargo hariçtir. Türkiye içi siparişlerde KDV dahil " + shippingFeeText + " sabit kargo bedeli sipariş başına bir kez eklenir; ürün tutarı, kargo bedeli ve ödenecek toplam sepette ayrı gösterilir. İade talebiniz için müşteri hizmetleriyle iletişime geçebilirsiniz.",
     sections: [
+      ["Teslimat kapsamı ve süresi", "Teslimat yalnızca Türkiye içindeki adreslere yapılır. Kargoya verildikten sonra teslimat süresi adrese ve taşıyıcının dağıtım planına göre değişebilir. Taahhüt edilen teslimat süresi saklı kalmak üzere, kişiye özel üretim istisnası dışında teslimat en geç 30 gün içinde tamamlanır. Teslimatla ilgili sorularınız için contact@dagdroom.de adresine yazabilirsiniz."],
       ["01 · Cayma hakkı", `Teslimden itibaren 14 gün içinde gerekçesiz ve cezasız cayabilirsiniz; teslimden önce de cayma mümkündür. Açık cayma bildiriminizi ${care} adresine iletebilirsiniz. Bildirimin geçerliliği müşteri hizmetlerinin onayına bağlı değildir.`],
       ["02 · Ürünü gönderme", `Cayma bildiriminden itibaren 14 gün içinde ürünü geri gönderin. İade alıcısı: Barış Türkmen. İade adresi: ${businessAddress}. İade taşıyıcısı: Yurtiçi Kargo. Belirtilen taşıyıcıyla iadede masraf alınmaz; taşıyıcı belirtilmemişse de iade masrafı tüketiciye yüklenemez. Gönderi belgesini saklayın.`],
       ["03 · Bedel iadesi", "Teslimat giderleri dahil geri ödeme, belirtilen taşıyıcıya teslimden; başka taşıyıcı kullanılırsa ürünün satıcıya ulaşmasından itibaren 14 gün içinde yapılır. Teslim öncesi caymada süre bildirimle başlar. İade, kullanılan ödeme aracına uygun biçimde, tek seferde ve masrafsız yapılır."],
