@@ -1,0 +1,8 @@
+html { -webkit-text-size-adjust: 100%; }
+.back-link:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+@media (max-width: 1100px) {
+  .back-link { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+  .back-link { top: max(24px, env(safe-area-inset-top)); left: max(20px, env(safe-area-inset-left)); }
+  .city-heading { bottom: max(34px, calc(20px + env(safe-area-inset-bottom))); }
+  .article-header h2, .article-body p, .article-author p { overflow-wrap: anywhere; }
+}

@@ -415,7 +415,7 @@ function updateLanguageMetadata() {
 
 export function initializeI18n(root = document) {
   if (!explicitLanguage && currentLanguage !== defaultLanguage) {
-    window.location.replace(pathForLanguage(localizedRoutePath, currentLanguage));
+    window.location.replace(`${pathForLanguage(localizedRoutePath, currentLanguage)}${window.location.search}${window.location.hash}`);
     return;
   }
 
@@ -428,7 +428,7 @@ export function initializeI18n(root = document) {
       const language = button.dataset.language;
       if (!supportedLanguages.includes(language)) return;
       try { window.localStorage.setItem("dagdroom-language", language); } catch {}
-      window.location.assign(pathForLanguage(localizedRoutePath, language));
+      window.location.assign(`${pathForLanguage(localizedRoutePath, language)}${window.location.search}${window.location.hash}`);
     });
   });
 }

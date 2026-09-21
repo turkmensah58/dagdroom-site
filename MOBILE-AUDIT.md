@@ -1,5 +1,11 @@
 # Mobil kontrol — 7 Eylül 2026
 
+## 21 Eylül — son değişikliklerin yayın hazırlığı
+
+- Dokunma hedefleri, 16 px mobil form alanları, şehir sayfalarının güvenli ekran kenarları, dil bağlantıları, yerel fontlar ve azaltılmış hareket video davranışı iki klasörde eşitlendi.
+- Her iki klasör aynı Vite kurulumu ile derlendi ve aynı JS/CSS dosya adlarını üretti. Kargo/ödeme hesaplama kontrolü ve `git diff --check` geçti.
+- Bu oturumda Browser bağlantısı kullanılabilir tarayıcı döndürmedi. Yeni mobil görsel/etkileşim testi ve gerçek iPhone/Safari testi yapılamadı; aşağıdaki eski testler bu sürümün yeniden test edildiği anlamına gelmez.
+
 ## 17 Eylül — ürün düzenleri ve yayın kontrolü
 
 - 33 sayfa, 132 mobil yerleşim; dört dilde menü/sepet, yatay ekran ve üç masaüstü sayfası geçti.

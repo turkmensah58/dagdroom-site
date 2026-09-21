@@ -9,6 +9,7 @@ import {
   initializeI18n,
   languageButton,
   localizedRoutePath,
+  supportedLanguages,
   translate
 } from "./i18n.js";
 import { INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct, bagTotals } from "../shared/pricing.js";
@@ -1144,8 +1145,7 @@ async function startCheckout(event) {
     if (!response.ok || !result.url) throw new Error(result.error || "Checkout could not be started.");
     window.location.assign(result.url);
   } catch (error) {
-    button.disabled = false;
-    button.textContent = "Proceed to payment";
+    syncDemoBagUI();
     window.alert(error.message);
   }
 }
@@ -2214,7 +2214,9 @@ function initializeAdminPage() {
   const normalizedPath = localizedRoutePath;
 
   if (/^\/world\/[^/]+$/.test(normalizedPath)) {
-    window.location.replace(`${normalizedPath}/index.html?lang=${currentLanguage}`);
+    const requestedLanguage = new URLSearchParams(window.location.search).get("lang");
+    const worldLanguage = supportedLanguages.includes(requestedLanguage) ? requestedLanguage : currentLanguage;
+    window.location.replace(`${normalizedPath}/index.html?lang=${worldLanguage}`);
     return;
   }
 
@@ -2288,6 +2290,22 @@ function initializeAdminPage() {
   else renderNotFoundPage();
 }
 
+function initializeReducedMotionVideos() {
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const videos = [...document.querySelectorAll("video")];
+  const pauseVideos = () => {
+    if (!reducedMotion.matches) return;
+    videos.forEach((video) => {
+      video.autoplay = false;
+      video.pause();
+    });
+  };
+  videos.forEach((video) => video.addEventListener("play", pauseVideos));
+  reducedMotion.addEventListener("change", pauseVideos);
+  pauseVideos();
+}
+
 renderCurrentRoute();
+initializeReducedMotionVideos();
 refreshEurTryRate();
 initializeCookieConsent();

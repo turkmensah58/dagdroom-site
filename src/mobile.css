@@ -33,6 +33,17 @@ body.bag-open .cookie-consent { display: none; }
 .hero-brand-tagline { display: block; font: 400 clamp(18px, 2.2vw, 30px)/1.5 'Cormorant Garamond', Georgia, serif; }
 
 @media (max-width: 1100px) {
+  .site-back-link, .site-nav-toggle { min-width: 44px; min-height: 44px; }
+  .women-page .women-enter-link, .men-page .men-enter-link { min-height: 44px; }
+  .catalog-view-options button { min-width: 44px; min-height: 44px; }
+  .account-tabs button, .cookie-preferences-open, .admin-refresh { min-height: 44px; }
+  .cookie-consent-actions button { min-width: 44px; min-height: 44px; font-size: 11px; }
+  .account-form > button, .footer-newsletter-form button, .contact-form button { min-height: 48px; }
+  .contact-form input, .contact-form select, .contact-form textarea,
+  .account-form input:not([type="checkbox"]), .footer-newsletter-form input,
+  .admin-order-footer select { min-width: 0; min-height: 48px; font-size: 16px; }
+  .contact-form textarea { min-height: 132px; }
+  .footer-newsletter-form input::placeholder { font-size: 11px; letter-spacing: .08em; }
   .site-header--landing { padding-inline: max(40px, calc((100% - 780px) / 2)); }
   .site-header--landing .site-navigation { min-height: 56px; }
   .site-header--landing .site-landing-wordmark { font-size: 21px; }

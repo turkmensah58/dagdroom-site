@@ -9,6 +9,12 @@
   if (!cityMatch) return;
 
   const city = cityMatch[1];
+  document.querySelectorAll('a[href^="/"]').forEach((link) => {
+    const url = new URL(link.getAttribute("href"), window.location.origin);
+    if (/\.[a-z0-9]+$/i.test(url.pathname)) return;
+    const path = url.pathname.replace(/^\/(en|de|sv|tr)(?=\/|$)/, "");
+    link.href = `/${language}${path === "/" ? "" : path}${url.search}${url.hash}`;
+  });
   document.querySelectorAll('link[data-i18n-link="true"]').forEach((node) => node.remove());
 
   const addLink = (rel, href, hreflang) => {
