@@ -1,5 +1,13 @@
 # Mobil kontrol — 7 Eylül 2026
 
+## 21 Eylül — hero video kalitesi
+
+- Orijinal 1276×720 videodan 1276×668, 24 fps hero yeniden üretildi. Logo dışındaki YUV örnekleri kaynakta olduğu gibi kodlayıcıya aktarılıyor; önceki kayıplı MJPEG ara dosyası ve görüntünün tamamındaki RGB dönüşümü kaldırıldı. Mevcut logo temizleme sınırları korunuyor; sabit/dar maskeler karşılaştırmada iz bıraktığı için kullanılmadı.
+- H.264 High / level 3.1, yuv420p, CRF 17, faststart; ses akışı yok. Tam ekran CSS, süre, kadraj, HTML logo/slogan, dokunma ve azaltılmış hareket davranışları aynı. Yeni dosya adları eski önbellekten ayrılıyor.
+- Video: 2.843.091 → 4.032.403 bayt. Açılış posteri doğrudan ilk temiz kareden JPEG kalite 95 ile üretildi. Kaynak çözünürlüğü yapay olarak büyütülmedi.
+- Tüm 169 kare decode edildi. Mobil merkez kırpımında rötuş dışı gökyüzü bölgesi PSNR 40,20 → 44,14 dB; buz bölgesi 36,00 → 38,64 dB. Bu ölçümler kaynak sadakatini gösterir; algısal kalite yüzdesi veya logonun arkasındaki detayların geri kazanılması anlamına gelmez.
+- 0, 2, 4 ve 6. saniye kareleri eski/yeni karşılaştırıldı. Yerel kanıtlar `.local/hero-quality/` altında. Bu oturumda Browser kullanılabilir tarayıcı döndürmedi; gerçek Mi Note 10 Pro / iPhone testi yapılmadı. Kaynak çözünürlüğü ve logo temizliğinin izleri hâlâ kalite sınırıdır.
+
 ## 21 Eylül — son değişikliklerin yayın hazırlığı
 
 - Dokunma hedefleri, 16 px mobil form alanları, şehir sayfalarının güvenli ekran kenarları, dil bağlantıları, yerel fontlar ve azaltılmış hareket video davranışı iki klasörde eşitlendi.

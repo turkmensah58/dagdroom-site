@@ -455,10 +455,10 @@ function renderHomePage() {
     loop
     playsinline
     preload="auto"
-    poster="/hero-clean-poster.jpg"
+    poster="/hero-clean-v2-poster.jpg"
     aria-hidden="true"
   >
-    <source src="/hero-clean.mp4" type="video/mp4" />
+    <source src="/hero-clean-v2.mp4" type="video/mp4" />
   </video>
   <div class="hero-brand" translate="no" aria-label="Dagdroøm — Calm. Clean. Nordic.">
     <span class="hero-brand-logo" role="img" aria-label="Dagdroøm"></span>
