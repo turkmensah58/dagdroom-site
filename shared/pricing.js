@@ -46,7 +46,11 @@ export function bagTotals(items, currency) {
   return { subtotal, shipping, total: subtotal !== null && shipping !== null ? subtotal + shipping : null };
 }
 
+// Temporary display preference. Set false to restore the previous EUR display.
+export const TL_ONLY_DISPLAY = true;
+
 export function currencyForLanguage(language) {
+  if (TL_ONLY_DISPLAY) return "TRY";
   return language === "tr" ? "TRY" : "EUR";
 }
 

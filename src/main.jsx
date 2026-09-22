@@ -14,7 +14,7 @@ import {
   supportedLanguages,
   translate
 } from "./i18n.js";
-import { INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct, bagTotals } from "../shared/pricing.js";
+import { TL_ONLY_DISPLAY, INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct, bagTotals } from "../shared/pricing.js";
 const FLYT_INTRO_URL = "/flyt-card.mp4";
 function imageAttributes(src, sizes = "100vw") {
   const image = imageSources[src];
@@ -340,6 +340,7 @@ function productPrice(slug) {
 }
 
 function formatProductPrice(slug, isDemo = false) {
+  if (TL_ONLY_DISPLAY) return `${formatMoney(priceForProduct(slug, "TRY"), "TRY")}${isDemo ? " · Demo" : ""}`;
   const euroCents = priceForProduct(slug, "EUR");
   if (euroCents === null) return currentLanguage === "tr" ? "Fiyat yakında" : "Price unavailable";
   const demoLabel = isDemo ? " · Demo" : "";
@@ -351,13 +352,16 @@ function formatProductPrice(slug, isDemo = false) {
 function updateVisibleProductPrices() {
   document.querySelectorAll("[data-product-price]").forEach((element) => {
     element.textContent = formatProductPrice(element.dataset.productPrice, element.dataset.demo === "true");
-    if (currentLanguage === "tr") {
+    if (!TL_ONLY_DISPLAY && currentLanguage === "tr") {
       element.title = `Günlük EUR/TRY referans kuru: ${eurTryRate.toLocaleString("tr-TR")}${eurTryRateDate ? ` (${eurTryRateDate})` : ""}`;
+    } else {
+      element.removeAttribute("title");
     }
   });
 }
 
 async function refreshEurTryRate() {
+  if (TL_ONLY_DISPLAY) return;
   if (currentLanguage !== "tr") return;
   try {
     const cached = JSON.parse(localStorage.getItem(EXCHANGE_RATE_CACHE_KEY) || "null");
