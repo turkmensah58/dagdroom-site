@@ -1580,7 +1580,6 @@ function renderServicePage(route) {
         <p lang="${currentLanguage}">${legalLanguageNotes[currentLanguage]}</p><h1>${page.title}</h1>
         <div class="legal-intro">${page.intro}</div>
       </header>
-      ${route === "/privacy" ? `<aside class="legal-draft-note"><strong>Gizlilik metni — aktarım bilgileri tamamlanıyor.</strong> Hizmetlere özgü veri konumları ve yurt dışı aktarım güvenceleri henüz doğrulanmamıştır.</aside>` : ""}
       <nav class="legal-toc" aria-label="İçindekiler">
         ${page.sections.map(([heading], index) => `<a href="#legal-section-${index + 1}">${heading}</a>`).join("")}
       </nav>
