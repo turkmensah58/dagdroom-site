@@ -224,3 +224,11 @@ body.bag-open .cookie-consent { display: none; }
   .site-footer .footer-bottom nav { flex: 1 1 100%; flex-wrap: wrap; gap: 8px 20px !important; margin: 0; }
   .footer-payments { padding-top: 24px; }
 }
+.contact-business { margin: 48px 0 64px; padding-top: 28px; border-top: 1px solid rgba(17,17,17,.15); }
+.contact-business h2 { margin: 0 0 24px; font: 12px/1.5 Arial, sans-serif; letter-spacing: .1em; }
+.contact-business dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin: 0; }
+.contact-business dt { margin-bottom: 6px; font: 11px/1.5 Arial, sans-serif; color: #666; }
+.contact-business dd { margin: 0; font: 14px/1.7 Arial, sans-serif; overflow-wrap: anywhere; }
+.contact-business address { font-style: normal; }
+.contact-business a { color: inherit; text-underline-offset: 3px; }
+@media (max-width: 600px) { .contact-business dl { grid-template-columns: 1fr; gap: 20px; } }

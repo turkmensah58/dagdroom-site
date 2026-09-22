@@ -4,6 +4,7 @@ import "./all-products.css";
 import "./product-editorial.css";
 import imageSources from "./image-sources.json";
 import { aboutContent } from "./about-content.js";
+import { CHECKOUT_ENABLED } from "../shared/payment-policy.js";
 import { legalLabels, legalLanguageNotes, legalPages } from "./legal-content.js";
 import {
   currentLanguage,
@@ -1123,8 +1124,10 @@ function syncDemoBagUI() {
   document.querySelectorAll(".site-bag-checkout").forEach((button) => {
     button.hidden = !count;
     const internationalCheckoutBlocked = activeCurrency === "EUR" && !INTERNATIONAL_CHECKOUT_ENABLED;
-    button.disabled = internationalCheckoutBlocked || demoBagItems.some((item) => productPrice(item.slug) === null);
-    button.textContent = internationalCheckoutBlocked
+    button.disabled = !CHECKOUT_ENABLED || internationalCheckoutBlocked || demoBagItems.some((item) => productPrice(item.slug) === null);
+    button.textContent = !CHECKOUT_ENABLED
+      ? ({ tr: "Online ödeme yakında", en: "Online payment coming soon", de: "Online-Zahlung demnächst", sv: "Onlinebetalning kommer snart" })[currentLanguage]
+      : internationalCheckoutBlocked
       ? "N/A"
       : activeCurrency === "TRY"
         ? "Ödemeye geç"
@@ -1134,6 +1137,7 @@ function syncDemoBagUI() {
 }
 
 async function startCheckout(event) {
+  if (!CHECKOUT_ENABLED) return;
   const button = event.currentTarget;
   button.disabled = true;
   button.textContent = "Opening secure checkout…";
@@ -1308,6 +1312,20 @@ function renderContactPage() {
         </a>
       </section>
 
+      <section class="contact-business" aria-labelledby="contact-business-title" lang="tr" translate="no">
+        <h2 id="contact-business-title">İşletme ve İletişim Bilgileri</h2>
+        <dl>
+          <div><dt>Marka</dt><dd>Dagdroøm</dd></div>
+          <div><dt>Satıcı</dt><dd>Barış Türkmen (şahıs işletmesi)</dd></div>
+          <div><dt>Adres</dt><dd><address>1821/1 Sokak 7/9 Bostanlı Karşıyaka / İZMİR</address></dd></div>
+          <div><dt>Vergi dairesi</dt><dd>Çiğli Vergi Dairesi</dd></div>
+          <div><dt>Vergi numarası</dt><dd>8790693184</dd></div>
+          <div><dt>Telefon</dt><dd><a href="tel:+905389715733">0538 971 57 33</a></dd></div>
+          <div><dt>E-posta</dt><dd><a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a></dd></div>
+          <div><dt>KEP</dt><dd><a href="mailto:baris.turkmen@hs01.kep.tr">baris.turkmen@hs01.kep.tr</a></dd></div>
+          <div><dt>MERSİS</dt><dd>MERSİS numarası bulunmamaktadır.</dd></div>
+        </dl>
+      </section>
       <section class="contact-form-section">
         <div class="contact-form-heading">
           <p>Send an enquiry</p>
@@ -1558,7 +1576,7 @@ function renderServicePage(route) {
         <p lang="${currentLanguage}">${legalLanguageNotes[currentLanguage]}</p><h1>${page.title}</h1>
         <div class="legal-intro">${page.intro}</div>
       </header>
-      <aside class="legal-draft-note"><strong>Taslak — operasyon koşulları doğrulanacak.</strong> Bu metin, operasyon koşulları doğrulanıp hukuki uygunluğu kontrol edildikten sonra yayıma hazır olacaktır.</aside>
+      ${route === "/privacy" ? `<aside class="legal-draft-note"><strong>Gizlilik metni — aktarım bilgileri tamamlanıyor.</strong> Hizmetlere özgü veri konumları ve yurt dışı aktarım güvenceleri henüz doğrulanmamıştır.</aside>` : ""}
       <nav class="legal-toc" aria-label="İçindekiler">
         ${page.sections.map(([heading], index) => `<a href="#legal-section-${index + 1}">${heading}</a>`).join("")}
       </nav>

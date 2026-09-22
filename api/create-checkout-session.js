@@ -1,4 +1,5 @@
 import { INTERNATIONAL_CHECKOUT_ENABLED, priceForProduct, DOMESTIC_SHIPPING_FEE } from "../shared/pricing.js";
+import { PAYMENT_PROVIDER, CHECKOUT_ENABLED } from "../shared/payment-policy.js";
 
 const CATALOG = {
   "slor-do-linje-long-sleeve": "Dø Linje Long Sleeve",
@@ -17,6 +18,7 @@ const CATALOG = {
 
 export default async function handler(request, response) {
   if (request.method !== "POST") return response.status(405).json({ error: "Method not allowed." });
+  if (!CHECKOUT_ENABLED || PAYMENT_PROVIDER !== "stripe") return response.status(503).json({ error: "Online payments are not available yet.", code: "PAYMENT_NOT_READY" });
   if (!process.env.STRIPE_SECRET_KEY) return response.status(503).json({ error: "Payment is not configured yet." });
 
   const items = Array.isArray(request.body?.items) ? request.body.items : [];
