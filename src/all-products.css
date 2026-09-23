@@ -46,5 +46,5 @@
 
 /* Reference-shaped men wordmark, including its open, upright-ended G. */
 .site-nav-name--men { display: inline-flex; align-items: center; }
-.site-nav-name--men .site-men-wordmark { display: block; width: 110px; height: auto; max-width: none; }
-.site-mobile-menu .site-nav-name--men .site-men-wordmark { width: 140px; }
+.site-nav-name--men .site-men-wordmark { display: block; width: 100px; height: auto; max-width: none; }
+.site-mobile-menu .site-nav-name--men .site-men-wordmark { width: 126px; }
