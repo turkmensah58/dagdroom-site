@@ -153,7 +153,7 @@ const productCatalog = [
     inStock: false, isDemo: false
   },
   {
-    slug: "slor-do-linje-long-sleeve", collection: "slor", collectionName: "Dø Slør™", world: "women",
+    slug: "slor-do-linje-long-sleeve", catalogImage: "/slor-long-sleeve-catalog-cream.png", collection: "slor", collectionName: "Dø Slør™", world: "women",
     name: "Dø Linje Long Sleeve", price: "€27", priceCents: 2700,
     images: ["/slor-do-linje-long-sleeve-product-front-v2.png", "/slor-do-linje-long-sleeve-product-back.png", "/slor-do-linje-long-sleeve-front.jpg", "/slor-do-linje-long-sleeve-side.jpg", "/slor-do-linje-long-sleeve-back.jpg"],
     galleryNecklines: {
@@ -819,7 +819,7 @@ function renderAllProductsPage(world) {
           ${products.map(product => `
             <article class="product-card" data-collection-card="${product.collection}">
               <a href="/products/${product.slug}" class="product-card-media">
-                <img src="${product.images[0]}" ${imageAttributes(product.images[0], "(max-width: 820px) 46vw, 30vw")} alt="${product.name}" loading="lazy" />
+                <img src="${product.catalogImage || product.images[0]}" ${imageAttributes(product.catalogImage || product.images[0], "(max-width: 820px) 46vw, 30vw")} alt="${product.name}" loading="lazy" />
               </a>
               <div class="product-card-information">
                 <p class="all-products-collection" translate="no">${product.collectionName}</p>

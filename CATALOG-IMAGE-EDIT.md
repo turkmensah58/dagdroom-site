@@ -1,0 +1,1 @@
+Built-in image_gen edit. Prompt: Change only the white background to warm off-white #f6f3ef. Preserve the black garment, folds, silhouette, labels, original landscape canvas and product placement; no cropping. Asset: public/slor-long-sleeve-catalog-cream.png. Used only for collection cards; originals retained.
