@@ -5,7 +5,8 @@ import "./product-editorial.css";
 import imageSources from "./image-sources.json";
 import { aboutContent } from "./about-content.js";
 import { CHECKOUT_ENABLED } from "../shared/payment-policy.js";
-import { legalLabels, legalLanguageNotes, legalPages } from "./legal-content.js";
+import { legalLabels } from "./legal-content.js";
+import { getLegalPages, serviceUI } from "./legal-translations.js";
 import {
   currentLanguage,
   initializeI18n,
@@ -1300,6 +1301,8 @@ function initializeProductGalleryZoom() {
 }
 
 function renderContactPage() {
+  const labels = serviceUI[currentLanguage];
+  document.title = `${labels.contact} — Dagdroøm`;
   document.querySelector("#app").innerHTML = `
     <main class="contact-page">
       ${renderSiteHeader("")}
@@ -1316,19 +1319,19 @@ function renderContactPage() {
         </a>
       </section>
 
-      <section class="contact-business" aria-labelledby="contact-business-title" lang="tr" translate="no">
-        <h2 id="contact-business-title">İşletme ve İletişim Bilgileri</h2>
+      <section class="contact-business" aria-labelledby="contact-business-title" lang="${currentLanguage}" translate="no">
+        <h2 id="contact-business-title">${labels.heading}</h2>
         <dl>
-          <div><dt>Marka</dt><dd>Dagdroøm</dd></div>
-          <div><dt>İşletme adı</dt><dd>Veltora</dd></div>
-          <div><dt>Satıcı / Fatura düzenleyen</dt><dd>Barış Türkmen</dd></div>
-          <div><dt>Adres</dt><dd><address>1821/1 Sokak 7/9 Bostanlı Karşıyaka / İZMİR</address></dd></div>
-          <div><dt>Vergi dairesi</dt><dd>Çiğli Vergi Dairesi</dd></div>
-          <div><dt>Vergi numarası</dt><dd>8790693184</dd></div>
-          <div><dt>Telefon</dt><dd><a href="tel:+905389715733">0538 971 57 33</a></dd></div>
-          <div><dt>E-posta</dt><dd><a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a></dd></div>
+          <div><dt>${labels.brand}</dt><dd>Dagdroøm</dd></div>
+          <div><dt>${labels.business}</dt><dd>Veltora</dd></div>
+          <div><dt>${labels.seller}</dt><dd>Barış Türkmen</dd></div>
+          <div><dt>${labels.address}</dt><dd><address>1821/1 Sokak 7/9 Bostanlı Karşıyaka / İZMİR</address></dd></div>
+          <div><dt>${labels.taxOffice}</dt><dd>Çiğli Vergi Dairesi</dd></div>
+          <div><dt>${labels.taxNumber}</dt><dd>8790693184</dd></div>
+          <div><dt>${labels.phone}</dt><dd><a href="tel:+905389715733">0538 971 57 33</a></dd></div>
+          <div><dt>${labels.email}</dt><dd><a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a></dd></div>
           <div><dt>KEP</dt><dd><a href="mailto:baris.turkmen@hs01.kep.tr">baris.turkmen@hs01.kep.tr</a></dd></div>
-          <div><dt>MERSİS</dt><dd>MERSİS numarası bulunmamaktadır.</dd></div>
+          <div><dt>MERSİS</dt><dd>${labels.noMersis}</dd></div>
         </dl>
       </section>
       <section class="contact-form-section">
@@ -1572,23 +1575,25 @@ function renderCookiePolicyPage() {
 }
 
 function renderServicePage(route) {
+  const legalPages = getLegalPages(currentLanguage);
+  const labels = serviceUI[currentLanguage];
   const page = legalPages[route];
   document.title = `${page.title} — Dagdroøm`;
   document.querySelector("#app").innerHTML = `<main class="legal-page">
     ${renderSiteHeader("")}
-    <article class="legal-document legal-sales-document" lang="tr" translate="no">
+    <article class="legal-document legal-sales-document" lang="${currentLanguage}" translate="no">
       <header>
-        <p lang="${currentLanguage}">${legalLanguageNotes[currentLanguage]}</p><h1>${page.title}</h1>
+        <p>${labels.note}</p><h1>${page.title}</h1>
         <div class="legal-intro">${page.intro}</div>
       </header>
-      <nav class="legal-toc" aria-label="İçindekiler">
+      <nav class="legal-toc" aria-label="${labels.contents}">
         ${page.sections.map(([heading], index) => `<a href="#legal-section-${index + 1}">${heading}</a>`).join("")}
       </nav>
       ${page.sections.map(([heading, body], index) => `<section id="legal-section-${index + 1}"><h2>${heading}</h2><p>${body}</p></section>`).join("")}
       <nav class="service-document-actions">
         ${Object.entries(legalPages).filter(([path]) => path !== route).map(([path, document]) => `<a href="${path}">${document.title} →</a>`).join("")}
-        <a href="/contact">İletişim →</a>
-        ${route === "/privacy" ? '<a href="/cookies">Çerez Politikası →</a>' : ""}
+        <a href="/contact">${labels.contact} →</a>
+        ${route === "/privacy" ? `<a href="/cookies">${labels.cookies} →</a>` : ""}
       </nav>
     </article>
     ${renderFooter()}
