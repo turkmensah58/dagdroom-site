@@ -18,7 +18,7 @@ export const legalLanguageNotes = {
 const care = '<a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a>';
 const privacy = '<a href="mailto:contact@dagdroom.de">contact@dagdroom.de</a>';
 const businessAddress = '1821/1 Sokak 7/9 Bostanlı Karşıyaka / İZMİR';
-const identity = `Marka: Dagdroøm. Satıcı / veri sorumlusu: Barış Türkmen (şahıs işletmesi). Açık adres: ${businessAddress}. Vergi dairesi: Çiğli Vergi Dairesi. Vergi numarası: 8790693184. Telefon: <a href="tel:+905389715733">0538 971 57 33</a>. MERSİS numarası bulunmamaktadır. KEP adresi: <a href="mailto:baris.turkmen@hs01.kep.tr">baris.turkmen@hs01.kep.tr</a>.`;
+const identity = `Marka: Dagdroøm. İşletme adı: Veltora. Satıcı / fatura düzenleyen / veri sorumlusu: Barış Türkmen. Açık adres: ${businessAddress}. Vergi dairesi: Çiğli Vergi Dairesi. Vergi numarası: 8790693184. Telefon: <a href="tel:+905389715733">0538 971 57 33</a>. MERSİS numarası bulunmamaktadır. KEP adresi: <a href="mailto:baris.turkmen@hs01.kep.tr">baris.turkmen@hs01.kep.tr</a>.`;
 
 export const legalPages = {
   "/terms": {

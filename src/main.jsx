@@ -1320,7 +1320,8 @@ function renderContactPage() {
         <h2 id="contact-business-title">İşletme ve İletişim Bilgileri</h2>
         <dl>
           <div><dt>Marka</dt><dd>Dagdroøm</dd></div>
-          <div><dt>Satıcı</dt><dd>Barış Türkmen (şahıs işletmesi)</dd></div>
+          <div><dt>İşletme adı</dt><dd>Veltora</dd></div>
+          <div><dt>Satıcı / Fatura düzenleyen</dt><dd>Barış Türkmen</dd></div>
           <div><dt>Adres</dt><dd><address>1821/1 Sokak 7/9 Bostanlı Karşıyaka / İZMİR</address></dd></div>
           <div><dt>Vergi dairesi</dt><dd>Çiğli Vergi Dairesi</dd></div>
           <div><dt>Vergi numarası</dt><dd>8790693184</dd></div>
