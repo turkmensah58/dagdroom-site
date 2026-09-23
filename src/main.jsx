@@ -1678,7 +1678,7 @@ function renderSiteHeader(activeSection = "") {
   `;
   const menLink = `
     <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>
-      <span class="site-nav-name site-nav-name--men">DΛGDROØM</span>
+      <span class="site-nav-name site-nav-name--men" translate="no"><img class="site-men-wordmark" src="/dagdroom-men-wordmark.svg" alt="Dagdroøm" width="842" height="88" /></span>
       <span class="site-nav-label">Men</span>
     </a>
   `;
@@ -1751,7 +1751,7 @@ function renderSiteHeader(activeSection = "") {
             <small>Women</small>
           </a>
           <a href="/men" ${activeSection === "men" ? 'aria-current="page"' : ""}>
-            <span class="site-nav-name site-nav-name--men">DΛGDROØM</span>
+            <span class="site-nav-name site-nav-name--men" translate="no"><img class="site-men-wordmark" src="/dagdroom-men-wordmark.svg" alt="Dagdroøm" width="842" height="88" /></span>
             <small>Men</small>
           </a>
         `}
