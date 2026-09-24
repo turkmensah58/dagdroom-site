@@ -259,7 +259,8 @@ const productCatalog = [
     saleFormat: "set-only",
     name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-front.png", "/burgundy-sculpted-tracksuit-back.png", "/burgundy-sculpted-tracksuit-profile.png"],
     description: "A technical essential balancing comfort, movement and a clean Nordic line.",
-    sizes: ["XS", "S", "M", "L", "XL"], material: "Demo material", care: "Demo care", fit: "Close", delivery: "Demo only", inStock: true
+    material: "75% cotton, 25% polyester", materialTr: "%75 pamuk, %25 polyester", materialDe: "75 % Baumwolle, 25 % Polyester", materialSv: "75 % bomull, 25 % polyester",
+    sizes: ["XS", "S", "M", "L", "XL"], care: "Demo care", fit: "Close", delivery: "Demo only", inStock: true
   },
   {
     slug: "flyt-ivory-linen-pyjama", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
@@ -272,7 +273,7 @@ const productCatalog = [
     description: "A lightweight short pyjama set in soft ivory, finished with deep navy piping, a relaxed camp collar and an easy elasticated waist.",
     descriptionTr: "Yumuşak fildişi tonunda, lacivert biyelerle tamamlanan hafif şortlu pijama takımı; rahat kamp yakası ve esnek beliyle konforlu bir silüet sunar.",
     sizes: ["XS", "S", "M", "L", "XL"], colors: [{ name: "Ivory", value: "#f2eee5" }],
-    material: "Details coming soon", materialTr: "Detaylar yakında",
+    material: "Cotton-Linen Blend", materialTr: "Pamuklu Keten", materialDe: "Baumwoll-Leinen-Mischung", materialSv: "Bomulls- och linneblandning",
     care: "Details coming soon", careTr: "Detaylar yakında",
     fit: "Relaxed fit", fitTr: "Rahat kesim",
     delivery: "Coming soon", deliveryTr: "Yakında", inStock: false, isDemo: false
@@ -290,7 +291,7 @@ const productCatalog = [
     description: "A fluid long pyjama set in deep black with fine champagne piping, shaped with a relaxed notched collar and an easy straight-leg silhouette.",
     descriptionTr: "İnce şampanya rengi biyelerle tamamlanan, derin siyah ve akışkan uzun pijama takımı; rahat çentikli yakası ve düz paça silüetiyle tasarlandı.",
     sizes: ["XS", "S", "M", "L", "XL"], colors: [{ name: "Nocturne Black", value: "#0b0b0b" }],
-    material: "Details coming soon", materialTr: "Detaylar yakında",
+    material: "Pure Silk Satin", materialTr: "Saf İpek Saten", materialDe: "Reiner Seidensatin", materialSv: "Ren sidensatin",
     care: "Details coming soon", careTr: "Detaylar yakında",
     fit: "Relaxed straight fit", fitTr: "Rahat düz kesim",
     delivery: "Coming soon", deliveryTr: "Yakında", inStock: false, isDemo: false

@@ -21,6 +21,9 @@
 .catalog-page.all-products-page .product-card { display: block; width: 100%; min-width: 0; min-height: 0; margin: 0; background: transparent; }
 .catalog-page.all-products-page .product-card-media { aspect-ratio: 3 / 4; min-height: 0; display: block; background: #fff; }
 .catalog-page.all-products-page .product-card-media img { width: 100%; height: 100%; object-fit: contain; object-position: center; filter: none; }
+/* Enlarge the skirt within its portrait card and blend the outer photo canvas. */
+.catalog-page.all-products-page .product-card-media[href$="/products/skygge-nord-mini-skirt"] { background: #f3f0eb; overflow: hidden; }
+.catalog-page.all-products-page .product-card-media[href$="/products/skygge-nord-mini-skirt"] img { position: absolute; width: 175%; max-width: none; height: auto; left: 50%; top: 50%; object-fit: contain; transform: translate(-50%, -50%); transition: none; mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 92%, transparent); }
 /* Keep the complete garment inside the card; crop only the source's outer canvas. */
 .catalog-page.all-products-page .product-card-media[href$="/products/slor-wrap-top"] { background: #f6f3ef; }
 .catalog-page.all-products-page .product-card-media[href$="/products/slor-wrap-top"] img { position: absolute; width: 180%; max-width: none; height: auto; left: -30.1%; top: 50%; object-fit: contain; clip-path: inset(5% 29.3% 0 18.3%); transform: translateY(-50%); transition: none; }
