@@ -1,6 +1,8 @@
 // Monetary amounts use the smallest currency unit: cents for EUR, kurus for TRY.
 // TRY prices are converted from EUR at the fixed rate of 1 EUR = 55.87 TRY.
 export const PRODUCT_PRICES = {
+  "slor-wrap-top": { TRY: 370000 },
+  "skygge-nord-mini-skirt": { EUR: 3938, TRY: 220000 },
   "slor-do-linje-long-sleeve": { EUR: 2700, TRY: 150849 },
   "slor-air-dress": { EUR: 24000, TRY: 1340880 },
   "slor-air-dress-demo-2": { EUR: 21000, TRY: 1173270 },

@@ -145,7 +145,7 @@ Object.assign(uiTranslations.tr, {
   "Added to bag": "Sepete eklendi", "demo items selected": "demo ürün seçildi",
   "Your demo selection is saved for this browsing session.": "Demo seçiminiz bu oturum boyunca kaydedildi.",
   "Refined form.": "İnceltilmiş form.", "Natural movement.": "Doğal hareket.",
-  "Timeless tailoring.": "Zamansız terzilik.", "Essential elegance.": "Özlü zarafet.",
+  "Timeless tailoring.": "Özenli terzilik.", "Essential elegance.": "Özlü zarafet.",
   "Built for everyday.": "Her gün için tasarlandı.", "Ironclad masculinity.": "Sağlam maskülenlik.",
   "A light everyday silhouette with quiet volume and fluid movement.": "Sakin hacim ve akıcı hareket sunan hafif bir günlük silüet.",
   "Soft structure and muted tailoring designed for considered layering.": "Özenli katmanlar için tasarlanmış yumuşak yapı ve dingin terzilik.",

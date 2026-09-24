@@ -2,6 +2,7 @@ import { INTERNATIONAL_CHECKOUT_ENABLED, priceForProduct, DOMESTIC_SHIPPING_FEE 
 import { PAYMENT_PROVIDER, CHECKOUT_ENABLED } from "../shared/payment-policy.js";
 
 const CATALOG = {
+  "skygge-nord-mini-skirt": "Nord Mini Skirt",
   "slor-do-linje-long-sleeve": "Dø Linje Long Sleeve",
   "slor-air-dress": "Air Dress", "slor-air-dress-demo-2": "Layer Top", "slor-air-dress-demo-3": "Soft Trouser", "slor-air-dress-demo-4": "Quiet Jacket",
   "skygge-belted-wool-coat": "Belted Wool Coat",
