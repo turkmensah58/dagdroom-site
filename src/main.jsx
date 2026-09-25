@@ -401,9 +401,9 @@ function formatProductPrice(slug, isDemo = false) {
   const euroCents = priceForProduct(slug, "EUR");
   if (euroCents === null) return currentLanguage === "tr" ? "Fiyat yakında" : "Price unavailable";
   const demoLabel = isDemo ? " · Demo" : "";
-  if (currentLanguage !== "tr") return `${formatMoney(euroCents, "EUR")}${demoLabel}`;
   const tryCents = priceForProduct(slug, "TRY");
-  return `${formatMoney(tryCents, "TRY")} · ≈ ${formatMoney(euroCents, "EUR")}${demoLabel}`;
+  const tryLabel = tryCents === null ? "" : ` ≅ ${formatMoney(tryCents, "TRY")}`;
+  return `${formatMoney(euroCents, "EUR")}${tryLabel}${demoLabel}`;
 }
 
 function updateVisibleProductPrices() {
