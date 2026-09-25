@@ -849,13 +849,17 @@ function scrollToCurrentCollection() {
   requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
 }
 
+function renderCollectionName(name) {
+  return escapeHTML(name).replaceAll("™", '<sup class="collection-trademark">™</sup>');
+}
+
 function renderCatalogCard(product) {
   return `<article class="product-card" data-collection-card="${product.collection}" data-product-slug="${product.slug}" data-product-type="${product.productType || product.name.split(" ").pop()}" data-product-colors="${(product.colors || []).map(color => color.name).join("|")}">
               <a href="/products/${product.slug}" class="product-card-media">
                 ${product.catalogImages ? `<span class="catalog-set-cover">${product.catalogImages.map((src, index) => `<span class="catalog-set-piece catalog-set-piece--${index}"><img src="${src}" ${imageAttributes(src, "(max-width: 820px) 46vw, 30vw")} alt="${index === 0 ? product.name : ""}" loading="lazy" /></span>`).join("")}</span>` : `<img src="${product.catalogImage || product.images[0]}" ${imageAttributes(product.catalogImage || product.images[0], "(max-width: 820px) 46vw, 30vw")} alt="${product.name}" loading="lazy" />`}
               </a>
               <div class="product-card-information">
-                <p class="all-products-collection" translate="no">${product.collectionName}</p>
+                <p class="all-products-collection" translate="no">${renderCollectionName(product.collectionName)}</p>
                 <div class="product-card-name-row"><h2><a href="/products/${product.slug}">${product.name}</a></h2></div>
                 <div class="product-card-meta"><span data-product-price="${product.slug}">${formatProductPrice(product.slug)}</span>${product.status === "sold-out" ? `<span class="product-card-status">${translate("Sold Out")}</span>` : ""}</div>
               </div>
@@ -902,7 +906,7 @@ function renderAllProductsPage(world) {
         <div class="all-products-toolbar">
           <nav class="all-products-filters" aria-label="${labels.filters}">
             <button type="button" data-collection="all" aria-pressed="true" translate="no">ALL</button>
-            ${collections.map(item => `<button type="button" data-collection="${item.slug}" aria-pressed="false" translate="no">${item.name}</button>`).join("")}
+            ${collections.map(item => `<button type="button" data-collection="${item.slug}" aria-pressed="false" translate="no">${renderCollectionName(item.name)}</button>`).join("")}
           </nav>
           <span class="all-products-count" role="status" aria-live="polite"></span>
         </div>
@@ -1264,7 +1268,7 @@ function renderProductPage(slug) {
         ${product.images.length > 1 ? `<nav class="product-gallery-controls" aria-label="${translate("Product images")}">${product.images.map((_, index) => `<button type="button" data-gallery-index="${index}" aria-label="${translate("Image")} ${index + 1}" aria-controls="product-gallery" aria-current="${index === 0 ? "true" : "false"}">${index + 1}</button>`).join("")}</nav>` : ""}
         </div>
         <div class="product-information">
-          ${editorial ? `<span class="product-collection-label">${product.collectionName}</span>` : ""}
+          ${editorial ? `<span class="product-collection-label">${renderCollectionName(product.collectionName)}</span>` : ""}
           <h1>${product.name}</h1>
           <span class="product-price" data-product-price="${product.slug}" data-demo="${Boolean(product.isDemo)}">${formatProductPrice(product.slug, product.isDemo)}</span>
           ${editorial ? `<nav class="product-piece-options${product.saleFormat === "set-only" ? " product-set-selection" : ""}" aria-label="${product.saleFormat === "set-only" ? product.name : purchaseCopy[2]}">${matchingProducts.map((item) => item.saleFormat === "set-only" ? `<button type="button" class="product-set-label" aria-pressed="true"><span>SET</span></button>` : `<a href="/products/${item.slug}"${item.slug === product.slug ? ' aria-current="page"' : ""}>${renderProductPiecePreview(item)}<span>${item.name}</span></a>`).join("")}</nav>

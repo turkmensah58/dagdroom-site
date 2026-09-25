@@ -1107,9 +1107,9 @@ color: rgba(255, 255, 255, 0.94);  font-size: 0;
 
 .women-page .women-collection-copy h2 sup {
   position: relative;
-  top: -2em;
+  top: -3.14em;
   margin-left: 4px;
-  font-size: 0.22em;
+  font-size: 0.14em;
   line-height: 1;
   letter-spacing: 0;
   vertical-align: baseline;
@@ -2982,15 +2982,15 @@ body.bag-open { overflow: hidden; }
 .men-collection-card--skaer .men-collection-copy h2 sup,
 .men-collection-card--linje .men-collection-copy h2 sup,
 .men-collection-card--stal .men-collection-copy h2 sup {
-  top: -2em;
+  top: -3.14em;
   margin-left: 4px;
-  font-size: 0.22em;
+  font-size: 0.14em;
   font-weight: 400;
   letter-spacing: 0;
 }
 
 .men-collection-card--stal .men-collection-copy h2 sup {
-  top: -2.5em;
+  top: -3.93em;
 }
 
 .men-collection-copy h2 sup {
@@ -4613,3 +4613,6 @@ body.bag-open { overflow: hidden; }
 @media (min-width: 1101px) {
   .site-header .site-page-wordmark { top: calc(50% - 28px); }
 }
+
+/* Compact trademark marks in collection filters and product labels. */
+.collection-trademark { position: relative; top: -.45em; vertical-align: baseline; font-size: .55em; line-height: 0; letter-spacing: 0; margin-left: .1em; }
