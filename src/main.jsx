@@ -127,6 +127,7 @@ const productCatalog = [
   {
     slug: "slor-wrap-top", collection: "slor", collectionName: "Dø Slør™", world: "women",
     name: "Dø Slør Wrap Top", saleFormat: "single",
+    catalogImage: "/responsive/slor-wrap-top-product-front-960.webp",
     images: ["/slor-wrap-top-product-front.png", "/slor-wrap-top-product-back.png", "/slor-wrap-top-model-front.png", "/slor-wrap-top-model-side.png", "/slor-wrap-top-model-back.png"],
     galleryNecklines: {
       "/slor-wrap-top-product-front.png": 0,
@@ -154,7 +155,7 @@ const productCatalog = [
   },
   {
     slug: "slor-do-linje-long-sleeve", catalogImage: "/slor-long-sleeve-catalog-cream.png", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
-    name: "Dø Linje Long Sleeve", price: "€27", priceCents: 2700,
+    name: "Dø Flyt Long Sleeve", price: "€27", priceCents: 2700,
     images: ["/slor-do-linje-long-sleeve-product-front-v2.png", "/slor-do-linje-long-sleeve-product-back.png", "/slor-do-linje-long-sleeve-front.jpg", "/slor-do-linje-long-sleeve-side.jpg", "/slor-do-linje-long-sleeve-back.jpg"],
     galleryNecklines: {
       "/slor-do-linje-long-sleeve-product-front-v2.png": 0,
@@ -175,12 +176,6 @@ const productCatalog = [
     careSv: "Maskintvätta ut och in i 30 °C med liknande färger. Torktumla inte. Stryk på låg temperatur.",
     fit: "Slim fit", fitTr: "Vücuda oturan kesim", fitDe: "Schmale Passform", fitSv: "Figurnära passform",
     delivery: "Sold out", deliveryTr: "Tükendi", deliveryDe: "Ausverkauft", deliverySv: "Slutsåld", inStock: false, status: "sold-out", isDemo: false
-  },
-  {
-    slug: "slor-air-dress", collection: "slor", collectionName: "Dø Slør™", world: "women",
-    name: "Air Dress", price: "€240 · Demo", priceCents: 24000, images: ["/slor-arctic-fog.png"],
-    description: "A light everyday silhouette with quiet volume and fluid movement.",
-    sizes: ["XS", "S", "M", "L"], material: "Demo material", care: "Demo care", fit: "Relaxed", delivery: "Demo only", inStock: true
   },
   {
     slug: "skygge-belted-wool-coat", collection: "skygge", collectionName: "Dø Skygge™", world: "women",
@@ -274,9 +269,9 @@ const productCatalog = [
     descriptionTr: "Yumuşak fildişi tonunda, lacivert biyelerle tamamlanan hafif şortlu pijama takımı; rahat kamp yakası ve esnek beliyle konforlu bir silüet sunar.",
     sizes: ["XS", "S", "M", "L", "XL"], colors: [{ name: "Ivory", value: "#f2eee5" }],
     material: "Cotton-Linen Blend", materialTr: "Pamuklu Keten", materialDe: "Baumwoll-Leinen-Mischung", materialSv: "Bomulls- och linneblandning",
-    care: "Details coming soon", careTr: "Detaylar yakında",
+    care: "Wash inside out with similar colours at 30°C on a delicate cycle. Do not tumble dry. Iron on low heat.", careTr: "Benzer renklerle, ters çevirerek 30°C'de hassas programda yıkayın. Kurutma makinesi kullanmayın. Düşük ısıda ütüleyin.", careDe: "Mit ähnlichen Farben auf links bei 30°C im Schonwaschgang waschen. Nicht im Wäschetrockner trocknen. Bei niedriger Temperatur bügeln.", careSv: "Tvätta ut och in med liknande färger i 30°C på skonsamt program. Torktumla inte. Stryk på låg värme.",
     fit: "Relaxed fit", fitTr: "Rahat kesim",
-    delivery: "Coming soon", deliveryTr: "Yakında", inStock: false, isDemo: false
+    delivery: "In stock", deliveryTr: "Stokta", deliveryDe: "Auf Lager", deliverySv: "I lager", inStock: true, isDemo: false
   },
   {
     slug: "flyt-nocturne-pyjama", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
@@ -288,6 +283,7 @@ const productCatalog = [
       "/flyt-nocturne-pyjama-top.png",
       "/flyt-nocturne-pyjama-bottom.png"
     ],
+    catalogImages: ["/flyt-nocturne-pyjama-top.png", "/flyt-nocturne-pyjama-bottom.png"],
     description: "A fluid long pyjama set in deep black with fine champagne piping, shaped with a relaxed notched collar and an easy straight-leg silhouette.",
     descriptionTr: "İnce şampanya rengi biyelerle tamamlanan, derin siyah ve akışkan uzun pijama takımı; rahat çentikli yakası ve düz paça silüetiyle tasarlandı.",
     sizes: ["XS", "S", "M", "L", "XL"], colors: [{ name: "Nocturne Black", value: "#0b0b0b" }],
@@ -853,6 +849,39 @@ function scrollToCurrentCollection() {
   requestAnimationFrame(() => target.scrollIntoView({ block: "start" }));
 }
 
+function renderCatalogCard(product) {
+  return `<article class="product-card" data-collection-card="${product.collection}" data-product-slug="${product.slug}" data-product-type="${product.productType || product.name.split(" ").pop()}" data-product-colors="${(product.colors || []).map(color => color.name).join("|")}">
+              <a href="/products/${product.slug}" class="product-card-media">
+                ${product.catalogImages ? `<span class="catalog-set-cover">${product.catalogImages.map((src, index) => `<span class="catalog-set-piece catalog-set-piece--${index}"><img src="${src}" ${imageAttributes(src, "(max-width: 820px) 46vw, 30vw")} alt="${index === 0 ? product.name : ""}" loading="lazy" /></span>`).join("")}</span>` : `<img src="${product.catalogImage || product.images[0]}" ${imageAttributes(product.catalogImage || product.images[0], "(max-width: 820px) 46vw, 30vw")} alt="${product.name}" loading="lazy" />`}
+              </a>
+              <div class="product-card-information">
+                <p class="all-products-collection" translate="no">${product.collectionName}</p>
+                <div class="product-card-name-row"><h2><a href="/products/${product.slug}">${product.name}</a></h2></div>
+                <div class="product-card-meta"><span data-product-price="${product.slug}">${formatProductPrice(product.slug)}</span>${product.status === "sold-out" ? `<span class="product-card-status">${translate("Sold Out")}</span>` : ""}</div>
+              </div>
+            </article>`;
+}
+
+// ALL and collections share product order and card markup.
+function catalogProductsForWorld(world) {
+  const products = productCatalog.filter(item => item.world === world);
+  if (world === "women") {
+    const displayOrder = [
+      "skygge-belted-wool-coat",
+      "skygge-nord-mini-skirt",
+      "slor-wrap-top",
+      "skygge-soft-turtleneck-soft-sand",
+      "flyt-motion-top",
+      "flyt-ivory-linen-pyjama",
+      "flyt-nocturne-pyjama",
+      "slor-do-linje-long-sleeve"
+    ];
+    const rank = new Map(displayOrder.map((slug, index) => [slug, index]));
+    products.sort((a, b) => (rank.get(a.slug) ?? displayOrder.length) - (rank.get(b.slug) ?? displayOrder.length));
+  }
+  return products;
+}
+
 function renderAllProductsPage(world) {
   const labels = {
     tr: { title: "Tüm Ürünler", women: "Kadın", men: "Erkek", count: "ürün", filters: "Koleksiyon seçimi", empty: "Bu koleksiyonda henüz ürün yok." },
@@ -861,10 +890,10 @@ function renderAllProductsPage(world) {
     sv: { title: "Alla produkter", women: "Dam", men: "Herr", count: "plagg", filters: "Välj kollektion", empty: "Inga produkter i denna kollektion ännu." }
   }[currentLanguage] || { title: "All Products", women: "Women", men: "Men", count: "pieces", filters: "Collections", empty: "No products yet." };
   const collections = collectionCatalog.filter(item => item.world === world);
-  const products = productCatalog.filter(item => item.world === world);
+  const products = catalogProductsForWorld(world);
   document.title = `${labels.title} · ${labels[world]} — Dagdroøm`;
   document.querySelector("#app").innerHTML = `
-    <main class="catalog-page all-products-page">
+    <main class="catalog-page catalog-cards all-products-page">
       ${renderSiteHeader(world)}
       <section class="all-products-intro">
         <h1>${labels[world]} / AUTUMN — WINTER ’26</h1>
@@ -878,17 +907,7 @@ function renderAllProductsPage(world) {
           <span class="all-products-count" role="status" aria-live="polite"></span>
         </div>
         <div class="product-grid" id="all-products-grid">
-          ${products.map(product => `
-            <article class="product-card" data-collection-card="${product.collection}">
-              <a href="/products/${product.slug}" class="product-card-media">
-                <img src="${product.catalogImage || product.images[0]}" ${imageAttributes(product.catalogImage || product.images[0], "(max-width: 820px) 46vw, 30vw")} alt="${product.name}" loading="lazy" />
-              </a>
-              <div class="product-card-information">
-                <p class="all-products-collection" translate="no">${product.collectionName}</p>
-                <div class="product-card-name-row"><h2><a href="/products/${product.slug}">${product.name}</a></h2></div>
-                <div class="product-card-meta"><span data-product-price="${product.slug}">${formatProductPrice(product.slug)}</span>${product.status === "sold-out" ? `<span class="product-card-status">${translate("Sold Out")}</span>` : ""}</div>
-              </div>
-            </article>`).join("")}
+          ${products.map(renderCatalogCard).join("")}
         </div>
         <p class="all-products-empty" hidden>${labels.empty}</p>
       </section>
@@ -927,19 +946,19 @@ function renderCollectionPage(slug) {
     return;
   }
 
-  const products = productCatalog.filter((product) => product.collection === slug);
-  const displayProducts = buildDemoCollectionProducts(products, collection);
+  const products = catalogProductsForWorld(collection.world).filter((product) => product.collection === slug);
+  const displayProducts = products.map(product => ({ ...product, productType: product.productType || product.name.split(" ").pop(), colors: product.colors || [] }));
   const collectionLabel = {
     slor: "Slør", skygge: "Skygge", flyt: "Flyt",
     skaer: "Skær", linje: "Linje", stal: "Stål"
   }[slug] || collection.name;
-  const filterColors = collectionDemoColors[slug] || [];
+  const filterColors = [...new Map(displayProducts.flatMap(product => product.colors).map(color => [color.name, color])).values()];
   const productTypes = [...new Set(displayProducts.map((product) => product.productType))];
   const previewSubject = encodeURIComponent(`${collection.name} — Private preview`);
 
   document.title = `${collection.name} — Dagdroøm`;
   document.querySelector("#app").innerHTML = `
-    <main class="catalog-page catalog-page--${collection.tone}">
+    <main class="catalog-page catalog-cards catalog-page--${collection.tone}">
       ${renderSiteHeader(collection.world)}
 
       <section class="catalog-hero">
@@ -980,32 +999,14 @@ function renderCollectionPage(slug) {
         <button type="button" class="catalog-filter-clear">Clear filters</button>
       </aside>
 
-      <section class="catalog-products" aria-labelledby="catalog-products-title">
+      <section class="catalog-products all-products-content" aria-labelledby="catalog-products-title">
         <div class="catalog-products-heading">
           <p id="catalog-products-title">The first edit</p>
-          <span class="catalog-product-count">${displayProducts.length ? `${displayProducts.length} pieces · Demo selection` : "In development"}</span>
+          <span class="catalog-product-count">${displayProducts.length ? `${displayProducts.length} pieces` : "In development"}</span>
         </div>
         ${displayProducts.length ? `
           <div class="product-grid">
-            ${displayProducts.map((product) => `
-              <article class="product-card" data-product-slug="${product.slug}" data-product-type="${product.productType}" data-product-colors="${product.colors.map((color) => color.name).join("|")}">
-                <a href="/products/${product.detailSlug || product.slug}" class="product-card-media">
-                  <img src="${product.images[0]}" ${imageAttributes(product.images[0], "(max-width: 820px) calc((100vw - 44px) / 2), (max-width: 1380px) calc((100vw - 100px) / 4), 320px")} alt="${product.name}" loading="lazy" />
-                </a>
-                <div class="product-card-information">
-                  <div class="product-card-name-row">
-                    <h2><a href="/products/${product.detailSlug || product.slug}">${product.name}</a></h2>
-                    ${product.status === "sold-out" ? `<span class="product-card-status">Sold Out</span>` : product.isDemo ? "" : `<span class="product-card-status">New</span>`}
-                  </div>
-                  <div class="product-card-meta">
-                    <span class="product-card-price" data-product-price="${product.slug}" data-demo="${Boolean(product.isDemo)}">${formatProductPrice(product.slug, product.isDemo)}</span>
-                    <span class="product-card-swatches" aria-label="Available colors">
-                      ${product.colors.map((color) => `<span class="product-card-swatch" title="${color.name}" style="--swatch: ${color.value}"></span>`).join("")}
-                    </span>
-                  </div>
-                </div>
-              </article>
-            `).join("")}
+            ${displayProducts.map(renderCatalogCard).join("")}
           </div>
           <p class="catalog-no-results" role="status" hidden>${translate("No products match these filters.")}</p>
         ` : `
@@ -1047,7 +1048,7 @@ function initializeCatalogProducts(displayProducts) {
       card.hidden = !(matchesColor && matchesType);
       if (!card.hidden) visibleCount += 1;
     });
-    if (productCount) productCount.textContent = `${visibleCount} ${translate("pieces · Demo selection")}`;
+    if (productCount) productCount.textContent = `${visibleCount} ${({ tr: "ürün", en: "pieces", de: "Artikel", sv: "plagg" })[currentLanguage] || "pieces"}`;
     const emptyMessage = document.querySelector(".catalog-no-results");
     if (emptyMessage) emptyMessage.hidden = visibleCount > 0;
   };
@@ -1193,7 +1194,7 @@ function syncDemoBagUI() {
     const internationalCheckoutBlocked = activeCurrency === "EUR" && !INTERNATIONAL_CHECKOUT_ENABLED;
     button.disabled = !CHECKOUT_ENABLED || internationalCheckoutBlocked || demoBagItems.some((item) => productPrice(item.slug) === null);
     button.textContent = !CHECKOUT_ENABLED
-      ? ({ tr: "Online ödeme yakında", en: "Online payment coming soon", de: "Online-Zahlung demnächst", sv: "Onlinebetalning kommer snart" })[currentLanguage]
+      ? ({ tr: "Online ödeme yakında", en: "Online payment available soon", de: "Online-Zahlung demnächst", sv: "Onlinebetalning kommer snart" })[currentLanguage]
       : internationalCheckoutBlocked
       ? "N/A"
       : activeCurrency === "TRY"

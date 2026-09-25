@@ -3,8 +3,7 @@ import { PAYMENT_PROVIDER, CHECKOUT_ENABLED } from "../shared/payment-policy.js"
 
 const CATALOG = {
   "skygge-nord-mini-skirt": "Nord Mini Skirt",
-  "slor-do-linje-long-sleeve": "Dø Linje Long Sleeve",
-  "slor-air-dress": "Air Dress", "slor-air-dress-demo-2": "Layer Top", "slor-air-dress-demo-3": "Soft Trouser", "slor-air-dress-demo-4": "Quiet Jacket",
+  "slor-do-linje-long-sleeve": "Dø Flyt Long Sleeve",
   "skygge-belted-wool-coat": "Belted Wool Coat",
   "skygge-soft-jacket": "Soft Jacket", "skygge-soft-jacket-demo-2": "Layer Top", "skygge-soft-jacket-demo-3": "Soft Trouser", "skygge-soft-jacket-demo-4": "Quiet Jacket",
   "flyt-motion-top": "Motion Top", "flyt-motion-top-demo-2": "Layer Top", "flyt-motion-top-demo-3": "Soft Trouser", "flyt-motion-top-demo-4": "Quiet Jacket",
