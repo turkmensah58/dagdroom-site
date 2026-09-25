@@ -66,3 +66,7 @@
 .site-nav-name--men .site-men-wordmark { display: block; width: 100px; height: auto; max-width: none; }
 .site-mobile-menu .site-nav-name--men .site-men-wordmark { width: 126px; }
 .catalog-page .product-card:hover img { transform: none; }
+
+/* Tracksuit: preserve both complete garments in the shared ALL/collection cover. */
+.catalog-page.catalog-cards .product-card[data-product-slug="flyt-motion-top"] .catalog-set-cover { grid-template-rows: 1fr 1fr; gap: 2%; background: #f3f0eb; }
+.catalog-page.catalog-cards .product-card[data-product-slug="flyt-motion-top"] .catalog-set-piece img { position: static; width: 100%; max-width: 100%; height: 100%; object-fit: contain; object-position: center; transform: none; mix-blend-mode: normal; }

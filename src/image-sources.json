@@ -948,5 +948,69 @@
         "bytes": 37644
       }
     ]
+  },
+  "/burgundy-sculpted-tracksuit-top-front.png": {
+    "width": 1199,
+    "height": 1312,
+    "variants": [
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-top-front-480.webp",
+        "width": 480,
+        "bytes": 9752
+      },
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-top-front-960.webp",
+        "width": 960,
+        "bytes": 37404
+      }
+    ]
+  },
+  "/burgundy-sculpted-tracksuit-bottom-front.png": {
+    "width": 4171,
+    "height": 2781,
+    "variants": [
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-bottom-front-480.webp",
+        "width": 480,
+        "bytes": 5066
+      },
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-bottom-front-960.webp",
+        "width": 960,
+        "bytes": 13106
+      }
+    ]
+  },
+  "/burgundy-sculpted-tracksuit-top-back.png": {
+    "width": 1199,
+    "height": 1312,
+    "variants": [
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-top-back-480.webp",
+        "width": 480,
+        "bytes": 9722
+      },
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-top-back-960.webp",
+        "width": 960,
+        "bytes": 37872
+      }
+    ]
+  },
+  "/burgundy-sculpted-tracksuit-bottom-back.png": {
+    "width": 1312,
+    "height": 1199,
+    "variants": [
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-bottom-back-480.webp",
+        "width": 480,
+        "bytes": 5932
+      },
+      {
+        "url": "/responsive/burgundy-sculpted-tracksuit-bottom-back-960.webp",
+        "width": 960,
+        "bytes": 16556
+      }
+    ]
   }
 }

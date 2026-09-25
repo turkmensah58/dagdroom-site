@@ -248,7 +248,9 @@ const productCatalog = [
   {
     slug: "flyt-motion-top", collection: "flyt", collectionName: "Dø Flyt™", world: "women", colors: [{ name: "Burgundy", value: "#702c38" }],
     saleFormat: "set-only",
-    name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-front.png", "/burgundy-sculpted-tracksuit-back.png", "/burgundy-sculpted-tracksuit-profile.png"],
+    name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-top-front.png","/burgundy-sculpted-tracksuit-bottom-front.png","/burgundy-sculpted-tracksuit-top-back.png","/burgundy-sculpted-tracksuit-bottom-back.png","/burgundy-sculpted-tracksuit-front.png","/burgundy-sculpted-tracksuit-back.png","/burgundy-sculpted-tracksuit-profile.png"],
+    catalogImages: ["/burgundy-sculpted-tracksuit-top-front.png","/burgundy-sculpted-tracksuit-bottom-front.png"],
+    galleryNecklines: {"/burgundy-sculpted-tracksuit-top-front.png":0,"/burgundy-sculpted-tracksuit-bottom-front.png":0,"/burgundy-sculpted-tracksuit-top-back.png":0,"/burgundy-sculpted-tracksuit-bottom-back.png":0},
     description: "A technical essential balancing comfort, movement and a clean Nordic line.",
     material: "75% cotton, 25% polyester", materialTr: "%75 pamuk, %25 polyester", materialDe: "75 % Baumwolle, 25 % Polyester", materialSv: "75 % bomull, 25 % polyester",
     sizes: ["XS", "S", "M", "L", "XL"], care: "Demo care", fit: "Close", delivery: "Demo only", inStock: true
@@ -2074,7 +2076,7 @@ function renderFooter(showJournal = false) {
         </nav>
         <nav class="footer-bottom-legal" aria-label="Legal navigation">
           <a href="/cookies">Cookie Policy</a>
-          <a href="/privacy">${legalLabels[currentLanguage].privacy}</a>
+          ${HIDDEN_SERVICE_ROUTES.has("/privacy") ? "" : `<a href="/privacy">${legalLabels[currentLanguage].privacy}</a>`}
           ${HIDDEN_SERVICE_ROUTES.has("/terms") ? "" : `<a href="/terms">${legalLabels[currentLanguage].terms}</a>`}
         </nav>
       </div>
