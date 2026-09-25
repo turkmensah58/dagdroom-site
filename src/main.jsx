@@ -711,7 +711,18 @@ function renderMenPage() {
               <span class="men-enter-arrow" aria-hidden="true">⟶</span>
             </a>
           </div>
-          <div class="men-collection-media" aria-hidden="true"></div>
+          <div class="men-collection-media">
+            <video
+              src="/skaer-card.mp4"
+              aria-label="Dø Skær collection"
+              class="men-collection-image"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+          </div>
         </article>
 
 
