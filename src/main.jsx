@@ -1426,10 +1426,6 @@ function renderContactPage() {
         </form>
       </section>
 
-      <div class="contact-social">
-        <span>Follow</span>
-        <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
     </main>
   `;
 
@@ -1844,7 +1840,6 @@ function renderSiteHeader(activeSection = "") {
           <svg viewBox="0 0 18 18" aria-hidden="true"><rect x="2.5" y="6" width="13" height="9" rx="0.5"/><path d="M6.25 6V4.75C6.25 3.25 7.35 2.4 9 2.4s2.75.85 2.75 2.35V6"/></svg>
           <span>Bag (0)</span>
         </a>
-        <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
         <div class="site-language-switcher" aria-label="Language selection">
           ${languageButton("en")}
           <span aria-hidden="true">/</span>
@@ -2104,7 +2099,6 @@ function renderFooter(showJournal = false) {
       <div class="footer-bottom">
         <nav class="footer-bottom-primary" aria-label="Footer navigation">
           <a href="/about">${aboutContent[currentLanguage].title}</a>
-          <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
           ${HIDDEN_SERVICE_ROUTES.has("/shipping-returns") ? "" : `<a href="/shipping-returns">${legalLabels[currentLanguage].returns}</a>`}
           <a href="/contact">Contact</a>
         </nav>
