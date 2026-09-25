@@ -407,7 +407,8 @@ const productCatalog = [
       "value": "#c9bfb0",
       "images": [
         "/stal-collar-shirt-light-stone-front.png",
-        "/stal-collar-shirt-light-stone-side.png"
+        "/stal-collar-shirt-light-stone-side.png",
+        "/stal-collar-shirt-light-stone-back.png"
       ]
     }
   ],
@@ -416,7 +417,8 @@ const productCatalog = [
     "/stal-collar-shirt-espresso-side.png": 0.244,
     "/stal-collar-shirt-espresso-back.png": 0.216,
     "/stal-collar-shirt-light-stone-front.png": 0.216,
-    "/stal-collar-shirt-light-stone-side.png": 0.21
+    "/stal-collar-shirt-light-stone-side.png": 0.21,
+    "/stal-collar-shirt-light-stone-back.png": 0.178
   }
 }
 ];
