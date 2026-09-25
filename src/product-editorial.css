@@ -59,3 +59,16 @@
 .product-page-editorial .product-gallery-zoom:has(img[src^="/burgundy-sculpted-tracksuit-bottom-"]) { aspect-ratio: auto; background: #f3f0eb; }
 .product-page-editorial .product-gallery-zoom img[src^="/burgundy-sculpted-tracksuit-top-"],
 .product-page-editorial .product-gallery-zoom img[src^="/burgundy-sculpted-tracksuit-bottom-"] { width: 100%; height: auto; object-fit: contain; object-position: center; }
+
+/* Collar Shirt: one product, two named colour choices. */
+.collar-selected-color { margin: 22px 0 36px; font: 13px/1.6 Arial,sans-serif; letter-spacing: .16em; }
+.collar-color-options { border: 0; padding: 0; margin: 0; display: flex; gap: 12px; flex-wrap: wrap; }
+.collar-color-options legend { font: 10px/1.5 Arial,sans-serif; letter-spacing: .16em; text-transform: uppercase; margin-bottom: 16px; }
+.product-information .collar-color-options button { display: flex; align-items: center; justify-content: flex-start; gap: 14px; flex: 1 1 160px; min-height: 64px; padding: 16px 20px; margin: 0; background: transparent; color: #1e3044; border: 1px solid #d1d4d8; cursor: pointer; font: 12px/1.5 Arial,sans-serif; letter-spacing: .08em; }
+.product-information .collar-color-options button[aria-pressed="true"] { border-color: #1e3044; box-shadow: inset 0 0 0 1px #1e3044; }
+.collar-color-options button:focus-visible { outline: 2px solid #1e3044; outline-offset: 4px; }
+.collar-swatch { width: 22px; height: 22px; border-radius: 50%; background: var(--swatch); border: 1px solid #0002; flex-shrink: 0; }
+.collar-shirt-page .product-gallery-zoom { aspect-ratio: 2 / 3; }
+.collar-shirt-page .product-gallery-zoom img { width: 100%; height: 100%; object-fit: cover; }
+/* The source contains white side margins; show its central studio photograph. */
+.collar-shirt-page .collar-wide-source img { object-fit: cover; object-position: 50% center; }

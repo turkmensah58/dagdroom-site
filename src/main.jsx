@@ -367,11 +367,58 @@ const productCatalog = [
     delivery: "Sold out", deliveryTr: "Tükendi", inStock: false, status: "sold-out", isDemo: false
   },
   {
-    slug: "stal-utility-jacket", collection: "stal", collectionName: "Dø Stål™", world: "men",
-    name: "Utility Jacket", price: "€310 · Demo", priceCents: 31000, images: ["/menu-son.png"],
-    description: "A durable everyday layer with understated structure and functional clarity.",
-    sizes: ["S", "M", "L", "XL"], material: "Demo material", care: "Demo care", fit: "Relaxed", delivery: "Demo only", inStock: true
+  "slug": "stal-collar-shirt",
+  "collection": "stal",
+  "collectionName": "Dø Stål™",
+  "world": "men",
+  "name": "COLLAR SHIRT",
+  "detailsPending": true,
+  "isDemo": false,
+  "inStock": false,
+  "sizes": [],
+  "description": "",
+  "colors": [
+    {
+      "name": "Espresso",
+      "value": "#493129"
+    },
+    {
+      "name": "Light Stone",
+      "value": "#c9bfb0"
+    }
+  ],
+  "images": [
+    "/stal-collar-shirt-espresso-front.png",
+    "/stal-collar-shirt-espresso-side.png",
+    "/stal-collar-shirt-espresso-back.png"
+  ],
+  "colorVariants": [
+    {
+      "name": "Espresso",
+      "value": "#493129",
+      "images": [
+        "/stal-collar-shirt-espresso-front.png",
+        "/stal-collar-shirt-espresso-side.png",
+        "/stal-collar-shirt-espresso-back.png"
+      ]
+    },
+    {
+      "name": "Light Stone",
+      "value": "#c9bfb0",
+      "images": [
+        "/stal-collar-shirt-light-stone-front.png",
+        "/stal-collar-shirt-light-stone-side.png"
+      ]
+    }
+  ],
+  "galleryNecklines": {
+    "/stal-collar-shirt-espresso-front.png": 0.267,
+    "/stal-collar-shirt-espresso-side.png": 0.244,
+    "/stal-collar-shirt-espresso-back.png": 0.216,
+    "/stal-collar-shirt-light-stone-front.png": 0.216,
+    "/stal-collar-shirt-light-stone-side.png": 0.21
   }
+}
 ];
 
 const BAG_STORAGE_KEY = "dagdroom-bag-v1";
@@ -402,6 +449,7 @@ function productPrice(slug) {
 }
 
 function formatProductPrice(slug, isDemo = false) {
+  if (productCatalog.find(item => item.slug === slug)?.detailsPending) return "";
   if (TL_ONLY_DISPLAY) return `${formatMoney(priceForProduct(slug, "TRY"), "TRY")}${isDemo ? " · Demo" : ""}`;
   const euroCents = priceForProduct(slug, "EUR");
   if (euroCents === null) return currentLanguage === "tr" ? "Fiyat yakında" : "Price unavailable";
@@ -1232,12 +1280,47 @@ function renderProductPiecePreview(product) {
   return `<img src="${product.images[0]}" ${imageAttributes(product.images[0], "(max-width: 820px) 76px, 100px")} alt="" decoding="async" />`;
 }
 
+
+function renderCollarShirt(product, selectedColor = "Espresso") {
+  const variant = product.colorVariants.find(item => item.name === selectedColor) || product.colorVariants[0];
+  document.title = product.name + " — Dagdroøm";
+  document.querySelector("#app").innerHTML = `
+    <main class="product-page product-page-editorial collar-shirt-page">
+      ${renderSiteHeader(product.world)}
+      <section class="product-detail">
+        <div class="product-gallery-wrap">
+          <div class="product-gallery" id="product-gallery" tabindex="0" aria-label="${product.name} — ${variant.name}">
+            ${variant.images.map((src,index) => `<figure class="product-gallery-zoom${src.includes('light-stone-front') ? ' collar-wide-source' : ''}" data-zoom-protected-top="${product.galleryNecklines[src]}"><img src="${src}" alt="COLLAR SHIRT — ${variant.name} — ${index+1}" loading="${index ? 'lazy' : 'eager'}" /></figure>`).join('')}
+          </div>
+          <nav class="product-gallery-controls" aria-label="${translate('Product images')}">${variant.images.map((_,index)=>`<button type="button" data-gallery-index="${index}" aria-label="${translate('Image')} ${index+1}" aria-current="${index===0}" aria-controls="product-gallery">${index+1}</button>`).join('')}</nav>
+        </div>
+        <div class="product-information">
+          <span class="product-collection-label">Dø Stål™</span>
+          <h1>COLLAR SHIRT</h1>
+          <p class="collar-selected-color" aria-live="polite">${variant.name}</p>
+          <fieldset class="collar-color-options"><legend>${translate('Select color')}</legend>
+            ${product.colorVariants.map(color=>`<button type="button" data-collar-color="${color.name}" aria-pressed="${color.name===variant.name}"><span class="collar-swatch" style="--swatch:${color.value}"></span><span>${color.name}</span></button>`).join('')}
+          </fieldset>
+        </div>
+      </section>
+      ${renderFooter()}
+    </main>`;
+  initializeSiteHeader();
+  initializeMobileGallery();
+  initializeProductGalleryZoom();
+  document.querySelectorAll('[data-collar-color]').forEach(button=>button.addEventListener('click',()=>{
+    renderCollarShirt(product,button.dataset.collarColor);
+    document.querySelector('[data-collar-color="'+button.dataset.collarColor+'"]').focus({preventScroll:true});
+  }));
+}
+
 function renderProductPage(slug) {
   const product = productCatalog.find((item) => item.slug === slug);
   if (!product) {
     renderNotFoundPage();
     return;
   }
+  if (product.colorVariants) { renderCollarShirt(product); return; }
   const labels = productPageLabels[currentLanguage] || productPageLabels.en;
   const colors = product.colors || collectionDemoColors[product.collection]?.slice(0, 1) || [];
   const editorial = product.saleFormat !== "set-only" || product.collection === "flyt";
