@@ -248,12 +248,17 @@ const productCatalog = [
   {
     slug: "flyt-motion-top", collection: "flyt", collectionName: "Dø Flyt™", world: "women", colors: [{ name: "Burgundy", value: "#702c38" }],
     saleFormat: "set-only",
-    name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-top-front.png","/burgundy-sculpted-tracksuit-bottom-front.png","/burgundy-sculpted-tracksuit-top-back.png","/burgundy-sculpted-tracksuit-bottom-back.png","/burgundy-sculpted-tracksuit-front.png","/burgundy-sculpted-tracksuit-back.png","/burgundy-sculpted-tracksuit-profile.png"],
-    catalogImages: ["/burgundy-sculpted-tracksuit-top-front.png","/burgundy-sculpted-tracksuit-bottom-front.png"],
-    galleryNecklines: {"/burgundy-sculpted-tracksuit-top-front.png":0,"/burgundy-sculpted-tracksuit-bottom-front.png":0,"/burgundy-sculpted-tracksuit-top-back.png":0,"/burgundy-sculpted-tracksuit-bottom-back.png":0},
+    name: "Burgundy Sculpted Tracksuit", price: "€180 · Demo", priceCents: 18000, images: ["/burgundy-sculpted-tracksuit-top-front.png","/burgundy-sculpted-tracksuit-bottom-front-clean.png","/burgundy-sculpted-tracksuit-top-back.png","/burgundy-sculpted-tracksuit-bottom-back.png","/burgundy-sculpted-tracksuit-front.png","/burgundy-sculpted-tracksuit-back.png","/burgundy-sculpted-tracksuit-profile.png"],
+    catalogImages: ["/burgundy-sculpted-tracksuit-top-front.png","/burgundy-sculpted-tracksuit-bottom-front-clean.png"],
+    galleryNecklines: {"/burgundy-sculpted-tracksuit-top-front.png":0,"/burgundy-sculpted-tracksuit-bottom-front-clean.png":0,"/burgundy-sculpted-tracksuit-top-back.png":0,"/burgundy-sculpted-tracksuit-bottom-back.png":0},
     description: "A technical essential balancing comfort, movement and a clean Nordic line.",
     material: "75% cotton, 25% polyester", materialTr: "%75 pamuk, %25 polyester", materialDe: "75 % Baumwolle, 25 % Polyester", materialSv: "75 % bomull, 25 % polyester",
-    sizes: ["XS", "S", "M", "L", "XL"], care: "Demo care", fit: "Close", delivery: "Demo only", inStock: true
+    sizes: ["XS", "S", "M", "L", "XL"],
+    care: "Wash inside out with similar colours at 30°C on a delicate cycle. Do not tumble dry. Iron on low heat.",
+    careTr: "Benzer renklerle, ters çevirerek 30°C'de hassas programda yıkayın. Kurutma makinesi kullanmayın. Düşük ısıda ütüleyin.",
+    careDe: "Mit ähnlichen Farben auf links bei 30°C im Schonwaschgang waschen. Nicht im Wäschetrockner trocknen. Bei niedriger Temperatur bügeln.",
+    careSv: "Tvätta ut och in med liknande färger i 30°C på skonsamt program. Torktumla inte. Stryk på låg värme.",
+    fit: "Close", delivery: "In stock", deliveryTr: "Var", deliveryDe: "Auf Lager", deliverySv: "I lager", inStock: true
   },
   {
     slug: "flyt-ivory-linen-pyjama", collection: "flyt", collectionName: "Dø Flyt™", world: "women",
