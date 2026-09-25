@@ -1,5 +1,10 @@
-# Geçici TL gösterimi — 22 Eylül 2026
+# Euro gösterimi — 25 Eylül 2026
 
-Kullanıcının isteğiyle tüm dillerde ürün ve sepet fiyatları yalnızca mevcut TRY fiyatlarıyla gösterilir. EUR fiyatları ve önceki gösterim kodu korunmuştur. Fiyat tutarları değiştirilmedi. Bu modda harici kur isteği yapılmaz.
+Kullanıcı euro karşılıklarının yeniden gösterilmesini istedi. Önceki yalnızca TL tercihi kaldırıldı.
 
-Kullanıcı euro gösterimi için “geri al” dediğinde her iki klasörde shared/pricing.js içindeki TL_ONLY_DISPLAY değerini false yap. Önceki Türkçe EUR + yaklaşık TL ürün gösterimi ve diğer dillerde EUR gösterimi geri gelir. Ödeme etkinleştirme ve uluslararası teslimat ayrı ayarlardır; bu istekle değiştirilmez.
+- Referans kur: 1 EUR = 55,7975 TRY, tarih 2026-09-25.
+- Kaynak: https://api.frankfurter.dev/v1/2026-09-25?base=EUR&symbols=TRY (ECB referans kuru).
+- Mevcut TRY tutarları korunur. EUR cent = Math.round(TRY kuruş / 55.7975).
+- Türkçe ürünlerde TL + yaklaşık EUR; EN/DE/SV ürün ve sepetlerinde EUR gösterilir.
+- Bu yayında tarihli sabit kur kullanılır; eski tarayıcı kur önbelleği veya canlı istek fiyatları değiştirmez. Yeni kur istendiğinde merkezi EUR fiyatları birlikte hesaplanmalıdır.
+- Ödeme ve uluslararası teslimat ayarları ayrı kalır. Gizli işletme bilgileri, satış sözleşmesi ve teslimat/iade sayfaları yeniden açılmaz.

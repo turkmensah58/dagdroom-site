@@ -16,7 +16,7 @@ import {
   supportedLanguages,
   translate
 } from "./i18n.js";
-import { TL_ONLY_DISPLAY, INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct, bagTotals } from "../shared/pricing.js";
+import { EUR_TRY_REFERENCE_RATE, EUR_TRY_REFERENCE_DATE, TL_ONLY_DISPLAY, INTERNATIONAL_CHECKOUT_ENABLED, currencyForLanguage, priceForProduct, bagTotals } from "../shared/pricing.js";
 const FLYT_INTRO_URL = "/flyt-card.mp4";
 function imageAttributes(src, sizes = "100vw") {
   const image = imageSources[src];
@@ -27,11 +27,6 @@ function imagePreview(src) {
   return imageSources[src]?.variants.at(-1)?.url || src;
 }
 const activeCurrency = currencyForLanguage(currentLanguage);
-const EUR_TRY_FALLBACK_RATE = 55.87;
-const EXCHANGE_RATE_CACHE_KEY = "dagdroom-eur-try-rate-v1";
-let eurTryRate = EUR_TRY_FALLBACK_RATE;
-let eurTryRateDate = "";
-
 const translations = {
   en: {
     welcome: "W E L C O M E   T O   D Λ G D R O Ø M",
@@ -405,44 +400,19 @@ function formatProductPrice(slug, isDemo = false) {
   if (euroCents === null) return currentLanguage === "tr" ? "Fiyat yakında" : "Price unavailable";
   const demoLabel = isDemo ? " · Demo" : "";
   if (currentLanguage !== "tr") return `${formatMoney(euroCents, "EUR")}${demoLabel}`;
-  const tryCents = Math.round(euroCents * eurTryRate);
-  return `${formatMoney(euroCents, "EUR")} · ≈ ${formatMoney(tryCents, "TRY")}${demoLabel}`;
+  const tryCents = priceForProduct(slug, "TRY");
+  return `${formatMoney(tryCents, "TRY")} · ≈ ${formatMoney(euroCents, "EUR")}${demoLabel}`;
 }
 
 function updateVisibleProductPrices() {
   document.querySelectorAll("[data-product-price]").forEach((element) => {
     element.textContent = formatProductPrice(element.dataset.productPrice, element.dataset.demo === "true");
-    if (!TL_ONLY_DISPLAY && currentLanguage === "tr") {
-      element.title = `Günlük EUR/TRY referans kuru: ${eurTryRate.toLocaleString("tr-TR")}${eurTryRateDate ? ` (${eurTryRateDate})` : ""}`;
+    if (!TL_ONLY_DISPLAY) {
+      element.title = `1 EUR = ${EUR_TRY_REFERENCE_RATE} TRY (${EUR_TRY_REFERENCE_DATE})`;
     } else {
       element.removeAttribute("title");
     }
   });
-}
-
-async function refreshEurTryRate() {
-  if (TL_ONLY_DISPLAY) return;
-  if (currentLanguage !== "tr") return;
-  try {
-    const cached = JSON.parse(localStorage.getItem(EXCHANGE_RATE_CACHE_KEY) || "null");
-    if (cached?.rate > 0) {
-      eurTryRate = cached.rate;
-      eurTryRateDate = cached.date || "";
-      updateVisibleProductPrices();
-    }
-    if (cached?.savedAt && Date.now() - cached.savedAt < 6 * 60 * 60 * 1000) return;
-
-    const response = await fetch("https://api.frankfurter.dev/v1/latest?base=EUR&symbols=TRY");
-    if (!response.ok) throw new Error("Exchange rate request failed");
-    const data = await response.json();
-    if (!Number.isFinite(data?.rates?.TRY) || data.rates.TRY <= 0) throw new Error("Invalid exchange rate");
-    eurTryRate = data.rates.TRY;
-    eurTryRateDate = data.date || "";
-    localStorage.setItem(EXCHANGE_RATE_CACHE_KEY, JSON.stringify({ rate: eurTryRate, date: eurTryRateDate, savedAt: Date.now() }));
-    updateVisibleProductPrices();
-  } catch {
-    updateVisibleProductPrices();
-  }
 }
 
 function localizedProductField(product, field) {
@@ -2426,5 +2396,5 @@ function initializeReducedMotionVideos() {
 
 renderCurrentRoute();
 initializeReducedMotionVideos();
-refreshEurTryRate();
+updateVisibleProductPrices();
 initializeCookieConsent();
