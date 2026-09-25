@@ -1,3 +1,4 @@
+import { SHOW_BUSINESS_CONTACT_DETAILS, HIDDEN_SERVICE_ROUTES } from "./publication-settings.js";
 import "./style.css";
 import "./mobile.css";
 import "./all-products.css";
@@ -1386,6 +1387,7 @@ function renderContactPage() {
         </a>
       </section>
 
+      ${SHOW_BUSINESS_CONTACT_DETAILS ? `
       <section class="contact-business" aria-labelledby="contact-business-title" lang="${currentLanguage}" translate="no">
         <h2 id="contact-business-title">${labels.heading}</h2>
         <dl>
@@ -1401,6 +1403,7 @@ function renderContactPage() {
           <div><dt>MERSİS</dt><dd>${labels.noMersis}</dd></div>
         </dl>
       </section>
+      ` : ""}
       <section class="contact-form-section">
         <div class="contact-form-heading">
           <p>Send an enquiry</p>
@@ -1642,6 +1645,10 @@ function renderCookiePolicyPage() {
 }
 
 function renderServicePage(route) {
+  if (HIDDEN_SERVICE_ROUTES.has(route)) {
+    renderNotFoundPage();
+    return;
+  }
   const legalPages = getLegalPages(currentLanguage);
   const labels = serviceUI[currentLanguage];
   const page = legalPages[route];
@@ -1658,7 +1665,7 @@ function renderServicePage(route) {
       </nav>
       ${page.sections.map(([heading, body], index) => `<section id="legal-section-${index + 1}"><h2>${heading}</h2><p>${body}</p></section>`).join("")}
       <nav class="service-document-actions">
-        ${Object.entries(legalPages).filter(([path]) => path !== route).map(([path, document]) => `<a href="${path}">${document.title} →</a>`).join("")}
+        ${Object.entries(legalPages).filter(([path]) => path !== route && !HIDDEN_SERVICE_ROUTES.has(path)).map(([path, document]) => `<a href="${path}">${document.title} →</a>`).join("")}
         <a href="/contact">${labels.contact} →</a>
         ${route === "/privacy" ? `<a href="/cookies">${labels.cookies} →</a>` : ""}
       </nav>
@@ -2098,13 +2105,13 @@ function renderFooter(showJournal = false) {
         <nav class="footer-bottom-primary" aria-label="Footer navigation">
           <a href="/about">${aboutContent[currentLanguage].title}</a>
           <a href="https://www.instagram.com/dagd.room/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="/shipping-returns">${legalLabels[currentLanguage].returns}</a>
+          ${HIDDEN_SERVICE_ROUTES.has("/shipping-returns") ? "" : `<a href="/shipping-returns">${legalLabels[currentLanguage].returns}</a>`}
           <a href="/contact">Contact</a>
         </nav>
         <nav class="footer-bottom-legal" aria-label="Legal navigation">
           <a href="/cookies">Cookie Policy</a>
           <a href="/privacy">${legalLabels[currentLanguage].privacy}</a>
-          <a href="/terms">${legalLabels[currentLanguage].terms}</a>
+          ${HIDDEN_SERVICE_ROUTES.has("/terms") ? "" : `<a href="/terms">${legalLabels[currentLanguage].terms}</a>`}
         </nav>
       </div>
       <div class="footer-payments" translate="no"><img src="/payments/iyzico-payment-band.svg" width="429" height="32" alt="iyzico ile Öde, Mastercard, Visa, American Express, Troy" loading="lazy" /></div>
